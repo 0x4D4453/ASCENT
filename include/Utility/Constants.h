@@ -7,6 +7,7 @@ namespace Constants {
   constexpr char GAME_NAME[] = "GOTY";
   constexpr int WINDOW_STYLE = sf::Style::Close | sf::Style::Titlebar;
 
+  constexpr float SCALE = 2.f;
   constexpr float TILE_SIZE = 32.f;
 
   constexpr char PLAYER_TEXTURE[] = "assets/tiles/tile_0240.png";
@@ -26,6 +27,7 @@ namespace Constants {
   constexpr char ENEMY3_TEXTURE[] = "assets/tiles/tile_0381.png";
 
   constexpr float GRAVITY = 9.81f;
+  constexpr float MAX_FALL_SPEED = 10.f;
 }
 
 #endif

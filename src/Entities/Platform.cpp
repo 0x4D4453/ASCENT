@@ -17,7 +17,7 @@ namespace Entities {
 
   void Platform::setup(const char* file) {
     setTexture(file);
-    m_sprite.setScale(sf::Vector2f(2.f, 2.f));
+    m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
   }
 
   void Platform::save() {

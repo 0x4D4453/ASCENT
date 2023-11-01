@@ -17,6 +17,8 @@ namespace Entities {
       virtual ~Character();
       static void setDeltaTime(float dt);
       void setVelocity(const sf::Vector2f velocity);
+      sf::Vector2f getVelocity() const;
+      const int getHealthPoints() const;
       void move();
       void move(const sf::Vector2f movement);
       virtual void save() = 0;

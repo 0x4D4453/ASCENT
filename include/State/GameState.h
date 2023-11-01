@@ -19,10 +19,11 @@ namespace States {
       void handleKeyEvent(sf::Keyboard::Scancode keyScancode);
 
     public:
-      GameState();
+      GameState(const bool newGame = true);
       ~GameState();
       void handleEvent(sf::Event& event);
       void setPaused(const bool paused);
+      void saveGame();
       void exec();
   };
 }

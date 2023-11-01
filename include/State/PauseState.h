@@ -19,6 +19,8 @@ namespace States {
     private:
       enum Options {
         Continue,
+        Save,
+        SaveAndQuit,
         Menu,
         TotalOptions
       };
@@ -26,7 +28,6 @@ namespace States {
     private:
       States::GameState* m_pGameState;
       sf::RectangleShape m_background;
-      sf::RectangleShape m_optionsBox;
       sf::Font m_font;
       sf::Text m_title;
       std::vector<sf::Text> m_options;

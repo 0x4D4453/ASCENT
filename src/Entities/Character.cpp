@@ -25,6 +25,14 @@ namespace Entities {
     m_velocity = velocity;
   }
 
+  sf::Vector2f Character::getVelocity() const {
+    return m_velocity;
+  }
+
+  const int Character::getHealthPoints() const {
+    return m_healthPoints;
+  }
+
   void Character::move() {
     m_sprite.move(m_velocity);
   }

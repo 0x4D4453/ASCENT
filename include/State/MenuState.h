@@ -15,8 +15,9 @@ namespace States {
   class MenuState : public State, public sf::NonCopyable {
     private:
       enum Options {
-        Play,
-        Scoreboard,
+        NewGame,
+        Continue,
+        Highscore,
         Credits,
         Exit,
         TotalOptions
@@ -24,7 +25,7 @@ namespace States {
 
     private:
       sf::Font m_font;
-      std::vector<sf::Text> m_text;
+      std::vector<sf::Text> m_options;
       Options m_currentOption;
     
     private:

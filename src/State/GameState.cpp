@@ -5,11 +5,12 @@
 #include "State/StateStack.h"
 
 namespace States {
-  GameState::GameState()
+  GameState::GameState(const bool newGame)
     : State()
     , m_stage()
   {
-
+    if (!newGame)
+      m_stage.loadSaveGame();
   }
 
   GameState::~GameState() {
@@ -43,6 +44,10 @@ namespace States {
 
   void GameState::setPaused(const bool paused) {
     m_stage.setPaused(paused);
+  }
+
+  void GameState::saveGame() {
+    m_stage.saveGame();
   }
 
   void GameState::exec() {

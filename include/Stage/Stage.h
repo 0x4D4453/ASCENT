@@ -27,9 +27,11 @@ namespace Stages {
       void update();
     
     public:
-      Stage();
+      Stage(const bool newGame = true);
       ~Stage();
       void setPaused(const bool paused);
+      void loadSaveGame();
+      void saveGame();
       virtual void exec();
   };
 }

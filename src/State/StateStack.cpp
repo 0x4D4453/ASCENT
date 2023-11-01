@@ -30,6 +30,9 @@ namespace States {
       case (StateType::Game):
         state = new GameState;
         break;
+      case (StateType::Continue):
+        state = new GameState(false);
+        break;
       case (StateType::Pause):
         state = new PauseState(static_cast<GameState*>(pState));
         break;

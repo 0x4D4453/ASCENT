@@ -34,14 +34,25 @@ namespace States {
     m_options[0].setCharacterSize(80.f);
     textRect = m_options[0].getLocalBounds();
     m_options[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    m_options[0].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y - 50.f);
+    m_options[0].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y - 100.f);
 
-    
-    m_options.push_back(sf::Text("Menu", m_font));
+    m_options.push_back(sf::Text("Save", m_font));
     m_options[1].setCharacterSize(80.f);
     textRect = m_options[1].getLocalBounds();
     m_options[1].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    m_options[1].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y + 50.f);
+    m_options[1].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y);
+
+    m_options.push_back(sf::Text("Save & Quit", m_font));
+    m_options[2].setCharacterSize(80.f);
+    textRect = m_options[2].getLocalBounds();
+    m_options[2].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    m_options[2].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y + 100.f);
+
+    m_options.push_back(sf::Text("Menu", m_font));
+    m_options[3].setCharacterSize(80.f);
+    textRect = m_options[3].getLocalBounds();
+    m_options[3].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    m_options[3].setPosition(m_pGraphicsManager->getViewCenter().x, m_pGraphicsManager->getViewCenter().y + 200.f);
 
     m_options[m_currentOption].setFillColor(sf::Color::Magenta);
   }
@@ -99,7 +110,14 @@ namespace States {
         m_pStateStack->popState();
         m_pGameState->setPaused(false);
         break;
-      case Menu: 
+      case Save:
+        m_pGameState->saveGame();
+      break;
+      case SaveAndQuit:
+        m_pGameState->saveGame();
+        m_pStateStack->pushState(StateType::Menu, this, true);
+      break;
+      case Menu:
         m_pStateStack->pushState(StateType::Menu, NULL, true);
         break;
       default: break;

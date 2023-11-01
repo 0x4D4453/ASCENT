@@ -23,6 +23,10 @@ file(COPY
         ${CMAKE_CURRENT_SOURCE_DIR}/assets/
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin/assets/)
 
+file(COPY
+        ${CMAKE_CURRENT_SOURCE_DIR}/saves/
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin/saves/)
+
 if(WIN32)
     add_custom_command(
         TARGET GOTY

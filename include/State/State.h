@@ -12,6 +12,7 @@ namespace States {
   enum class StateType {
     Menu,
     Game,
+    Continue,
     Pause,
     TotalStates
   };

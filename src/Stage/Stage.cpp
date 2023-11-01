@@ -19,15 +19,21 @@
 #include <iostream>
 #include <string>
 
+/* JSON Library */
+#include "nlohmann/json.hpp"
+
 namespace Stages {
   Manager::GraphicsManager* Stage::m_graphicsManager(Manager::GraphicsManager::getInstance());
 
-  Stage::Stage() 
+  Stage::Stage(const bool newGame) 
     : m_collisionManager()
     , m_player1()
     , m_platforms()
     , m_paused(false)
   {
+    if (!newGame)
+      loadSaveGame();
+
     m_collisionManager.setPlayer(&m_player1);
     m_collisionManager.setPlatformsList(&m_platforms);
     createMap();
@@ -35,6 +41,33 @@ namespace Stages {
 
   Stage::~Stage() {
 
+  }
+
+  void Stage::loadSaveGame() {
+    try {
+       std::ifstream jsonStream("saves/player.json");
+       nlohmann::json playerData = nlohmann::json::parse(jsonStream);
+
+       m_player1.setPosition(sf::Vector2f(playerData["position"]["x"], playerData["position"]["y"]));
+       m_player1.setVelocity(sf::Vector2f(playerData["velocity"]["x"], playerData["velocity"]["y"]));
+    } catch (int error) {
+       std::cerr << "Error loading the save\n";
+    }
+  }
+
+  void Stage::saveGame() {
+    try {
+       nlohmann::json playerData;
+
+       playerData["hp"] = m_player1.getHealthPoints();
+       playerData["position"] = { {"x", m_player1.getPosition().x}, {"y", m_player1.getPosition().y} };
+       playerData["velocity"] = { {"x", m_player1.getVelocity().x}, {"y", m_player1.getVelocity().y} };
+ 
+       std::ofstream jsonOut("saves/player.json");
+       jsonOut << std::setw(2) << playerData;
+    } catch (int error) {
+       std::cerr << "Error saving the game\n";
+    }
   }
 
   void Stage::createPlatform(const sf::Vector2f position, const char* texture) {

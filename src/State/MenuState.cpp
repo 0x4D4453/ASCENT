@@ -11,9 +11,7 @@
 
 namespace States {
   MenuState::MenuState()
-    : m_font()
-    , m_options()
-    , m_currentOption(NewGame)
+    : m_currentOption(NewGame)
   { 
     m_pGraphicsManager->resetView();
     setup();
@@ -23,29 +21,34 @@ namespace States {
 
   }
 
-  void MenuState::createOption(int index, const char* optionText, sf::Vector2f position) {
-    if (index >= TotalOptions) {
-      std::cerr << "Error adding option to menu!\n";
+  void MenuState::createOption(const char* optionName, const sf::Vector2f& position) {
+    constexpr float characterSize = 80.f;
+
+    sf::Text* pText = new sf::Text(optionName, m_font);
+
+    if (!pText) {
+      std::cerr << "Error creating option " << optionName << "\n";
       return;
     }
 
-    m_options.push_back(sf::Text(optionText, m_font));
-    m_options[index].setFillColor(sf::Color::White);
-    m_options[index].setCharacterSize(70);
-    m_options[index].setPosition(position);
+    pText->setFillColor(sf::Color::White);
+    pText->setCharacterSize(characterSize);
+    pText->setPosition(position);
+
+    m_options.push_back(pText);
   }
 
   void MenuState::setup() {
     if (!m_font.loadFromFile("assets/fonts/monogram.ttf"))
       std::cerr << "Error loading Menu font!\n";
     
-    createOption(0, "New Game", sf::Vector2f(50.f, 10.f));
-    createOption(1, "Continue", sf::Vector2f(50.f, 100.f));
-    createOption(2, "Highscore", sf::Vector2f(50.f, 190.f));
-    createOption(3, "Credits", sf::Vector2f(50.f, 280.f));
-    createOption(4, "Exit", sf::Vector2f(50.f, 360.f));
+    createOption("New Game", sf::Vector2f(50.f, 10.f));
+    createOption("Continue", sf::Vector2f(50.f, 100.f));
+    createOption("Highscore", sf::Vector2f(50.f, 190.f));
+    createOption("Credits", sf::Vector2f(50.f, 280.f));
+    createOption("Exit", sf::Vector2f(50.f, 360.f));
 
-    m_options[m_currentOption].setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(sf::Color::Magenta);
   }
 
   void MenuState::handleEvent(sf::Event& event) {
@@ -70,8 +73,8 @@ namespace States {
     if (static_cast<int>(m_currentOption - 1) < static_cast<int>(NewGame))
       return;
     
-    m_options[m_currentOption].setFillColor(sf::Color::White);
-    m_options[m_currentOption - 1].setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(sf::Color::White);
+    m_options[m_currentOption - 1]->setFillColor(sf::Color::Magenta);
 
     m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
   }
@@ -80,8 +83,8 @@ namespace States {
     if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
       return;
     
-    m_options[m_currentOption].setFillColor(sf::Color::White);
-    m_options[m_currentOption + 1].setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(sf::Color::White);
+    m_options[m_currentOption + 1]->setFillColor(sf::Color::Magenta);
 
     m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
   }
@@ -104,10 +107,10 @@ namespace States {
   }
 
   void MenuState::exec() {
-    std::vector<sf::Text>::iterator it = m_options.begin();
+    std::vector<sf::Text*>::iterator it = m_options.begin();
     
     while (it != m_options.end()) {
-      m_pGraphicsManager->getWindow()->draw(*it);
+      m_pGraphicsManager->getWindow()->draw(*(*it));
       ++it;
     }
   }

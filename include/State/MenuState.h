@@ -2,7 +2,7 @@
 #define MENUSTATE_H
 
 /* Main Include */
-#include "State/State.h"
+#include "State/OptionsState.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -12,7 +12,7 @@
 #include <vector>
 
 namespace States {
-  class MenuState : public State, public sf::NonCopyable {
+  class MenuState : public OptionsState, public sf::NonCopyable {
     private:
       enum Options {
         NewGame,
@@ -24,12 +24,10 @@ namespace States {
       };
 
     private:
-      sf::Font m_font;
-      std::vector<sf::Text> m_options;
       Options m_currentOption;
     
     private:
-      void createOption(int index, const char* optionText, sf::Vector2f position);
+      void createOption(const char* optionName, const sf::Vector2f& position);
       void setup();
       void moveOptionUp();
       void moveOptionDown();

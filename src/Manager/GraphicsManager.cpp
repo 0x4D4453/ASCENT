@@ -21,7 +21,7 @@ namespace Manager {
   }
 
   void GraphicsManager::windowSetup() {
-    //m_window.setFramerateLimit(60);
+    m_window.setFramerateLimit(60);
     m_window.setVerticalSyncEnabled(true);
     m_window.setMouseCursorVisible(false);
   }

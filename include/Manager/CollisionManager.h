@@ -12,13 +12,13 @@ namespace Entities { class Player; }
 namespace Manager {
   class CollisionManager : sf::NonCopyable {
     private:  
-      Entities::Player* m_pPlayer1;
+      EntityList* m_pPlayers;
       EntityList* m_pPlatforms;
     
     public:
       CollisionManager();
       ~CollisionManager();
-      void setPlayer(Entities::Player* player);
+      void setPlayersList(EntityList* playersList);
       void setPlatformsList(EntityList* platformsList);
       void verifyCollisionPlatforms();
   };

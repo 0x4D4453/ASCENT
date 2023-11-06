@@ -4,9 +4,21 @@
 /* Program Defined */
 #include "Entities/Character.h"
 
+/* Standard Library */
+#include <unordered_map>
+
 namespace Entities {
   class Player : public Character {
     private:
+      enum Actions {
+        MoveLeft,
+        MoveRight,
+        Jump
+      };
+
+    private:
+      std::unordered_map<sf::Keyboard::Key, Actions> m_keyBinding;
+      std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
       int m_points;
       bool m_isJumping;
       bool m_isCharging;
@@ -16,17 +28,22 @@ namespace Entities {
       const float m_maxJumpHeight;
 
     private:
-      void setup();
+      void setup(const char* texturePath);
+      void moveLeft();
+      void moveRight();
+      void chargeJump();
+      void jump();
       void handleInput();
       void update();
     
     public:
-      Player();
+      Player(const char* texturePath
+            , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
+            , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
+            , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
       ~Player();
-      void setIsJumping(const bool isJumping);
-      void chargeJump();
-      void jump();
       void exec();
+      void setIsJumping(const bool isJumping);
       void save();
   };
 }

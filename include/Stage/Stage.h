@@ -15,7 +15,7 @@ namespace Stages {
     protected:
       static Manager::GraphicsManager* m_graphicsManager;
       Manager::CollisionManager m_collisionManager;
-      Entities::Player m_player1;
+      EntityList m_players;
       EntityList m_platforms;
       bool m_paused;
 
@@ -23,6 +23,8 @@ namespace Stages {
       void createMap();
       void createPlatform(const sf::Vector2f position, const char* texture);
       void drawPlatforms();
+      void drawPlayers();
+      void updatePlayers();
       void updateView();
       void update();
     

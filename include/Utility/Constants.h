@@ -10,7 +10,8 @@ namespace Constants {
   constexpr float SCALE = 2.f;
   constexpr float TILE_SIZE = 32.f;
 
-  constexpr char PLAYER_TEXTURE[] = "assets/tiles/tile_0240.png";
+  constexpr char PLAYER1_TEXTURE[] = "assets/tiles/tile_0240.png";
+  constexpr char PLAYER2_TEXTURE[] = "assets/tiles/tile_0260.png";
   constexpr char PLATFORM_TEXTURE[] = "assets/tiles/tile_0271.png";
   constexpr char PLATFORM_TEXTURE_LEFT_CORNER[] = "assets/tiles/tile_0270.png";
   constexpr char PLATFORM_TEXTURE_LEFT_CORNER_BLACK[] = "assets/tiles/tile_0290.png";

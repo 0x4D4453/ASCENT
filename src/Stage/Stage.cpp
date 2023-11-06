@@ -27,14 +27,15 @@ namespace Stages {
 
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
-    , m_player1()
     , m_platforms()
     , m_paused(false)
   {
     if (!newGame)
       loadSaveGame();
+    m_players.include(new Entities::Player(Constants::PLAYER1_TEXTURE));
+    m_players.include(new Entities::Player(Constants::PLAYER2_TEXTURE, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
 
-    m_collisionManager.setPlayer(&m_player1);
+    m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setPlatformsList(&m_platforms);
     createMap();
   }
@@ -44,30 +45,11 @@ namespace Stages {
   }
 
   void Stage::loadSaveGame() {
-    try {
-       std::ifstream jsonStream("saves/player.json");
-       nlohmann::json playerData = nlohmann::json::parse(jsonStream);
 
-       m_player1.setPosition(sf::Vector2f(playerData["position"]["x"], playerData["position"]["y"]));
-       m_player1.setVelocity(sf::Vector2f(playerData["velocity"]["x"], playerData["velocity"]["y"]));
-    } catch (int error) {
-       std::cerr << "Error loading the save\n";
-    }
   }
 
   void Stage::saveGame() {
-    try {
-       nlohmann::json playerData;
 
-       playerData["hp"] = m_player1.getHealthPoints();
-       playerData["position"] = { {"x", m_player1.getPosition().x}, {"y", m_player1.getPosition().y} };
-       playerData["velocity"] = { {"x", m_player1.getVelocity().x}, {"y", m_player1.getVelocity().y} };
- 
-       std::ofstream jsonOut("saves/player.json");
-       jsonOut << std::setw(2) << playerData;
-    } catch (int error) {
-       std::cerr << "Error saving the game\n";
-    }
   }
 
   void Stage::createPlatform(const sf::Vector2f position, const char* texture) {
@@ -87,6 +69,14 @@ namespace Stages {
   void Stage::drawPlatforms() {
     List<Entities::Entity*>::Iterator it = m_platforms.first();
     while (it != m_platforms.last()) {
+      (*it)->draw();
+      ++it;
+    }
+  }
+
+  void Stage::drawPlayers() {
+    List<Entities::Entity*>::Iterator it = m_players.first();
+    while (it != m_players.last()) {
       (*it)->draw();
       ++it;
     }
@@ -130,27 +120,37 @@ namespace Stages {
   }
 
   void Stage::updateView() {
-    float x = m_player1.getPosition().x;
-    float y = m_player1.getPosition().y;
+    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+
+    float x = player1->getPosition().x;
+    float y = player1->getPosition().y;
 
     if ((x - m_graphicsManager->getViewSize().x/2) < 0)
       x = Constants::WINDOW_WIDTH/2;
 
-    if ((y) + m_graphicsManager->getViewSize().y/2 > Constants::WINDOW_HEIGHT)
+    if ((y+ m_graphicsManager->getViewSize().y/2) > Constants::WINDOW_HEIGHT)
       y = Constants::WINDOW_HEIGHT/2;
     
-    if (m_player1.getPosition().x < 0) 
-      m_player1.setPosition(sf::Vector2f(0.f, m_player1.getPosition().y));
+    if (player1->getPosition().x < 0) 
+      player1->setPosition(sf::Vector2f(0.f, player1->getPosition().y));
     
-    if (m_player1.getPosition().y > Constants::WINDOW_HEIGHT)
-      m_player1.setPosition(sf::Vector2f(32.f, 0.f));
+    if (player1->getPosition().y > Constants::WINDOW_HEIGHT)
+      player1->setPosition(sf::Vector2f(32.f, 0.f));
 
     m_graphicsManager->setViewCenter(x, y);
     m_graphicsManager->setView();
   }
 
+  void Stage::updatePlayers() {
+    List<Entities::Entity*>::Iterator it = m_players.first();
+    while (it != m_players.last()) {
+      (*it)->exec();
+      ++it;
+    }
+  }
+
   void Stage::update() {
-    m_player1.exec();
+    updatePlayers();
     m_collisionManager.verifyCollisionPlatforms();
     updateView();
   }
@@ -163,6 +163,6 @@ namespace Stages {
     if (!m_paused)
       update();
     drawPlatforms();
-    m_player1.draw();
+    drawPlayers();
   }
 }

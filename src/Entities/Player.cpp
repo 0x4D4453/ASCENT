@@ -8,6 +8,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <unordered_map>
 
 /* JSON Library */
@@ -20,7 +21,7 @@ namespace Entities {
     , m_isJumping(false)
     , m_chargingSpeed(0.25f)
     , m_minJumpHeight(0.1f)
-    , m_maxJumpHeight(500.f)
+    , m_maxJumpHeight(580.f)
     , m_jumpHeight(m_minJumpHeight)
   {
     m_keyBinding.insert(std::make_pair(moveLeftKey, MoveLeft));
@@ -41,8 +42,8 @@ namespace Entities {
   void Player::setup(const char* texturePath) {  
     setTexture(texturePath);
     m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
-    m_sprite.setOrigin(16/2, 0);
-    m_sprite.setPosition(sf::Vector2f(32.f,  0.f));
+    m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
+    m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE,  0.f));
   } 
 
   void Player::moveLeft() {
@@ -60,17 +61,17 @@ namespace Entities {
   void Player::handleInput() {
     m_velocity.x = 0.f;
     m_velocity.y += Constants::GRAVITY * m_dt;
-
+    
     if (m_velocity.y > Constants::MAX_FALL_SPEED)
       m_velocity.y = Constants::MAX_FALL_SPEED;
     
     using sf::Keyboard;
-    std::unordered_map<Keyboard::Key, Actions>::iterator it = m_keyBinding.begin();
+    std::map<Keyboard::Key, Actions>::iterator it = m_keyBinding.begin();
 
     while (it != m_keyBinding.end()) {
       if (Keyboard::isKeyPressed((*it).first)) {
         Actions action = (*it).second;
-        using functionPointer = void(Player::*)();
+        using functionPointer = void (Player::*)();
         functionPointer pFunction = m_actionBinding[action];
         (this->*pFunction)();
       }
@@ -89,8 +90,10 @@ namespace Entities {
   void Player::jump() {
     //m_isCharging = false;
     if (!m_isJumping) {
+      m_velocity.y = 0.f;
       m_isJumping = true;
-      m_velocity.y = -(m_maxJumpHeight * m_dt);
+      m_velocity.y -= (m_maxJumpHeight * m_dt);
+      std::cout << m_dt << std::endl;
     }
     //m_jumpHeight = m_minJumpHeight;
   }

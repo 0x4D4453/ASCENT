@@ -8,6 +8,7 @@
 #include "Utility/List.h"
 
 /* Standard Library */
+#include <iostream>
 #include <algorithm>
 
 namespace Manager {

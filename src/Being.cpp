@@ -8,6 +8,7 @@
 #include <iostream>
 
 Manager::GraphicsManager* Being::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
+const float Being::m_dt(m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
 
 Being::Being() 
   : m_id(0)

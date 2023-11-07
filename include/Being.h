@@ -10,6 +10,7 @@ namespace Manager { class GraphicsManager; }
 class Being {
   protected:
     static Manager::GraphicsManager* m_pGraphicsManager;
+    static const float m_dt;
     const int m_id;
     sf::Sprite m_sprite;
     sf::Texture m_texture;

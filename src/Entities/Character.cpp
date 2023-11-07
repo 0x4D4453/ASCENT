@@ -2,8 +2,6 @@
 #include "Entities/Character.h"
 
 namespace Entities {
-  float Character::m_dt(0.f);
-
   Character::Character()
     : Entity(sf::Vector2f(0.f, 0.f))
     , m_healthPoints(0)
@@ -15,10 +13,6 @@ namespace Entities {
 
   Character::~Character() {
 
-  }
-
-  void Character::setDeltaTime(float dt) {
-    m_dt = dt;
   }
 
   void Character::setVelocity(const sf::Vector2f velocity) {

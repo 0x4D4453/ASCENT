@@ -6,9 +6,11 @@ namespace Constants {
   constexpr unsigned int WINDOW_HEIGHT = 640;
   constexpr char GAME_NAME[] = "GOTY";
   constexpr int WINDOW_STYLE = sf::Style::Close | sf::Style::Titlebar;
+  constexpr float FIXED_STEP = 1.f/120.f;
 
   constexpr float SCALE = 2.f;
-  constexpr float TILE_SIZE = 32.f;
+  constexpr float SPRITE_SIZE = 16.f;
+  constexpr float TILE_SIZE = SPRITE_SIZE * SCALE;
 
   constexpr char PLAYER1_TEXTURE[] = "assets/tiles/tile_0240.png";
   constexpr char PLAYER2_TEXTURE[] = "assets/tiles/tile_0260.png";
@@ -27,8 +29,8 @@ namespace Constants {
   constexpr char ENEMY2_TEXTURE[] = "assets/tiles/tile_0340.png";
   constexpr char ENEMY3_TEXTURE[] = "assets/tiles/tile_0381.png";
 
-  constexpr float GRAVITY = 9.81f;
-  constexpr float MAX_FALL_SPEED = 10.f;
+  constexpr float GRAVITY = 20.f;
+  constexpr float MAX_FALL_SPEED = 20.f;
 }
 
 #endif

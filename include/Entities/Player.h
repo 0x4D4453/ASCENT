@@ -5,6 +5,7 @@
 #include "Entities/Character.h"
 
 /* Standard Library */
+#include <map>
 #include <unordered_map>
 
 namespace Entities {
@@ -17,7 +18,7 @@ namespace Entities {
       };
 
     private:
-      std::unordered_map<sf::Keyboard::Key, Actions> m_keyBinding;
+      std::map<sf::Keyboard::Key, Actions> m_keyBinding;
       std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
       int m_points;
       bool m_isJumping;

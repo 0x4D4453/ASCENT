@@ -32,6 +32,7 @@ namespace Stages {
   {
     if (!newGame)
       loadSaveGame();
+
     m_players.include(new Entities::Player(Constants::PLAYER1_TEXTURE));
     m_players.include(new Entities::Player(Constants::PLAYER2_TEXTURE, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
 
@@ -150,8 +151,15 @@ namespace Stages {
   }
 
   void Stage::update() {
-    updatePlayers();
-    m_collisionManager.verifyCollisionPlatforms();
+    sf::Time* timeSinceLastUpdate = m_graphicsManager->getTimeSinceLastUpdate();
+    const sf::Time* timePerFrame = m_graphicsManager->getTimePerFrame();
+
+    while (*timeSinceLastUpdate >= *timePerFrame) {
+      updatePlayers();
+      m_collisionManager.verifyCollisionPlatforms();
+      (*timeSinceLastUpdate) -= (*timePerFrame);
+    }
+
     updateView();
   }
 

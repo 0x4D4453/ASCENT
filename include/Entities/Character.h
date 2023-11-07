@@ -7,7 +7,6 @@
 namespace Entities {
   class Character : public Entity {
     protected:
-      static float m_dt;
       int m_healthPoints;
       float m_speed;
       sf::Vector2f m_velocity;

@@ -17,6 +17,8 @@ namespace Manager {
       sf::View m_view;
       sf::Event m_event;
       States::StateStack* m_pStateStack;
+      const sf::Time m_timePerFrame;
+      sf::Time m_timeSinceLastUpdate;
     
     private:
       GraphicsManager();
@@ -25,19 +27,28 @@ namespace Manager {
     public:
       ~GraphicsManager();
       static GraphicsManager* getInstance();
+
+      /* Window Methods */
       const bool isOpen() const;
       void pollEvents();
       void clear();
       void display();
       void close();
+      sf::RenderWindow* getWindow();
       void drawBeing(Being* pBeing);
+
+      /* View Methods */
       void setView();
       void setViewCenter(float x, float y);
       void resetView();
       const sf::Vector2f getViewSize() const;
       const sf::Vector2f getViewCenter() const;
       const sf::Vector2f getViewCoordinates() const;
-      sf::RenderWindow* getWindow();
+
+      /* Fixed Time Step */
+      const sf::Time* getTimePerFrame() const;
+      sf::Time* getTimeSinceLastUpdate();
+      void addTime(const sf::Time& time);
   };
 }
 

@@ -2,9 +2,11 @@
 #include "Entities/Entity.h"
 
 namespace Entities {
-  Entity::Entity(sf::Vector2f position)
+  Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
     , m_position(position)
+    , m_speed(speed)
+    , m_velocity(sf::Vector2f(0.f, 0.f))
   {
     setPosition(m_position);
   }
@@ -40,5 +42,22 @@ namespace Entities {
     float entityBottom = entityBounds.top + entityBounds.width;
 
     return Entity::Coordinates(entityLeft, entityRight, entityTop, entityBottom);
+  }
+
+  
+  void Entity::setVelocity(const sf::Vector2f velocity) {
+    m_velocity = velocity;
+  }
+
+  sf::Vector2f Entity::getVelocity() const {
+    return m_velocity;
+  }
+
+  void Entity::move() {
+    m_sprite.move(m_velocity);
+  }
+
+  void Entity::move(const sf::Vector2f movement) {
+    m_sprite.move(movement);
   }
 }

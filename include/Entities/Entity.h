@@ -11,6 +11,8 @@ namespace Entities {
   class Entity : public Being {
     protected:
       sf::Vector2f m_position;
+      float m_speed;
+      sf::Vector2f m_velocity;
     
     public:
       class Coordinates {
@@ -26,11 +28,15 @@ namespace Entities {
       };
     
     public:
-      Entity(sf::Vector2f position);
+      Entity(const sf::Vector2f position, const float speed = 300.f);
       virtual ~Entity();
       void setPosition(sf::Vector2f position);
       sf::Vector2f getPosition() const;
       Coordinates getCoordinates() const;
+      void setVelocity(const sf::Vector2f velocity);
+      sf::Vector2f getVelocity() const;
+      void move();
+      void move(const sf::Vector2f movement);
       virtual void save() = 0;
       virtual void exec() = 0;
   };

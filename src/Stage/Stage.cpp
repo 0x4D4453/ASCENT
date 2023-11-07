@@ -122,6 +122,7 @@ namespace Stages {
 
   void Stage::updateView() {
     Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+    Entities::Player* player2 = static_cast<Entities::Player*>(*++((m_players.first())));
 
     float x = player1->getPosition().x;
     float y = player1->getPosition().y;
@@ -136,7 +137,10 @@ namespace Stages {
       player1->setPosition(sf::Vector2f(0.f, player1->getPosition().y));
     
     if (player1->getPosition().y > Constants::WINDOW_HEIGHT)
-      player1->setPosition(sf::Vector2f(32.f, 0.f));
+      player1->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
+    
+    if (player2->getPosition().y > Constants::WINDOW_HEIGHT)
+      player2->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
 
     m_graphicsManager->setViewCenter(x, y);
     m_graphicsManager->setView();

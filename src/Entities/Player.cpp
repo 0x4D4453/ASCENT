@@ -7,7 +7,6 @@
 /* Standard Library */
 #include <cmath>
 #include <fstream>
-#include <iostream>
 #include <map>
 #include <unordered_map>
 
@@ -93,7 +92,6 @@ namespace Entities {
       m_velocity.y = 0.f;
       m_isJumping = true;
       m_velocity.y -= (m_maxJumpHeight * m_dt);
-      std::cout << m_dt << std::endl;
     }
     //m_jumpHeight = m_minJumpHeight;
   }

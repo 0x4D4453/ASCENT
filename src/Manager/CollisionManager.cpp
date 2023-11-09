@@ -34,7 +34,30 @@ namespace Manager {
       m_pPlatforms = platformsList;
   }
 
-  /* DO NOT use intersects from SFML */
+  void CollisionManager::checkCollision(Entities::Entity* pEntity, Entities::Player* pPlayer) {
+    using namespace Entities;
+
+    Entity::Coordinates entityCoordinates = pEntity->getCoordinates();
+    Entity::Coordinates playerCoordinates = pPlayer->getCoordinates();
+
+    float xOverlap = std::max(0.f, std::min(playerCoordinates.right, entityCoordinates.right) 
+                    - std::max(playerCoordinates.left, entityCoordinates.left));
+    float yOverlap = std::max(0.f, std::min(playerCoordinates.bottom, entityCoordinates.bottom) 
+                    - std::max(playerCoordinates.top, entityCoordinates.top));
+
+    if (yOverlap != 0 && yOverlap < xOverlap) {
+      if (playerCoordinates.top < entityCoordinates.top) {
+        yOverlap *= -1;
+        pPlayer->setIsJumping(false);
+        pPlayer->setVelocity(sf::Vector2f(0.f, 0.f));
+      }
+        pPlayer->move(sf::Vector2f(0, yOverlap));
+    } else if (xOverlap != 0 && xOverlap < yOverlap) {
+        if (playerCoordinates.left < entityCoordinates.left)
+          xOverlap *= -1;
+        pPlayer->move(sf::Vector2f(xOverlap, 0));
+    }
+  }
 
   void CollisionManager::verifyCollisionPlatforms() {
     using namespace Entities;
@@ -42,36 +65,16 @@ namespace Manager {
     List<Entity*>::Iterator platformIterator = m_pPlatforms->first();
 
     while (platformIterator != m_pPlatforms->last()) {
-      Entity::Coordinates platformCoordinates = (*platformIterator)->getCoordinates();
-
       List<Entity*>::Iterator playerIterator = m_pPlayers->first();
-
       while (playerIterator != m_pPlayers->last()) {
-        Player* player = static_cast<Player*>((*playerIterator));
-        Entity::Coordinates playerCoordinates = player->getCoordinates();
-
-        float xOverlap = std::max(0.f, std::min(playerCoordinates.right, platformCoordinates.right) 
-                        - std::max(playerCoordinates.left, platformCoordinates.left));
-        float yOverlap = std::max(0.f, std::min(playerCoordinates.bottom, platformCoordinates.bottom) 
-                        - std::max(playerCoordinates.top, platformCoordinates.top));
-
-        if (yOverlap != 0 && yOverlap < xOverlap) {
-          if (playerCoordinates.top < platformCoordinates.top) {
-            yOverlap *= -1;
-            player->setIsJumping(false);
-            player->setVelocity(sf::Vector2f(0.f, 0.f));
-          }
-          player->move(sf::Vector2f(0, yOverlap));
-        } else if (xOverlap != 0 && xOverlap < yOverlap) {
-          if (playerCoordinates.left < platformCoordinates.left)
-            xOverlap *= -1;
-          player->move(sf::Vector2f(xOverlap, 0));
-        }
-
+        checkCollision(*platformIterator, static_cast<Player*>(*playerIterator));
         ++playerIterator;
       }
-      
       ++platformIterator;
     }
+  }
+
+  void CollisionManager::exec() {
+    verifyCollisionPlatforms();
   }
 }

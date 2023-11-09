@@ -126,7 +126,7 @@ namespace Stages {
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
       updateEntities(m_players);
-      m_collisionManager.verifyCollisionPlatforms();
+      m_collisionManager.exec();
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 

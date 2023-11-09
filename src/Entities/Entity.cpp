@@ -25,6 +25,10 @@ namespace Entities {
 
   }
 
+  void Entity::setSpeed(const float speed) {
+    m_speed = speed;
+  }
+
   void Entity::setPosition(sf::Vector2f position) {
     m_position = position;
     m_sprite.setPosition(m_position);

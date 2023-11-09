@@ -13,6 +13,7 @@ namespace Entities {
       Character();
       virtual ~Character();
       const int getHealthPoints() const;
+      void setHealthPoints(const int healthPoints);
       virtual void save() = 0;
       virtual void exec() = 0;
   };

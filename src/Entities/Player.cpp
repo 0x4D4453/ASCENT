@@ -40,7 +40,6 @@ namespace Entities {
 
   void Player::setup(const char* texturePath) {  
     setTexture(texturePath);
-    m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
     m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
     m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE,  0.f));
   } 

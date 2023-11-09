@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
+#include "Entities/Goomba.h"
 #include "Entities/Platform.h"
 #include "Entities/Player.h"
 #include "Manager/CollisionManager.h"
@@ -28,6 +29,7 @@ namespace Stages {
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
     , m_platforms()
+    , m_enemies()
     , m_paused(false)
   {
     if (!newGame)
@@ -67,6 +69,20 @@ namespace Stages {
     m_platforms.include(pEntity);
   }
 
+  void Stage::createEnemy(const sf::Vector2f position, const char* texture) {
+    using namespace Entities;
+    Entities::Entity* pEntity = NULL;
+
+    pEntity = static_cast<Entity*>(new Goomba(texture, position));
+
+    if (!pEntity) {
+      std::cerr << "Error creating enemy!\n";
+      return;
+    }
+
+    m_enemies.include(pEntity);
+  }
+
   void Stage::createMap() {
     std::ifstream stage("assets/stage_1.txt");
 
@@ -93,9 +109,9 @@ namespace Stages {
           case ('S'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_LEFT); break;
           case ('O'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_MIDDLE); break;
           case ('Q'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_RIGHT); break;
-          case ('E'): createPlatform(position, Constants::ENEMY1_TEXTURE); break;
-          case ('F'): createPlatform(position, Constants::ENEMY2_TEXTURE); break;
-          case ('G'): createPlatform(position, Constants::ENEMY3_TEXTURE); break;
+          case ('E'): createEnemy(position, Constants::ENEMY1_TEXTURE); break;
+          case ('F'): createEnemy(position, Constants::ENEMY2_TEXTURE); break;
+          case ('G'): createEnemy(position, Constants::ENEMY3_TEXTURE); break;
           default: break;
         }
       }
@@ -125,6 +141,7 @@ namespace Stages {
     const sf::Time* timePerFrame = m_graphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
+      updateEntities(m_enemies);
       updateEntities(m_players);
       m_collisionManager.exec();
       (*timeSinceLastUpdate) -= (*timePerFrame);
@@ -142,6 +159,7 @@ namespace Stages {
     if (!m_paused)
       update();
     drawEntities(m_platforms);
+    drawEntities(m_enemies);
     drawEntities(m_players);
   }
 }

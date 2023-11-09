@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Manager/GraphicsManager.h"
+#include "Utility/Constants.h"
 
 /* Standard Library */
 #include <iostream>
@@ -13,7 +14,7 @@ const float Being::m_dt(m_pGraphicsManager->getTimePerFrame()->asSeconds());
 Being::Being() 
   : m_id(0)
 {
-
+  m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
 }
 
 Being::~Being() {

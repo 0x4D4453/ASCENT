@@ -11,7 +11,7 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(GOTY
     src/main.cpp src/Game.cpp src/Being.cpp
-    src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/Character.cpp src/Entities/Player.cpp src/Entities/Platform.cpp src/Entities/Obstacle.cpp src/Entities/Projectile.cpp
+    src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/Character.cpp src/Entities/Player.cpp src/Entities/Platform.cpp src/Entities/Obstacle.cpp src/Entities/Projectile.cpp src/Entities/Enemy.cpp src/Entities/Goomba.cpp
     src/Manager/GraphicsManager.cpp src/Manager/CollisionManager.cpp     
     src/Stage/Stage.cpp    
     src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp  src/State/OptionsState.cpp src/State/PauseState.cpp src/State/MenuState.cpp)

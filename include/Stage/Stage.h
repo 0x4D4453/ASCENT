@@ -17,10 +17,12 @@ namespace Stages {
       Manager::CollisionManager m_collisionManager;
       EntityList m_players;
       EntityList m_platforms;
+      EntityList m_enemies;
       bool m_paused;
 
     protected:
       void createPlatform(const sf::Vector2f position, const char* texture);
+      void createEnemy(const sf::Vector2f position, const char* texture);
       void createMap();
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);

@@ -14,6 +14,9 @@ namespace Entities {
       float m_speed;
       sf::Vector2f m_velocity;
     
+    protected:
+      void setSpeed(const float speed);
+    
     public:
       class Coordinates {
         public:

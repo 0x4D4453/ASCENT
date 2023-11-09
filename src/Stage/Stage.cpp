@@ -40,6 +40,7 @@ namespace Stages {
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setPlatformsList(&m_platforms);
+    m_collisionManager.setEnemiesList(&m_enemies);
     createMap();
   }
 

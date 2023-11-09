@@ -14,16 +14,18 @@ namespace Manager {
     private:  
       EntityList* m_pPlayers;
       EntityList* m_pPlatforms;
+      EntityList* m_pEnemies;
 
     private:
       void checkCollision(Entities::Entity* pEntity, Entities::Player* pPlayer);
-      void verifyCollisionPlatforms();
+      void verifyCollisionEntities(EntityList* pEntityList);
     
     public:
       CollisionManager();
       ~CollisionManager();
       void setPlayersList(EntityList* playersList);
       void setPlatformsList(EntityList* platformsList);
+      void setEnemiesList(EntityList* enemiesList);
       void exec();
   };
 }

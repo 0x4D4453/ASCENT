@@ -15,6 +15,7 @@ namespace Manager {
   CollisionManager::CollisionManager()
     : m_pPlatforms(NULL)
     , m_pPlayers(NULL)
+    , m_pEnemies(NULL)
   {
 
   }
@@ -22,6 +23,7 @@ namespace Manager {
   CollisionManager::~CollisionManager() {
     m_pPlatforms = NULL;
     m_pPlayers = NULL;
+    m_pEnemies = NULL;
   }
 
   void CollisionManager::setPlayersList(EntityList* playersList) {
@@ -32,6 +34,11 @@ namespace Manager {
   void CollisionManager::setPlatformsList(EntityList* platformsList) {
     if (platformsList)
       m_pPlatforms = platformsList;
+  }
+
+  void CollisionManager::setEnemiesList(EntityList* enemiesList) {
+    if (enemiesList)
+      m_pEnemies = enemiesList;
   }
 
   void CollisionManager::checkCollision(Entities::Entity* pEntity, Entities::Player* pPlayer) {
@@ -59,12 +66,12 @@ namespace Manager {
     }
   }
 
-  void CollisionManager::verifyCollisionPlatforms() {
+  void CollisionManager::verifyCollisionEntities(EntityList* pEntityList) {
     using namespace Entities;
 
-    List<Entity*>::Iterator platformIterator = m_pPlatforms->first();
+    List<Entity*>::Iterator platformIterator = pEntityList->first();
 
-    while (platformIterator != m_pPlatforms->last()) {
+    while (platformIterator != pEntityList->last()) {
       List<Entity*>::Iterator playerIterator = m_pPlayers->first();
       while (playerIterator != m_pPlayers->last()) {
         checkCollision(*platformIterator, static_cast<Player*>(*playerIterator));
@@ -75,6 +82,7 @@ namespace Manager {
   }
 
   void CollisionManager::exec() {
-    verifyCollisionPlatforms();
+    verifyCollisionEntities(m_pPlatforms);
+    verifyCollisionEntities(m_pEnemies);
   }
 }

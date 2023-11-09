@@ -79,6 +79,17 @@ namespace Manager {
     m_view.setCenter(sf::Vector2f(x, y));
   }
 
+  void GraphicsManager::updateView(float x, float y) {
+    if ((x - getViewSize().x/2) < 0)
+      x = Constants::WINDOW_WIDTH/2;
+
+    if ((y + getViewSize().y/2) > Constants::WINDOW_HEIGHT)
+      y = Constants::WINDOW_HEIGHT/2;
+
+    setViewCenter(x, y);
+    setView();
+  }
+
   void GraphicsManager::resetView() {
     m_window.setView(m_window.getDefaultView());
   }

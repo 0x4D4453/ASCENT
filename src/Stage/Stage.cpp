@@ -67,22 +67,6 @@ namespace Stages {
     m_platforms.include(pEntity);
   }
 
-  void Stage::drawPlatforms() {
-    List<Entities::Entity*>::Iterator it = m_platforms.first();
-    while (it != m_platforms.last()) {
-      (*it)->draw();
-      ++it;
-    }
-  }
-
-  void Stage::drawPlayers() {
-    List<Entities::Entity*>::Iterator it = m_players.first();
-    while (it != m_players.last()) {
-      (*it)->draw();
-      ++it;
-    }
-  }
-
   void Stage::createMap() {
     std::ifstream stage("assets/stage_1.txt");
 
@@ -120,51 +104,34 @@ namespace Stages {
     stage.close();
   }
 
-  void Stage::updateView() {
-    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
-    Entities::Player* player2 = static_cast<Entities::Player*>(*++((m_players.first())));
-
-    float x = player1->getPosition().x;
-    float y = player1->getPosition().y;
-
-    if ((x - m_graphicsManager->getViewSize().x/2) < 0)
-      x = Constants::WINDOW_WIDTH/2;
-
-    if ((y+ m_graphicsManager->getViewSize().y/2) > Constants::WINDOW_HEIGHT)
-      y = Constants::WINDOW_HEIGHT/2;
-    
-    if (player1->getPosition().x < 0) 
-      player1->setPosition(sf::Vector2f(0.f, player1->getPosition().y));
-    
-    if (player1->getPosition().y > Constants::WINDOW_HEIGHT)
-      player1->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
-    
-    if (player2->getPosition().y > Constants::WINDOW_HEIGHT)
-      player2->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
-
-    m_graphicsManager->setViewCenter(x, y);
-    m_graphicsManager->setView();
-  }
-
-  void Stage::updatePlayers() {
-    List<Entities::Entity*>::Iterator it = m_players.first();
-    while (it != m_players.last()) {
-      (*it)->exec();
+  void Stage::drawEntities(EntityList& entityList) {
+    List<Entities::Entity*>::Iterator it = entityList.first();
+    while (it != entityList.last()) {
+      (*it)->draw();
       ++it;
     }
   }
 
+  void Stage::updateEntities(EntityList& entityList) {
+    List<Entities::Entity*>::Iterator it = entityList.first();
+    while (it != entityList.last()) {
+      (*it)->exec();
+      ++it;
+    }
+  }
+  
   void Stage::update() {
     sf::Time* timeSinceLastUpdate = m_graphicsManager->getTimeSinceLastUpdate();
     const sf::Time* timePerFrame = m_graphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
-      updatePlayers();
+      updateEntities(m_players);
       m_collisionManager.verifyCollisionPlatforms();
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 
-    updateView();
+    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+    m_graphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
   }
 
   void Stage::setPaused(const bool paused) {
@@ -174,7 +141,7 @@ namespace Stages {
   void Stage::exec() {
     if (!m_paused)
       update();
-    drawPlatforms();
-    drawPlayers();
+    drawEntities(m_platforms);
+    drawEntities(m_players);
   }
 }

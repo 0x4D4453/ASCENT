@@ -20,12 +20,10 @@ namespace Stages {
       bool m_paused;
 
     protected:
-      void createMap();
       void createPlatform(const sf::Vector2f position, const char* texture);
-      void drawPlatforms();
-      void drawPlayers();
-      void updatePlayers();
-      void updateView();
+      void createMap();
+      void drawEntities(EntityList& entityList);
+      void updateEntities(EntityList& entityList);
       void update();
     
     public:

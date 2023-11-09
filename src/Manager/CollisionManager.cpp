@@ -55,19 +55,17 @@ namespace Manager {
         float yOverlap = std::max(0.f, std::min(playerCoordinates.bottom, platformCoordinates.bottom) 
                         - std::max(playerCoordinates.top, platformCoordinates.top));
 
-        if (xOverlap || yOverlap) {
-          if (yOverlap != 0 && yOverlap < xOverlap) {
-            if (playerCoordinates.top < platformCoordinates.top) {
-              yOverlap *= -1;
-              player->setIsJumping(false);
-              player->setVelocity(sf::Vector2f(0.f, 0.f));
-            }
-            player->move(sf::Vector2f(0, yOverlap));
-          } else if (xOverlap != 0 && xOverlap < yOverlap) {
-            if (playerCoordinates.left < platformCoordinates.left)
-              xOverlap *= -1;
-            player->move(sf::Vector2f(xOverlap, 0));
+        if (yOverlap != 0 && yOverlap < xOverlap) {
+          if (playerCoordinates.top < platformCoordinates.top) {
+            yOverlap *= -1;
+            player->setIsJumping(false);
+            player->setVelocity(sf::Vector2f(0.f, 0.f));
           }
+          player->move(sf::Vector2f(0, yOverlap));
+        } else if (xOverlap != 0 && xOverlap < yOverlap) {
+          if (playerCoordinates.left < platformCoordinates.left)
+            xOverlap *= -1;
+          player->move(sf::Vector2f(xOverlap, 0));
         }
 
         ++playerIterator;

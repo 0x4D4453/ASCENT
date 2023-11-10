@@ -96,12 +96,17 @@ namespace Entities {
     //m_jumpHeight = m_minJumpHeight;
   }
 
+  void Player::collide(Entity* entity, CollisionType type, float overlap) {
+    if (type == CollisionType::Vertical)
+      setIsJumping(false);
+  }
+
   void Player::update() {
     if (m_velocity.x < 0)
       m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
     else if (m_velocity.x > 0)
       m_sprite.setScale(Constants::SCALE, Constants::SCALE);
-  
+
     move();
   }
 

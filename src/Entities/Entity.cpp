@@ -54,10 +54,28 @@ namespace Entities {
   }
 
   void Entity::move() {
+    if (m_velocity.x != 0 || m_velocity.y != 0)
+      m_pCollisionManager->verifyCollision(this);
+
     m_sprite.move(m_velocity);
   }
 
   void Entity::move(const sf::Vector2f movement) {
     m_sprite.move(movement);
   }
+
+  void Entity::collide(Entity* entity, CollisionType type, float overlap) {
+    if (type == CollisionType::Horizontal) {
+      entity->move(sf::Vector2f(overlap, 0));
+    } else {
+      entity->move(sf::Vector2f(0, overlap));
+      entity->setVelocity(sf::Vector2f(0.f, 0.f));
+    }
+  }
+
+  void Entity::setCollisionManager(Manager::CollisionManager* manager) {
+    m_pCollisionManager = manager;
+  }
+
+  Manager::CollisionManager* Entity::m_pCollisionManager = NULL;
 }

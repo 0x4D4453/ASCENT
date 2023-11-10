@@ -7,20 +7,32 @@
 
 /* Forward Declaration */
 class EntityList;
-namespace Entities { class Player; }
+namespace Entities { class Entity; }
+
+enum class CollisionType {
+  Vertical,
+  Horizontal
+};
 
 namespace Manager {
   class CollisionManager : sf::NonCopyable {
-    private:  
+    private:
+      Entities::Entity* m_pEntity;
       EntityList* m_pPlayers;
-      EntityList* m_pPlatforms;
-    
+      EntityList* m_pObstacles;
+      EntityList* m_pEnemies;
+
+      void verifyOverlap(Entities::Entity* entity);
+
     public:
       CollisionManager();
       ~CollisionManager();
       void setPlayersList(EntityList* playersList);
-      void setPlatformsList(EntityList* platformsList);
-      void verifyCollisionPlatforms();
+      void setObstaclesList(EntityList* obstaclesList);
+      void setEnemiesList(EntityList* enemiesList);
+      void verifyCollisionObstacles();
+      void verifyCollisionEnemies();
+      void verifyCollision(Entities::Entity* entity);
   };
 }
 

@@ -43,9 +43,10 @@ namespace Entities {
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
       ~Player();
-      void exec();
       void setIsJumping(const bool isJumping);
-      void save();
+      virtual void collide(Entity *entity, CollisionType type, float overlap);
+      virtual void exec();
+      virtual void save();
   };
 }
 

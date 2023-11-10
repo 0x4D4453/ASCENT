@@ -7,7 +7,7 @@
 
 /* Forward Declaration */
 class EntityList;
-namespace Entities { class Entity; }
+namespace Entities { class Entity; class Player; }
 
 enum class CollisionType {
   Vertical,
@@ -22,8 +22,9 @@ namespace Manager {
       EntityList* m_pObstacles;
       EntityList* m_pEnemies;
 
+    private:
       void verifyOverlap(Entities::Entity* entity);
-
+    
     public:
       CollisionManager();
       ~CollisionManager();

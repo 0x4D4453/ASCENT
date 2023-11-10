@@ -7,10 +7,15 @@
 #include "State/MenuState.h"
 #include "State/StateStack.h"
 
+/* Standard Library */
+#include <stdlib.h>
+#include <time.h>
+
 Game::Game() 
   : m_pGraphicsManager(Manager::GraphicsManager::getInstance())
   , m_pStateStack(States::StateStack::getInstance())
 {
+  srand(time(NULL));
   m_pStateStack->pushState(States::StateType::Menu);
   run();
 }

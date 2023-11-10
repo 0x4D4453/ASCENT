@@ -71,6 +71,7 @@ namespace Manager {
   void CollisionManager::verifyCollision(Entities::Entity* entity) {
     m_pEntity = entity;
     verifyCollisionObstacles();
+    verifyCollisionEnemies();
   }
 
   void CollisionManager::verifyCollisionObstacles() {
@@ -78,5 +79,12 @@ namespace Manager {
 
     for (obstaclesIterator = m_pObstacles->first(); obstaclesIterator != m_pObstacles->last(); ++obstaclesIterator)
       verifyOverlap(*obstaclesIterator);
+  }
+
+  void CollisionManager::verifyCollisionEnemies() {
+    List<Entities::Entity*>::Iterator enemiesIterator;
+
+    for (enemiesIterator = m_pEnemies->first(); enemiesIterator != m_pEnemies->last(); ++enemiesIterator)
+      verifyOverlap(*enemiesIterator);
   }
 }

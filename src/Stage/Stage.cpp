@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
+#include "Entities/Goomba.h"
 #include "Entities/Platform.h"
 #include "Entities/Player.h"
 #include "Manager/CollisionManager.h"
@@ -28,6 +29,7 @@ namespace Stages {
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
     , m_platforms()
+    , m_enemies()
     , m_paused(false)
   {
     if (!newGame)
@@ -40,6 +42,8 @@ namespace Stages {
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setObstaclesList(&m_platforms);
+    m_collisionManager.setEnemiesList(&m_enemies);
+    
     createMap();
   }
 
@@ -69,20 +73,18 @@ namespace Stages {
     m_platforms.include(pEntity);
   }
 
-  void Stage::drawPlatforms() {
-    List<Entities::Entity*>::Iterator it = m_platforms.first();
-    while (it != m_platforms.last()) {
-      (*it)->draw();
-      ++it;
-    }
-  }
+  void Stage::createEnemy(const sf::Vector2f position, const char* texture) {
+    using namespace Entities;
+    Entities::Entity* pEntity = NULL;
 
-  void Stage::drawPlayers() {
-    List<Entities::Entity*>::Iterator it = m_players.first();
-    while (it != m_players.last()) {
-      (*it)->draw();
-      ++it;
+    pEntity = static_cast<Entity*>(new Goomba(texture, position));
+
+    if (!pEntity) {
+      std::cerr << "Error creating enemy!\n";
+      return;
     }
+
+    m_enemies.include(pEntity);
   }
 
   void Stage::createMap() {
@@ -111,9 +113,9 @@ namespace Stages {
           case ('S'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_LEFT); break;
           case ('O'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_MIDDLE); break;
           case ('Q'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_RIGHT); break;
-          case ('E'): createPlatform(position, Constants::ENEMY1_TEXTURE); break;
-          case ('F'): createPlatform(position, Constants::ENEMY2_TEXTURE); break;
-          case ('G'): createPlatform(position, Constants::ENEMY3_TEXTURE); break;
+          case ('E'): createEnemy(position, Constants::ENEMY1_TEXTURE); break;
+          case ('F'): createEnemy(position, Constants::ENEMY2_TEXTURE); break;
+          case ('G'): createEnemy(position, Constants::ENEMY3_TEXTURE); break;
           default: break;
         }
       }
@@ -122,50 +124,34 @@ namespace Stages {
     stage.close();
   }
 
-  void Stage::updateView() {
-    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
-    Entities::Player* player2 = static_cast<Entities::Player*>(*++((m_players.first())));
-
-    float x = player1->getPosition().x;
-    float y = player1->getPosition().y;
-
-    if ((x - m_graphicsManager->getViewSize().x/2) < 0)
-      x = Constants::WINDOW_WIDTH/2;
-
-    if ((y+ m_graphicsManager->getViewSize().y/2) > Constants::WINDOW_HEIGHT)
-      y = Constants::WINDOW_HEIGHT/2;
-    
-    if (player1->getPosition().x < 0) 
-      player1->setPosition(sf::Vector2f(0.f, player1->getPosition().y));
-    
-    if (player1->getPosition().y > Constants::WINDOW_HEIGHT)
-      player1->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
-    
-    if (player2->getPosition().y > Constants::WINDOW_HEIGHT)
-      player2->setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
-
-    m_graphicsManager->setViewCenter(x, y);
-    m_graphicsManager->setView();
-  }
-
-  void Stage::updatePlayers() {
-    List<Entities::Entity*>::Iterator it = m_players.first();
-    while (it != m_players.last()) {
-      (*it)->exec();
+  void Stage::drawEntities(EntityList& entityList) {
+    List<Entities::Entity*>::Iterator it = entityList.first();
+    while (it != entityList.last()) {
+      (*it)->draw();
       ++it;
     }
   }
 
+  void Stage::updateEntities(EntityList& entityList) {
+    List<Entities::Entity*>::Iterator it = entityList.first();
+    while (it != entityList.last()) {
+      (*it)->exec();
+      ++it;
+    }
+  }
+  
   void Stage::update() {
     sf::Time* timeSinceLastUpdate = m_graphicsManager->getTimeSinceLastUpdate();
     const sf::Time* timePerFrame = m_graphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
-      updatePlayers();
+      updateEntities(m_enemies);
+      updateEntities(m_players);
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 
-    updateView();
+    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+    m_graphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
   }
 
   void Stage::setPaused(const bool paused) {
@@ -175,7 +161,8 @@ namespace Stages {
   void Stage::exec() {
     if (!m_paused)
       update();
-    drawPlatforms();
-    drawPlayers();
+    drawEntities(m_platforms);
+    drawEntities(m_enemies);
+    drawEntities(m_players);
   }
 }

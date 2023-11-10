@@ -16,4 +16,8 @@ namespace Entities {
   const int Character::getHealthPoints() const {
     return m_healthPoints;
   }
+
+  void Character::setHealthPoints(const int healthPoints) {
+    m_healthPoints = healthPoints;
+  }
 }

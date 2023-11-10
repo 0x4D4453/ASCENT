@@ -16,6 +16,9 @@ namespace Entities {
       sf::Vector2f m_velocity;
       static Manager::CollisionManager* m_pCollisionManager;
     
+    protected:
+      void setSpeed(const float speed);
+    
     public:
       class Coordinates {
         public:

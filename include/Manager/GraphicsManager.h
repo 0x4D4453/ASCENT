@@ -15,7 +15,6 @@ namespace Manager {
       static GraphicsManager* m_instance;
       sf::RenderWindow m_window;
       sf::View m_view;
-      sf::Event m_event;
       States::StateStack* m_pStateStack;
       const sf::Time m_timePerFrame;
       sf::Time m_timeSinceLastUpdate;
@@ -32,7 +31,6 @@ namespace Manager {
 
       /* Window Methods */
       const bool isOpen() const;
-      void pollEvents();
       void clear();
       void display();
       void close();

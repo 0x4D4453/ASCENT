@@ -33,7 +33,7 @@ namespace Entities {
       };
     
     public:
-      Entity(const sf::Vector2f position, const float speed = 300.f);
+      Entity(const sf::Vector2f position, const float speed = 200.f);
       virtual ~Entity();
       static void setCollisionManager(Manager::CollisionManager* manager);
 

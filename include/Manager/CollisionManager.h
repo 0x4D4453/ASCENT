@@ -7,7 +7,7 @@
 
 /* Forward Declaration */
 class EntityList;
-namespace Entities { class Entity; class Player; }
+namespace Entities { class Entity; }
 
 enum class CollisionType {
   Vertical,
@@ -15,7 +15,7 @@ enum class CollisionType {
 };
 
 namespace Manager {
-  class CollisionManager : sf::NonCopyable {
+  class CollisionManager : public sf::NonCopyable {
     private:
       Entities::Entity* m_pEntity;
       EntityList* m_pPlayers;

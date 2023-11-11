@@ -37,8 +37,8 @@ namespace Stages {
 
     Entities::Entity::setCollisionManager(&m_collisionManager);
 
-    m_players.include(new Entities::Player(Constants::PLAYER1_TEXTURE));
-    m_players.include(new Entities::Player(Constants::PLAYER2_TEXTURE, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+    m_players.include(new Entities::Player(Constants::PLAYER1_TEXTURE, Constants::PLAYER1_TEXTURE_WALK1, Constants::PLAYER1_TEXTURE_WALK2, Constants::PLAYER1_TEXTURE_WALK3, Constants::PLAYER1_TEXTURE_JUMP));
+    m_players.include(new Entities::Player(Constants::PLAYER2_TEXTURE, Constants::PLAYER2_TEXTURE_WALK1, Constants::PLAYER2_TEXTURE_WALK2, Constants::PLAYER2_TEXTURE_WALK3, Constants::PLAYER2_TEXTURE_JUMP, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setObstaclesList(&m_platforms);

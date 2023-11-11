@@ -1,6 +1,9 @@
 /* Main Include */
 #include "Manager/Event/EventSubject.h"
 
+/* Program Defined */
+#include <algorithm>
+
 namespace Manager {
   namespace Event {
     EventSubject::EventSubject() {
@@ -25,7 +28,9 @@ namespace Manager {
     }
     
     void EventSubject::attach(EventObserver* o) {
-      m_observers.push_back(o);
+      // Checks if element isn't already in the list
+      if (std::find(m_observers.begin(), m_observers.end(), o) == m_observers.end())
+        m_observers.push_back(o);
     }
 
     void EventSubject::detach(EventObserver* o) {

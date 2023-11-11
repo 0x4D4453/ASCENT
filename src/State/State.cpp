@@ -6,8 +6,9 @@
 #include "State/StateStack.h"
 
 namespace States {
-  State::State() 
-    : m_pStateStack(States::StateStack::getInstance())
+  State::State()
+    : Manager::Event::EventObserver()
+    , m_pStateStack(States::StateStack::getInstance())
     , m_pGraphicsManager(Manager::GraphicsManager::getInstance())
     , m_pEventManager(Manager::Event::EventManager::getInstance())
   {
@@ -15,9 +16,10 @@ namespace States {
   }
 
   State::~State() {
+    m_pEventManager->detach(this);
     m_pStateStack = NULL;
     m_pGraphicsManager = NULL;
-    m_pEventManager->detach(this);
+    m_pEventManager = NULL;
   }
 
   void State::eventUpdate(Manager::Event::EventSubject* subject) {

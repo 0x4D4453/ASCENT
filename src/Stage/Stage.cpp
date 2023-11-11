@@ -31,18 +31,20 @@ namespace Stages {
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
     , m_textureHolder()
+    , m_soundHolder()
     , m_platforms()
     , m_enemies()
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
     loadTextures();
+    loadSounds();
 
     if (!newGame)
       loadSaveGame();
 
-    m_players.include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_textureHolder.getResource(Textures::Player1Walk1), m_textureHolder.getResource(Textures::Player1Walk2), m_textureHolder.getResource(Textures::Player1Walk3), m_textureHolder.getResource(Textures::Player1Jump)));
-    m_players.include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_textureHolder.getResource(Textures::Player2Walk1), m_textureHolder.getResource(Textures::Player2Walk2), m_textureHolder.getResource(Textures::Player2Walk3), m_textureHolder.getResource(Textures::Player2Jump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+    m_players.include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_textureHolder.getResource(Textures::Player1Walk1), m_textureHolder.getResource(Textures::Player1Walk2), m_textureHolder.getResource(Textures::Player1Walk3), m_textureHolder.getResource(Textures::Player1Jump), m_soundHolder.getResource(Sounds::playerJump)));
+    m_players.include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_textureHolder.getResource(Textures::Player2Walk1), m_textureHolder.getResource(Textures::Player2Walk2), m_textureHolder.getResource(Textures::Player2Walk3), m_textureHolder.getResource(Textures::Player2Jump), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setObstaclesList(&m_platforms);
@@ -85,6 +87,10 @@ namespace Stages {
     m_textureHolder.load(Textures::StrippedPlatformLeft, Textures::STRIPPED_PLATFORM_LEFT);
     m_textureHolder.load(Textures::StrippedPlatformMiddle, Textures::STRIPPED_PLATFORM_MIDDLE);
     m_textureHolder.load(Textures::StrippedPlatformRight, Textures::STRIPPED_PLATFORM_RIGHT);
+  }
+
+  void Stage::loadSounds() {
+    m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
   void Stage::loadSaveGame() {

@@ -10,11 +10,14 @@
 #include <map>
 #include <unordered_map>
 
+/* SFML Library */
+#include <SFML/Audio.hpp>
+
 /* JSON Library */
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
     , m_animation(this)
     , m_points(0)
@@ -38,6 +41,8 @@ namespace Entities {
     m_animation.includeFrame(&walk2Texture);
     m_animation.includeFrame(&walk3Texture);
     m_animation.includeFrame(&jumpTexture);
+
+    m_jumpSound.setBuffer(jumpSoundBuffer);
 
     setup();
   }
@@ -97,6 +102,8 @@ namespace Entities {
   }
 
   void Player::jump() {
+    m_jumpSound.play();
+
     if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
       moveLeft();
     else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))

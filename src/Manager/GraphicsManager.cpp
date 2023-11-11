@@ -44,15 +44,6 @@ namespace Manager {
     return m_window.isOpen();
   }
 
-  void GraphicsManager::pollEvents() {
-    while (m_window.pollEvent(m_event)) {
-      if (m_event.type == sf::Event::Closed)
-        m_window.close();
-      else 
-        m_pStateStack->handleEvents(m_event);
-    }
-  }
-
   void GraphicsManager::clear() {
     m_window.clear();
   }

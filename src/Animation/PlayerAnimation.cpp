@@ -1,5 +1,7 @@
+/* Main Include */
 #include "Animation/PlayerAnimation.h"
 
+/* Program Defined */
 #include "Entities/Entity.h"
 
 namespace Animations {

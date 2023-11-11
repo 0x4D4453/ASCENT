@@ -7,6 +7,7 @@
 /* SFML Library */
 #include <SFML/Graphics.hpp>
 
+/* Forward Declaration */
 namespace Entities { class Entity; }
 
 namespace Animations {

@@ -150,7 +150,14 @@ List<TL>::List()
 
 template <class TL>
 List<TL>::~List() {
-  //Iterate over the list and delete all elements
+  Element<TL>* element = this->getHead(); 
+  Element<TL>* tmp;
+
+  while (element != NULL) {
+    tmp = element;
+    element = element->getNext();
+    delete tmp;
+  }
 }
 
 template <class TL>

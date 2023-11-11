@@ -31,7 +31,7 @@ namespace Entities {
 
     m_actionBinding.insert(std::make_pair(MoveLeft, &Player::moveLeft));
     m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
-    m_actionBinding.insert(std::make_pair(Jump, &Player::jump));
+    m_actionBinding.insert(std::make_pair(Jump, &Player::chargeJump));
 
     /* Resource Holder */
     sf::Texture* pTexture = new sf::Texture();

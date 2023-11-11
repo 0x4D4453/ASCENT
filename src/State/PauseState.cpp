@@ -36,8 +36,8 @@ namespace States {
 
     pText->setCharacterSize(characterSize);
     sf::FloatRect textRect = pText->getLocalBounds();
-    pText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top + textRect.height/2.0f);
-    pText->setPosition(position);
+    pText->setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    pText->setPosition(static_cast<int>(position.x), static_cast<int>(position.y));
 
     m_options.push_back(pText);
   }
@@ -56,8 +56,8 @@ namespace States {
     
     m_title.setCharacterSize(80.f);
     sf::FloatRect textRect = m_title.getLocalBounds();
-    m_title.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    m_title.setPosition(viewCenterPosition.x, viewCenterPosition.y - 250.f);
+    m_title.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    m_title.setPosition(static_cast<int>(viewCenterPosition.x), static_cast<int>(viewCenterPosition.y - 250.f));
 
     createOption("Continue", sf::Vector2f(viewCenterPosition.x, viewCenterPosition.y - 100.f));
     createOption("Save", sf::Vector2f(viewCenterPosition.x, viewCenterPosition.y));

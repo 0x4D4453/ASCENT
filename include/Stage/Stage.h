@@ -4,7 +4,6 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
-#include "Entities/Player.h"
 #include "Manager/CollisionManager.h"
 
 /* Forward Declaration */
@@ -21,17 +20,18 @@ namespace Stages {
       bool m_paused;
 
     protected:
-      void createPlatform(const sf::Vector2f position, const char* texture);
-      void createEnemy(const sf::Vector2f position, const char* texture);
-      void createMap();
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
       void update();
-      void setPlayerPosition(int height);
     
     public:
       Stage(const bool newGame = true);
       ~Stage();
+
+      EntityList* getPlayers();
+      EntityList* getPlatforms();
+      EntityList* getEnemies();
+
       void setPaused(const bool paused);
       void loadSaveGame();
       void saveGame();

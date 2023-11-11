@@ -7,14 +7,17 @@
 namespace States {
   GameState::GameState(const bool newGame)
     : State()
-    , m_stage()
+    , m_stageFactory(newGame)
   {
+    m_pStage = m_stageFactory.createStage("assets/stage_2.txt");
+
     if (!newGame)
-      m_stage.loadSaveGame();
+      m_pStage->loadSaveGame();
   }
 
   GameState::~GameState() {
-
+    delete m_pStage;
+    m_pStage = NULL;
   }
 
   void GameState::handleKeyEvent(sf::Keyboard::Scancode keyScancode) {
@@ -43,14 +46,14 @@ namespace States {
   }
 
   void GameState::setPaused(const bool paused) {
-    m_stage.setPaused(paused);
+    m_pStage->setPaused(paused);
   }
 
   void GameState::saveGame() {
-    m_stage.saveGame();
+    m_pStage->saveGame();
   }
 
   void GameState::exec() {
-    m_stage.exec();
+    m_pStage->exec();
   }
 }

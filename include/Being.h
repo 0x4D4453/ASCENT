@@ -21,6 +21,7 @@ class Being {
     const sf::Sprite* getSprite() const;
     const sf::FloatRect getGlobalBounds() const;
     void setTexture(const char* file);
+    void setTexture(sf::Texture* texture);
     void draw();
     virtual void exec() = 0;
 };

@@ -2,11 +2,14 @@
 #define PLAYER_H
 
 /* Program Defined */
+#include "Animation/PlayerAnimation.h"
 #include "Entities/Character.h"
 
 /* Standard Library */
 #include <map>
 #include <unordered_map>
+
+#include <SFML/Audio.hpp>
 
 namespace Entities {
   class Player : public Character {
@@ -18,6 +21,7 @@ namespace Entities {
       };
 
     private:
+      Animations::PlayerAnimation m_animation;
       std::map<sf::Keyboard::Key, Actions> m_keyBinding;
       std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
       int m_points;
@@ -29,7 +33,7 @@ namespace Entities {
       const float m_maxJumpHeight;
 
     private:
-      void setup(const char* texturePath);
+      void setup();
       void moveLeft();
       void moveRight();
       void chargeJump();
@@ -38,7 +42,12 @@ namespace Entities {
       void update();
     
     public:
-      Player(const char* texturePath
+      Player(
+              const char* idleTexturePath
+            , const char* walk1TexturePath
+            , const char* walk2TexturePath
+            , const char* walk3TexturePath
+            , const char* jumpTexturePath
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);

@@ -14,8 +14,9 @@
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(const char* texturePath, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(const char* idleTexturePath, const char* walk1TexturePath, const char* walk2TexturePath, const char* walk3TexturePath, const char* jumpTexturePath, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
+    , m_animation(this)
     , m_points(0)
     , m_isJumping(false)
     , m_chargingSpeed(0.25f)
@@ -31,17 +32,34 @@ namespace Entities {
     m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
     m_actionBinding.insert(std::make_pair(Jump, &Player::jump));
 
-    setup(texturePath);
+    /* Resource Holder */
+    sf::Texture* pTexture = new sf::Texture();
+
+    pTexture->loadFromFile(idleTexturePath);
+    m_animation.includeFrame(pTexture);
+    pTexture = new sf::Texture();
+    pTexture->loadFromFile(walk1TexturePath);
+    m_animation.includeFrame(pTexture);
+    pTexture = new sf::Texture();
+    pTexture->loadFromFile(walk2TexturePath);
+    m_animation.includeFrame(pTexture);
+    pTexture = new sf::Texture();
+    pTexture->loadFromFile(walk3TexturePath);
+    m_animation.includeFrame(pTexture);
+    pTexture = new sf::Texture();
+    pTexture->loadFromFile(jumpTexturePath);
+    m_animation.includeFrame(pTexture);
+
+    setup();
   }
 
   Player::~Player() {
 
   }
 
-  void Player::setup(const char* texturePath) {  
-    setTexture(texturePath);
+  void Player::setup() {  
     m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
-    m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE,  0.f));
+    m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
   } 
 
   void Player::moveLeft() {
@@ -60,7 +78,7 @@ namespace Entities {
     m_velocity.x = 0.f;
     m_velocity.y += Constants::GRAVITY * m_dt;
     
-    if (m_velocity.y > Constants::MAX_FALL_SPEED)
+    if (m_velocity.y > Constants::MAX_FALL_SPEED) 
       m_velocity.y = Constants::MAX_FALL_SPEED;
     
     using sf::Keyboard;
@@ -96,11 +114,13 @@ namespace Entities {
   }
 
   void Player::collide(Entity* entity, CollisionType type, float overlap) {
-    if (type == CollisionType::Vertical)
+    if (type == CollisionType::Vertical && overlap < 0)
       setIsJumping(false);
   }
 
   void Player::update() {
+    m_animation.update(m_dt, m_isJumping, m_velocity);
+
     if (m_velocity.x < 0)
       m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
     else if (m_velocity.x > 0)

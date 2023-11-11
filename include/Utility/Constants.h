@@ -13,7 +13,17 @@ namespace Constants {
   constexpr float TILE_SIZE = SPRITE_SIZE * SCALE;
 
   constexpr char PLAYER1_TEXTURE[] = "assets/tiles/tile_0240.png";
+  constexpr char PLAYER1_TEXTURE_WALK1[] = "assets/tiles/tile_0241.png";
+  constexpr char PLAYER1_TEXTURE_WALK2[] = "assets/tiles/tile_0242.png";
+  constexpr char PLAYER1_TEXTURE_WALK3[] = "assets/tiles/tile_0243.png";
+  constexpr char PLAYER1_TEXTURE_JUMP[] = "assets/tiles/tile_0244.png";
+
   constexpr char PLAYER2_TEXTURE[] = "assets/tiles/tile_0260.png";
+  constexpr char PLAYER2_TEXTURE_WALK1[] = "assets/tiles/tile_0261.png";
+  constexpr char PLAYER2_TEXTURE_WALK2[] = "assets/tiles/tile_0262.png";
+  constexpr char PLAYER2_TEXTURE_WALK3[] = "assets/tiles/tile_0263.png";
+  constexpr char PLAYER2_TEXTURE_JUMP[] = "assets/tiles/tile_0264.png";
+
   constexpr char PLATFORM_TEXTURE[] = "assets/tiles/tile_0271.png";
   constexpr char PLATFORM_TEXTURE_LEFT_CORNER[] = "assets/tiles/tile_0270.png";
   constexpr char PLATFORM_TEXTURE_LEFT_CORNER_BLACK[] = "assets/tiles/tile_0290.png";

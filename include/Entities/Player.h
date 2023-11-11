@@ -18,7 +18,7 @@ namespace Entities {
       };
 
     private:
-      std::map<sf::Keyboard::Key, Actions> m_keyBinding;
+      std::map<Actions, sf::Keyboard::Key> m_keyBinding;
       std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
       int m_points;
       bool m_isJumping;

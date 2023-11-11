@@ -10,11 +10,14 @@
 #include <map>
 #include <unordered_map>
 
+/* SFML Library */
+#include <SFML/Audio.hpp>
+
 /* JSON Library */
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(const char* idleTexturePath, const char* walk1TexturePath, const char* walk2TexturePath, const char* walk3TexturePath, const char* jumpTexturePath, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
     , m_animation(this)
     , m_points(0)
@@ -33,23 +36,13 @@ namespace Entities {
     m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
     m_actionBinding.insert(std::make_pair(Jump, &Player::chargeJump));
 
-    /* Resource Holder */
-    sf::Texture* pTexture = new sf::Texture();
+    m_animation.includeFrame(&idleTexture);
+    m_animation.includeFrame(&walk1Texture);
+    m_animation.includeFrame(&walk2Texture);
+    m_animation.includeFrame(&walk3Texture);
+    m_animation.includeFrame(&jumpTexture);
 
-    pTexture->loadFromFile(idleTexturePath);
-    m_animation.includeFrame(pTexture);
-    pTexture = new sf::Texture();
-    pTexture->loadFromFile(walk1TexturePath);
-    m_animation.includeFrame(pTexture);
-    pTexture = new sf::Texture();
-    pTexture->loadFromFile(walk2TexturePath);
-    m_animation.includeFrame(pTexture);
-    pTexture = new sf::Texture();
-    pTexture->loadFromFile(walk3TexturePath);
-    m_animation.includeFrame(pTexture);
-    pTexture = new sf::Texture();
-    pTexture->loadFromFile(jumpTexturePath);
-    m_animation.includeFrame(pTexture);
+    m_jumpSound.setBuffer(jumpSoundBuffer);
 
     setup();
   }
@@ -109,6 +102,8 @@ namespace Entities {
   }
 
   void Player::jump() {
+    m_jumpSound.play();
+
     if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
       moveLeft();
     else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))

@@ -8,6 +8,9 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
 #include "Entities/Player.h"
+#include "Utility/ResourceHolder.h"
+#include "Utility/Sounds.h"
+#include "Utility/Textures.h"
 
 namespace Manager { class GraphicsManager; }
 
@@ -15,15 +18,19 @@ namespace Stages {
   class StageFactory {
     protected:
       static Manager::GraphicsManager* m_graphicsManager;
+      ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
+      ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
       EntityList* m_players;
       EntityList* m_platforms;
       EntityList* m_enemies;
       bool m_newGame;
     
     protected:
+      void loadTextures();
+      void loadSounds();
       void createMap(const char* stageTxt);
-      void createPlatform(const sf::Vector2f position, const char* texture);
-      void createEnemy(const sf::Vector2f position, const char* texture);
+      void createPlatform(const sf::Vector2f position, Textures::ID textureID);
+      void createEnemy(const sf::Vector2f position, Textures::ID textureID);
       void createPlayers(int stageHeight);
     
     public:

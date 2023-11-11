@@ -10,7 +10,7 @@ namespace Entities {
       bool m_direction;
 
     public:
-      Goomba(const char* texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));
+      Goomba(sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));
       ~Goomba();
       virtual void movementPattern();
       virtual void exec();

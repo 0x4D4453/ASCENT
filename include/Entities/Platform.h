@@ -10,7 +10,7 @@ namespace Entities {
       void setup(const char* file);
     
     public:
-      Platform(sf::Vector2f position = sf::Vector2f(0.f, 0.f), const char* file = "0");
+      Platform(sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
       ~Platform();
       virtual void save();
       virtual void exec();

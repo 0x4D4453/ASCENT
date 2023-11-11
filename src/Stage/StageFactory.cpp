@@ -23,12 +23,51 @@ namespace Stages {
 
   StageFactory::StageFactory(const bool newGame)
     : m_newGame(newGame)
+    , m_textureHolder()
+    , m_soundHolder()
   {
-
+    loadTextures();
+    loadSounds();
   }
 
   StageFactory::~StageFactory() {
 
+  }
+
+  void StageFactory::loadTextures() {
+    m_textureHolder.load(Textures::Player1, Textures::PLAYER1);
+    m_textureHolder.load(Textures::Player1Walk1, Textures::PLAYER1_WALK1);
+    m_textureHolder.load(Textures::Player1Walk2, Textures::PLAYER1_WALK2);
+    m_textureHolder.load(Textures::Player1Walk3, Textures::PLAYER1_WALK3);
+    m_textureHolder.load(Textures::Player1Jump, Textures::PLAYER1_JUMP);
+
+    m_textureHolder.load(Textures::Player2, Textures::PLAYER2);
+    m_textureHolder.load(Textures::Player2Walk1, Textures::PLAYER2_WALK1);
+    m_textureHolder.load(Textures::Player2Walk2, Textures::PLAYER2_WALK2);
+    m_textureHolder.load(Textures::Player2Walk3, Textures::PLAYER2_WALK3);
+    m_textureHolder.load(Textures::Player2Jump, Textures::PLAYER2_JUMP);
+
+    m_textureHolder.load(Textures::Goomba, Textures::ENEMY1);
+    m_textureHolder.load(Textures::Enemy2, Textures::ENEMY2);
+    m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
+
+    m_textureHolder.load(Textures::Platform, Textures::PLATFORM);
+    m_textureHolder.load(Textures::PlatformLeft, Textures::PLATFORM_LEFT_CORNER);
+    m_textureHolder.load(Textures::PlatformLeftB, Textures::PLATFORM_LEFT_CORNER_BLACK);
+    m_textureHolder.load(Textures::PlatformRight, Textures::PLATFORM_RIGHT_CORNER);
+    m_textureHolder.load(Textures::PlatformRightB, Textures::PLATFORM_RIGHT_CORNER_BLACK);
+
+    m_textureHolder.load(Textures::BeltLeft, Textures::BELT_LEFT);
+    m_textureHolder.load(Textures::BeltMiddle, Textures::BELT_MIDDLE);
+    m_textureHolder.load(Textures::BeltRight, Textures::BELT_RIGHT);
+
+    m_textureHolder.load(Textures::StrippedPlatformLeft, Textures::STRIPPED_PLATFORM_LEFT);
+    m_textureHolder.load(Textures::StrippedPlatformMiddle, Textures::STRIPPED_PLATFORM_MIDDLE);
+    m_textureHolder.load(Textures::StrippedPlatformRight, Textures::STRIPPED_PLATFORM_RIGHT);
+  }
+
+  void StageFactory::loadSounds() {
+    m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
   Stage* StageFactory::createStage(const char* stageTxt) {
@@ -43,8 +82,8 @@ namespace Stages {
   }
 
   void StageFactory::createPlayers(int stageHeight) {
-    m_players->include(new Entities::Player(Constants::PLAYER1_TEXTURE, Constants::PLAYER1_TEXTURE_WALK1, Constants::PLAYER1_TEXTURE_WALK2, Constants::PLAYER1_TEXTURE_WALK3, Constants::PLAYER1_TEXTURE_JUMP));
-    m_players->include(new Entities::Player(Constants::PLAYER2_TEXTURE, Constants::PLAYER2_TEXTURE_WALK1, Constants::PLAYER2_TEXTURE_WALK2, Constants::PLAYER2_TEXTURE_WALK3, Constants::PLAYER2_TEXTURE_JUMP, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_textureHolder.getResource(Textures::Player1Walk1), m_textureHolder.getResource(Textures::Player1Walk2), m_textureHolder.getResource(Textures::Player1Walk3), m_textureHolder.getResource(Textures::Player1Jump), m_soundHolder.getResource(Sounds::playerJump)));
+    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_textureHolder.getResource(Textures::Player2Walk1), m_textureHolder.getResource(Textures::Player2Walk2), m_textureHolder.getResource(Textures::Player2Walk3), m_textureHolder.getResource(Textures::Player2Jump), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;
@@ -57,11 +96,11 @@ namespace Stages {
     }
   }
 
-  void StageFactory::createPlatform(const sf::Vector2f position, const char* texture) {
+  void StageFactory::createPlatform(const sf::Vector2f position, Textures::ID textureID) {
     using namespace Entities;
     Entities::Entity* pEntity = NULL;
 
-    pEntity = static_cast<Entity*>(new Platform(position, texture));
+    pEntity = static_cast<Entity*>(new Platform(m_textureHolder.getResource(textureID), position));
 
     if (!pEntity) {
       std::cerr << "Error creating platform!\n";
@@ -71,11 +110,11 @@ namespace Stages {
     m_platforms->include(pEntity);
   }
 
-  void StageFactory::createEnemy(const sf::Vector2f position, const char* texture) {
+  void StageFactory::createEnemy(const sf::Vector2f position, Textures::ID textureID) {
     using namespace Entities;
     Entities::Entity* pEntity = NULL;
 
-    pEntity = static_cast<Entity*>(new Goomba(texture, position));
+    pEntity = static_cast<Entity*>(new Goomba(m_textureHolder.getResource(textureID), position));
 
     if (!pEntity) {
       std::cerr << "Error creating enemy!\n";
@@ -86,7 +125,7 @@ namespace Stages {
   }
 
   void StageFactory::createMap(const char* stageTxt) {
-    std::ifstream stage(stageTxt);
+    std::ifstream stage("assets/stage_2.txt");
 
     if (!stage) {
       std::cout << "Error loading stage\n";
@@ -103,20 +142,20 @@ namespace Stages {
         position.y = i * Constants::TILE_SIZE;
 
         switch (line[j]) {
-          case ('P'): createPlatform(position, Constants::PLATFORM_TEXTURE); break;
-          case ('A'): createPlatform(position, Constants::PLATFORM_TEXTURE_LEFT_CORNER); break;
-          case ('B'): createPlatform(position, Constants::PLATFORM_TEXTURE_RIGHT_CORNER); break;
-          case ('C'): createPlatform(position, Constants::PLATFORM_TEXTURE_LEFT_CORNER_BLACK); break;
-          case ('D'): createPlatform(position, Constants::PLATFORM_TEXTURE_RIGHT_CORNER_BLACK); break;
-          case ('X'): createPlatform(position, Constants::BELT_TEXTURE_LEFT); break;
-          case ('Y'): createPlatform(position, Constants::BELT_TEXTURE_MIDDLE); break;
-          case ('Z'): createPlatform(position, Constants::BELT_TEXTURE_RIGHT); break;
-          case ('S'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_LEFT); break;
-          case ('O'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_MIDDLE); break;
-          case ('Q'): createPlatform(position, Constants::STRIPPED_PLATFORM_TEXTURE_RIGHT); break;
-          case ('E'): createEnemy(position, Constants::ENEMY1_TEXTURE); break;
-          case ('F'): createEnemy(position, Constants::ENEMY2_TEXTURE); break;
-          case ('G'): createEnemy(position, Constants::ENEMY3_TEXTURE); break;
+          case ('P'): createPlatform(position, Textures::Platform); break;
+          case ('A'): createPlatform(position, Textures::PlatformLeft); break;
+          case ('B'): createPlatform(position, Textures::PlatformRight); break;
+          case ('C'): createPlatform(position, Textures::PlatformLeftB); break;
+          case ('D'): createPlatform(position, Textures::PlatformRightB); break;
+          case ('X'): createPlatform(position, Textures::BeltLeft); break;
+          case ('Y'): createPlatform(position, Textures::BeltMiddle); break;
+          case ('Z'): createPlatform(position, Textures::BeltRight); break;
+          case ('S'): createPlatform(position, Textures::StrippedPlatformLeft); break;
+          case ('O'): createPlatform(position, Textures::StrippedPlatformMiddle); break;
+          case ('Q'): createPlatform(position, Textures::StrippedPlatformRight); break;
+          case ('E'): createEnemy(position, Textures::Goomba); break;
+          case ('F'): createEnemy(position, Textures::Enemy2); break;
+          case ('G'): createEnemy(position, Textures::Enemy3); break;
           default: break;
         }
       }

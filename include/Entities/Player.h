@@ -9,6 +9,7 @@
 #include <map>
 #include <unordered_map>
 
+/* SFML Library */
 #include <SFML/Audio.hpp>
 
 namespace Entities {
@@ -31,6 +32,7 @@ namespace Entities {
       const float m_chargingSpeed;
       const float m_minJumpHeight;
       const float m_maxJumpHeight;
+      sf::Sound m_jumpSound;
 
     private:
       void setup();
@@ -43,11 +45,12 @@ namespace Entities {
     
     public:
       Player(
-              const char* idleTexturePath
-            , const char* walk1TexturePath
-            , const char* walk2TexturePath
-            , const char* walk3TexturePath
-            , const char* jumpTexturePath
+              sf::Texture& idleTexture
+            , sf::Texture& walk1Texture
+            , sf::Texture& walk2Texture
+            , sf::Texture& walk3Texture
+            , sf::Texture& jumpTexture
+            , sf::SoundBuffer& jumpSoundBuffer
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);

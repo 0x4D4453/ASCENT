@@ -4,6 +4,8 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 
+#include <iostream>
+
 namespace Animations {
   PlayerAnimation::PlayerAnimation(Entities::Entity* pEntity, float timePerFrame)
     : Animation(pEntity, timePerFrame)

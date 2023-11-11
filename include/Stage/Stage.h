@@ -9,6 +9,9 @@
 /* Forward Declaration */
 namespace Manager { class GraphicsManager; }
 
+/* SFML Library */
+#include <SFML/Audio.hpp>
+
 namespace Stages {
   class Stage {
     protected:

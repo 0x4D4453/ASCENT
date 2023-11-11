@@ -6,6 +6,9 @@
 #include "Manager/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
+#include "Utility/List.h"
+#include "Utility/ResourceHolder.h"
+#include "Utility/Textures.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -28,10 +31,10 @@ namespace Stages {
     , m_enemies()
     , m_paused(false)
   {
+    Entities::Entity::setCollisionManager(&m_collisionManager);
+
     if (!newGame)
       loadSaveGame();
-
-    Entities::Entity::setCollisionManager(&m_collisionManager);
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setObstaclesList(&m_platforms);

@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Utility/Constants.h"
+#include "Utility/Textures.h"
 
 #include <cmath>
 
@@ -19,7 +20,7 @@ namespace Entities {
   }
 
   void Projectile::setup() {  
-    setTexture(Constants::PROJECTILE1_TEXTURE);
+    setTexture(Textures::PROJECTILE);
     m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
   }
 

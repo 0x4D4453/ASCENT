@@ -19,7 +19,6 @@ namespace Animations {
   }
 
   void Animation::includeFrame(sf::Texture* pFrame) {
-    if (pFrame)
-      m_animationFrames.push_back(pFrame);
+    m_animationFrames.push_back(pFrame);
   }
 }

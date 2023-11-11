@@ -43,11 +43,11 @@ namespace Entities {
     
     public:
       Player(
-              const char* idleTexturePath
-            , const char* walk1TexturePath
-            , const char* walk2TexturePath
-            , const char* walk3TexturePath
-            , const char* jumpTexturePath
+              sf::Texture& idleTexture
+            , sf::Texture& walk1Texture
+            , sf::Texture& walk2Texture
+            , sf::Texture& walk3Texture
+            , sf::Texture& jumpTexture
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);

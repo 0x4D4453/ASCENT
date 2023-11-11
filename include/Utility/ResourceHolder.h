@@ -41,6 +41,10 @@ class ResourceHolder {
     const Resource& getResource(Identifier id) const {
       return *(m_resourceMap.find(id))->second;
     }
+
+    Resource& getResource(Identifier id) {
+      return *(m_resourceMap.find(id))->second;
+    }
 };
 
 #endif

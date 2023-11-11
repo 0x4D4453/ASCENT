@@ -5,10 +5,10 @@
 #include "Utility/Constants.h"
 
 namespace Entities {
-  Platform::Platform(sf::Vector2f position, const char* file) 
+  Platform::Platform(sf::Texture& texture, sf::Vector2f position) 
     : Obstacle(position)
   {
-    setup(file);
+    setTexture(texture);
   }
 
   Platform::~Platform() {
@@ -16,7 +16,7 @@ namespace Entities {
   }
 
   void Platform::setup(const char* file) {
-    setTexture(file);
+    
   }
 
   void Platform::save() {

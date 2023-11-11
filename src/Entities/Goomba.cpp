@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 namespace Entities {
-  Goomba::Goomba(const char* texture, const sf::Vector2f spawnPosition)
+  Goomba::Goomba(sf::Texture& texture, const sf::Vector2f spawnPosition)
     : Enemy(spawnPosition)
     , m_range(32.f)
     , m_direction(rand() % 2)

@@ -35,6 +35,10 @@ void Being::setTexture(const char* file) {
   m_sprite.setTexture(m_texture);
 }
 
+void Being::setTexture(sf::Texture& texture) {
+  m_sprite.setTexture(texture);
+}
+
 void Being::setTexture(sf::Texture* texture) {
   if (texture)
     m_sprite.setTexture(*texture);

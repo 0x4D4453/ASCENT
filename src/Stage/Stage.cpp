@@ -88,18 +88,21 @@ namespace Stages {
   }
 
   void Stage::createMap() {
-    std::ifstream stage("assets/stage_1.txt");
+    std::ifstream stage("assets/stage_2.txt");
 
     if (!stage) {
       std::cout << "Error loading stage\n";
       exit(24);
     }
       
+    int i, j;
     std::string line;
+    sf::Vector2f position = sf::Vector2f();
 
-    for (int i = 0; std::getline(stage, line); ++i) {
-      for (int j = 0; j < line.size(); ++j) {
-        sf::Vector2f position(j * Constants::TILE_SIZE, i * Constants::TILE_SIZE);
+    for (i = 0; std::getline(stage, line); ++i) {
+      for (j = 0; j < line.size(); ++j) {
+        position.x = j * Constants::TILE_SIZE;
+        position.y = i * Constants::TILE_SIZE;
 
         switch (line[j]) {
           case ('P'): createPlatform(position, Constants::PLATFORM_TEXTURE); break;
@@ -122,6 +125,21 @@ namespace Stages {
     }
 
     stage.close();
+
+    m_graphicsManager->setStageSize((i - 1) * Constants::TILE_SIZE, (j - 1) * Constants::TILE_SIZE);
+    setPlayerPosition(i);
+  }
+
+  void Stage::setPlayerPosition(int height) {
+    sf::Vector2f playerPosition = sf::Vector2f();
+    playerPosition.x = Constants::WINDOW_WIDTH / 2;
+    playerPosition.y = (height - 10) * Constants::TILE_SIZE;
+
+    List<Entities::Entity*>::Iterator it = m_players.first();
+    while (it != m_players.last()) {
+      (*it)->setPosition(playerPosition);
+      ++it;
+    }
   }
 
   void Stage::drawEntities(EntityList& entityList) {

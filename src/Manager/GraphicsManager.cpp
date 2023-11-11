@@ -18,6 +18,8 @@ namespace Manager {
     , m_pStateStack(States::StateStack::getInstance())
     , m_timePerFrame(sf::seconds(Constants::FIXED_STEP))
     , m_timeSinceLastUpdate(sf::Time::Zero)
+    , m_stageHeight(Constants::WINDOW_HEIGHT)
+    , m_stageWidth(Constants::WINDOW_WIDTH)
   {
     
   }
@@ -40,15 +42,6 @@ namespace Manager {
 
   const bool GraphicsManager::isOpen() const {
     return m_window.isOpen();
-  }
-
-  void GraphicsManager::pollEvents() {
-    while (m_window.pollEvent(m_event)) {
-      if (m_event.type == sf::Event::Closed)
-        m_window.close();
-      else 
-        m_pStateStack->handleEvents(m_event);
-    }
   }
 
   void GraphicsManager::clear() {
@@ -80,11 +73,18 @@ namespace Manager {
   }
 
   void GraphicsManager::updateView(float x, float y) {
-    if ((x - getViewSize().x/2) < 0)
-      x = Constants::WINDOW_WIDTH/2;
+    float height = getViewSize().y;
+    float width = getViewSize().x;
 
-    if ((y + getViewSize().y/2) > Constants::WINDOW_HEIGHT)
-      y = Constants::WINDOW_HEIGHT/2;
+    if (x - width/2 < 0)
+      x = width/2;
+    else if (x + width/2 > m_stageWidth)
+      x = m_stageWidth - width/2;
+
+    if (y - height/2 < 0)
+      y = height/2;
+    else if (y + height/2 > m_stageHeight)
+      y = m_stageHeight - height/2;
 
     setViewCenter(x, y);
     setView();
@@ -119,5 +119,10 @@ namespace Manager {
 
   void GraphicsManager::addTime(const sf::Time& time) {
     m_timeSinceLastUpdate += time;
+  }
+
+  void GraphicsManager::setStageSize(float height, float width) {
+    m_stageHeight = height;
+    m_stageWidth = width;
   }
 }

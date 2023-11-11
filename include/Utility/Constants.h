@@ -41,6 +41,7 @@ namespace Constants {
   constexpr char PROJECTILE1_TEXTURE[] = "assets/tiles/tile_0001.png";
 
   constexpr float GRAVITY = 20.f;
+  constexpr float DRAG = 20.f;
   constexpr float MAX_FALL_SPEED = 20.f;
 }
 

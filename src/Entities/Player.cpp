@@ -19,14 +19,15 @@ namespace Entities {
     , m_animation(this)
     , m_points(0)
     , m_isJumping(false)
-    , m_chargingSpeed(0.25f)
-    , m_minJumpHeight(0.1f)
-    , m_maxJumpHeight(580.f)
+    , m_isCharging(false)
+    , m_chargingSpeed(10.f)
+    , m_minJumpHeight(2.f)
+    , m_maxJumpHeight(10.f)
     , m_jumpHeight(m_minJumpHeight)
   {
-    m_keyBinding.insert(std::make_pair(moveLeftKey, MoveLeft));
-    m_keyBinding.insert(std::make_pair(moveRightKey, MoveRight));
-    m_keyBinding.insert(std::make_pair(jumpKey, Jump));
+    m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
+    m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));
+    m_keyBinding.insert(std::make_pair(Jump, jumpKey));
 
     m_actionBinding.insert(std::make_pair(MoveLeft, &Player::moveLeft));
     m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
@@ -59,15 +60,15 @@ namespace Entities {
 
   void Player::setup() {  
     m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
-    m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE, 0.f));
-  } 
+    m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
+  }
 
   void Player::moveLeft() {
-    m_velocity.x -= m_speed * m_dt; 
+    m_velocity.x -= m_speed * m_dt;
   }
 
   void Player::moveRight() {
-    m_velocity.x += m_speed * m_dt; 
+    m_velocity.x += m_speed * m_dt;
   }
 
   void Player::setIsJumping(const bool isJumping) {
@@ -76,46 +77,54 @@ namespace Entities {
 
   void Player::handleInput() {
     m_velocity.x = 0.f;
-    m_velocity.y += Constants::GRAVITY * m_dt;
-    
-    if (m_velocity.y > Constants::MAX_FALL_SPEED) 
-      m_velocity.y = Constants::MAX_FALL_SPEED;
     
     using sf::Keyboard;
-    std::map<Keyboard::Key, Actions>::iterator it = m_keyBinding.begin();
+    std::map<Actions, Keyboard::Key>::iterator it = m_keyBinding.begin();
 
     while (it != m_keyBinding.end()) {
-      if (Keyboard::isKeyPressed((*it).first)) {
-        Actions action = (*it).second;
+      if (Keyboard::isKeyPressed((*it).second)) {
+        Actions action = (*it).first;
         using functionPointer = void (Player::*)();
         functionPointer pFunction = m_actionBinding[action];
         (this->*pFunction)();
       }
       ++it;
     }
+
+    if (!Keyboard::isKeyPressed(m_keyBinding[Jump]) && m_isCharging)
+      jump();
   }
 
   void Player::chargeJump() {
+    if (m_isJumping)
+      return;
+
     m_isCharging = true;
     m_jumpHeight += m_chargingSpeed * m_dt;
 
     if (m_jumpHeight > m_maxJumpHeight)
       m_jumpHeight = m_maxJumpHeight;
+
+    m_velocity.x = 0;
   }
 
   void Player::jump() {
-    //m_isCharging = false;
-    if (!m_isJumping) {
-      m_velocity.y = 0.f;
-      m_isJumping = true;
-      m_velocity.y -= (m_maxJumpHeight * m_dt);
-    }
-    //m_jumpHeight = m_minJumpHeight;
+    if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
+      moveLeft();
+    else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))
+      moveRight();
+
+    m_isCharging = false;
+    m_isJumping = true;
+    m_velocity.y = -m_jumpHeight;
+
+    m_jumpHeight = m_minJumpHeight;
   }
 
   void Player::collide(Entity* entity, CollisionType type, float overlap) {
-    if (type == CollisionType::Vertical && overlap < 0)
+    if (type == CollisionType::Vertical) {
       setIsJumping(false);
+    }
   }
 
   void Player::update() {
@@ -130,7 +139,9 @@ namespace Entities {
   }
 
   void Player::exec() {
-    handleInput();
+    if (!m_isJumping)
+      handleInput();
+
     update();
   }
 

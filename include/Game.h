@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Manager/GraphicsManager.h"
+#include "Manager/Event/EventManager.h"
 #include "State/StateStack.h"
 
 /* SFML Library */
@@ -11,6 +12,7 @@
 class Game : sf::NonCopyable {
   private:
     Manager::GraphicsManager* m_pGraphicsManager;
+    Manager::Event::EventManager* m_pEventManager;
     States::StateStack* m_pStateStack;
   
   public:

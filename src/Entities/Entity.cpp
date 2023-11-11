@@ -1,6 +1,9 @@
 /* Main Include */
 #include "Entities/Entity.h"
 
+/* Program Defined */
+#include "Utility/Constants.h"
+
 namespace Entities {
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
@@ -58,10 +61,15 @@ namespace Entities {
   }
 
   void Entity::move() {
-    if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_pCollisionManager->verifyCollision(this);
+    m_velocity.y += Constants::GRAVITY * m_dt;
+    
+    if (m_velocity.y > Constants::MAX_FALL_SPEED)
+      m_velocity.y = Constants::MAX_FALL_SPEED;
 
     m_sprite.move(m_velocity);
+
+    if (m_velocity.x != 0 || m_velocity.y != 0)
+      m_pCollisionManager->verifyCollision(this);
   }
 
   void Entity::move(const sf::Vector2f movement) {

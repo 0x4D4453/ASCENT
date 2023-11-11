@@ -27,6 +27,7 @@ namespace Stages {
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
       void update();
+      void setPlayerPosition(int height);
     
     public:
       Stage(const bool newGame = true);

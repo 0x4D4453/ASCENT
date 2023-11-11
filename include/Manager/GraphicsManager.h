@@ -19,6 +19,8 @@ namespace Manager {
       States::StateStack* m_pStateStack;
       const sf::Time m_timePerFrame;
       sf::Time m_timeSinceLastUpdate;
+      float m_stageHeight;
+      float m_stageWidth;
     
     private:
       GraphicsManager();
@@ -50,6 +52,8 @@ namespace Manager {
       const sf::Time* getTimePerFrame() const;
       sf::Time* getTimeSinceLastUpdate();
       void addTime(const sf::Time& time);
+
+      void setStageSize(float height, float width);
   };
 }
 

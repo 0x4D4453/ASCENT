@@ -9,12 +9,14 @@ namespace Textures {
     Player1Walk3,
     Player1Charge,
     Player1Jump,
+    Player1Stagger,
     Player2,
     Player2Walk1,
     Player2Walk2,
     Player2Walk3,
     Player2Charge,
     Player2Jump,
+    Player2Stagger,
     Goomba,
     Enemy2,
     Enemy3,
@@ -38,6 +40,7 @@ namespace Textures {
   constexpr char PLAYER1_WALK3[] = "assets/tiles/tile_0243.png";
   constexpr char PLAYER1_CHARGE[] = "assets/tiles/player1_charging.png";
   constexpr char PLAYER1_JUMP[] = "assets/tiles/tile_0244.png";
+  constexpr char PLAYER1_STAGGER[] = "assets/tiles/player1_staggered.png";
 
   constexpr char PLAYER2[] = "assets/tiles/tile_0260.png";
   constexpr char PLAYER2_WALK1[] = "assets/tiles/tile_0261.png";
@@ -45,6 +48,7 @@ namespace Textures {
   constexpr char PLAYER2_WALK3[] = "assets/tiles/tile_0263.png";
   constexpr char PLAYER2_CHARGE[] = "assets/tiles/player2_charging.png";
   constexpr char PLAYER2_JUMP[] = "assets/tiles/tile_0264.png";
+  constexpr char PLAYER2_STAGGER[] = "assets/tiles/player2_staggered.png";
 
   constexpr char PLATFORM[] = "assets/tiles/tile_0271.png";
   constexpr char PLATFORM_LEFT_CORNER[] = "assets/tiles/tile_0270.png";

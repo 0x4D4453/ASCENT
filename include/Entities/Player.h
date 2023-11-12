@@ -51,12 +51,16 @@ namespace Entities {
             , sf::Texture& walk3Texture
             , sf::Texture& jumpTexture
             , sf::Texture& chargeTexture
+            , sf::Texture& staggerTexture
             , sf::SoundBuffer& jumpSoundBuffer
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
       ~Player();
+      const bool getIsJumping() const;
       void setIsJumping(const bool isJumping);
+      const bool getIsCharging() const;
+      void setIsCharging(const bool isCharging);
       virtual void collide(Entity *entity, CollisionType type, float overlap);
       virtual void exec();
       virtual void save();

@@ -13,13 +13,14 @@ namespace Animations {
         Walk2,
         Walk3,
         Jump,
-        Charge
+        Charge,
+        Stagger
       };
 
     public:
       PlayerAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~PlayerAnimation();
-      void update(const float deltaTime, bool isJumping, bool isCharging, const sf::Vector2f velocity);
+      void update(const float deltaTime, bool isJumping, bool isCharging, bool isStaggered, const sf::Vector2f velocity);
   };
 }
 

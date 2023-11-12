@@ -17,12 +17,14 @@ namespace Animations {
 
   }
 
-  void PlayerAnimation::update(const float deltaTime, bool isJumping, bool isCharging, const sf::Vector2f velocity) {
-    if (isCharging)
+  void PlayerAnimation::update(const float deltaTime, bool isJumping, bool isCharging, bool isStaggered, const sf::Vector2f velocity) {
+    if (isStaggered)
+      m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Stagger)]);
+    else if (isCharging)
       m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Charge)]);
     else if (isJumping)
       m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Jump)]);
-    else if (velocity.x == 0.f)
+    else if (m_pEntity->getVelocity().x == 0.f)
       m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Idle)]);
     else {
       m_totalTime += deltaTime;

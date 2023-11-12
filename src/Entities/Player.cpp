@@ -17,7 +17,7 @@
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::Texture& chargeTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::Texture& chargeTexture, sf::Texture& staggerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
     , m_animation(this)
     , m_points(0)
@@ -28,6 +28,8 @@ namespace Entities {
     , m_maxJumpHeight(10.f)
     , m_jumpHeight(m_minJumpHeight)
   {
+    setEntityId(EntityID::PlayerE);
+
     m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
     m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));
     m_keyBinding.insert(std::make_pair(Jump, jumpKey));
@@ -42,6 +44,7 @@ namespace Entities {
     m_animation.includeFrame(&walk3Texture);
     m_animation.includeFrame(&jumpTexture);
     m_animation.includeFrame(&chargeTexture);
+    m_animation.includeFrame(&staggerTexture);
 
     m_jumpSound.setBuffer(jumpSoundBuffer);
 
@@ -65,8 +68,20 @@ namespace Entities {
     m_velocity.x += m_speed * m_dt;
   }
 
+  const bool Player::getIsJumping() const {
+    return m_isJumping;
+  }
+
   void Player::setIsJumping(const bool isJumping) {
     m_isJumping = isJumping;
+  }
+
+  const bool Player::getIsCharging() const {
+    return m_isCharging;
+  }
+
+  void Player::setIsCharging(const bool isCharging) {
+    m_isCharging = isCharging;
   }
 
   void Player::handleInput() {
@@ -120,11 +135,12 @@ namespace Entities {
   void Player::collide(Entity* entity, CollisionType type, float overlap) {
     if (type == CollisionType::Vertical) {
       setIsJumping(false);
+      setIsStaggered(false);
     }
   }
 
   void Player::update() {
-    m_animation.update(m_dt, m_isJumping, m_isCharging, m_velocity);
+    m_animation.update(m_dt, m_isJumping, m_isCharging, m_isStaggered, m_velocity);
 
     if (m_velocity.x < 0)
       m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
@@ -135,7 +151,7 @@ namespace Entities {
   }
 
   void Player::exec() {
-    if (!m_isJumping)
+    if (!m_isJumping && !m_isStaggered)
       handleInput();
 
     update();

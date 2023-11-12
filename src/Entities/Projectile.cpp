@@ -12,6 +12,7 @@ namespace Entities {
     : Entity(position, speed)
     , m_direction(direction)
   {
+    setEntityId(EntityID::ProjectileE);
     setup();
   }
 

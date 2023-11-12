@@ -13,6 +13,7 @@ namespace Entities {
     , m_range(32.f)
     , m_direction(rand() % 2)
   {
+    setEntityId(EntityID::GoombaE);
     setTexture(texture);
     setSpeed(50.f);
   }

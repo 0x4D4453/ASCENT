@@ -9,6 +9,7 @@ namespace Entities {
     : m_attack(1)
     , m_spawnPosition(spawnPosition)
   {
+    setEntityId(EntityID::EnemyE);
     m_sprite.setPosition(spawnPosition);
   }
 

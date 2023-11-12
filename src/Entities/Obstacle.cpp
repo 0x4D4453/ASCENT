@@ -6,7 +6,7 @@ namespace Entities {
     : Entity(position)
     , m_harmful(harmful)
   {
-
+    setEntityId(EntityID::ObstacleE);
   }
 
   Obstacle::~Obstacle() {

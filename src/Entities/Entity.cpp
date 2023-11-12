@@ -7,9 +7,11 @@
 namespace Entities {
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
+    , m_entityId(EntityID::EntityE)
     , m_position(position)
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
+    , m_isStaggered(false)
   {
     setPosition(m_position);
   }
@@ -26,6 +28,14 @@ namespace Entities {
 
   Entity::Coordinates::~Coordinates() {
 
+  }
+
+  void Entity::setEntityId(EntityID id) {
+    m_entityId = id;
+  }
+
+  EntityID Entity::getEntityId() const {
+    return m_entityId;
   }
 
   void Entity::setSpeed(const float speed) {
@@ -51,7 +61,6 @@ namespace Entities {
     return Entity::Coordinates(entityLeft, entityRight, entityTop, entityBottom);
   }
 
-  
   void Entity::setVelocity(const sf::Vector2f velocity) {
     m_velocity = velocity;
   }
@@ -60,12 +69,20 @@ namespace Entities {
     return m_velocity;
   }
 
+  void Entity::setIsStaggered(const bool isStaggered) {
+    m_isStaggered= isStaggered;
+  }
+
+  const bool Entity::getIsStaggered() const {
+    return m_isStaggered;
+  }
+
   void Entity::move() {
     m_velocity.y += Constants::GRAVITY * m_dt;
     
     if (m_velocity.y > Constants::MAX_FALL_SPEED)
       m_velocity.y = Constants::MAX_FALL_SPEED;
-
+      
     m_sprite.move(m_velocity);
 
     if (m_velocity.x != 0 || m_velocity.y != 0)

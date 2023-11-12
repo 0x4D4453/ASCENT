@@ -9,14 +9,29 @@
 #include <SFML/Graphics.hpp>
 
 namespace Entities {
+  // Added E (from enum) to avoid type name errors
+  enum EntityID {
+    EntityE,
+    CharacterE,
+    ObstacleE,
+    ProjectileE,
+    EnemyE,
+    PlayerE,
+    PlatformE,
+    GoombaE,
+  };
+
   class Entity : public Being {
     protected:
-      sf::Vector2f m_position;
-      float m_speed;
-      sf::Vector2f m_velocity;
       static Manager::CollisionManager* m_pCollisionManager;
+      EntityID m_entityId;
+      sf::Vector2f m_position;
+      sf::Vector2f m_velocity;
+      float m_speed;
+      bool m_isStaggered;
     
     protected:
+      void setEntityId(EntityID id);
       void setSpeed(const float speed);
     
     public:
@@ -35,13 +50,17 @@ namespace Entities {
     public:
       Entity(const sf::Vector2f position, const float speed = 200.f);
       virtual ~Entity();
-      static void setCollisionManager(Manager::CollisionManager* manager);
 
-      void setPosition(sf::Vector2f position);
+      static void setCollisionManager(Manager::CollisionManager* manager);
+      EntityID getEntityId() const;
+
       sf::Vector2f getPosition() const;
-      Coordinates getCoordinates() const;
-      void setVelocity(const sf::Vector2f velocity);
+      void setPosition(sf::Vector2f position);
       sf::Vector2f getVelocity() const;
+      void setVelocity(const sf::Vector2f velocity);
+      Coordinates getCoordinates() const;
+      void setIsStaggered(const bool isStaggered);
+      const bool getIsStaggered() const;
 
       virtual void move();
       virtual void move(const sf::Vector2f movement);

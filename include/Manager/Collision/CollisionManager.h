@@ -22,6 +22,7 @@ namespace Manager {
     class CollisionManager : public sf::NonCopyable {
       private:
         static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
+        sf::FloatRect m_intersectionRect;
         Entities::Entity* m_pEntity;
         EntityList* m_pPlayers;
         EntityList* m_pObstacles;

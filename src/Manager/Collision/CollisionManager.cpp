@@ -46,28 +46,27 @@ namespace Manager {
         m_pEnemies = enemiesList;
     }
 
-    /* DO NOT use intersects from SFML */
     void CollisionManager::verifyOverlap(Entities::Entity* entity) {
       using namespace Entities;
 
-      Entity::Coordinates cEntityCoordinates = entity->getCoordinates();
-      Entity::Coordinates mEntityCoordinates = m_pEntity->getCoordinates();
+      const sf::FloatRect cEntityCoordinates = entity->getGlobalBounds();
+      const sf::FloatRect mEntityCoordinates = m_pEntity->getGlobalBounds();
 
-      float xOverlap = std::max(0.f, std::min(mEntityCoordinates.right, cEntityCoordinates.right) 
-                      - std::max(mEntityCoordinates.left, cEntityCoordinates.left));
-      float yOverlap = std::max(0.f, std::min(mEntityCoordinates.bottom, cEntityCoordinates.bottom) 
-                      - std::max(mEntityCoordinates.top, cEntityCoordinates.top));
+      if (mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect)) {
+        float xOverlap = m_intersectionRect.width;
+        float yOverlap = m_intersectionRect.height;
 
-      if (yOverlap != 0 && yOverlap < xOverlap) {
-        if (mEntityCoordinates.top < cEntityCoordinates.top)
-          yOverlap *= -1;
-        entity->collide(m_pEntity, Manager::Collision::CollisionType::Vertical, yOverlap);
-        m_pEntity->collide(entity, Manager::Collision::CollisionType::Vertical, yOverlap);
-      } else if (xOverlap != 0 && xOverlap < yOverlap) {
-        if (mEntityCoordinates.left < cEntityCoordinates.left)
-          xOverlap *= -1;
-        entity->collide(m_pEntity, Manager::Collision::CollisionType::Horizontal, xOverlap);
-        m_pEntity->collide(entity, Manager::Collision::CollisionType::Horizontal, xOverlap);
+        if (yOverlap != 0 && yOverlap < xOverlap) {
+          if (mEntityCoordinates.top < cEntityCoordinates.top)
+            yOverlap *= -1;
+          entity->collide(m_pEntity, Manager::Collision::CollisionType::Vertical, yOverlap);
+          m_pEntity->collide(entity, Manager::Collision::CollisionType::Vertical, yOverlap);
+        } else if (xOverlap != 0 && xOverlap < yOverlap) {
+          if (mEntityCoordinates.left < cEntityCoordinates.left)
+            xOverlap *= -1;
+          entity->collide(m_pEntity, Manager::Collision::CollisionType::Horizontal, xOverlap);
+          m_pEntity->collide(entity, Manager::Collision::CollisionType::Horizontal, xOverlap);
+        }
       }
     }
 

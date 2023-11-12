@@ -4,13 +4,11 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 
-#include <iostream>
-
 namespace Animations {
   PlayerAnimation::PlayerAnimation(Entities::Entity* pEntity, float timePerFrame)
     : Animation(pEntity, timePerFrame)
   {
-    m_currentFrame = static_cast<int>(PlayerFrames::Walk1);
+    m_currentFrame = static_cast<int>(Walk1);
   }
 
   PlayerAnimation::~PlayerAnimation() {
@@ -19,22 +17,21 @@ namespace Animations {
 
   void PlayerAnimation::update(const float deltaTime, bool isJumping, bool isCharging, const sf::Vector2f velocity) {
     if (isCharging)
-      m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Charge)]);
+      m_textureRect.left = 64;
     else if (isJumping)
-      m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Jump)]);
+      m_textureRect.left = 80;
     else if (velocity.x == 0.f)
-      m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Idle)]);
+      m_textureRect.left = 0;
     else {
       m_totalTime += deltaTime;
-
       if (m_totalTime >= m_timePerFrame) {
         m_totalTime -= m_timePerFrame;
-        m_pEntity->setTexture(m_animationFrames[m_currentFrame]);
+        m_textureRect.left = 16 * m_currentFrame;
         ++m_currentFrame;
         if (m_currentFrame > static_cast<int>(PlayerFrames::Walk3))
           m_currentFrame = static_cast<int>(PlayerFrames::Walk1);
       }
-      
     }
+    m_pEntity->setTextureRect(m_textureRect);
   }
 } 

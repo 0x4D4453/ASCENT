@@ -45,12 +45,7 @@ namespace Entities {
     
     public:
       Player(
-              sf::Texture& idleTexture
-            , sf::Texture& walk1Texture
-            , sf::Texture& walk2Texture
-            , sf::Texture& walk3Texture
-            , sf::Texture& jumpTexture
-            , sf::Texture& chargeTexture
+              sf::Texture& playerTexture
             , sf::SoundBuffer& jumpSoundBuffer
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D

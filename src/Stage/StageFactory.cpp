@@ -36,18 +36,7 @@ namespace Stages {
 
   void StageFactory::loadTextures() {
     m_textureHolder.load(Textures::Player1, Textures::PLAYER1);
-    m_textureHolder.load(Textures::Player1Walk1, Textures::PLAYER1_WALK1);
-    m_textureHolder.load(Textures::Player1Walk2, Textures::PLAYER1_WALK2);
-    m_textureHolder.load(Textures::Player1Walk3, Textures::PLAYER1_WALK3);
-    m_textureHolder.load(Textures::Player1Charge, Textures::PLAYER1_CHARGE);
-    m_textureHolder.load(Textures::Player1Jump, Textures::PLAYER1_JUMP);
-
     m_textureHolder.load(Textures::Player2, Textures::PLAYER2);
-    m_textureHolder.load(Textures::Player2Walk1, Textures::PLAYER2_WALK1);
-    m_textureHolder.load(Textures::Player2Walk2, Textures::PLAYER2_WALK2);
-    m_textureHolder.load(Textures::Player2Walk3, Textures::PLAYER2_WALK3);
-    m_textureHolder.load(Textures::Player2Charge, Textures::PLAYER2_CHARGE);
-    m_textureHolder.load(Textures::Player2Jump, Textures::PLAYER2_JUMP);
 
     m_textureHolder.load(Textures::Goomba, Textures::ENEMY1);
     m_textureHolder.load(Textures::Enemy2, Textures::ENEMY2);
@@ -84,8 +73,8 @@ namespace Stages {
   }
 
   void StageFactory::createPlayers(int stageHeight) {
-    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_textureHolder.getResource(Textures::Player1Walk1), m_textureHolder.getResource(Textures::Player1Walk2), m_textureHolder.getResource(Textures::Player1Walk3), m_textureHolder.getResource(Textures::Player1Jump), m_textureHolder.getResource(Textures::Player1Charge), m_soundHolder.getResource(Sounds::playerJump)));
-    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_textureHolder.getResource(Textures::Player2Walk1), m_textureHolder.getResource(Textures::Player2Walk2), m_textureHolder.getResource(Textures::Player2Walk3), m_textureHolder.getResource(Textures::Player2Jump), m_textureHolder.getResource(Textures::Player2Charge), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
+    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;

@@ -20,7 +20,6 @@ namespace Entities {
   }
 
   void Projectile::setup() {  
-    setTexture(Textures::PROJECTILE);
     m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
   }
 

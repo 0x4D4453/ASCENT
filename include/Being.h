@@ -13,16 +13,14 @@ class Being {
     static const float m_dt;
     const int m_id;
     sf::Sprite m_sprite;
-    sf::Texture m_texture;
   
   public:
     Being();
     virtual ~Being();
     const sf::Sprite* getSprite() const;
     const sf::FloatRect getGlobalBounds() const;
-    void setTexture(const char* file);
     void setTexture(sf::Texture& texture);
-    void setTexture(sf::Texture* texture);
+    void setTextureRect(const sf::IntRect& textureRect);
     void draw();
     virtual void exec() = 0;
 };

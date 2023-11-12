@@ -29,19 +29,12 @@ const sf::FloatRect Being::getGlobalBounds() const {
   return m_sprite.getGlobalBounds();
 }
 
-void Being::setTexture(const char* file) {
-  if (!m_texture.loadFromFile(file)) 
-    std::cerr << "Error loading texture " << file << "\n";
-  m_sprite.setTexture(m_texture);
-}
-
 void Being::setTexture(sf::Texture& texture) {
   m_sprite.setTexture(texture);
 }
 
-void Being::setTexture(sf::Texture* texture) {
-  if (texture)
-    m_sprite.setTexture(*texture);
+void Being::setTextureRect(const sf::IntRect& textureRect) {
+  m_sprite.setTextureRect(textureRect);
 }
 
 void Being::draw() {

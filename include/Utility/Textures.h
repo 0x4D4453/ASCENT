@@ -4,17 +4,7 @@
 namespace Textures {
   enum ID {
     Player1,
-    Player1Walk1,
-    Player1Walk2,
-    Player1Walk3,
-    Player1Charge,
-    Player1Jump,
     Player2,
-    Player2Walk1,
-    Player2Walk2,
-    Player2Walk3,
-    Player2Charge,
-    Player2Jump,
     Goomba,
     Enemy2,
     Enemy3,
@@ -32,19 +22,8 @@ namespace Textures {
     StrippedPlatformRight,
   };
 
-  constexpr char PLAYER1[] = "assets/tiles/tile_0240.png";
-  constexpr char PLAYER1_WALK1[] = "assets/tiles/tile_0241.png";
-  constexpr char PLAYER1_WALK2[] = "assets/tiles/tile_0242.png";
-  constexpr char PLAYER1_WALK3[] = "assets/tiles/tile_0243.png";
-  constexpr char PLAYER1_CHARGE[] = "assets/tiles/player1_charging.png";
-  constexpr char PLAYER1_JUMP[] = "assets/tiles/tile_0244.png";
-
-  constexpr char PLAYER2[] = "assets/tiles/tile_0260.png";
-  constexpr char PLAYER2_WALK1[] = "assets/tiles/tile_0261.png";
-  constexpr char PLAYER2_WALK2[] = "assets/tiles/tile_0262.png";
-  constexpr char PLAYER2_WALK3[] = "assets/tiles/tile_0263.png";
-  constexpr char PLAYER2_CHARGE[] = "assets/tiles/player2_charging.png";
-  constexpr char PLAYER2_JUMP[] = "assets/tiles/tile_0264.png";
+  constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
+  constexpr char PLAYER2[] = "assets/tiles/player2SpriteSheet.png";
 
   constexpr char PLATFORM[] = "assets/tiles/tile_0271.png";
   constexpr char PLATFORM_LEFT_CORNER[] = "assets/tiles/tile_0270.png";

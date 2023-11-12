@@ -7,13 +7,10 @@
 namespace Animations {
   class PlayerAnimation : public Animation {
     public:
-      enum class PlayerFrames {
-        Idle = 0,
-        Walk1,
+      enum PlayerFrames {
+        Walk1 = 1,
         Walk2,
         Walk3,
-        Jump,
-        Charge
       };
 
     public:

@@ -23,10 +23,8 @@ class ResourceHolder {
 
     ~ResourceHolder() {
       typename std::map<Identifier, Resource*>::iterator it;
-      for (it = m_resourceMap.begin(); it != m_resourceMap.end(); ++it) {
+      for (it = m_resourceMap.begin(); it != m_resourceMap.end(); ++it)
         delete it->second;
-        m_resourceMap.erase(it);
-      }
     }
 
     void load(Identifier id, const std::string& filename) {

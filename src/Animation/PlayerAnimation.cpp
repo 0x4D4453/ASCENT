@@ -17,8 +17,10 @@ namespace Animations {
 
   }
 
-  void PlayerAnimation::update(const float deltaTime, bool isJumping, const sf::Vector2f velocity) {
-    if (isJumping)
+  void PlayerAnimation::update(const float deltaTime, bool isJumping, bool isCharging, const sf::Vector2f velocity) {
+    if (isCharging)
+      m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Charge)]);
+    else if (isJumping)
       m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Jump)]);
     else if (velocity.x == 0.f)
       m_pEntity->setTexture(m_animationFrames[static_cast<int>(PlayerFrames::Idle)]);

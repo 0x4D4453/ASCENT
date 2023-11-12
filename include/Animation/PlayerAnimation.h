@@ -12,13 +12,14 @@ namespace Animations {
         Walk1,
         Walk2,
         Walk3,
-        Jump
+        Jump,
+        Charge
       };
 
     public:
       PlayerAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~PlayerAnimation();
-      void update(const float deltaTime, bool isJumping, const sf::Vector2f velocity);
+      void update(const float deltaTime, bool isJumping, bool isCharging, const sf::Vector2f velocity);
   };
 }
 

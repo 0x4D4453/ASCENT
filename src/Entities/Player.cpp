@@ -17,7 +17,7 @@
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::Texture& chargeTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
     , m_animation(this)
     , m_points(0)
@@ -41,6 +41,7 @@ namespace Entities {
     m_animation.includeFrame(&walk2Texture);
     m_animation.includeFrame(&walk3Texture);
     m_animation.includeFrame(&jumpTexture);
+    m_animation.includeFrame(&chargeTexture);
 
     m_jumpSound.setBuffer(jumpSoundBuffer);
 
@@ -123,7 +124,7 @@ namespace Entities {
   }
 
   void Player::update() {
-    m_animation.update(m_dt, m_isJumping, m_velocity);
+    m_animation.update(m_dt, m_isJumping, m_isCharging, m_velocity);
 
     if (m_velocity.x < 0)
       m_sprite.setScale(-Constants::SCALE, Constants::SCALE);

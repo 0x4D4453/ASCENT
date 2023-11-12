@@ -50,6 +50,7 @@ namespace Entities {
             , sf::Texture& walk2Texture
             , sf::Texture& walk3Texture
             , sf::Texture& jumpTexture
+            , sf::Texture& chargeTexture
             , sf::SoundBuffer& jumpSoundBuffer
             , sf::Keyboard::Key moveLeftKey = sf::Keyboard::A
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D

@@ -7,6 +7,7 @@ namespace Sounds {
   };
 
   constexpr char PLAYER_JUMP[] = "assets/sfx/jumpSound.ogg";
+  constexpr char STAGE_BG[] = "assets/music/underground.flac";
 }
 
 #endif

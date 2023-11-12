@@ -140,5 +140,11 @@ namespace States {
       m_pGraphicsManager->getWindow()->draw(*(*it));
       ++it;
     }
+
+    sf::Time* timeSinceLastUpdate = m_pGraphicsManager->getTimeSinceLastUpdate();
+    const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
+
+    while (*timeSinceLastUpdate >= *timePerFrame)
+      (*timeSinceLastUpdate) -= (*timePerFrame);
   }
 }

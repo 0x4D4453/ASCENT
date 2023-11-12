@@ -7,8 +7,7 @@
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
 #include "Utility/List.h"
-#include "Utility/ResourceHolder.h"
-#include "Utility/Textures.h"
+#include "Utility/Sounds.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -22,8 +21,8 @@
 #include "nlohmann/json.hpp"
 
 namespace Stages {
-  Manager::GraphicsManager* Stage::m_graphicsManager(Manager::GraphicsManager::getInstance());
-  const float Stage::m_dt(Stage::m_graphicsManager->getTimePerFrame()->asSeconds()); 
+  Manager::GraphicsManager* Stage::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
+  const float Stage::m_dt(Stage::m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
 
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
@@ -40,6 +39,11 @@ namespace Stages {
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setObstaclesList(&m_platforms);
     m_collisionManager.setEnemiesList(&m_enemies);
+
+    m_bgMusic.openFromFile(Sounds::STAGE_BG);
+    m_bgMusic.setVolume(10);
+    m_bgMusic.setLoop(true);
+    m_bgMusic.play();
   }
 
   Stage::~Stage() {
@@ -103,8 +107,8 @@ namespace Stages {
   }
   
   void Stage::update() {
-    sf::Time* timeSinceLastUpdate = m_graphicsManager->getTimeSinceLastUpdate();
-    const sf::Time* timePerFrame = m_graphicsManager->getTimePerFrame();
+    sf::Time* timeSinceLastUpdate = m_pGraphicsManager->getTimeSinceLastUpdate();
+    const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
       updateEntities(m_enemies);
@@ -113,7 +117,7 @@ namespace Stages {
     }
 
     Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
-    m_graphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
+    m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
   }
 
   void Stage::setPaused(const bool paused) {

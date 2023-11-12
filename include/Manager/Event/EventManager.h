@@ -16,9 +16,11 @@ namespace Manager {
       private:
         static EventManager* m_instance;
         GraphicsManager *m_pGraphicsManager;
+
+      private:
+        EventManager();
       
       public:
-        EventManager();
         ~EventManager();
 
         static EventManager* getInstance();

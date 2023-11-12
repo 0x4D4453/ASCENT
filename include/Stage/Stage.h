@@ -4,7 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
-#include "Manager/CollisionManager.h"
+#include "Manager/Collision/CollisionManager.h"
 
 /* Forward Declaration */
 namespace Manager { class GraphicsManager; }
@@ -17,7 +17,7 @@ namespace Stages {
     protected:
       static Manager::GraphicsManager* m_graphicsManager;
       static const float m_dt;
-      Manager::CollisionManager m_collisionManager;
+      Manager::Collision::CollisionManager m_collisionManager;
       EntityList m_players;
       EntityList m_platforms;
       EntityList m_enemies;

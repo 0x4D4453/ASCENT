@@ -3,7 +3,9 @@
 
 /* Program Defined */
 #include "Being.h"
-#include "Manager/CollisionManager.h"
+#include "Manager/Collision/CollisionManager.h"
+#include "Manager/Collision/CollisionStrategy.h"
+#include "Manager/Collision/CollisionStrategyFactory.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -23,12 +25,14 @@ namespace Entities {
 
   class Entity : public Being {
     protected:
-      static Manager::CollisionManager* m_pCollisionManager;
+      static Manager::Collision::CollisionManager* m_pCollisionManager;
+      static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
       EntityID m_entityId;
       sf::Vector2f m_position;
       sf::Vector2f m_velocity;
       float m_speed;
       bool m_isStaggered;
+      Manager::Collision::CollisionStrategy* m_pCollision;
     
     protected:
       void setEntityId(EntityID id);
@@ -51,7 +55,7 @@ namespace Entities {
       Entity(const sf::Vector2f position, const float speed = 200.f);
       virtual ~Entity();
 
-      static void setCollisionManager(Manager::CollisionManager* manager);
+      static void setCollisionManager(Manager::Collision::CollisionManager* manager);
       EntityID getEntityId() const;
 
       sf::Vector2f getPosition() const;
@@ -64,7 +68,7 @@ namespace Entities {
 
       virtual void move();
       virtual void move(const sf::Vector2f movement);
-      virtual void collide(Entity *entity, CollisionType type, float overlap);
+      virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
 
       virtual void save() = 0;
       virtual void exec() = 0;

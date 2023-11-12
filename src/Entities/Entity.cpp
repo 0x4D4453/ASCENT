@@ -5,6 +5,9 @@
 #include "Utility/Constants.h"
 
 namespace Entities {
+  Manager::Collision::CollisionManager* Entity::m_pCollisionManager = NULL;
+  Manager::Collision::CollisionStrategyFactory* Entity::m_pCollisionFactory(Manager::Collision::CollisionStrategyFactory::getInstance());
+
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
     , m_entityId(EntityID::EntityE)
@@ -12,6 +15,7 @@ namespace Entities {
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
+    , m_pCollision(m_pCollisionFactory->getCollisionStrategy(Manager::Collision::StrategyId::Default))
   {
     setPosition(m_position);
   }
@@ -88,18 +92,11 @@ namespace Entities {
     m_sprite.move(movement);
   }
 
-  void Entity::collide(Entity* entity, CollisionType type, float overlap) {
-    if (type == CollisionType::Horizontal) {
-      entity->move(sf::Vector2f(overlap, 0));
-    } else {
-      entity->move(sf::Vector2f(0, overlap));
-      entity->setVelocity(sf::Vector2f(0.f, 0.f));
-    }
+  void Entity::collide(Entity* entity, Manager::Collision::CollisionType type, float overlap) {
+    m_pCollision->collide(this, entity, type, overlap);
   }
 
-  void Entity::setCollisionManager(Manager::CollisionManager* manager) {
+  void Entity::setCollisionManager(Manager::Collision::CollisionManager* manager) {
     m_pCollisionManager = manager;
   }
-
-  Manager::CollisionManager* Entity::m_pCollisionManager = NULL;
 }

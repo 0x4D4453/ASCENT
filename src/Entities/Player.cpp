@@ -29,6 +29,8 @@ namespace Entities {
     , m_jumpHeight(m_minJumpHeight)
   {
     setEntityId(EntityID::PlayerE);
+    
+    m_pCollision = m_pCollisionFactory->getCollisionStrategy(Manager::Collision::StrategyId::Player);
 
     m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
     m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));
@@ -52,7 +54,8 @@ namespace Entities {
   }
 
   Player::~Player() {
-
+    m_keyBinding.clear();
+    m_actionBinding.clear();
   }
 
   void Player::setup() {  
@@ -130,13 +133,6 @@ namespace Entities {
     m_velocity.y = -m_jumpHeight;
 
     m_jumpHeight = m_minJumpHeight;
-  }
-
-  void Player::collide(Entity* entity, CollisionType type, float overlap) {
-    if (type == CollisionType::Vertical) {
-      setIsJumping(false);
-      setIsStaggered(false);
-    }
   }
 
   void Player::update() {

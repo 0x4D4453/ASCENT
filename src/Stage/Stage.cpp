@@ -3,7 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Player.h"
-#include "Manager/CollisionManager.h"
+#include "Manager/Collision/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
 #include "Utility/List.h"

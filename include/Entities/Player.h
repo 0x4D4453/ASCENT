@@ -61,7 +61,6 @@ namespace Entities {
       void setIsJumping(const bool isJumping);
       const bool getIsCharging() const;
       void setIsCharging(const bool isCharging);
-      virtual void collide(Entity *entity, CollisionType type, float overlap);
       virtual void exec();
       virtual void save();
   };

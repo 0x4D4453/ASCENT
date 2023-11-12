@@ -14,7 +14,7 @@ namespace Animations {
   class Animation {
     protected:
       Entities::Entity* m_pEntity;
-      std::vector<sf::Texture*> m_animationFrames;
+      sf::IntRect m_textureRect;
       int m_currentFrame;
       float m_totalTime;
       float m_timePerFrame;
@@ -22,7 +22,6 @@ namespace Animations {
     public:
       Animation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~Animation();
-      void includeFrame(sf::Texture* pFrame);
   };
 }
 

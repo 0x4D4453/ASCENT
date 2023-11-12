@@ -3,11 +3,12 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
+#include "Utility/Constants.h"
 
 namespace Animations {
   Animation::Animation(Entities::Entity* pEntity, float timePerFrame) 
     : m_pEntity(pEntity)
-    , m_animationFrames()
+    , m_textureRect(sf::IntRect(0, 0, Constants::SPRITE_SIZE, Constants::SPRITE_SIZE))
     , m_totalTime(0.f)
     , m_timePerFrame(timePerFrame)
   {
@@ -16,9 +17,5 @@ namespace Animations {
 
   Animation::~Animation() {
 
-  }
-
-  void Animation::includeFrame(sf::Texture* pFrame) {
-    m_animationFrames.push_back(pFrame);
   }
 }

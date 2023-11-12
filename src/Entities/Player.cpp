@@ -17,7 +17,7 @@
 #include "nlohmann/json.hpp"
 
 namespace Entities {
-  Player::Player(sf::Texture& idleTexture, sf::Texture& walk1Texture, sf::Texture& walk2Texture, sf::Texture& walk3Texture, sf::Texture& jumpTexture, sf::Texture& chargeTexture, sf::Texture& staggerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
+  Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
     : Character()
     , m_animation(this)
     , m_points(0)
@@ -39,15 +39,8 @@ namespace Entities {
     m_actionBinding.insert(std::make_pair(MoveLeft, &Player::moveLeft));
     m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
     m_actionBinding.insert(std::make_pair(Jump, &Player::chargeJump));
-
-    m_animation.includeFrame(&idleTexture);
-    m_animation.includeFrame(&walk1Texture);
-    m_animation.includeFrame(&walk2Texture);
-    m_animation.includeFrame(&walk3Texture);
-    m_animation.includeFrame(&jumpTexture);
-    m_animation.includeFrame(&chargeTexture);
-    m_animation.includeFrame(&staggerTexture);
-
+    
+    setTexture(playerTexture);
     m_jumpSound.setBuffer(jumpSoundBuffer);
 
     setup();

@@ -167,7 +167,7 @@ namespace Stages {
 
     stage.close();
 
-    m_graphicsManager->setStageSize((i - 1) * Constants::TILE_SIZE, (j - 1) * Constants::TILE_SIZE);
+    m_graphicsManager->setStageSize(i * Constants::TILE_SIZE, j * Constants::TILE_SIZE);
     createPlayers(i);
   }
 }

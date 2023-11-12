@@ -16,7 +16,7 @@ namespace Manager { class GraphicsManager; }
 
 namespace Stages {
   class StageFactory {
-    protected:
+    private:
       static Manager::GraphicsManager* m_graphicsManager;
       ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
       ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
@@ -25,7 +25,7 @@ namespace Stages {
       EntityList* m_enemies;
       bool m_newGame;
     
-    protected:
+    private:
       void loadTextures();
       void loadSounds();
       void createMap(const char* stageTxt);

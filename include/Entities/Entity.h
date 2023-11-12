@@ -37,19 +37,6 @@ namespace Entities {
       void setSpeed(const float speed);
     
     public:
-      class Coordinates {
-        public:
-          float left;
-          float right;
-          float top;
-          float bottom;
-        
-        public:
-          Coordinates(float l = 0.f, float r = 0.f, float t = 0.f, float b = 0.f);
-          ~Coordinates();
-      };
-    
-    public:
       Entity(const sf::Vector2f position, const float speed = 200.f);
       virtual ~Entity();
 
@@ -60,7 +47,6 @@ namespace Entities {
       void setPosition(sf::Vector2f position);
       sf::Vector2f getVelocity() const;
       void setVelocity(const sf::Vector2f velocity);
-      Coordinates getCoordinates() const;
       void setIsStaggered(const bool isStaggered);
       const bool getIsStaggered() const;
 

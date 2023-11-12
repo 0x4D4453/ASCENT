@@ -26,12 +26,14 @@ namespace States {
       States::StateStack* m_pStateStack;
       Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Event::EventManager* m_pEventManager;
+
+    protected:
+      virtual void handleEvent(sf::Event& event) = 0;
     
     public:
       State();
       virtual ~State();
       virtual void eventUpdate(Manager::Event::EventSubject* subject);
-      virtual void handleEvent(sf::Event& event) = 0;
       virtual void exec() = 0;
   };
 }

@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
+#include "Utility/Constants.h"
 
 namespace Animations {
   PlayerAnimation::PlayerAnimation(Entities::Entity* pEntity, float timePerFrame)
@@ -16,18 +17,19 @@ namespace Animations {
   }
 
   void PlayerAnimation::update(const float deltaTime, bool isJumping, bool isCharging, bool isStaggered, const sf::Vector2f velocity) {
-    // TODO: Staggered
-    if (isCharging)
-      m_textureRect.left = 64;
+    if (isStaggered)
+      m_textureRect.left = Constants::SPRITE_SIZE * 6;
+    else if (isCharging)
+      m_textureRect.left = Constants::SPRITE_SIZE * 4;
     else if (isJumping)
-      m_textureRect.left = 80;
+      m_textureRect.left = Constants::SPRITE_SIZE * 5;
     else if (velocity.x == 0.f)
       m_textureRect.left = 0;
     else {
       m_totalTime += deltaTime;
       if (m_totalTime >= m_timePerFrame) {
         m_totalTime -= m_timePerFrame;
-        m_textureRect.left = 16 * m_currentFrame;
+        m_textureRect.left = Constants::SPRITE_SIZE * m_currentFrame;
         ++m_currentFrame;
         if (m_currentFrame > static_cast<int>(PlayerFrames::Walk3))
           m_currentFrame = static_cast<int>(PlayerFrames::Walk1);

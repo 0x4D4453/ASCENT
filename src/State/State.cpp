@@ -27,6 +27,8 @@ namespace States {
       return;
 
     sf::Event event = m_pEventManager->getEvent();
-    handleEvent(event);
+
+    if (m_pStateStack->getBack() == this)
+      handleEvent(event);
   }
 }

@@ -111,9 +111,8 @@ namespace States {
     }
   }
 
-  void StateStack::handleEvents(sf::Event& event) {
-    if (!m_stack.empty())
-      m_stack.back()->handleEvent(event);
+  State* StateStack::getBack() const {
+    return m_stack.back();
   }
 
   void StateStack::exec() {

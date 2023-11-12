@@ -46,8 +46,8 @@ namespace States {
       static StateStack* getInstance();
       void pushState(StateType stateType, State* pState = NULL, const bool isReplacing = false);
       void popState();
-      void handleEvents(sf::Event& event);
       void exec();
+      State* getBack() const;
   };
 }
 

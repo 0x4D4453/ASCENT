@@ -22,7 +22,7 @@ namespace Manager {
 
       Entities::Player* player = dynamic_cast<Entities::Player*>(ownEntity);
       
-      if (type == Manager::Collision::CollisionType::Vertical) {
+      if (type == Manager::Collision::CollisionType::Vertical && player->getPosition().y <= otherEntity->getPosition().y) {
         player->setIsJumping(false);
         player->setIsStaggered(false);
       }

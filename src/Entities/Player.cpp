@@ -24,9 +24,9 @@ namespace Entities {
     , m_isJumping(false)
     , m_isCharging(false)
     , m_chargingSpeed(10.f)
+    , m_jumpHeight(2.f)
     , m_minJumpHeight(2.f)
     , m_maxJumpHeight(10.f)
-    , m_jumpHeight(m_minJumpHeight)
   {
     setEntityId(EntityID::PlayerE);
     

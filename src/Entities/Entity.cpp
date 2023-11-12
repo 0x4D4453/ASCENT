@@ -6,7 +6,6 @@
 
 namespace Entities {
   Manager::Collision::CollisionManager* Entity::m_pCollisionManager = NULL;
-  Manager::Collision::CollisionStrategyFactory* Entity::m_pCollisionFactory(Manager::Collision::CollisionStrategyFactory::getInstance());
 
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
@@ -15,7 +14,7 @@ namespace Entities {
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
-    , m_pCollision(m_pCollisionFactory->getCollisionStrategy(Manager::Collision::StrategyId::Default))
+    , m_pCollision(m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Default))
   {
     setPosition(m_position);
   }

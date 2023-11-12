@@ -14,7 +14,7 @@ namespace Entities {
     setEntityId(EntityID::PlatformE);
     setTexture(texture);
 
-    m_pCollision = m_pCollisionFactory->getCollisionStrategy(Manager::Collision::StrategyId::Platform);
+    m_pCollision = m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Platform);
   }
 
   Platform::~Platform() {

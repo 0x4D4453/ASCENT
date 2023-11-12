@@ -30,7 +30,7 @@ namespace Entities {
   {
     setEntityId(EntityID::PlayerE);
     
-    m_pCollision = m_pCollisionFactory->getCollisionStrategy(Manager::Collision::StrategyId::Player);
+    m_pCollision = m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Player);
 
     m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
     m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));

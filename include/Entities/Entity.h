@@ -5,7 +5,6 @@
 #include "Being.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/Collision/CollisionStrategy.h"
-#include "Manager/Collision/CollisionStrategyFactory.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -26,13 +25,12 @@ namespace Entities {
   class Entity : public Being {
     protected:
       static Manager::Collision::CollisionManager* m_pCollisionManager;
-      static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
+      Manager::Collision::CollisionStrategy* m_pCollision;
       EntityID m_entityId;
       sf::Vector2f m_position;
       sf::Vector2f m_velocity;
       float m_speed;
       bool m_isStaggered;
-      Manager::Collision::CollisionStrategy* m_pCollision;
     
     protected:
       void setEntityId(EntityID id);

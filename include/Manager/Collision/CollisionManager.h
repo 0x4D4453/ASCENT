@@ -1,6 +1,9 @@
 #ifndef COLLISIONMANAGER_H
 #define COLLISIONMANAGER_H
 
+/* Program Defined */
+#include "Manager/Collision/CollisionStrategyFactory.h"
+
 /* SFML Library */
 #include <SFML/Graphics.hpp>
 #include <SFML/System/NonCopyable.hpp>
@@ -18,6 +21,7 @@ namespace Manager {
 
     class CollisionManager : public sf::NonCopyable {
       private:
+        static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
         Entities::Entity* m_pEntity;
         EntityList* m_pPlayers;
         EntityList* m_pObstacles;
@@ -25,6 +29,8 @@ namespace Manager {
 
       private:
         void verifyOverlap(Entities::Entity* entity);
+        void verifyCollisionObstacles();
+        void verifyCollisionEnemies();
       
       public:
         CollisionManager();
@@ -32,9 +38,8 @@ namespace Manager {
         void setPlayersList(EntityList* playersList);
         void setObstaclesList(EntityList* obstaclesList);
         void setEnemiesList(EntityList* enemiesList);
-        void verifyCollisionObstacles();
-        void verifyCollisionEnemies();
         void verifyCollision(Entities::Entity* entity);
+        CollisionStrategy* getCollisionStrategy(StrategyId id);
     };
   }
 }

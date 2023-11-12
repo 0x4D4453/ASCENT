@@ -13,6 +13,8 @@
 
 namespace Manager {
   namespace Collision {
+    Manager::Collision::CollisionStrategyFactory* CollisionManager::m_pCollisionFactory(Manager::Collision::CollisionStrategyFactory::getInstance());
+
     CollisionManager::CollisionManager()
       : m_pEntity(NULL)
       , m_pPlayers(NULL)
@@ -87,6 +89,10 @@ namespace Manager {
 
       for (enemiesIterator = m_pEnemies->first(); enemiesIterator != m_pEnemies->last(); ++enemiesIterator)
         verifyOverlap(*enemiesIterator);
+    }
+
+    CollisionStrategy* CollisionManager::getCollisionStrategy(StrategyId id) {
+      return m_pCollisionFactory->getCollisionStrategy(id);
     }
   }
 }

@@ -16,6 +16,7 @@ namespace Stages {
   class Stage {
     protected:
       static Manager::GraphicsManager* m_graphicsManager;
+      static const float m_dt;
       Manager::CollisionManager m_collisionManager;
       EntityList m_players;
       EntityList m_platforms;
@@ -23,6 +24,7 @@ namespace Stages {
       bool m_paused;
 
     protected:
+      void applyPhysics(Entities::Entity* entity);
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
       void update();

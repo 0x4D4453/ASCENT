@@ -23,6 +23,7 @@
 
 namespace Stages {
   Manager::GraphicsManager* Stage::m_graphicsManager(Manager::GraphicsManager::getInstance());
+  const float Stage::m_dt(Stage::m_graphicsManager->getTimePerFrame()->asSeconds()); 
 
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
@@ -65,6 +66,25 @@ namespace Stages {
 
   }
 
+  void Stage::applyPhysics(Entities::Entity* entity) {
+    sf::Vector2f velocity = entity->getVelocity();
+
+    // Gravity
+    velocity.y += Constants::GRAVITY * m_dt;
+    if (velocity.y > Constants::MAX_FALL_SPEED)
+      velocity.y = Constants::MAX_FALL_SPEED;
+
+    // Drag
+    if (entity->getIsStaggered()) {
+      if (velocity.x > 0)
+        velocity.x -= Constants::DRAG * m_dt;
+      else if (velocity.x < 0)
+        velocity.x += Constants::DRAG * m_dt;
+    }
+
+    entity->setVelocity(velocity);
+  }
+
   void Stage::drawEntities(EntityList& entityList) {
     List<Entities::Entity*>::Iterator it = entityList.first();
     while (it != entityList.last()) {
@@ -76,6 +96,7 @@ namespace Stages {
   void Stage::updateEntities(EntityList& entityList) {
     List<Entities::Entity*>::Iterator it = entityList.first();
     while (it != entityList.last()) {
+      applyPhysics((*it));
       (*it)->exec();
       ++it;
     }

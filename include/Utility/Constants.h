@@ -13,7 +13,7 @@ namespace Constants {
   constexpr float TILE_SIZE = SPRITE_SIZE * SCALE;
   
   constexpr float GRAVITY = 20.f;
-  constexpr float DRAG = 20.f;
+  constexpr float DRAG = 2.5f;
   constexpr float MAX_FALL_SPEED = 20.f;
 }
 

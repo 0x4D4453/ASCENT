@@ -78,11 +78,6 @@ namespace Entities {
   }
 
   void Entity::move() {
-    m_velocity.y += Constants::GRAVITY * m_dt;
-    
-    if (m_velocity.y > Constants::MAX_FALL_SPEED)
-      m_velocity.y = Constants::MAX_FALL_SPEED;
-      
     m_sprite.move(m_velocity);
 
     if (m_velocity.x != 0 || m_velocity.y != 0)

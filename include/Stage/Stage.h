@@ -6,21 +6,22 @@
 #include "Entities/EntityList.h"
 #include "Manager/CollisionManager.h"
 
-/* Forward Declaration */
-namespace Manager { class GraphicsManager; }
-
 /* SFML Library */
 #include <SFML/Audio.hpp>
+
+/* Forward Declaration */
+namespace Manager { class GraphicsManager; }
 
 namespace Stages {
   class Stage {
     protected:
-      static Manager::GraphicsManager* m_graphicsManager;
+      static Manager::GraphicsManager* m_pGraphicsManager;
       Manager::CollisionManager m_collisionManager;
       EntityList m_players;
       EntityList m_platforms;
       EntityList m_enemies;
       bool m_paused;
+      sf::Music m_bgMusic;
 
     protected:
       void drawEntities(EntityList& entityList);

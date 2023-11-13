@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Goomba.h"
+#include "Entities/Fly.h"
 #include "Entities/Platform.h"
 
 /* Standard Library */
@@ -42,6 +43,9 @@ namespace Entities {
         break;
       case (GoombaE):
         m_pEntity = static_cast<Entity*>(new Goomba(m_pTextureHolder->getResource(textureID), position));
+        break;
+      case (FlyE):
+        m_pEntity = static_cast<Entity*>(new Fly(m_pTextureHolder->getResource(textureID), position));
         break;
       case (EnemyE):
         m_pEntity = static_cast<Entity*>(new Goomba(m_pTextureHolder->getResource(textureID), position));

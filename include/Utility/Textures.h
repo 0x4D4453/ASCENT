@@ -6,7 +6,7 @@ namespace Textures {
     Player1,
     Player2,
     Goomba,
-    Enemy2,
+    Fly,
     Enemy3,
     Projectile,
     Platform,
@@ -40,6 +40,7 @@ namespace Textures {
   constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0192.png";
 
   constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
+  constexpr char FLY[] = "assets/tiles/flySpriteSheet.png";
   constexpr char ENEMY1[] = "assets/tiles/tile_0320.png";
   constexpr char ENEMY2[] = "assets/tiles/tile_0340.png";
   constexpr char ENEMY3[] = "assets/tiles/tile_0122.png";

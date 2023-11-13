@@ -20,6 +20,7 @@ namespace Entities {
     PlayerE,
     PlatformE,
     GoombaE,
+    FlyE,
   };
 
   enum EntityGroup {

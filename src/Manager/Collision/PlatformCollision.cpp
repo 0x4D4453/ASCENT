@@ -18,12 +18,14 @@ namespace Manager {
 
   void PlatformCollision::collide(Entities::Entity* onwEntity, Entities::Entity* otherEntity, CollisionType type, float overlap) {
     switch (otherEntity->getEntityId()) {
+      case Entities::EntityID::FlyE:
+        return;
       case Entities::EntityID::PlayerE:
         playerCollide(onwEntity, dynamic_cast<Entities::Player*>(otherEntity), type);
         break;
       default:
         if (type == CollisionType::Vertical)
-          otherEntity->setVelocity(sf::Vector2f(0.f, 0.f));
+          otherEntity->setVelocity(sf::Vector2f(otherEntity->getVelocity().x, 0.f));
         break;
     }
 

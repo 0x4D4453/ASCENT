@@ -13,6 +13,7 @@ namespace Manager {
       Default,
       Platform,
       Player,
+      NoCollision,
     };
 
     class CollisionStrategyFactory {

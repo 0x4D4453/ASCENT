@@ -15,8 +15,8 @@ namespace Entities {
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
-    , m_isColliding(false)
-    , m_pCollision(m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Default))
+    , m_isColliding(true)
+    , m_pCollision(m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::NoCollision))
   {
     setPosition(m_position);
   }

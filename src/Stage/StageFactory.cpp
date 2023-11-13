@@ -6,7 +6,6 @@
 #include "Entities/EntityFactory.h"
 #include "Stage/FirstStage.h"
 #include "Entities/Goomba.h"
-#include "Entities/MovingPlatform.h"
 #include "Entities/Platform.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
@@ -47,7 +46,7 @@ namespace Stages {
     m_textureHolder.load(Textures::Player2, Textures::PLAYER2);
 
     m_textureHolder.load(Textures::Goomba, Textures::GOOMBA);
-    m_textureHolder.load(Textures::Enemy2, Textures::ENEMY2);
+    m_textureHolder.load(Textures::Fly, Textures::FLY);
     m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
 
     m_textureHolder.load(Textures::Platform, Textures::PLATFORM);
@@ -141,8 +140,8 @@ namespace Stages {
           case ('S'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformLeft, position)); break;
           case ('O'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformMiddle, position)); break;
           case ('Q'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformRight, position)); break;
-          case ('E'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Goomba, position)); break;
-          case ('F'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy2, position)); break;
+          case ('E'): defineGroup(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
+          case ('F'): defineGroup(m_entityFactory.createEntity(Entities::FlyE, Textures::Fly, position)); break;
           case ('G'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
           default: break;
         }

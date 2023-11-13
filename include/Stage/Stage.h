@@ -25,6 +25,7 @@ namespace Stages {
       sf::Music m_bgMusic;
 
     protected:
+      virtual void setup() = 0;
       void applyPhysics(Entities::Entity* entity);
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
@@ -41,7 +42,8 @@ namespace Stages {
       void setPaused(const bool paused);
       void loadSaveGame();
       void saveGame();
-      virtual void exec();
+      // virtual void exec();
+      void exec();
   };
 }
 

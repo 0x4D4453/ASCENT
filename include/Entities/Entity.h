@@ -37,6 +37,7 @@ namespace Entities {
       sf::Vector2f m_velocity;
       float m_speed;
       bool m_isStaggered;
+      bool m_isColliding;
     
     protected:
       void setEntityId(EntityID id);

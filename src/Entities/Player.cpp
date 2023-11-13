@@ -137,6 +137,9 @@ namespace Entities {
       m_sprite.setScale(Constants::SCALE, Constants::SCALE);
 
     move();
+
+    if (!m_isColliding)
+      m_isJumping = true;
   }
 
   void Player::exec() {

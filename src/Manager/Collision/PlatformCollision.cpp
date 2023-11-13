@@ -35,7 +35,7 @@ namespace Manager {
 
   void PlatformCollision::playerCollide(Entities::Entity *ownEntity, Entities::Player* player, CollisionType type) {
     if (type == CollisionType::Horizontal && player->getIsJumping()) {
-      player->setVelocity(sf::Vector2f(-player->getVelocity().x * .5f, -2.5f));
+      player->setVelocity(sf::Vector2f(-player->getVelocity().x * .5f, player->getVelocity().y));
       player->setIsStaggered(true);
     } else {
       if (ownEntity->getPosition().y >= player->getPosition().y)

@@ -29,9 +29,9 @@ namespace Manager {
         EntityList* m_pEnemies;
 
       private:
-        void verifyOverlap(Entities::Entity* entity);
-        void verifyCollisionObstacles();
-        void verifyCollisionEnemies();
+        bool verifyOverlap(Entities::Entity* entity);
+        bool verifyCollisionObstacles();
+        bool verifyCollisionEnemies();
       
       public:
         CollisionManager();
@@ -39,7 +39,7 @@ namespace Manager {
         void setPlayersList(EntityList* playersList);
         void setObstaclesList(EntityList* obstaclesList);
         void setEnemiesList(EntityList* enemiesList);
-        void verifyCollision(Entities::Entity* entity);
+        bool verifyCollision(Entities::Entity* entity);
         CollisionStrategy* getCollisionStrategy(StrategyId id);
     };
   }

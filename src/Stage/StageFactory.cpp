@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityFactory.h"
+#include "Stage/FirstStage.h"
 #include "Entities/Goomba.h"
 #include "Entities/MovingPlatform.h"
 #include "Entities/Platform.h"
@@ -69,7 +70,7 @@ namespace Stages {
   }
 
   Stage* StageFactory::createStage(const char* stageTxt) {
-    Stage* stage = new Stage(m_newGame);
+    Stage* stage = new FirstStage(m_newGame);
 
     m_players = stage->getPlayers();
     m_platforms = stage->getPlatforms();

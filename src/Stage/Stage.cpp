@@ -63,7 +63,7 @@ namespace Stages {
   }
 
   void Stage::loadSaveGame() {
-
+    setup();
   }
 
   void Stage::saveGame() {

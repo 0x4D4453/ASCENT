@@ -46,15 +46,17 @@ namespace Manager {
         m_pEnemies = enemiesList;
     }
 
-    void CollisionManager::verifyOverlap(Entities::Entity* entity) {
+    bool CollisionManager::verifyOverlap(Entities::Entity* entity) {
       using namespace Entities;
 
       const sf::FloatRect cEntityCoordinates = entity->getGlobalBounds();
       const sf::FloatRect mEntityCoordinates = m_pEntity->getGlobalBounds();
+      bool overlap = false;
 
       if (mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect)) {
         float xOverlap = m_intersectionRect.width;
         float yOverlap = m_intersectionRect.height;
+        overlap = true;
 
         if (yOverlap != 0 && yOverlap < xOverlap) {
           if (mEntityCoordinates.top < cEntityCoordinates.top)
@@ -68,26 +70,33 @@ namespace Manager {
           m_pEntity->collide(entity, Manager::Collision::CollisionType::Horizontal, xOverlap);
         }
       }
+
+      return overlap;
     }
 
-    void CollisionManager::verifyCollision(Entities::Entity* entity) {
+    bool CollisionManager::verifyCollision(Entities::Entity* entity) {
       m_pEntity = entity;
-      verifyCollisionObstacles();
-      verifyCollisionEnemies();
+      return verifyCollisionObstacles() || verifyCollisionEnemies();
     }
 
-    void CollisionManager::verifyCollisionObstacles() {
+    bool CollisionManager::verifyCollisionObstacles() {
       List<Entities::Entity*>::Iterator obstaclesIterator;
+      bool overlap = false;
 
       for (obstaclesIterator = m_pObstacles->first(); obstaclesIterator != m_pObstacles->last(); ++obstaclesIterator)
-        verifyOverlap(*obstaclesIterator);
+        overlap = verifyOverlap(*obstaclesIterator) || overlap;
+
+      return overlap;
     }
 
-    void CollisionManager::verifyCollisionEnemies() {
+    bool CollisionManager::verifyCollisionEnemies() {
       List<Entities::Entity*>::Iterator enemiesIterator;
+      bool overlap = false;
 
       for (enemiesIterator = m_pEnemies->first(); enemiesIterator != m_pEnemies->last(); ++enemiesIterator)
-        verifyOverlap(*enemiesIterator);
+        overlap = verifyOverlap(*enemiesIterator) || overlap;
+
+      return overlap;
     }
 
     CollisionStrategy* CollisionManager::getCollisionStrategy(StrategyId id) {

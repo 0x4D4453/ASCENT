@@ -15,6 +15,7 @@ namespace Entities {
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
+    , m_isColliding(false)
     , m_pCollision(m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Default))
   {
     setPosition(m_position);
@@ -73,7 +74,7 @@ namespace Entities {
     m_sprite.move(m_velocity);
 
     if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_pCollisionManager->verifyCollision(this);
+      m_isColliding = m_pCollisionManager->verifyCollision(this);
   }
 
   void Entity::move(const sf::Vector2f movement) {

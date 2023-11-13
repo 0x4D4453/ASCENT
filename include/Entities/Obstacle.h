@@ -1,5 +1,5 @@
 #ifndef OBSTACLE_H
-#define OBSCTACLE_H
+#define OBSTACLE_H
 
 /* Program Defined */
 #include "Entities/Entity.h"

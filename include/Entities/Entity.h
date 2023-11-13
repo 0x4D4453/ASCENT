@@ -22,11 +22,17 @@ namespace Entities {
     GoombaE,
   };
 
+  enum EntityGroup {
+    Static,
+    Dynamic,
+  };
+
   class Entity : public Being {
     protected:
       static Manager::Collision::CollisionManager* m_pCollisionManager;
       Manager::Collision::CollisionStrategy* m_pCollision;
       EntityID m_entityId;
+      EntityGroup m_entityGroup;
       sf::Vector2f m_position;
       sf::Vector2f m_velocity;
       float m_speed;
@@ -34,6 +40,7 @@ namespace Entities {
     
     protected:
       void setEntityId(EntityID id);
+      void setEntityGroup(EntityGroup group);
       void setSpeed(const float speed);
     
     public:
@@ -42,6 +49,7 @@ namespace Entities {
 
       static void setCollisionManager(Manager::Collision::CollisionManager* manager);
       EntityID getEntityId() const;
+      EntityGroup getEntityGroup() const;
 
       sf::Vector2f getPosition() const;
       void setPosition(sf::Vector2f position);

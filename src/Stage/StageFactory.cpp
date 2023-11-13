@@ -2,7 +2,10 @@
 #include "Stage/StageFactory.h"
 
 /* Program Defined */
+#include "Entities/Entity.h"
+#include "Entities/EntityFactory.h"
 #include "Entities/Goomba.h"
+#include "Entities/MovingPlatform.h"
 #include "Entities/Platform.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
@@ -23,11 +26,15 @@ namespace Stages {
 
   StageFactory::StageFactory(const bool newGame)
     : m_newGame(newGame)
+    , m_entityFactory()
     , m_textureHolder()
     , m_soundHolder()
   {
     loadTextures();
     loadSounds();
+
+    m_entityFactory.setTextureHolder(&m_textureHolder);
+    m_entityFactory.setSoundHolder(&m_soundHolder);
   }
 
   StageFactory::~StageFactory() {
@@ -72,6 +79,21 @@ namespace Stages {
     return stage;
   }
 
+  void StageFactory::defineGroup(Entities::Entity* pEntity) {
+    using namespace Entities;
+
+    EntityGroup group = pEntity->getEntityGroup();
+
+    switch (group) {
+      case (EntityGroup::Static):
+        m_platforms->include(pEntity);
+        break;
+      case (EntityGroup::Dynamic):
+        m_enemies->include(pEntity);
+        break;
+    }
+  }
+
   void StageFactory::createPlayers(int stageHeight) {
     m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
     m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
@@ -87,36 +109,8 @@ namespace Stages {
     }
   }
 
-  void StageFactory::createPlatform(const sf::Vector2f position, Textures::ID textureID) {
-    using namespace Entities;
-    Entities::Entity* pEntity = NULL;
-
-    pEntity = static_cast<Entity*>(new Platform(m_textureHolder.getResource(textureID), position));
-
-    if (!pEntity) {
-      std::cerr << "Error creating platform!\n";
-      return;
-    }
-
-    m_platforms->include(pEntity);
-  }
-
-  void StageFactory::createEnemy(const sf::Vector2f position, Textures::ID textureID) {
-    using namespace Entities;
-    Entities::Entity* pEntity = NULL;
-
-    pEntity = static_cast<Entity*>(new Goomba(m_textureHolder.getResource(textureID), position));
-
-    if (!pEntity) {
-      std::cerr << "Error creating enemy!\n";
-      return;
-    }
-
-    m_enemies->include(pEntity);
-  }
-
   void StageFactory::createMap(const char* stageTxt) {
-    std::ifstream stage("assets/stage_2.txt");
+    std::ifstream stage("assets/stage_1.txt");
 
     if (!stage) {
       std::cout << "Error loading stage\n";
@@ -133,20 +127,20 @@ namespace Stages {
         position.y = i * Constants::TILE_SIZE;
 
         switch (line[j]) {
-          case ('P'): createPlatform(position, Textures::Platform); break;
-          case ('A'): createPlatform(position, Textures::PlatformLeft); break;
-          case ('B'): createPlatform(position, Textures::PlatformRight); break;
-          case ('C'): createPlatform(position, Textures::PlatformLeftB); break;
-          case ('D'): createPlatform(position, Textures::PlatformRightB); break;
-          case ('X'): createPlatform(position, Textures::BeltLeft); break;
-          case ('Y'): createPlatform(position, Textures::BeltMiddle); break;
-          case ('Z'): createPlatform(position, Textures::BeltRight); break;
-          case ('S'): createPlatform(position, Textures::StrippedPlatformLeft); break;
-          case ('O'): createPlatform(position, Textures::StrippedPlatformMiddle); break;
-          case ('Q'): createPlatform(position, Textures::StrippedPlatformRight); break;
-          case ('E'): createEnemy(position, Textures::Goomba); break;
-          case ('F'): createEnemy(position, Textures::Enemy2); break;
-          case ('G'): createEnemy(position, Textures::Enemy3); break;
+          case ('P'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::Platform, position)); break;
+          case ('A'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeft, position)); break;
+          case ('B'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRight, position)); break;
+          case ('C'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeftB, position)); break;
+          case ('D'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRightB, position)); break;
+          case ('X'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltLeft, position)); break;
+          case ('Y'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltMiddle, position)); break;
+          case ('Z'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltRight, position)); break;
+          case ('S'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformLeft, position)); break;
+          case ('O'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformMiddle, position)); break;
+          case ('Q'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformRight, position)); break;
+          case ('E'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Goomba, position)); break;
+          case ('F'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy2, position)); break;
+          case ('G'): defineGroup(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
           default: break;
         }
       }

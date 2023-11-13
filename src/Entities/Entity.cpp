@@ -10,6 +10,7 @@ namespace Entities {
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
     , m_entityId(EntityID::EntityE)
+    , m_entityGroup(EntityGroup::Static)
     , m_position(position)
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
@@ -27,8 +28,16 @@ namespace Entities {
     m_entityId = id;
   }
 
+  void Entity::setEntityGroup(EntityGroup group) {
+    m_entityGroup = group;
+  }
+
   EntityID Entity::getEntityId() const {
     return m_entityId;
+  }
+
+  EntityGroup Entity::getEntityGroup() const {
+    return m_entityGroup;
   }
 
   void Entity::setSpeed(const float speed) {

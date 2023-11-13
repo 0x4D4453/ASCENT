@@ -7,6 +7,7 @@ namespace Entities {
     , m_healthPoints(0)
   {
     setEntityId(EntityID::CharacterE);
+    setEntityGroup(EntityGroup::Dynamic);
   }
 
   Character::~Character() {

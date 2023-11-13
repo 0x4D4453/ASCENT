@@ -23,15 +23,18 @@ namespace Entities {
   }
 
   void Goomba::movementPattern() {
+    sf::Vector2f velocity = sf::Vector2f(m_speed * m_dt, 0.f);
+
     if (getPosition().x >= (m_spawnPosition.x + m_range))
       m_direction = true;
     else if (getPosition().x <= (m_spawnPosition.x - m_range))
       m_direction = false;
     
     if (m_direction)
-      move(sf::Vector2f(-m_speed * m_dt, 0.f));
-    else 
-      move(sf::Vector2f(m_speed * m_dt, 0.f));
+      velocity.x = -velocity.x;
+
+    m_animation.update(m_dt, this, velocity);
+    move(velocity);
   }
 
   void Goomba::save() {

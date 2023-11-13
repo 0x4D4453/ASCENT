@@ -20,6 +20,7 @@ namespace Textures {
     StrippedPlatformLeft,
     StrippedPlatformMiddle,
     StrippedPlatformRight,
+    Spikes,
   };
 
   constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
@@ -36,9 +37,13 @@ namespace Textures {
   constexpr char STRIPPED_PLATFORM_LEFT[] = "assets/tiles/tile_0190.png";
   constexpr char STRIPPED_PLATFORM_MIDDLE[] = "assets/tiles/tile_0191.png";
   constexpr char STRIPPED_PLATFORM_RIGHT[] = "assets/tiles/tile_0192.png";
+  constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0192.png";
+
+  constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
   constexpr char ENEMY1[] = "assets/tiles/tile_0320.png";
   constexpr char ENEMY2[] = "assets/tiles/tile_0340.png";
-  constexpr char ENEMY3[] = "assets/tiles/tile_0381.png";
+  constexpr char ENEMY3[] = "assets/tiles/tile_0122.png";
+
   constexpr char PROJECTILE[] = "assets/tiles/tile_0001.png";
 }
 

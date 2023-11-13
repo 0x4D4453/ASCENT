@@ -129,7 +129,7 @@ namespace Entities {
   }
 
   void Player::update() {
-    m_animation.update(m_dt, m_isJumping, m_isCharging, m_isStaggered, m_velocity);
+    m_animation.update(m_dt, this);
 
     if (m_velocity.x < 0)
       m_sprite.setScale(-Constants::SCALE, Constants::SCALE);

@@ -39,7 +39,7 @@ namespace Stages {
     m_textureHolder.load(Textures::Player1, Textures::PLAYER1);
     m_textureHolder.load(Textures::Player2, Textures::PLAYER2);
 
-    m_textureHolder.load(Textures::Goomba, Textures::ENEMY1);
+    m_textureHolder.load(Textures::Goomba, Textures::GOOMBA);
     m_textureHolder.load(Textures::Enemy2, Textures::ENEMY2);
     m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
 
@@ -56,6 +56,8 @@ namespace Stages {
     m_textureHolder.load(Textures::StrippedPlatformLeft, Textures::STRIPPED_PLATFORM_LEFT);
     m_textureHolder.load(Textures::StrippedPlatformMiddle, Textures::STRIPPED_PLATFORM_MIDDLE);
     m_textureHolder.load(Textures::StrippedPlatformRight, Textures::STRIPPED_PLATFORM_RIGHT);
+
+    m_textureHolder.load(Textures::Spikes, Textures::GROUND_SPIKES);
   }
 
   void StageFactory::loadSounds() {
@@ -117,7 +119,7 @@ namespace Stages {
   }
 
   void StageFactory::createMap(const char* stageTxt) {
-    std::ifstream stage("assets/stage_2.txt");
+    std::ifstream stage("assets/stage_3.txt");
 
     if (!stage) {
       std::cout << "Error loading stage\n";

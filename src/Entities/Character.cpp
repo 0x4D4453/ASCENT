@@ -4,7 +4,7 @@
 namespace Entities {
   Character::Character()
     : Entity(sf::Vector2f(0.f, 0.f))
-    , m_healthPoints(0)
+    , m_healthPoints(3)
   {
     setEntityId(EntityID::CharacterE);
   }

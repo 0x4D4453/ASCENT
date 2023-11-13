@@ -6,7 +6,9 @@
 
 namespace Entities {
   Enemy::Enemy(const sf::Vector2f spawnPosition)
-    : m_attack(1)
+    : Character()
+    , m_animation(this)
+    , m_attack(1)
     , m_spawnPosition(spawnPosition)
   {
     setEntityId(EntityID::EnemyE);

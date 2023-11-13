@@ -6,6 +6,7 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
+#include "Entities/EntityFactory.h"
 #include "Entities/EntityList.h"
 #include "Entities/Player.h"
 #include "Utility/ResourceHolder.h"
@@ -18,6 +19,7 @@ namespace Stages {
   class StageFactory {
     private:
       static Manager::GraphicsManager* m_graphicsManager;
+      Entities::EntityFactory m_entityFactory;
       ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
       ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
       EntityList* m_players;
@@ -29,8 +31,7 @@ namespace Stages {
       void loadTextures();
       void loadSounds();
       void createMap(const char* stageTxt);
-      void createPlatform(const sf::Vector2f position, Textures::ID textureID);
-      void createEnemy(const sf::Vector2f position, Textures::ID textureID);
+      void defineGroup(Entities::Entity* pEntity);
       void createPlayers(int stageHeight);
     
     public:

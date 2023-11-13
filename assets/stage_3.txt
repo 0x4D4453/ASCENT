@@ -1,0 +1,56 @@
+D                                          C
+D                                          C
+D                                          C
+D                                          C
+D                                          C
+D                               APPPPPPB   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+D                               C      D   C
+DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPB  XC
+D                                      D   C
+D                                      D   C
+D                                      D   C
+D      DYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYZ  C
+D      D              CD         CD        C
+D      D              CD         CD        C
+D      D              XZ         XZ        C
+D      D                                   C
+D      D          E         E         E    C
+DYYYYYYZ   XYYYYYYYYYYYYYYYYYYYYYYYYYYYYZ  C
+D                                          C
+D                                          C
+D                                          C
+D                                          C
+D                                      O   C
+D                                          C
+D                                          C
+D           XZ                             C
+D                                          C
+DYYYZ                                      C
+D                                          C
+D                                O         C
+D                                          C
+PPPPPPPPPPB                                C
+          D                                C
+          D                                C
+          D         E                      C
+          D     XYYYYYYYYZ                 C
+          D                                C
+          D                                C
+          D                                C
+PPPPPPPPPPPPPPPPB        APPPPPPPPPPPPPPPPPP
+                D        C
+                D        C
+                D        C
+                D        C
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+
+
+
+--------------------------------------------

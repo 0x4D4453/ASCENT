@@ -2,6 +2,7 @@
 #include "Stage/StageFactory.h"
 
 /* Program Defined */
+#include "Stage/FirstStage.h"
 #include "Entities/Goomba.h"
 #include "Entities/Platform.h"
 #include "Manager/GraphicsManager.h"
@@ -62,7 +63,7 @@ namespace Stages {
   }
 
   Stage* StageFactory::createStage(const char* stageTxt) {
-    Stage* stage = new Stage(m_newGame);
+    Stage* stage = new FirstStage(m_newGame);
 
     m_players = stage->getPlayers();
     m_platforms = stage->getPlatforms();

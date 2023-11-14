@@ -80,8 +80,10 @@ namespace Entities {
   void Entity::move(const sf::Vector2f movement) {
     m_sprite.move(movement);
 
-    if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_isColliding = m_pCollisionManager->verifyCollision(this);
+    // Como é possível que um collide mova outra entidade, não podemos verificar a colisão
+    // nesse move, pois entra em um loop infinito.
+    // if (m_velocity.x != 0 || m_velocity.y != 0)
+    //   m_isColliding = m_pCollisionManager->verifyCollision(this);
   }
 
   void Entity::collide(Entity* entity, Manager::Collision::CollisionType type, float overlap) {

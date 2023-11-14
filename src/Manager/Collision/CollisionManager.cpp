@@ -47,6 +47,9 @@ namespace Manager {
     }
 
     bool CollisionManager::verifyOverlap(Entities::Entity* entity) {
+      if (entity == m_pEntity)
+        return false;
+
       using namespace Entities;
 
       const sf::FloatRect cEntityCoordinates = entity->getGlobalBounds();

@@ -12,7 +12,7 @@ namespace Entities {
     , m_direction(true)
   {
     setEntityId(EntityID::MovingPlatformE);
-    setEntityGroup(EntityGroup::Static);
+    setEntityGroup(EntityGroup::Dynamic);
     setTexture(texture);
     setSpeed(50.f);
     setVelocity(sf::Vector2f(m_speed * m_dt, 0.f));

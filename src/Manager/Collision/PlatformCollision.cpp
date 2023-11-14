@@ -29,10 +29,12 @@ namespace Manager {
         break;
     }
 
-    if (type == CollisionType::Horizontal)
-      otherEntity->move(sf::Vector2f(overlap, 0));
-    else
-      otherEntity->move(sf::Vector2f(0, overlap));
+    if (otherEntity->getEntityGroup() == Entities::Dynamic) {
+      if (type == CollisionType::Horizontal)
+        otherEntity->move(sf::Vector2f(overlap, 0));
+      else
+        otherEntity->move(sf::Vector2f(0, overlap));
+    }
   }
 
   void PlatformCollision::playerCollide(Entities::Entity *ownEntity, Entities::Player* player, CollisionType type) {

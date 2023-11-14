@@ -40,6 +40,15 @@ namespace Stages {
     m_collisionManager.setObstaclesList(&m_platforms);
     m_collisionManager.setEnemiesList(&m_enemies);
 
+    m_filterRect.setSize(sf::Vector2f(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT));
+    m_filterRect.setFillColor(sf::Color(236.f, 236.f, 236.f, 40.f));
+
+    m_pGraphicsManager->setViewPort(sf::FloatRect(0.f, 0.f, 0.5f, 1.f));
+    m_pGraphicsManager->setViewSize(Constants::WINDOW_WIDTH/2, Constants::WINDOW_HEIGHT);
+    
+    m_pGraphicsManager->setViewPort2(sf::FloatRect(0.5f, 0.f, 0.5f, 1.f));
+    m_pGraphicsManager->setViewSize2(Constants::WINDOW_WIDTH/2, Constants::WINDOW_HEIGHT);
+    
     m_bgMusic.openFromFile(Sounds::STAGE_BG);
     m_bgMusic.setVolume(10);
     m_bgMusic.setLoop(true);
@@ -47,7 +56,7 @@ namespace Stages {
   }
 
   Stage::~Stage() {
-
+    m_bgMusic.stop();
   }
   
   EntityList* Stage::getPlayers() {
@@ -117,18 +126,33 @@ namespace Stages {
     }
 
     Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+    Entities::Player* player2 = static_cast<Entities::Player*>(*(++m_players.first()));
     m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
+    m_pGraphicsManager->updateView2(player2->getPosition().x, player2->getPosition().y);
+
+    m_filterRect.setPosition(m_pGraphicsManager->getViewCoordinates().x, m_pGraphicsManager->getViewCoordinates().y);
   }
 
   void Stage::setPaused(const bool paused) {
     m_paused = paused;
   }
 
-  void Stage::exec() {
-    if (!m_paused)
-      update();
+  void Stage::drawEverything() {
+    m_pGraphicsManager->setView();
     drawEntities(m_platforms);
     drawEntities(m_enemies);
     drawEntities(m_players);
+    
+    m_pGraphicsManager->setView2();
+    drawEntities(m_platforms);
+    drawEntities(m_enemies);
+    drawEntities(m_players);
+  }
+
+  void Stage::exec() {
+    if (m_paused)
+      return;
+    update();
+    drawEverything();
   }
 }

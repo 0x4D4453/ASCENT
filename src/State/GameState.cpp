@@ -53,6 +53,10 @@ namespace States {
     m_pStage->saveGame();
   }
 
+  void GameState::drawEverything() {
+    m_pStage->drawEverything();
+  }
+
   void GameState::exec() {
     m_pStage->exec();
   }

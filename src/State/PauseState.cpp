@@ -45,14 +45,14 @@ namespace States {
   void PauseState::setup() {
     m_background.setSize(sf::Vector2f(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT));
     m_background.setFillColor(sf::Color(0.f, 0.f, 0.f, 150.f)); 
-    m_background.setPosition(m_pGraphicsManager->getViewCoordinates().x, m_pGraphicsManager->getViewCoordinates().y);
+    m_background.setPosition(m_pGraphicsManager->getViewCoordinatesDefault().x, m_pGraphicsManager->getViewCoordinatesDefault().y);
 
     if (!m_font.loadFromFile("assets/fonts/monogram.ttf")) {
       std::cerr << "Error loading pause font!\n";
       exit(1);
     }
 
-    sf::Vector2f viewCenterPosition = m_pGraphicsManager->getViewCenter();
+    sf::Vector2f viewCenterPosition = m_pGraphicsManager->getWindow()->getDefaultView().getCenter();
     
     m_title.setCharacterSize(80.f);
     sf::FloatRect textRect = m_title.getLocalBounds();
@@ -131,6 +131,8 @@ namespace States {
   }
 
   void PauseState::exec() {
+    m_pGameState->drawEverything();
+    m_pGraphicsManager->resetView();
     m_pGraphicsManager->getWindow()->draw(m_background);
     m_pGraphicsManager->getWindow()->draw(m_title);
 

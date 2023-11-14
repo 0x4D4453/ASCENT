@@ -19,6 +19,7 @@ namespace Entities {
     EnemyE,
     PlayerE,
     PlatformE,
+    MovingPlatformE,
     GoombaE,
     FlyE,
   };

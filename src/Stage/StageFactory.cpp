@@ -55,6 +55,8 @@ namespace Stages {
     m_textureHolder.load(Textures::PlatformRight, Textures::PLATFORM_RIGHT_CORNER);
     m_textureHolder.load(Textures::PlatformRightB, Textures::PLATFORM_RIGHT_CORNER_BLACK);
 
+    m_textureHolder.load(Textures::MovingPlatform, Textures::MOVING_PLATFORM);
+
     m_textureHolder.load(Textures::BeltLeft, Textures::BELT_LEFT);
     m_textureHolder.load(Textures::BeltMiddle, Textures::BELT_MIDDLE);
     m_textureHolder.load(Textures::BeltRight, Textures::BELT_RIGHT);
@@ -134,6 +136,7 @@ namespace Stages {
           case ('B'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRight, position)); break;
           case ('C'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeftB, position)); break;
           case ('D'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRightB, position)); break;
+          case ('M'): defineGroup(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
           case ('X'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltLeft, position)); break;
           case ('Y'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltMiddle, position)); break;
           case ('Z'): defineGroup(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltRight, position)); break;

@@ -58,12 +58,12 @@ namespace Manager {
         float yOverlap = m_intersectionRect.height;
         overlap = true;
 
-        if (yOverlap != 0 && yOverlap < xOverlap) {
+        if (yOverlap < xOverlap) {
           if (mEntityCoordinates.top < cEntityCoordinates.top)
             yOverlap *= -1;
           entity->collide(m_pEntity, Manager::Collision::CollisionType::Vertical, yOverlap);
           m_pEntity->collide(entity, Manager::Collision::CollisionType::Vertical, yOverlap);
-        } else if (xOverlap != 0 && xOverlap < yOverlap) {
+        } else {
           if (mEntityCoordinates.left < cEntityCoordinates.left)
             xOverlap *= -1;
           entity->collide(m_pEntity, Manager::Collision::CollisionType::Horizontal, xOverlap);

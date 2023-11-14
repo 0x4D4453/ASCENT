@@ -11,7 +11,7 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(GOTY
     src/main.cpp src/Game.cpp src/Being.cpp
-    src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/Character.cpp src/Entities/Player.cpp src/Entities/Platform.cpp src/Entities/Obstacle.cpp src/Entities/Projectile.cpp src/Entities/Enemy.cpp src/Entities/Goomba.cpp src/Entities/Fly.cpp src/Entities/EntityFactory.cpp
+    src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/Character.cpp src/Entities/Player.cpp src/Entities/Platform.cpp src/Entities/Obstacle.cpp src/Entities/Projectile.cpp src/Entities/Enemy.cpp src/Entities/Goomba.cpp src/Entities/Fly.cpp src/Entities/MovingPlatform.cpp src/Entities/EntityFactory.cpp 
     src/Manager/GraphicsManager.cpp
     src/Manager/Collision/CollisionManager.cpp src/Manager/Collision/CollisionStrategy.cpp src/Manager/Collision/CollisionStrategyFactory.cpp src/Manager/Collision/DefaultCollision.cpp src/Manager/Collision/PlayerCollision.cpp src/Manager/Collision/PlatformCollision.cpp src/Manager/Collision/NoCollision.cpp
     src/Stage/Stage.cpp src/Stage/StageFactory.cpp 

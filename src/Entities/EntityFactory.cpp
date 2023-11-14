@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Goomba.h"
 #include "Entities/Fly.h"
+#include "Entities/MovingPlatform.h"
 #include "Entities/Platform.h"
 
 /* Standard Library */
@@ -40,6 +41,9 @@ namespace Entities {
     switch (entityID) {
       case (PlatformE): 
         m_pEntity = static_cast<Entity*>(new Platform(m_pTextureHolder->getResource(textureID), position));
+        break;
+      case (MovingPlatformE): 
+        m_pEntity = static_cast<Entity*>(new MovingPlatform(m_pTextureHolder->getResource(textureID), position));
         break;
       case (GoombaE):
         m_pEntity = static_cast<Entity*>(new Goomba(m_pTextureHolder->getResource(textureID), position));

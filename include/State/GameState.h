@@ -25,6 +25,7 @@ namespace States {
       ~GameState();
       void setPaused(const bool paused);
       void saveGame();
+      void drawEverything();
       void exec();
   };
 }

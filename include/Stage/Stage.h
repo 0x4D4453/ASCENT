@@ -18,6 +18,7 @@ namespace Stages {
       static Manager::GraphicsManager* m_pGraphicsManager;
       static const float m_dt;
       Manager::Collision::CollisionManager m_collisionManager;
+      sf::RectangleShape m_filterRect;
       EntityList m_players;
       EntityList m_platforms;
       EntityList m_enemies;
@@ -43,6 +44,7 @@ namespace Stages {
       void loadSaveGame();
       void saveGame();
       // virtual void exec();
+      void drawEverything();
       void exec();
   };
 }

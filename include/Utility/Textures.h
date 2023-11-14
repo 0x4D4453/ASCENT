@@ -14,6 +14,7 @@ namespace Textures {
     PlatformLeftB,
     PlatformRight,
     PlatformRightB,
+    MovingPlatform,
     BeltLeft,
     BeltMiddle,
     BeltRight,
@@ -31,6 +32,7 @@ namespace Textures {
   constexpr char PLATFORM_LEFT_CORNER_BLACK[] = "assets/tiles/tile_0290.png";
   constexpr char PLATFORM_RIGHT_CORNER[] = "assets/tiles/tile_0272.png";
   constexpr char PLATFORM_RIGHT_CORNER_BLACK[] = "assets/tiles/tile_0292.png";
+  constexpr char MOVING_PLATFORM[] = "assets/tiles/movingPlatform.png";
   constexpr char BELT_LEFT[] = "assets/tiles/tile_0124.png";
   constexpr char BELT_MIDDLE[] = "assets/tiles/tile_0125.png";
   constexpr char BELT_RIGHT[] = "assets/tiles/tile_0126.png";

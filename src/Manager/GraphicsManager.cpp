@@ -15,6 +15,7 @@ namespace Manager {
   GraphicsManager::GraphicsManager()
     : m_window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), Constants::GAME_NAME, Constants::WINDOW_STYLE)
     , m_view(sf::Vector2f(0.f, 0.f), sf::Vector2f(static_cast<float>(Constants::WINDOW_WIDTH), static_cast<float>(Constants::WINDOW_HEIGHT)))
+    , m_view2()
     , m_pStateStack(States::StateStack::getInstance())
     , m_timePerFrame(sf::seconds(Constants::FIXED_STEP))
     , m_timeSinceLastUpdate(sf::Time::Zero)
@@ -68,8 +69,32 @@ namespace Manager {
     m_window.setView(m_view);
   }
 
+  void GraphicsManager::setView2() {
+    m_window.setView(m_view2);
+  }
+
   void GraphicsManager::setViewCenter(float x, float y) {
     m_view.setCenter(sf::Vector2f(x, y));
+  }
+
+  void GraphicsManager::setViewCenter2(float x, float y) {
+    m_view2.setCenter(sf::Vector2f(x, y));
+  }
+
+  void GraphicsManager::setViewPort(sf::FloatRect viewPort) {
+    m_view.setViewport(viewPort);
+  }
+
+  void GraphicsManager::setViewPort2(sf::FloatRect viewPort) {
+    m_view2.setViewport(viewPort);
+  }
+
+  void GraphicsManager::setViewSize(float x, float y) {
+    m_view.setSize(sf::Vector2f(x, y));
+  }
+
+  void GraphicsManager::setViewSize2(float x, float y) {
+    m_view2.setSize(sf::Vector2f(x, y));
   }
 
   void GraphicsManager::updateView(float x, float y) {
@@ -90,6 +115,24 @@ namespace Manager {
     setView();
   }
 
+  void GraphicsManager::updateView2(float x, float y) {
+    float height = getViewSize().y;
+    float width = getViewSize().x;
+
+    if (x - width/2 < 0)
+      x = width/2;
+    else if (x + width/2 > m_stageWidth)
+      x = m_stageWidth - width/2;
+
+    if (y - height/2 < 0)
+      y = height/2;
+    else if (y + height/2 > m_stageHeight)
+      y = m_stageHeight - height/2;
+
+    setViewCenter2(x, y);
+    setView2();
+  }
+
   void GraphicsManager::resetView() {
     m_window.setView(m_window.getDefaultView());
   }
@@ -106,6 +149,13 @@ namespace Manager {
     sf::Vector2f coordinates;
     coordinates.x = m_view.getCenter().x - m_view.getSize().x/2;
     coordinates.y = m_view.getCenter().y - m_view.getSize().y/2;
+    return coordinates;
+  }
+
+  const sf::Vector2f GraphicsManager::getViewCoordinatesDefault() const {
+    sf::Vector2f coordinates;
+    coordinates.x = m_window.getDefaultView().getCenter().x - m_window.getDefaultView().getSize().x/2;
+    coordinates.y = m_window.getDefaultView().getCenter().y - m_window.getDefaultView().getSize().y/2;
     return coordinates;
   }
 

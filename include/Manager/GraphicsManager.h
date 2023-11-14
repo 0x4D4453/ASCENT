@@ -15,6 +15,7 @@ namespace Manager {
       static GraphicsManager* m_instance;
       sf::RenderWindow m_window;
       sf::View m_view;
+      sf::View m_view2;
       States::StateStack* m_pStateStack;
       const sf::Time m_timePerFrame;
       sf::Time m_timeSinceLastUpdate;
@@ -39,9 +40,17 @@ namespace Manager {
 
       /* View Methods */
       void setView();
+      void setView2();
       void setViewCenter(float x, float y);
+      void setViewCenter2(float x, float y);
+      void setViewPort(sf::FloatRect viewPort);
+      void setViewPort2(sf::FloatRect viewPort);
+      void setViewSize(float x, float y);
+      void setViewSize2(float x, float y);
       void updateView(float x, float y);
+      void updateView2(float x, float y);
       void resetView();
+      const sf::Vector2f getViewCoordinatesDefault() const;
       const sf::Vector2f getViewSize() const;
       const sf::Vector2f getViewCenter() const;
       const sf::Vector2f getViewCoordinates() const;

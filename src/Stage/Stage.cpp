@@ -32,6 +32,7 @@ namespace Stages {
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
+    m_pGraphicsManager->resetTime();
 
     if (!newGame)
       loadSaveGame();

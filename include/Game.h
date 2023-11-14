@@ -5,6 +5,7 @@
 #include "Manager/GraphicsManager.h"
 #include "Manager/Event/EventManager.h"
 #include "State/StateStack.h"
+#include "Utility/Context.h"
 
 /* SFML Library */
 #include <SFML/System/NonCopyable.hpp>
@@ -14,6 +15,7 @@ class Game : sf::NonCopyable {
     Manager::GraphicsManager* m_pGraphicsManager;
     Manager::Event::EventManager* m_pEventManager;
     States::StateStack* m_pStateStack;
+    Context* m_pContext;
   
   public:
     Game();

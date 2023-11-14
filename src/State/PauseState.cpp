@@ -6,6 +6,8 @@
 #include "State/GameState.h"
 #include "State/StateStack.h"
 #include "Utility/Constants.h"
+#include "Utility/Context.h"
+#include "Utility/Fonts.h"
 
 /* Standard Library */
 #include <iostream>
@@ -14,7 +16,7 @@ namespace States {
   PauseState::PauseState(States::GameState* pGameState) 
     : m_pGameState(pGameState)
     , m_background()
-    , m_title("Pause", m_font)
+    , m_title("Pause", m_pContext->getFont(Fonts::Monogram))
     , m_currentOption(Continue)
   {
     setup();
@@ -27,11 +29,11 @@ namespace States {
   void PauseState::createOption(const char* optionName, const sf::Vector2f& position) {
     constexpr float characterSize = 80.f;
 
-    sf::Text* pText = new sf::Text(optionName, m_font);
+    sf::Text* pText = new sf::Text(optionName, m_pContext->getFont(Fonts::Monogram));
 
     if (!pText) {
-      std::cerr << "Error creating option " << optionName << "\n";
-      return;
+      std::cerr << "Error creating option " << optionName << std::endl;
+      exit(1);
     }
 
     pText->setCharacterSize(characterSize);
@@ -46,11 +48,6 @@ namespace States {
     m_background.setSize(sf::Vector2f(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT));
     m_background.setFillColor(sf::Color(0.f, 0.f, 0.f, 150.f)); 
     m_background.setPosition(m_pGraphicsManager->getViewCoordinates().x, m_pGraphicsManager->getViewCoordinates().y);
-
-    if (!m_font.loadFromFile("assets/fonts/monogram.ttf")) {
-      std::cerr << "Error loading pause font!\n";
-      exit(1);
-    }
 
     sf::Vector2f viewCenterPosition = m_pGraphicsManager->getViewCenter();
     
@@ -94,6 +91,7 @@ namespace States {
     if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
       return;
     
+    m_optionSound.play();
     m_options[m_currentOption]->setFillColor(sf::Color::White);
     m_options[m_currentOption + 1]->setFillColor(sf::Color::Magenta);
 
@@ -104,6 +102,7 @@ namespace States {
     if (static_cast<int>(m_currentOption - 1) < static_cast<int>(Continue))
       return;
     
+    m_optionSound.play();
     m_options[m_currentOption]->setFillColor(sf::Color::White);
     m_options[m_currentOption - 1]->setFillColor(sf::Color::Magenta);
 
@@ -137,7 +136,7 @@ namespace States {
     std::vector<sf::Text*>::iterator it = m_options.begin();
 
     while (it != m_options.end()) {
-      m_pGraphicsManager->getWindow()->draw(*(*it));
+      m_pGraphicsManager->draw(*(*it));
       ++it;
     }
 

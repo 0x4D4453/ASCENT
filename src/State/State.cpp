@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Manager/GraphicsManager.h"
 #include "State/StateStack.h"
+#include "Utility/Context.h"
 
 namespace States {
   State::State()
@@ -11,6 +12,7 @@ namespace States {
     , m_pStateStack(States::StateStack::getInstance())
     , m_pGraphicsManager(Manager::GraphicsManager::getInstance())
     , m_pEventManager(Manager::Event::EventManager::getInstance())
+    , m_pContext(Context::getInstance())
   {
     m_pEventManager->attach(this);
   }

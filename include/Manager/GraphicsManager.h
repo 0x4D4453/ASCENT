@@ -14,6 +14,7 @@ namespace Manager {
     private:
       static GraphicsManager* m_instance;
       sf::RenderWindow m_window;
+      sf::Clock m_clock;
       sf::View m_view;
       States::StateStack* m_pStateStack;
       const sf::Time m_timePerFrame;
@@ -36,6 +37,7 @@ namespace Manager {
       void close();
       sf::RenderWindow* getWindow();
       void drawBeing(Being* pBeing);
+      void draw(sf::Drawable& drawable);
 
       /* View Methods */
       void setView();
@@ -49,7 +51,8 @@ namespace Manager {
       /* Fixed Time Step */
       const sf::Time* getTimePerFrame() const;
       sf::Time* getTimeSinceLastUpdate();
-      void addTime(const sf::Time& time);
+      void resetTime();
+      void addTime();
 
       void setStageSize(float height, float width);
   };

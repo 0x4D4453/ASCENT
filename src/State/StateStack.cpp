@@ -6,6 +6,7 @@
 #include "State/GameState.h"
 #include "State/MenuState.h"
 #include "State/PauseState.h"
+#include "State/RankingState.h"
 
 /* Standard Library */
 #include <iostream>
@@ -35,6 +36,9 @@ namespace States {
         break;
       case (StateType::Pause):
         state = new PauseState(static_cast<GameState*>(pState));
+        break;
+      case (StateType::Ranking):
+        state = new RankingState();
         break;
       default:
         break;

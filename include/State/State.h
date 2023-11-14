@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 
 /* Forward Declaration */
+class Context;
 namespace Manager { class GraphicsManager; }
 namespace States { class StateStack; }
 
@@ -18,6 +19,7 @@ namespace States {
     Game,
     Continue,
     Pause,
+    Ranking,
     TotalStates
   };
 
@@ -26,6 +28,7 @@ namespace States {
       States::StateStack* m_pStateStack;
       Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Event::EventManager* m_pEventManager;
+      Context* m_pContext;
 
     protected:
       virtual void handleEvent(sf::Event& event) = 0;

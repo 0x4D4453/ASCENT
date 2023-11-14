@@ -6,6 +6,7 @@
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 /* Standard Library */
 #include <vector>
@@ -13,8 +14,8 @@
 namespace States {
   class OptionsState : public State {
     protected:
-      sf::Font m_font;
       std::vector<sf::Text*> m_options;
+      sf::Sound m_optionSound;
    
     protected:
       virtual void setup() = 0;

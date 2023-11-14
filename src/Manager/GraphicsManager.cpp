@@ -14,6 +14,7 @@ namespace Manager {
 
   GraphicsManager::GraphicsManager()
     : m_window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), Constants::GAME_NAME, Constants::WINDOW_STYLE)
+    , m_clock()
     , m_view(sf::Vector2f(0.f, 0.f), sf::Vector2f(static_cast<float>(Constants::WINDOW_WIDTH), static_cast<float>(Constants::WINDOW_HEIGHT)))
     , m_pStateStack(States::StateStack::getInstance())
     , m_timePerFrame(sf::seconds(Constants::FIXED_STEP))
@@ -40,6 +41,8 @@ namespace Manager {
     return m_instance;
   } 
 
+  /* Window Methods */
+
   const bool GraphicsManager::isOpen() const {
     return m_window.isOpen();
   }
@@ -63,6 +66,12 @@ namespace Manager {
   void GraphicsManager::drawBeing(Being* pBeing) {
     m_window.draw(*(pBeing->getSprite()));
   }
+
+  void GraphicsManager::draw(sf::Drawable& drawable) {
+    m_window.draw(drawable);
+  }
+
+  /* View Methods */
 
   void GraphicsManager::setView() {
     m_window.setView(m_view);
@@ -109,6 +118,8 @@ namespace Manager {
     return coordinates;
   }
 
+  /* Fixed Time Step */
+
   const sf::Time* GraphicsManager::getTimePerFrame() const {
     return &m_timePerFrame;
   }
@@ -117,8 +128,12 @@ namespace Manager {
     return &m_timeSinceLastUpdate;
   }
 
-  void GraphicsManager::addTime(const sf::Time& time) {
-    m_timeSinceLastUpdate += time;
+  void GraphicsManager::resetTime() {
+    m_timeSinceLastUpdate = sf::Time::Zero;
+  }
+
+  void GraphicsManager::addTime() {
+    m_timeSinceLastUpdate += m_clock.restart();
   }
 
   void GraphicsManager::setStageSize(float height, float width) {

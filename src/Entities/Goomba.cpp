@@ -43,7 +43,7 @@ namespace Entities {
   }
 
   void Goomba::exec() {
-    if (m_isColliding)
+    // if (m_isColliding)
       movementPattern();
   }
 }

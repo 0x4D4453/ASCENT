@@ -11,6 +11,9 @@ namespace Manager {
   namespace Collision {
     class PlatformCollision : public CollisionStrategy {
       private:
+        CollisionStrategy* m_defaultCollision;
+
+      private:
         void playerCollide(Entities::Entity *ownEntity, Entities::Player *player, CollisionType type);
 
       public:

@@ -9,42 +9,26 @@ namespace Manager {
     PlatformCollision::PlatformCollision()
       : CollisionStrategy()
     {
-
+      m_defaultCollision = m_pCollisionStrategyFactory->getCollisionStrategy(StrategyId::Default);
     }
 
     PlatformCollision::~PlatformCollision() {
-
+      m_defaultCollision = NULL;
     }
 
-  void PlatformCollision::collide(Entities::Entity* onwEntity, Entities::Entity* otherEntity, CollisionType type, float overlap) {
-    switch (otherEntity->getEntityId()) {
-      case Entities::EntityID::FlyE:
+    void PlatformCollision::collide(Entities::Entity* onwEntity, Entities::Entity* otherEntity, CollisionType type, float overlap) {
+      if (otherEntity->getEntityId() != Entities::EntityID::PlayerE)
         return;
-      case Entities::EntityID::PlayerE:
-        playerCollide(onwEntity, dynamic_cast<Entities::Player*>(otherEntity), type);
-        break;
-      default:
-        if (type == CollisionType::Vertical)
-          otherEntity->setVelocity(sf::Vector2f(otherEntity->getVelocity().x, 0.f));
-        break;
+        
+      playerCollide(onwEntity, dynamic_cast<Entities::Player*>(otherEntity), type);
+      m_defaultCollision->collide(onwEntity, otherEntity, type, overlap);
     }
 
-    if (type == CollisionType::Horizontal)
-      otherEntity->move(sf::Vector2f(overlap, 0));
-    else
-      otherEntity->move(sf::Vector2f(0, overlap));
-  }
-
-  void PlatformCollision::playerCollide(Entities::Entity *ownEntity, Entities::Player* player, CollisionType type) {
-    if (type == CollisionType::Horizontal && player->getIsJumping()) {
-      player->setVelocity(sf::Vector2f(-player->getVelocity().x * .5f, player->getVelocity().y));
-      player->setIsStaggered(true);
-    } else {
-      if (ownEntity->getPosition().y >= player->getPosition().y)
-        player->setVelocity(sf::Vector2f(0.f, 0.f));
-      else
-        player->setVelocity(sf::Vector2f(player->getVelocity().x * .5f, 0.f));
+    void PlatformCollision::playerCollide(Entities::Entity *ownEntity, Entities::Player* player, CollisionType type) {
+      if (type == CollisionType::Horizontal && player->getIsJumping()) {
+        player->setVelocity(sf::Vector2f(-player->getVelocity().x * .5f, player->getVelocity().y));
+        player->setIsStaggered(true);
+      }
     }
-  }
   }
 }

@@ -7,6 +7,7 @@ namespace Entities {
     , m_harmful(harmful)
   {
     setEntityId(EntityID::ObstacleE);
+    setEntityTag(EntityTag::ObstacleTag);
   }
 
   Obstacle::~Obstacle() {

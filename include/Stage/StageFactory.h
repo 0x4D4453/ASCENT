@@ -23,15 +23,15 @@ namespace Stages {
       ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
       ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
       EntityList* m_players;
-      EntityList* m_platforms;
-      EntityList* m_enemies;
+      EntityList* m_staticEntities;
+      EntityList* m_dynamicEntities;
       bool m_newGame;
     
     private:
       void loadTextures();
       void loadSounds();
       void createMap(const char* stageTxt);
-      void defineGroup(Entities::Entity* pEntity);
+      void defineType(Entities::Entity* pEntity);
       void createPlayers(int stageHeight);
     
     public:

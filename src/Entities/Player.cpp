@@ -29,8 +29,9 @@ namespace Entities {
     , m_maxJumpHeight(10.f)
   {
     setEntityId(EntityID::PlayerE);
+    setEntityTag(EntityTag::PlayerTag);
     
-    m_pCollision = m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Player);
+    m_collisionMap.insert(std::make_pair(EntityTag::ObstacleTag, m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Player)));
 
     m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
     m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));

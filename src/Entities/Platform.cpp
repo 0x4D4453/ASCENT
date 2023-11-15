@@ -14,7 +14,8 @@ namespace Entities {
     setEntityId(EntityID::PlatformE);
     setTexture(texture);
 
-    m_pCollision = m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Platform);
+    m_collisionMap.insert(std::make_pair(EntityTag::EnemyTag, m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Default)));
+    m_collisionMap.insert(std::make_pair(EntityTag::PlayerTag, m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Platform)));
   }
 
   Platform::~Platform() {

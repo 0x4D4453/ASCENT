@@ -27,8 +27,8 @@ namespace Stages {
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
     , m_players()
-    , m_platforms()
-    , m_enemies()
+    , m_staticEntities()
+    , m_dynamicEntities()
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
@@ -37,8 +37,8 @@ namespace Stages {
       loadSaveGame();
 
     m_collisionManager.setPlayersList(&m_players);
-    m_collisionManager.setObstaclesList(&m_platforms);
-    m_collisionManager.setEnemiesList(&m_enemies);
+    m_collisionManager.setStaticEntities(&m_staticEntities);
+    m_collisionManager.setDynamicEntities(&m_dynamicEntities);
 
     m_bgMusic.openFromFile(Sounds::STAGE_BG);
     m_bgMusic.setVolume(10);
@@ -55,11 +55,11 @@ namespace Stages {
   }
 
   EntityList* Stage::getPlatforms() {
-    return &m_platforms;
+    return &m_staticEntities;
   }
 
   EntityList* Stage::getEnemies() {
-    return &m_enemies;
+    return &m_dynamicEntities;
   }
 
   void Stage::loadSaveGame() {
@@ -111,7 +111,8 @@ namespace Stages {
     const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
-      updateEntities(m_enemies);
+      m_collisionManager.verifyCollisionStatic();
+      updateEntities(m_dynamicEntities);
       updateEntities(m_players);
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
@@ -127,8 +128,8 @@ namespace Stages {
   void Stage::exec() {
     if (!m_paused)
       update();
-    drawEntities(m_platforms);
-    drawEntities(m_enemies);
+    drawEntities(m_staticEntities);
+    drawEntities(m_dynamicEntities);
     drawEntities(m_players);
   }
 }

@@ -19,8 +19,8 @@ namespace Stages {
       static const float m_dt;
       Manager::Collision::CollisionManager m_collisionManager;
       EntityList m_players;
-      EntityList m_platforms;
-      EntityList m_enemies;
+      EntityList m_staticEntities;
+      EntityList m_dynamicEntities;
       bool m_paused;
       sf::Music m_bgMusic;
 

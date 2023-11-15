@@ -156,7 +156,7 @@ namespace Entities {
 
     move();
 
-    if (!m_isColliding)
+    if (!getIsColliding())
       m_isJumping = true;
   }
 

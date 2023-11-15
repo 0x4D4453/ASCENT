@@ -10,7 +10,7 @@
 #include <SFML/Graphics.hpp>
 
 /* Standard Library */
-#include <map>
+#include <unordered_map>
 
 namespace Entities {
   // Added E (from enum) to avoid type name errors
@@ -41,7 +41,8 @@ namespace Entities {
   class Entity : public Being {
     protected:
       static Manager::Collision::CollisionManager* m_pCollisionManager;
-      std::map<EntityTag, Manager::Collision::CollisionStrategy*> m_collisionMap;
+      std::unordered_map<EntityTag, Manager::Collision::CollisionStrategy*> m_collisionStrategies;
+      std::unordered_map<int, Entity*> m_collisionMap;
       EntityID m_entityId;
       EntityTag m_entityTag;
       EntityType m_entityType;
@@ -49,7 +50,6 @@ namespace Entities {
       sf::Vector2f m_velocity;
       float m_speed;
       bool m_isStaggered;
-      bool m_isColliding;
       bool m_moved;
     
     protected:
@@ -77,8 +77,8 @@ namespace Entities {
       void setIsStaggered(const bool isStaggered);
       const bool getIsStaggered() const;
 
-      void setIsColliding(const bool isColliding);
       const bool getIsColliding() const;
+      std::unordered_map<int, Entity*> getCollisionMap() const;
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
       virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);

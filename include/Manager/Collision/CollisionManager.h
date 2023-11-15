@@ -30,7 +30,7 @@ namespace Manager {
 
       private:
         void applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap);
-        bool verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities);
+        void verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities);
         void verifyCollisionStatic(Entities::Entity* entity);
         void verifyCollisionDynamic(Entities::Entity* entity, List<Entities::Entity*>::Iterator it);
       

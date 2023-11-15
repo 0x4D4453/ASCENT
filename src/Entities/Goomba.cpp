@@ -43,7 +43,7 @@ namespace Entities {
   }
 
   void Goomba::exec() {
-    // if (m_isColliding)
+    // if (getIsColliding())
     if (m_healthPoints > 0)
       movementPattern();
     else

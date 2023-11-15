@@ -9,16 +9,21 @@
 #include <iostream>
 
 Manager::GraphicsManager* Being::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
-const float Being::m_dt(m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
+const float Being::m_dt(m_pGraphicsManager->getTimePerFrame()->asSeconds());
+int Being::m_cont(0);
 
 Being::Being() 
-  : m_id(0)
+  : m_id(m_cont++)
 {
   m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
 }
 
 Being::~Being() {
 
+}
+
+const int Being::getId() const {
+  return m_id;
 }
 
 const sf::Sprite* Being::getSprite() const {

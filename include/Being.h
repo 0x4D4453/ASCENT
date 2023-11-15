@@ -11,12 +11,14 @@ class Being {
   protected:
     static Manager::GraphicsManager* m_pGraphicsManager;
     static const float m_dt;
+    static int m_cont;
     const int m_id;
     sf::Sprite m_sprite;
   
   public:
     Being();
     virtual ~Being();
+    const int getId() const;
     const sf::Sprite* getSprite() const;
     const sf::FloatRect getGlobalBounds() const;
     void setTexture(sf::Texture& texture);

@@ -16,7 +16,6 @@ namespace Entities {
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
-    , m_isColliding(true)
     , m_moved(true)
   {
     setPosition(m_position);
@@ -83,12 +82,12 @@ namespace Entities {
     return m_isStaggered;
   }
 
-  void Entity::setIsColliding(const bool isColliding) {
-    m_isColliding= isColliding;
+  const bool Entity::getIsColliding() const {
+    return m_collisionMap.size() > 0;
   }
 
-  const bool Entity::getIsColliding() const {
-    return m_isStaggered;
+  std::unordered_map<int, Entity*> Entity::getCollisionMap() const {
+    return m_collisionMap;
   }
 
   void Entity::move() {
@@ -106,19 +105,14 @@ namespace Entities {
 
   void Entity::setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy) {
     Manager::Collision::CollisionStrategy* pStrategy = m_pCollisionManager->getCollisionStrategy(strategy);
-
-    std::map<EntityTag, Manager::Collision::CollisionStrategy*>::iterator it = m_collisionMap.find(tag);
-    if (it == m_collisionMap.end())
-      m_collisionMap.insert(std::make_pair(tag, pStrategy));
-    else
-      it->second = pStrategy;
+    m_collisionStrategies[tag] = pStrategy;
   }
 
   Manager::Collision::CollisionStrategy* Entity::getCollisionStrategy(EntityTag tag) const {
-    if (m_collisionMap.find(tag) == m_collisionMap.end())
+    if (m_collisionStrategies.count(tag) == 0)
       return m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::NoCollision);
       
-    return m_collisionMap.at(tag);
+    return m_collisionStrategies.at(tag);
   }
 
   void Entity::setCollisionManager(Manager::Collision::CollisionManager* manager) {

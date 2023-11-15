@@ -14,7 +14,7 @@
 
 namespace States {
   class StateStack : sf::NonCopyable {
-    public:
+    private:
       enum class Command {
         Push,
         Pop,

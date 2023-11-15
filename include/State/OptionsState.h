@@ -18,6 +18,7 @@ namespace States {
       sf::Sound m_optionSound;
    
     protected:
+      virtual void createOption(const char* optionName, const sf::Vector2f& position);
       virtual void setup() = 0;
       virtual void movePreviousOption() = 0;
       virtual void moveNextOption() = 0;

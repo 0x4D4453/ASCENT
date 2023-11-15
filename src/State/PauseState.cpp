@@ -26,24 +26,6 @@ namespace States {
 
   }
 
-  void PauseState::createOption(const char* optionName, const sf::Vector2f& position) {
-    constexpr float characterSize = 80.f;
-
-    sf::Text* pText = new sf::Text(optionName, m_pContext->getFont(Fonts::Monogram));
-
-    if (!pText) {
-      std::cerr << "Error creating option " << optionName << std::endl;
-      exit(1);
-    }
-
-    pText->setCharacterSize(characterSize);
-    sf::FloatRect textRect = pText->getLocalBounds();
-    pText->setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
-    pText->setPosition(static_cast<int>(position.x), static_cast<int>(position.y));
-
-    m_options.push_back(pText);
-  }
-
   void PauseState::setup() {
     m_background.setSize(sf::Vector2f(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT));
     m_background.setFillColor(sf::Color(0.f, 0.f, 0.f, 150.f)); 

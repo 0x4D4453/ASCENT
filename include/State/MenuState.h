@@ -28,7 +28,7 @@ namespace States {
     
     private:
       void handleEvent(sf::Event& event);
-      void createOption(const char* optionName, const sf::Vector2f& position);
+      virtual void createOption(const char* optionName, const sf::Vector2f& position);
       void setup();
       void movePreviousOption();
       void moveNextOption();

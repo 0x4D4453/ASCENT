@@ -22,25 +22,6 @@ namespace States {
 
   }
 
-  void StageSelectState::createOption(const char* optionName, const sf::Vector2f& position) {
-    constexpr float characterSize = 80.f;
-
-    sf::Text* pText = new sf::Text(optionName, m_pContext->getFont(Fonts::Monogram));
-
-    if (!pText) {
-      std::cerr << "Error creating option " << optionName << "\n";
-      return;
-    }
-
-    pText->setFillColor(Constants::DEFAULT_COLOR);
-    pText->setCharacterSize(characterSize);
-    sf::FloatRect textRect = pText->getLocalBounds();
-    pText->setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
-    pText->setPosition(position);
-
-    m_options.push_back(pText);
-  }
-
   void StageSelectState::setup() {
     constexpr float distanceFromTop = Constants::WINDOW_HEIGHT/2.f - 100.f;
 

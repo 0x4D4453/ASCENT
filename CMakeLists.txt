@@ -20,7 +20,8 @@ add_executable(GOTY
     src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/FirstStage.cpp
     src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp  src/State/OptionsState.cpp src/State/PauseState.cpp src/State/MenuState.cpp
     src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp
-    src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp)
+    src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp
+    src/Utility/CustomVector.cpp)
 target_include_directories(GOTY PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(GOTY PRIVATE sfml-graphics sfml-audio)
 target_compile_features(GOTY PRIVATE cxx_std_17)

@@ -17,6 +17,7 @@ namespace Entities {
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
     , m_isColliding(true)
+    , m_moved(true)
   {
     setPosition(m_position);
   }
@@ -51,6 +52,10 @@ namespace Entities {
 
   void Entity::setSpeed(const float speed) {
     m_speed = speed;
+  }
+
+  const bool Entity::getMoved() const {
+    return m_moved;
   }
 
   void Entity::setPosition(sf::Vector2f position) {
@@ -91,6 +96,7 @@ namespace Entities {
   }
 
   void Entity::move(const sf::Vector2f movement) {
+    m_moved = movement.x || movement.y;
     m_sprite.move(movement);
   }
 
@@ -100,7 +106,12 @@ namespace Entities {
 
   void Entity::setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy) {
     Manager::Collision::CollisionStrategy* pStrategy = m_pCollisionManager->getCollisionStrategy(strategy);
-    m_collisionMap.insert(std::make_pair(tag, pStrategy));
+
+    std::map<EntityTag, Manager::Collision::CollisionStrategy*>::iterator it = m_collisionMap.find(tag);
+    if (it == m_collisionMap.end())
+      m_collisionMap.insert(std::make_pair(tag, pStrategy));
+    else
+      it->second = pStrategy;
   }
 
   Manager::Collision::CollisionStrategy* Entity::getCollisionStrategy(EntityTag tag) const {

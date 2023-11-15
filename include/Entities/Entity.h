@@ -50,6 +50,7 @@ namespace Entities {
       float m_speed;
       bool m_isStaggered;
       bool m_isColliding;
+      bool m_moved;
     
     protected:
       void setEntityId(EntityID id);
@@ -68,6 +69,7 @@ namespace Entities {
       EntityTag getEntityTag() const;
       EntityType getEntityType() const;
 
+      const bool getMoved() const;
       sf::Vector2f getPosition() const;
       void setPosition(sf::Vector2f position);
       sf::Vector2f getVelocity() const;

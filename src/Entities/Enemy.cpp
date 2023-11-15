@@ -25,8 +25,14 @@ namespace Entities {
   void Enemy::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
     if (entity->getEntityId() != EntityID::PlayerE)
       return;
-    
-    damagePlayer(dynamic_cast<Player*>(entity));
+
+    Player* player = dynamic_cast<Player*>(entity);
+    if (player->isAttacking()) {
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::NoCollision);
+    } else {
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
+      damagePlayer(player);
+    }
   }
 
   void Enemy::damagePlayer(Player* pPlayer) {

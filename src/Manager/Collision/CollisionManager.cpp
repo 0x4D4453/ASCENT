@@ -88,11 +88,8 @@ namespace Manager {
         verifyCollisionStatic(*dynamicIterator);
 
       for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator) {
-        if ((*dynamicIterator)->getVelocity().x || (*dynamicIterator)->getVelocity().y) {
-          verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
-          verifyCollisionDynamic(*dynamicIterator, m_players->first());
-        }
-
+        verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
+        verifyCollisionDynamic(*dynamicIterator, m_players->first());
         verifyCollisionStatic(*dynamicIterator);
       }
     }
@@ -112,7 +109,8 @@ namespace Manager {
       bool overlap = false;
 
       for (dynamicIterator = it; dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator)
-        overlap = verifyOverlap(std::make_pair(*dynamicIterator, entity)) || overlap;
+        if ((*dynamicIterator)->getMoved() || entity->getMoved())
+          overlap = verifyOverlap(std::make_pair(*dynamicIterator, entity)) || overlap;
 
       entity->setIsColliding(overlap);
     }

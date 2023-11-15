@@ -2,7 +2,9 @@
 #include "Entities/Player.h"
 
 /* Program Defined */
+#include "Entities/Enemy.h"
 #include "Utility/Constants.h"
+#include "Utility/CustomVector.h"
 
 /* Standard Library */
 #include <cmath>
@@ -27,6 +29,7 @@ namespace Entities {
     , m_jumpHeight(2.f)
     , m_minJumpHeight(2.f)
     , m_maxJumpHeight(10.f)
+    , m_attackSpeed(5.f)
   {
     setEntityId(EntityID::PlayerE);
     setEntityTag(EntityTag::PlayerTag);
@@ -77,6 +80,22 @@ namespace Entities {
 
   void Player::setIsCharging(const bool isCharging) {
     m_isCharging = isCharging;
+  }
+
+  const float Player::getCurrentSpeed() const {
+    CustomVector speedVector(m_velocity);
+    return speedVector.getMagnitude();
+  }
+
+  const bool Player::isAttacking() {
+    bool isAttacking = getCurrentSpeed() > m_attackSpeed;
+
+    if (isAttacking)
+      setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::KnockbackCollision);
+    else
+      setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::NoCollision);
+
+    return isAttacking;
   }
 
   void Player::handleInput() {
@@ -149,10 +168,22 @@ namespace Entities {
   }
 
   void Player::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
-    if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= entity->getPosition().y) {
-      m_isJumping = false;
-      setIsStaggered(false);
+    switch (entity->getEntityTag()) {
+      case EntityTag::EnemyTag:
+        if (isAttacking())
+          attack(dynamic_cast<Enemy*>(entity));
+        break;
+      default:
+        if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= entity->getPosition().y && m_isJumping) {
+          m_isJumping = false;
+          setIsStaggered(false);
+        }
+        break;
     }
+  }
+
+  void Player::attack(Enemy* enemy) {
+    enemy->setHealthPoints(enemy->getHealthPoints() - 1);
   }
 
   void Player::save() {

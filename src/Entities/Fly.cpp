@@ -44,6 +44,9 @@ namespace Entities {
   }
 
   void Fly::exec() {
-    movementPattern();
+    if (m_healthPoints > 0)
+      movementPattern();
+    else
+      m_animation.update(m_dt, this, sf::Vector2f(0.f, 0.f));
   }
 }

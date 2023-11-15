@@ -87,14 +87,20 @@ namespace Entities {
   }
 
   void Entity::move() {
-    if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_pCollisionManager->verifyCollisionDynamic(this);
-      
     move(m_velocity);
   }
 
   void Entity::move(const sf::Vector2f movement) {
     m_sprite.move(movement);
+  }
+
+  void Entity::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+
+  }
+
+  void Entity::setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy) {
+    Manager::Collision::CollisionStrategy* pStrategy = m_pCollisionManager->getCollisionStrategy(strategy);
+    m_collisionMap.insert(std::make_pair(tag, pStrategy));
   }
 
   Manager::Collision::CollisionStrategy* Entity::getCollisionStrategy(EntityTag tag) const {

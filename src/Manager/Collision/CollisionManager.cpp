@@ -5,7 +5,6 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
 #include "Entities/Player.h"
-#include "Utility/List.h"
 
 /* Standard Library */
 #include <iostream>
@@ -44,14 +43,11 @@ namespace Manager {
         m_dynamicEntities = dynamicList;
     }
 
-    bool CollisionManager::verifyOverlap(Entities::Entity* entity1, Entities::Entity* entity2) {
-      if (entity1 == entity2)
-        return false;
-
+    bool CollisionManager::verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities) {
       using namespace Entities;
 
-      const sf::FloatRect cEntityCoordinates = entity1->getGlobalBounds();
-      const sf::FloatRect mEntityCoordinates = entity2->getGlobalBounds();
+      const sf::FloatRect cEntityCoordinates = entities.first->getGlobalBounds();
+      const sf::FloatRect mEntityCoordinates = entities.second->getGlobalBounds();
       bool overlap = mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect);
 
       if (overlap) {
@@ -59,39 +55,53 @@ namespace Manager {
         float yOverlap = m_intersectionRect.height;
 
         if (yOverlap < xOverlap) {
+          if (
+            entities.first->getEntityType() == Entities::EntityType::Static &&
+            entities.second->getEntityId() == Entities::EntityID::PlayerE
+          )
+            std::cout << "Player: " << entities.second->getPosition().y << "/ Platform: " << entities.first->getPosition().y << std::endl;
+
           if (mEntityCoordinates.top < cEntityCoordinates.top)
             yOverlap *= -1;
-          applyCollision(entity1, entity2, CollisionType::Vertical, yOverlap);
+          applyCollision(entities, CollisionType::Vertical, yOverlap);
         } else {
           if (mEntityCoordinates.left < cEntityCoordinates.left)
             xOverlap *= -1;
-          applyCollision(entity1, entity2, CollisionType::Horizontal, xOverlap);
+          applyCollision(entities, CollisionType::Horizontal, xOverlap);
         }
       }
 
       return overlap;
     }
 
-    void CollisionManager::applyCollision(Entities::Entity* entity1, Entities::Entity* entity2, CollisionType type, float overlap) {
+    void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap) {
+      entities.first->collide(entities.second, type, overlap);
+      entities.second->collide(entities.first, type, overlap);
+      
       CollisionStrategy* strategy;
+      strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
+      strategy->collide(entities.first, entities.second, type, overlap);
 
-      strategy = entity1->getCollisionStrategy(entity2->getEntityTag());
-      strategy->collide(entity1, entity2, type, overlap);
-
-      strategy = entity2->getCollisionStrategy(entity1->getEntityTag());
-      strategy->collide(entity2, entity1, type, overlap);
+      strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
+      strategy->collide(entities.second, entities.first, type, overlap);
     }
 
-    void CollisionManager::verifyCollisionStatic() {
+    void CollisionManager::verifyCollisions() {
       List<Entities::Entity*>::Iterator staticIterator;
       List<Entities::Entity*>::Iterator dynamicIterator;
-      bool overlap = false;
-
-      for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator)
-        verifyCollisionStatic(*dynamicIterator);
 
       for (dynamicIterator = m_players->first(); dynamicIterator != m_players->last(); ++dynamicIterator)
         verifyCollisionStatic(*dynamicIterator);
+
+      for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator) {
+        verifyCollisionStatic(*dynamicIterator);
+        
+        if (!(*dynamicIterator)->getVelocity().x && !(*dynamicIterator)->getVelocity().y)
+          continue;
+
+        verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
+        verifyCollisionDynamic(*dynamicIterator, m_players->first());
+      }
     }
 
     void CollisionManager::verifyCollisionStatic(Entities::Entity* entity) {
@@ -99,17 +109,17 @@ namespace Manager {
       bool overlap = false;
 
       for (staticIterator = m_staticEntities->first(); staticIterator != m_staticEntities->last(); ++staticIterator)
-        overlap = verifyOverlap(*staticIterator, entity) || overlap;
+        overlap = verifyOverlap(std::make_pair(*staticIterator, entity)) || overlap;
 
       entity->setIsColliding(overlap);
     }
 
-    void CollisionManager::verifyCollisionDynamic(Entities::Entity* entity) {
+    void CollisionManager::verifyCollisionDynamic(Entities::Entity* entity, List<Entities::Entity*>::Iterator it) {
       List<Entities::Entity*>::Iterator dynamicIterator;
       bool overlap = false;
 
-      for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator)
-        overlap = verifyOverlap(entity, *dynamicIterator) || overlap;
+      for (dynamicIterator = it; dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator)
+        overlap = verifyOverlap(std::make_pair(*dynamicIterator, entity)) || overlap;
 
       entity->setIsColliding(overlap);
     }

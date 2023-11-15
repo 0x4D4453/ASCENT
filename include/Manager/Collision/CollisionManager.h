@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Manager/Collision/CollisionStrategyFactory.h"
+#include "Utility/List.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -28,8 +29,10 @@ namespace Manager {
         EntityList* m_dynamicEntities;
 
       private:
-        void applyCollision(Entities::Entity* entity1, Entities::Entity* entity2, CollisionType type, float overlap);
-        bool verifyOverlap(Entities::Entity* entity1, Entities::Entity* entity2);
+        void applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap);
+        bool verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities);
+        void verifyCollisionStatic(Entities::Entity* entity);
+        void verifyCollisionDynamic(Entities::Entity* entity, List<Entities::Entity*>::Iterator it);
       
       public:
         CollisionManager();
@@ -37,9 +40,7 @@ namespace Manager {
         void setPlayersList(EntityList* playersList);
         void setStaticEntities(EntityList* staticList);
         void setDynamicEntities(EntityList* dynamicList);
-        void verifyCollisionStatic();
-        void verifyCollisionStatic(Entities::Entity* entity);
-        void verifyCollisionDynamic(Entities::Entity* entity);
+        void verifyCollisions();
         CollisionStrategy* getCollisionStrategy(StrategyId id);
     };
   }

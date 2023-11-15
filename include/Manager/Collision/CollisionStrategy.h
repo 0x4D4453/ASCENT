@@ -7,11 +7,9 @@ namespace Entities { class Entity; }
 namespace Manager {
   namespace Collision {
     enum class CollisionType;
-    class CollisionStrategyFactory;
 
     class CollisionStrategy {
       protected:
-        static CollisionStrategyFactory* m_pCollisionStrategyFactory;
         const float m_delay;
 
       public:

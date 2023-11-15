@@ -8,6 +8,9 @@ namespace Entities {
   {
     setEntityId(EntityID::ObstacleE);
     setEntityTag(EntityTag::ObstacleTag);
+
+    setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::Default);
+    setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
   }
 
   Obstacle::~Obstacle() {

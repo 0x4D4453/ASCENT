@@ -1,15 +1,18 @@
-#ifndef PLAYERCOLLISION_H
-#define PLAYERCOLLISION_H
+#ifndef KNOCKBACKCOLLISION_H
+#define KNOCKBACKCOLLISION_H
 
 /* Program Defined */
 #include "Manager/Collision/CollisionStrategy.h"
 
 namespace Manager {
   namespace Collision {
-    class PlayerCollision : public CollisionStrategy {
+    class KnockbackCollision : public CollisionStrategy {
+      private:
+        const float m_force;
+        
       public:
-        PlayerCollision();
-        ~PlayerCollision();
+        KnockbackCollision();
+        ~KnockbackCollision();
         
         virtual void collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap);
     };

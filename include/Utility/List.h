@@ -36,6 +36,7 @@ class List {
         Iterator(Element<TL>* position = NULL);
         ~Iterator();
         TL operator*();
+        Iterator operator+(int);
         Iterator operator++();
         Iterator operator++(int);
         bool operator!=(const Iterator& it);
@@ -119,6 +120,15 @@ List<TL>::Iterator::~Iterator() {
 template <class TL>
 TL List<TL>::Iterator::operator*() {
   return m_position->getData();
+}
+
+template <class TL>
+typename List<TL>::Iterator List<TL>::Iterator::operator+(int num) {
+  List<TL>::Iterator it = *this;
+  for (int i = 0; i < num && it.m_position->getNext(); i++)
+    it++;
+
+  return it;
 }
 
 template <class TL>

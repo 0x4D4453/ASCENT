@@ -14,10 +14,19 @@ namespace Entities {
     setEntityId(EntityID::EnemyE);
     setEntityTag(EntityTag::EnemyTag);
     m_sprite.setPosition(spawnPosition);
+
+    setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
   }
 
   Enemy::~Enemy() {
 
+  }
+
+  void Enemy::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+    if (entity->getEntityId() != EntityID::PlayerE)
+      return;
+    
+    damagePlayer(dynamic_cast<Player*>(entity));
   }
 
   void Enemy::damagePlayer(Player* pPlayer) {

@@ -56,6 +56,7 @@ namespace Entities {
       void setEntityTag(EntityTag tag);
       void setEntityType(EntityType group);
       void setSpeed(const float speed);
+      void setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy);
       void move();
     
     public:
@@ -73,10 +74,12 @@ namespace Entities {
       void setVelocity(const sf::Vector2f velocity);
       void setIsStaggered(const bool isStaggered);
       const bool getIsStaggered() const;
+
       void setIsColliding(const bool isColliding);
       const bool getIsColliding() const;
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
+      virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
       virtual void move(const sf::Vector2f movement);
       virtual void save() = 0;
       virtual void exec() = 0;

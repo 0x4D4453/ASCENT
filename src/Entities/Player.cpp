@@ -30,8 +30,8 @@ namespace Entities {
   {
     setEntityId(EntityID::PlayerE);
     setEntityTag(EntityTag::PlayerTag);
-    
-    m_collisionMap.insert(std::make_pair(EntityTag::ObstacleTag, m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::Player)));
+
+    setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::Default);
 
     m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
     m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));
@@ -148,6 +148,15 @@ namespace Entities {
       handleInput();
 
     update();
+  }
+
+  void Player::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+    if (type == Manager::Collision::CollisionType::Vertical && m_position.y + overlap <= entity->getPosition().y) {
+      std::cout << "Player: " << m_position.y << " / Platform: " << entity->getPosition().y << std::endl;
+
+      m_isJumping = false;
+      setIsStaggered(false);
+    }
   }
 
   void Player::save() {

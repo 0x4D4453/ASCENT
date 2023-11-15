@@ -18,6 +18,9 @@ namespace Manager {
     }
 
     void DefaultCollision::collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap) {
+      if (otherEntity->getEntityType() == Entities::EntityType::Static)
+        return;
+
       if (type == CollisionType::Horizontal) {
         otherEntity->move(sf::Vector2f(overlap, 0));
       } else {

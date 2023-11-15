@@ -111,7 +111,7 @@ namespace Stages {
     const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
 
     while (*timeSinceLastUpdate >= *timePerFrame) {
-      m_collisionManager.verifyCollisionStatic();
+      m_collisionManager.verifyCollisions();
       updateEntities(m_dynamicEntities);
       updateEntities(m_players);
       (*timeSinceLastUpdate) -= (*timePerFrame);

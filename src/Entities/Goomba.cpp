@@ -43,7 +43,10 @@ namespace Entities {
   }
 
   void Goomba::exec() {
-    if (m_isColliding)
+    // if (getIsColliding())
+    if (m_healthPoints > 0)
       movementPattern();
+    else
+      m_animation.update(m_dt, this);
   }
 }

@@ -12,11 +12,27 @@ namespace Entities {
     , m_spawnPosition(spawnPosition)
   {
     setEntityId(EntityID::EnemyE);
+    setEntityTag(EntityTag::EnemyTag);
     m_sprite.setPosition(spawnPosition);
+
+    setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
   }
 
   Enemy::~Enemy() {
 
+  }
+
+  void Enemy::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+    if (entity->getEntityId() != EntityID::PlayerE)
+      return;
+
+    Player* player = dynamic_cast<Player*>(entity);
+    if (player->isAttacking()) {
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::NoCollision);
+    } else {
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
+      damagePlayer(player);
+    }
   }
 
   void Enemy::damagePlayer(Player* pPlayer) {

@@ -7,12 +7,18 @@
 
 namespace Manager {
   namespace Collision {
-    CollisionStrategy::CollisionStrategy() {
+    CollisionStrategy::CollisionStrategy()
+      : m_delay(0)
+    {
 
     }
 
     CollisionStrategy::~CollisionStrategy() {
 
+    }
+
+    const float CollisionStrategy::getDelay() const {
+      return m_delay;
     }
   }
 }

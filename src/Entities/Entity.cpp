@@ -10,13 +10,13 @@ namespace Entities {
   Entity::Entity(const sf::Vector2f position, const float speed)
     : Being()
     , m_entityId(EntityID::EntityE)
-    , m_entityGroup(EntityGroup::Static)
+    , m_entityTag(EntityTag::ObstacleTag)
+    , m_entityType(EntityType::Static)
     , m_position(position)
     , m_speed(speed)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
-    , m_isColliding(true)
-    , m_pCollision(m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::NoCollision))
+    , m_moved(true)
   {
     setPosition(m_position);
   }
@@ -29,20 +29,32 @@ namespace Entities {
     m_entityId = id;
   }
 
-  void Entity::setEntityGroup(EntityGroup group) {
-    m_entityGroup = group;
+  void Entity::setEntityTag(EntityTag tag) {
+    m_entityTag = tag;
+  }
+
+  void Entity::setEntityType(EntityType group) {
+    m_entityType = group;
   }
 
   EntityID Entity::getEntityId() const {
     return m_entityId;
   }
 
-  EntityGroup Entity::getEntityGroup() const {
-    return m_entityGroup;
+  EntityTag Entity::getEntityTag() const {
+    return m_entityTag;
+  }
+
+  EntityType Entity::getEntityType() const {
+    return m_entityType;
   }
 
   void Entity::setSpeed(const float speed) {
     m_speed = speed;
+  }
+
+  const bool Entity::getMoved() const {
+    return m_moved;
   }
 
   void Entity::setPosition(sf::Vector2f position) {
@@ -70,22 +82,37 @@ namespace Entities {
     return m_isStaggered;
   }
 
-  void Entity::move() {
-    m_sprite.move(m_velocity);
+  const bool Entity::getIsColliding() const {
+    return m_collisionMap.size() > 0;
+  }
 
-    if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_isColliding = m_pCollisionManager->verifyCollision(this);
+  std::unordered_map<int, Entity*> Entity::getCollisionMap() const {
+    return m_collisionMap;
+  }
+
+  void Entity::move() {
+    move(m_velocity);
   }
 
   void Entity::move(const sf::Vector2f movement) {
+    m_moved = movement.x || movement.y;
     m_sprite.move(movement);
-
-    if (m_velocity.x != 0 || m_velocity.y != 0)
-      m_isColliding = m_pCollisionManager->verifyCollision(this);
   }
 
-  void Entity::collide(Entity* entity, Manager::Collision::CollisionType type, float overlap) {
-    m_pCollision->collide(this, entity, type, overlap);
+  void Entity::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+
+  }
+
+  void Entity::setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy) {
+    Manager::Collision::CollisionStrategy* pStrategy = m_pCollisionManager->getCollisionStrategy(strategy);
+    m_collisionStrategies[tag] = pStrategy;
+  }
+
+  Manager::Collision::CollisionStrategy* Entity::getCollisionStrategy(EntityTag tag) const {
+    if (m_collisionStrategies.count(tag) == 0)
+      return m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::NoCollision);
+      
+    return m_collisionStrategies.at(tag);
   }
 
   void Entity::setCollisionManager(Manager::Collision::CollisionManager* manager) {

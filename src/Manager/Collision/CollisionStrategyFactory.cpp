@@ -4,8 +4,7 @@
 /* Program defined */
 #include "Manager/Collision/NoCollision.h"
 #include "Manager/Collision/DefaultCollision.h"
-#include "Manager/Collision/PlatformCollision.h"
-#include "Manager/Collision/PlayerCollision.h"
+#include "Manager/Collision/KnockbackCollision.h"
 
 namespace Manager {
   namespace Collision {
@@ -45,11 +44,8 @@ namespace Manager {
         case StrategyId::Default:
           strategy = new DefaultCollision();
           break;
-        case StrategyId::Platform:
-          strategy = new PlatformCollision();
-          break;
-        case StrategyId::Player:
-          strategy = new PlayerCollision();
+        case StrategyId::KnockbackCollision:
+          strategy = new KnockbackCollision();
           break;
         default:
           strategy = new NoCollision();

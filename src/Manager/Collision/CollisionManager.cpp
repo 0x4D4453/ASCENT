@@ -5,7 +5,6 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
 #include "Entities/Player.h"
-#include "Utility/List.h"
 
 /* Standard Library */
 #include <iostream>
@@ -16,87 +15,105 @@ namespace Manager {
     Manager::Collision::CollisionStrategyFactory* CollisionManager::m_pCollisionFactory(Manager::Collision::CollisionStrategyFactory::getInstance());
 
     CollisionManager::CollisionManager()
-      : m_pEntity(NULL)
-      , m_pPlayers(NULL)
-      , m_pObstacles(NULL)
-      , m_pEnemies(NULL)
+      : m_players(NULL)
+      , m_staticEntities(NULL)
+      , m_dynamicEntities(NULL)
     {
-
+      
     }
 
     CollisionManager::~CollisionManager() {
-      m_pEntity = NULL;
-      m_pPlayers = NULL;
-      m_pObstacles = NULL;
-      m_pEnemies = NULL;
+      m_players = NULL;
+      m_staticEntities = NULL;
+      m_dynamicEntities = NULL;
     }
 
     void CollisionManager::setPlayersList(EntityList* playersList) {
       if (playersList)
-        m_pPlayers = playersList;
+        m_players = playersList;
     }
 
-    void CollisionManager::setObstaclesList(EntityList* obstaclesList) {
-      if (obstaclesList)
-        m_pObstacles = obstaclesList;
+    void CollisionManager::setStaticEntities(EntityList* staticList) {
+      if (staticList)
+        m_staticEntities = staticList;
     }
 
-    void CollisionManager::setEnemiesList(EntityList* enemiesList) {
-      if (enemiesList)
-        m_pEnemies = enemiesList;
+    void CollisionManager::setDynamicEntities(EntityList* dynamicList) {
+      if (dynamicList)
+        m_dynamicEntities = dynamicList;
     }
 
-    bool CollisionManager::verifyOverlap(Entities::Entity* entity) {
+    void CollisionManager::verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities) {
       using namespace Entities;
 
-      const sf::FloatRect cEntityCoordinates = entity->getGlobalBounds();
-      const sf::FloatRect mEntityCoordinates = m_pEntity->getGlobalBounds();
-      bool overlap = false;
+      const sf::FloatRect cEntityCoordinates = entities.first->getGlobalBounds();
+      const sf::FloatRect mEntityCoordinates = entities.second->getGlobalBounds();
+      std::unordered_map<int, Entity*> collisionMap = entities.first->getCollisionMap();
 
       if (mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect)) {
+        if (collisionMap.count(entities.second->getId()) > 0)
+          return;
+
         float xOverlap = m_intersectionRect.width;
         float yOverlap = m_intersectionRect.height;
-        overlap = true;
 
-        if (yOverlap != 0 && yOverlap < xOverlap) {
+        if (yOverlap < xOverlap) {
           if (mEntityCoordinates.top < cEntityCoordinates.top)
             yOverlap *= -1;
-          entity->collide(m_pEntity, Manager::Collision::CollisionType::Vertical, yOverlap);
-          m_pEntity->collide(entity, Manager::Collision::CollisionType::Vertical, yOverlap);
-        } else if (xOverlap != 0 && xOverlap < yOverlap) {
+          applyCollision(entities, CollisionType::Vertical, yOverlap);
+        } else {
           if (mEntityCoordinates.left < cEntityCoordinates.left)
             xOverlap *= -1;
-          entity->collide(m_pEntity, Manager::Collision::CollisionType::Horizontal, xOverlap);
-          m_pEntity->collide(entity, Manager::Collision::CollisionType::Horizontal, xOverlap);
+          applyCollision(entities, CollisionType::Horizontal, xOverlap);
         }
+      } else {
+        collisionMap.erase(entities.second->getId());
+        entities.second->getCollisionMap().erase(entities.first->getId());
       }
-
-      return overlap;
     }
 
-    bool CollisionManager::verifyCollision(Entities::Entity* entity) {
-      m_pEntity = entity;
-      return verifyCollisionObstacles() || verifyCollisionEnemies();
+    void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap) {
+      entities.first->collide(entities.second, type, overlap);
+      entities.second->collide(entities.first, type, overlap);
+
+      entities.first->getCollisionMap().insert(std::make_pair(entities.second->getId(), entities.second));
+      entities.second->getCollisionMap().insert(std::make_pair(entities.first->getId(), entities.first));
+      
+      CollisionStrategy* strategy;
+      strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
+      strategy->collide(entities.first, entities.second, type, overlap);
+
+      strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
+      strategy->collide(entities.second, entities.first, type, overlap);
     }
 
-    bool CollisionManager::verifyCollisionObstacles() {
-      List<Entities::Entity*>::Iterator obstaclesIterator;
-      bool overlap = false;
+    void CollisionManager::verifyCollisions() {
+      List<Entities::Entity*>::Iterator staticIterator;
+      List<Entities::Entity*>::Iterator dynamicIterator;
 
-      for (obstaclesIterator = m_pObstacles->first(); obstaclesIterator != m_pObstacles->last(); ++obstaclesIterator)
-        overlap = verifyOverlap(*obstaclesIterator) || overlap;
+      for (dynamicIterator = m_players->first(); dynamicIterator != m_players->last(); ++dynamicIterator)
+        verifyCollisionStatic(*dynamicIterator);
 
-      return overlap;
+      for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator) {
+        verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
+        verifyCollisionDynamic(*dynamicIterator, m_players->first());
+        verifyCollisionStatic(*dynamicIterator);
+      }
     }
 
-    bool CollisionManager::verifyCollisionEnemies() {
-      List<Entities::Entity*>::Iterator enemiesIterator;
-      bool overlap = false;
+    void CollisionManager::verifyCollisionStatic(Entities::Entity* entity) {
+      List<Entities::Entity*>::Iterator staticIterator;
 
-      for (enemiesIterator = m_pEnemies->first(); enemiesIterator != m_pEnemies->last(); ++enemiesIterator)
-        overlap = verifyOverlap(*enemiesIterator) || overlap;
+      for (staticIterator = m_staticEntities->first(); staticIterator != m_staticEntities->last(); ++staticIterator)
+        verifyOverlap(std::make_pair(*staticIterator, entity));
+    }
 
-      return overlap;
+    void CollisionManager::verifyCollisionDynamic(Entities::Entity* entity, List<Entities::Entity*>::Iterator it) {
+      List<Entities::Entity*>::Iterator dynamicIterator;
+
+      for (dynamicIterator = it; dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator)
+        if ((*dynamicIterator)->getMoved() || entity->getMoved())
+          verifyOverlap(std::make_pair(*dynamicIterator, entity));
     }
 
     CollisionStrategy* CollisionManager::getCollisionStrategy(StrategyId id) {

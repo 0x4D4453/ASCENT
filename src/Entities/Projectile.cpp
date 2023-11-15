@@ -13,6 +13,8 @@ namespace Entities {
     , m_direction(direction)
   {
     setEntityId(EntityID::ProjectileE);
+    setEntityTag(EntityTag::ProjectileTag);
+    setEntityType(EntityType::Dynamic);
     setup();
   }
 

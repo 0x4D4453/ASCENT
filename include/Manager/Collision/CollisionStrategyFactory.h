@@ -11,9 +11,8 @@ namespace Manager {
   namespace Collision {
     enum class StrategyId {
       Default,
-      Platform,
-      Player,
       NoCollision,
+      KnockbackCollision,
     };
 
     class CollisionStrategyFactory {

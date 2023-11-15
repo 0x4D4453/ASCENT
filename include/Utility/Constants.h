@@ -15,6 +15,9 @@ namespace Constants {
   constexpr float GRAVITY = 20.f;
   constexpr float DRAG = 1.5f;
   constexpr float MAX_FALL_SPEED = 20.f;
+
+  const sf::Color SELECTION_COLOR = sf::Color::Magenta;
+  const sf::Color DEFAULT_COLOR = sf::Color::White;
 }
 
 #endif

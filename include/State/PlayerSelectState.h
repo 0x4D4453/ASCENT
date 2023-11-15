@@ -1,30 +1,21 @@
-#ifndef MENUSTATE_H
-#define MENUSTATE_H
+#ifndef PLAYERSELECTSTATE_H
+#define PLAYERSELECTSTATE_H
 
-/* Main Include */
+/* Program Defined */
 #include "State/OptionsState.h"
 
-/* SFML Library */
-#include <SFML/Graphics.hpp>
-#include <SFML/System/NonCopyable.hpp>
-
-/* Standard Library */
-#include <vector>
-
 namespace States {
-  class MenuState : public OptionsState, public sf::NonCopyable {
+  class PlayerSelectState : public OptionsState {
     private:
       enum Options {
-        NewGame,
-        Continue,
-        Highscore,
-        Credits,
-        Exit,
+        OnePlayer,
+        TwoPlayer,
         TotalOptions
       };
 
     private:
       Options m_currentOption;
+      std::vector<sf::Sprite> m_sprites;
     
     private:
       void handleEvent(sf::Event& event);
@@ -35,10 +26,10 @@ namespace States {
       void changeState();
     
     public:
-      MenuState();
-      ~MenuState();
+      PlayerSelectState();
+      ~PlayerSelectState();
       void exec();
-  }; 
+  };
 }
 
-#endif //MENUSTATE_H
+#endif

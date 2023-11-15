@@ -7,9 +7,12 @@
 Context* Context::m_instance(NULL);
 
 Context::Context() 
-  : m_fontHolder()
+  : m_textureHolder()
+  , m_fontHolder()
   , m_soundHolder()
 {
+  m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
+  m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);
   m_fontHolder.load(Fonts::Monogram, Fonts::MONOGRAM);
   m_soundHolder.load(Sounds::menuSound, Sounds::MENU);
 }
@@ -23,6 +26,10 @@ Context* Context::getInstance() {
       m_instance = new Context;
     return m_instance;
 } 
+
+sf::Texture& Context::getTexture(Textures::ID textureID) {
+  return m_textureHolder.getResource(textureID);
+}
 
 sf::Font& Context::getFont(Fonts::ID fontID) {
   return m_fontHolder.getResource(fontID);

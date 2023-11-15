@@ -6,6 +6,8 @@
 #include "State/GameState.h"
 #include "State/MenuState.h"
 #include "State/PauseState.h"
+#include "State/PlayerSelectState.h"
+#include "State/StageSelectState.h"
 #include "State/RankingState.h"
 
 /* Standard Library */
@@ -27,6 +29,12 @@ namespace States {
     switch (stateType) {
       case (StateType::Menu): 
         state = new MenuState; 
+        break;
+      case (StateType::PlayerSelect): 
+        state = new PlayerSelectState; 
+        break;
+      case (StateType::StageSelect): 
+        state = new StageSelectState; 
         break;
       case (StateType::Game):
         state = new GameState;

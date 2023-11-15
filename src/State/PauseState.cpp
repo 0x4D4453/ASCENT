@@ -61,7 +61,7 @@ namespace States {
     createOption("Save & Quit", sf::Vector2f(viewCenterPosition.x, viewCenterPosition.y + 100.f));
     createOption("Menu", sf::Vector2f(viewCenterPosition.x, viewCenterPosition.y + 200.f));
 
-    m_options[m_currentOption]->setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
   }
 
   void PauseState::handleEvent(sf::Event& event) {
@@ -70,10 +70,10 @@ namespace States {
     if (event.type == sf::Event::KeyPressed) {
       switch (event.key.scancode) {
         case (Keyboard::Scancode::W): 
-          moveOptionUp(); 
+          movePreviousOption(); 
           break;
         case (Keyboard::Scancode::S): 
-          moveOptionDown(); 
+          moveNextOption(); 
           break;
         case (Keyboard::Scancode::Enter): 
           changeState(); 
@@ -86,27 +86,27 @@ namespace States {
       }
     }
   }
-  
-  void PauseState::moveOptionDown() {
-    if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
-      return;
-    
-    m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(sf::Color::White);
-    m_options[m_currentOption + 1]->setFillColor(sf::Color::Magenta);
 
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
-  }
-
-  void PauseState::moveOptionUp() {
+  void PauseState::movePreviousOption() {
     if (static_cast<int>(m_currentOption - 1) < static_cast<int>(Continue))
       return;
     
     m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(sf::Color::White);
-    m_options[m_currentOption - 1]->setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption - 1]->setFillColor(Constants::SELECTION_COLOR);
 
     m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
+  }
+  
+  void PauseState::moveNextOption() {
+    if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
+      return;
+    
+    m_optionSound.play();
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption + 1]->setFillColor(Constants::SELECTION_COLOR);
+
+    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
   }
 
   void PauseState::changeState() {

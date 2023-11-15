@@ -5,6 +5,7 @@
 #include "Manager/GraphicsManager.h"
 #include "State/GameState.h"
 #include "State/StateStack.h"
+#include "Utility/Constants.h"
 #include "Utility/Context.h"
 #include "Utility/Fonts.h"
 
@@ -33,7 +34,7 @@ namespace States {
       return;
     }
 
-    pText->setFillColor(sf::Color::White);
+    pText->setFillColor(Constants::DEFAULT_COLOR);
     pText->setCharacterSize(characterSize);
     pText->setPosition(position);
 
@@ -47,7 +48,7 @@ namespace States {
     createOption("Credits", sf::Vector2f(50.f, 280.f));
     createOption("Exit", sf::Vector2f(50.f, 360.f));
 
-    m_options[m_currentOption]->setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
   }
 
   void MenuState::handleEvent(sf::Event& event) {
@@ -56,10 +57,10 @@ namespace States {
     if (event.type == Event::KeyPressed) {
       switch (event.key.scancode) {
         case (Keyboard::Scancode::W): 
-          this->moveOptionUp(); 
+          movePreviousOption(); 
           break;
         case (Keyboard::Scancode::S): 
-          this->moveOptionDown(); 
+          moveNextOption(); 
           break;
         case (Keyboard::Scancode::Enter): this->changeState(); 
           break;
@@ -68,24 +69,24 @@ namespace States {
     }
   }
 
-  void MenuState::moveOptionUp() {
+  void MenuState::movePreviousOption() {
     if (static_cast<int>(m_currentOption - 1) < static_cast<int>(NewGame))
       return;
     
     m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(sf::Color::White);
-    m_options[m_currentOption - 1]->setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption - 1]->setFillColor(Constants::SELECTION_COLOR);
 
     m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
   }
 
-  void MenuState::moveOptionDown() {
+  void MenuState::moveNextOption() {
     if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
       return;
     
     m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(sf::Color::White);
-    m_options[m_currentOption + 1]->setFillColor(sf::Color::Magenta);
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption + 1]->setFillColor(Constants::SELECTION_COLOR);
 
     m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
   }
@@ -93,10 +94,10 @@ namespace States {
   void MenuState::changeState() {
     switch (m_currentOption) {
       case NewGame: 
-        m_pStateStack->pushState(StateType::Game, this, true); 
+        m_pStateStack->pushState(StateType::PlayerSelect, NULL, true); 
         break;
       case Continue:
-        m_pStateStack->pushState(StateType::Continue, this, true);
+        m_pStateStack->pushState(StateType::Continue, NULL, true);
         break;
       case Highscore:
         m_pStateStack->pushState(StateType::Ranking, NULL, true);

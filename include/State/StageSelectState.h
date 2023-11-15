@@ -1,31 +1,22 @@
-#ifndef MENUSTATE_H
-#define MENUSTATE_H
+#ifndef STAGESELECTSTATE_H
+#define STAGESELECTSTATE_H
 
-/* Main Include */
+/* Program Defined */
 #include "State/OptionsState.h"
 
-/* SFML Library */
-#include <SFML/Graphics.hpp>
-#include <SFML/System/NonCopyable.hpp>
-
-/* Standard Library */
-#include <vector>
-
 namespace States {
-  class MenuState : public OptionsState, public sf::NonCopyable {
+  class StageSelectState : public OptionsState {
     private:
       enum Options {
-        NewGame,
-        Continue,
-        Highscore,
-        Credits,
-        Exit,
+        Stage1,
+        Stage2,
         TotalOptions
       };
 
     private:
       Options m_currentOption;
-    
+      const bool m_multiplayer;
+
     private:
       void handleEvent(sf::Event& event);
       void createOption(const char* optionName, const sf::Vector2f& position);
@@ -33,12 +24,12 @@ namespace States {
       void movePreviousOption();
       void moveNextOption();
       void changeState();
-    
+
     public:
-      MenuState();
-      ~MenuState();
+      StageSelectState(const bool multiplayer = false);
+      ~StageSelectState();
       void exec();
-  }; 
+  };
 }
 
-#endif //MENUSTATE_H
+#endif

@@ -35,8 +35,8 @@ namespace States {
       void handleEvent(sf::Event& event);
       void createOption(const char* optionName, const sf::Vector2f& position);
       void setup();
-      void moveOptionUp();
-      void moveOptionDown();
+      void movePreviousOption();
+      void moveNextOption();
       void changeState();
     
     public:

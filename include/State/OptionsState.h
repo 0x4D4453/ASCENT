@@ -19,8 +19,8 @@ namespace States {
    
     protected:
       virtual void setup() = 0;
-      virtual void moveOptionUp() = 0;
-      virtual void moveOptionDown() = 0;
+      virtual void movePreviousOption() = 0;
+      virtual void moveNextOption() = 0;
       virtual void changeState() =0;
 
     public:

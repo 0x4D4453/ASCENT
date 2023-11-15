@@ -16,6 +16,8 @@ namespace States { class StateStack; }
 namespace States {
   enum class StateType {
     Menu,
+    PlayerSelect,
+    StageSelect,
     Game,
     Continue,
     Pause,

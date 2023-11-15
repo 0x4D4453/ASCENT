@@ -5,6 +5,8 @@ namespace Textures {
   enum ID {
     Player1,
     Player2,
+    OnePlayer,
+    TwoPlayers,
     Goomba,
     Fly,
     Enemy3,
@@ -25,6 +27,9 @@ namespace Textures {
 
   constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
   constexpr char PLAYER2[] = "assets/tiles/player2SpriteSheet.png";
+
+  constexpr char ONE_PLAYER[] = "assets/tiles/tile_0280.png";
+  constexpr char TWO_PLAYERS[] = "assets/tiles/TwoPlayers.png";
 
   constexpr char PLATFORM[] = "assets/tiles/tile_0271.png";
   constexpr char PLATFORM_LEFT_CORNER[] = "assets/tiles/tile_0270.png";

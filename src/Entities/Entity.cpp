@@ -14,6 +14,7 @@ namespace Entities {
     , m_entityType(EntityType::Static)
     , m_position(position)
     , m_speed(speed)
+    , m_knockbackForce(2.5f)
     , m_velocity(sf::Vector2f(0.f, 0.f))
     , m_isStaggered(false)
     , m_moved(true)
@@ -51,6 +52,14 @@ namespace Entities {
 
   void Entity::setSpeed(const float speed) {
     m_speed = speed;
+  }
+
+  void Entity::setKnockback(const float force) {
+    m_knockbackForce = force;
+  }
+
+  const float Entity::getKnockback() const {
+    return m_knockbackForce;
   }
 
   const bool Entity::getMoved() const {

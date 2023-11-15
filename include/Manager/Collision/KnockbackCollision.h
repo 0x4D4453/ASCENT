@@ -8,7 +8,7 @@ namespace Manager {
   namespace Collision {
     class KnockbackCollision : public CollisionStrategy {
       private:
-        const float m_force;
+        const float m_maxForce;
         
       public:
         KnockbackCollision();

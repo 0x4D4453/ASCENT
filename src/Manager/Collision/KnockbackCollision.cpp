@@ -8,7 +8,7 @@ namespace Manager {
   namespace Collision {
     KnockbackCollision::KnockbackCollision()
       : CollisionStrategy()
-      , m_force(2.5f)
+      , m_maxForce(5.f)
     {
 
     }
@@ -21,10 +21,14 @@ namespace Manager {
       if (otherEntity->getEntityType() == Entities::EntityType::Static)
         return;
       
+      float knockback = ownEntity->getKnockback();
+      if (knockback > m_maxForce)
+        knockback = m_maxForce;
+      
       if (otherEntity->getPosition().x < ownEntity->getPosition().x)
-        otherEntity->setVelocity(sf::Vector2f(-m_force, -m_force));
+        otherEntity->setVelocity(sf::Vector2f(-knockback, -knockback));
       else
-        otherEntity->setVelocity(sf::Vector2f(m_force, -m_force));
+        otherEntity->setVelocity(sf::Vector2f(knockback, -knockback));
 
       otherEntity->setIsStaggered(true);
     }

@@ -55,12 +55,6 @@ namespace Manager {
         float yOverlap = m_intersectionRect.height;
 
         if (yOverlap < xOverlap) {
-          if (
-            entities.first->getEntityType() == Entities::EntityType::Static &&
-            entities.second->getEntityId() == Entities::EntityID::PlayerE
-          )
-            std::cout << "Player: " << entities.second->getPosition().y << "/ Platform: " << entities.first->getPosition().y << std::endl;
-
           if (mEntityCoordinates.top < cEntityCoordinates.top)
             yOverlap *= -1;
           applyCollision(entities, CollisionType::Vertical, yOverlap);
@@ -94,13 +88,12 @@ namespace Manager {
         verifyCollisionStatic(*dynamicIterator);
 
       for (dynamicIterator = m_dynamicEntities->first(); dynamicIterator != m_dynamicEntities->last(); ++dynamicIterator) {
-        verifyCollisionStatic(*dynamicIterator);
-        
-        if (!(*dynamicIterator)->getVelocity().x && !(*dynamicIterator)->getVelocity().y)
-          continue;
+        if ((*dynamicIterator)->getVelocity().x || (*dynamicIterator)->getVelocity().y) {
+          verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
+          verifyCollisionDynamic(*dynamicIterator, m_players->first());
+        }
 
-        verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
-        verifyCollisionDynamic(*dynamicIterator, m_players->first());
+        verifyCollisionStatic(*dynamicIterator);
       }
     }
 

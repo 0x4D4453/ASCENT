@@ -71,6 +71,11 @@ namespace States {
   }
 
   void PlayerSelectState::changeState() {
+    if (m_currentOption == TwoPlayer)
+      m_pContext->setMultiplayer(true);
+    else 
+      m_pContext->setMultiplayer(false);
+
     m_pStateStack->pushState(StateType::StageSelect, NULL, true);
   }
 

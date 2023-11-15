@@ -23,7 +23,7 @@ namespace States {
   }
 
   PauseState::~PauseState() {
-
+  
   }
 
   void PauseState::setup() {

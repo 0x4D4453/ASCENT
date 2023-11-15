@@ -11,9 +11,8 @@
 #include <iostream>
 
 namespace States {
-  StageSelectState::StageSelectState(const bool multiplayer)
+  StageSelectState::StageSelectState()
     : m_currentOption(Stage1)
-    , m_multiplayer(multiplayer)
   {
     setup();
   }
@@ -54,6 +53,11 @@ namespace States {
   }
 
   void StageSelectState::changeState() {
+    if (m_currentOption == Stage1)
+      m_pContext->setStage(Constants::STAGE_1);
+    else
+      m_pContext->setStage(Constants::STAGE_3);
+
     m_pStateStack->pushState(StateType::Game, NULL, true);
   }
 

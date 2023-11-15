@@ -16,6 +16,9 @@ class Context {
     ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
     ResourceHolder<Fonts::ID, sf::Font> m_fontHolder;
     ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
+
+    bool m_multiplayer;
+    std::string m_stagePath;
   
   private:
     Context();
@@ -26,6 +29,11 @@ class Context {
     sf::Texture& getTexture(Textures::ID textureID);
     sf::Font& getFont(Fonts::ID fontID);
     sf::SoundBuffer& getSound(Sounds::ID soundID);
+
+    void setMultiplayer(const bool multiplayer);
+    const bool getMultiplayer() const;
+    void setStage(const std::string& stage);
+    std::string& getStage();
 };
 
 #endif

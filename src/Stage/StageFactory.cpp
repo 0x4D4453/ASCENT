@@ -24,11 +24,12 @@
 namespace Stages {
   Manager::GraphicsManager* StageFactory::m_graphicsManager(Manager::GraphicsManager::getInstance());
 
-  StageFactory::StageFactory(const bool newGame)
+  StageFactory::StageFactory(const bool newGame, const bool multiplayer)
     : m_newGame(newGame)
     , m_entityFactory()
     , m_textureHolder()
     , m_soundHolder()
+    , m_multiplayer(multiplayer)
   {
     loadTextures();
     loadSounds();
@@ -70,7 +71,7 @@ namespace Stages {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
-  Stage* StageFactory::createStage(const char* stageTxt) {
+  Stage* StageFactory::createStage(const std::string& stageTxt) {
     Stage* stage = new FirstStage(m_newGame);
 
     m_players = stage->getPlayers();
@@ -98,7 +99,8 @@ namespace Stages {
 
   void StageFactory::createPlayers(int stageHeight) {
     m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
-    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+    if (m_multiplayer)
+      m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;
@@ -111,8 +113,8 @@ namespace Stages {
     }
   }
 
-  void StageFactory::createMap(const char* stageTxt) {
-    std::ifstream stage("assets/stage_3.txt");
+  void StageFactory::createMap(const std::string& stageTxt) {
+    std::ifstream stage(stageTxt);
 
     if (!stage) {
       std::cout << "Error loading stage\n";

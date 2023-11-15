@@ -3,13 +3,14 @@
 
 /* Program Defined */
 #include "State/StateStack.h"
+#include "Utility/Context.h"
 
 namespace States {
   GameState::GameState(const bool newGame)
     : State()
-    , m_stageFactory(newGame)
+    , m_stageFactory(newGame, m_pContext->getMultiplayer())
   {
-    m_pStage = m_stageFactory.createStage("assets/stage_2.txt");
+    m_pStage = m_stageFactory.createStage(m_pContext->getStage());
 
     if (!newGame)
       m_pStage->loadSaveGame();

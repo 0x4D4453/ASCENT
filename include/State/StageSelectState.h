@@ -15,7 +15,6 @@ namespace States {
 
     private:
       Options m_currentOption;
-      const bool m_multiplayer;
 
     private:
       void handleEvent(sf::Event& event);
@@ -25,7 +24,7 @@ namespace States {
       void changeState();
 
     public:
-      StageSelectState(const bool multiplayer = false);
+      StageSelectState();
       ~StageSelectState();
       void exec();
   };

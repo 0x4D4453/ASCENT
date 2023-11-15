@@ -26,19 +26,20 @@ namespace Stages {
       EntityList* m_platforms;
       EntityList* m_enemies;
       bool m_newGame;
+      const bool m_multiplayer;
     
     private:
       void loadTextures();
       void loadSounds();
-      void createMap(const char* stageTxt);
+      void createMap(const std::string& stageTxt);
       void defineGroup(Entities::Entity* pEntity);
       void createPlayers(int stageHeight);
     
     public:
-      StageFactory(const bool newGame = true);
+      StageFactory(const bool newGame = true, const bool multiplayer = false);
       ~StageFactory();
 
-      Stage* createStage(const char* stageTxt);
+      Stage* createStage(const std::string& stageTxt);
   };
 }
 

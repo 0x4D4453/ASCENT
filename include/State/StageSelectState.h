@@ -4,17 +4,25 @@
 /* Program Defined */
 #include "State/OptionsState.h"
 
+/* Standard Library */
+#include <vector>
+
 namespace States {
   class StageSelectState : public OptionsState {
     private:
       enum Options {
         Stage1,
         Stage2,
+        Stage3,
         TotalOptions
       };
 
     private:
       Options m_currentOption;
+      sf::Sprite m_leftArrow;
+      sf::Sprite m_rightArrow;
+      std::vector<sf::Sprite> m_stageImages;
+      sf::RectangleShape m_outlineRect;
 
     private:
       void handleEvent(sf::Event& event);

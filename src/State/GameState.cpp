@@ -10,6 +10,7 @@ namespace States {
     : State()
     , m_stageFactory(newGame, m_pContext->getMultiplayer())
   {
+    setType(StateType::Game);
     m_pStage = m_stageFactory.createStage(m_pContext->getStage());
 
     if (!newGame)
@@ -21,9 +22,9 @@ namespace States {
     m_pStage = NULL;
   }
 
-  void GameState::handleKeyEvent(sf::Keyboard::Scancode keyScancode) {
-    switch (keyScancode) {
-      case (sf::Keyboard::Scancode::Escape):
+  void GameState::keyPressed(sf::Keyboard::Key key) {
+    switch (key) {
+      case (sf::Keyboard::Escape):
         m_pStateStack->pushState(StateType::Pause, static_cast<State*>(this));
         setPaused(true);
         break;
@@ -32,18 +33,9 @@ namespace States {
     }
   }
 
-  void GameState::handleEvent(sf::Event& event) {
-    switch (event.type) {
-      case (sf::Event::KeyPressed): 
-        handleKeyEvent(event.key.scancode); 
-        break;
-      case (sf::Event::LostFocus):
-        m_pStateStack->pushState(StateType::Pause, static_cast<State*>(this));
-        setPaused(true);
-        break;
-      default:
-        break;
-    }
+  void GameState::lostFocus() {
+    m_pStateStack->pushState(StateType::Pause, static_cast<State*>(this));
+    setPaused(true);
   }
 
   void GameState::setPaused(const bool paused) {

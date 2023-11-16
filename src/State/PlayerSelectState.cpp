@@ -15,6 +15,7 @@ namespace States {
     : m_currentOption(OnePlayer)
     , m_sprites()
   {
+    setType(StateType::PlayerSelect);
     setup();
   }
 
@@ -79,25 +80,21 @@ namespace States {
     m_pStateStack->pushState(StateType::StageSelect, NULL, true);
   }
 
-  void PlayerSelectState::handleEvent(sf::Event& event) {
-    using namespace sf;
-
-    if (event.type == Event::KeyPressed) {
-      switch (event.key.scancode) {
-        case (Keyboard::Scancode::A): 
-          movePreviousOption(); 
-          break;
-        case (Keyboard::Scancode::D): 
-          moveNextOption(); 
-          break;
-        case (Keyboard::Scancode::Enter): 
-          changeState(); 
-          break;
-        case (Keyboard::Scancode::Escape): 
-          m_pStateStack->pushState(StateType::Menu, NULL, true); 
-          break;
-        default: break;
-      }
+  void PlayerSelectState::keyPressed(const sf::Keyboard::Key key) {
+    switch (key) {
+      case (sf::Keyboard::A): 
+        movePreviousOption(); 
+        break;
+      case (sf::Keyboard::D): 
+        moveNextOption(); 
+        break;
+      case (sf::Keyboard::Enter): 
+        changeState(); 
+        break;
+      case (sf::Keyboard::Escape): 
+        m_pStateStack->pushState(StateType::Menu, NULL, true); 
+        break;
+      default: break;
     }
   }
 

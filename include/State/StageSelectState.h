@@ -25,7 +25,6 @@ namespace States {
       sf::RectangleShape m_outlineRect;
 
     private:
-      void handleEvent(sf::Event& event);
       void setup();
       void movePreviousOption();
       void moveNextOption();
@@ -34,6 +33,7 @@ namespace States {
     public:
       StageSelectState();
       ~StageSelectState();
+      virtual void keyPressed(const sf::Keyboard::Key key);
       void exec();
   };
 }

@@ -17,6 +17,7 @@ namespace States {
     , m_rightArrow(m_pContext->getTexture(Textures::RightArrow))
     , m_stageImages()
   {
+    setType(StateType::StageSelect);
     setup();
   }
 
@@ -87,25 +88,21 @@ namespace States {
     m_pStateStack->pushState(StateType::Game, NULL, true);
   }
 
-  void StageSelectState::handleEvent(sf::Event& event) {
-    using namespace sf;
-
-    if (event.type == Event::KeyPressed) {
-      switch (event.key.scancode) {
-        case (Keyboard::Scancode::A): 
-          movePreviousOption(); 
-          break;
-        case (Keyboard::Scancode::D): 
-          moveNextOption(); 
-          break;
-        case (Keyboard::Scancode::Enter): 
-          changeState(); 
-          break;
-        case (Keyboard::Scancode::Escape): 
-          m_pStateStack->pushState(StateType::PlayerSelect, NULL, true); 
+  void StageSelectState::keyPressed(const sf::Keyboard::Key key) {
+    switch (key) {
+      case (sf::Keyboard::A): 
+        movePreviousOption(); 
         break;
-        default: break;
-      }
+      case (sf::Keyboard::D): 
+        moveNextOption(); 
+        break;
+      case (sf::Keyboard::Enter): 
+        changeState(); 
+        break;
+      case (sf::Keyboard::Escape): 
+        m_pStateStack->pushState(StateType::PlayerSelect, NULL, true); 
+      break;
+      default: break;
     }
   }
 

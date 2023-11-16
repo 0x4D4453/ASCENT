@@ -26,7 +26,9 @@ namespace Manager {
 
         virtual void attach(EventObserver*);
         virtual void detach(EventObserver*);
-        virtual void notify();
+        virtual void notifyKeyPressed(const sf::Keyboard::Key key);
+        virtual void notifyKeyReleased(const sf::Keyboard::Key key);
+        virtual void notifyLostFocus();
     };
   };
 }

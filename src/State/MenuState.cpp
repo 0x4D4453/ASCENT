@@ -16,6 +16,7 @@ namespace States {
   MenuState::MenuState()
     : m_currentOption(NewGame)
   { 
+    setType(StateType::Menu);
     m_pGraphicsManager->resetView();
     setup();
   }
@@ -51,21 +52,17 @@ namespace States {
     m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
   }
 
-  void MenuState::handleEvent(sf::Event& event) {
-    using namespace sf;
-
-    if (event.type == Event::KeyPressed) {
-      switch (event.key.scancode) {
-        case (Keyboard::Scancode::W): 
-          movePreviousOption(); 
-          break;
-        case (Keyboard::Scancode::S): 
-          moveNextOption(); 
-          break;
-        case (Keyboard::Scancode::Enter): this->changeState(); 
-          break;
-        default: break;
-      }
+  void MenuState::keyPressed(const sf::Keyboard::Key key) {
+    switch (key) {
+      case (sf::Keyboard::W):
+        movePreviousOption();
+        break;
+      case (sf::Keyboard::S):
+        moveNextOption();
+        break;
+      case (sf::Keyboard::Enter): this->changeState();
+        break;
+      default: break;
     }
   }
 

@@ -13,7 +13,7 @@
 #include <queue>
 
 namespace States {
-  class StateStack : sf::NonCopyable {
+  class StateStack : public sf::NonCopyable {
     private:
       enum class Command {
         Push,

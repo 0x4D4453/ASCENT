@@ -48,7 +48,7 @@ namespace Stages {
   }
 
   Stage::~Stage() {
-
+    
   }
   
   EntityList* Stage::getPlayers() {

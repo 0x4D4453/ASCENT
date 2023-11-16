@@ -27,6 +27,7 @@ namespace States {
     public:
       OptionsState();
       virtual ~OptionsState();
+      virtual void keyPressed(const sf::Keyboard::Key key) = 0;
   };
 }
 

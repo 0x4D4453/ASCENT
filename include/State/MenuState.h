@@ -27,7 +27,6 @@ namespace States {
       Options m_currentOption;
     
     private:
-      void handleEvent(sf::Event& event);
       virtual void createOption(const char* optionName, const sf::Vector2f& position);
       void setup();
       void movePreviousOption();
@@ -37,6 +36,7 @@ namespace States {
     public:
       MenuState();
       ~MenuState();
+      virtual void keyPressed(const sf::Keyboard::Key key);
       void exec();
   }; 
 }

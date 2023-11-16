@@ -24,7 +24,7 @@ namespace States {
     public:
       RankingState();
       ~RankingState();
-      virtual void handleEvent(sf::Event& event);
+      virtual void keyPressed(const sf::Keyboard::Key key);
       virtual void exec();
   };
 }

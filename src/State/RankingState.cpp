@@ -23,6 +23,7 @@ namespace States {
     , m_scores()
     , m_sprites()
   {
+    setType(StateType::Ranking);
     configureText();
     loadScoresFromJSON();
   }
@@ -100,11 +101,8 @@ namespace States {
     }
   }
 
-  void RankingState::handleEvent(sf::Event& event) {
-    using namespace sf;
-
-    if (event.type == sf::Event::KeyPressed)
-      m_pStateStack->pushState(StateType::Menu, NULL, true); 
+  void RankingState::keyPressed(const sf::Keyboard::Key key) {
+    m_pStateStack->pushState(StateType::Menu, NULL, true);
   }
 
   void RankingState::exec() {

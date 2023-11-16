@@ -12,6 +12,7 @@
 
 namespace Manager {
   namespace Event {
+    // Credits: Giovane Salvi for the base code and general idea
     class EventManager : public EventSubject, public sf::NonCopyable {
       private:
         static EventManager* m_instance;

@@ -29,10 +29,10 @@ Game::~Game() {
 
 void Game::run() {
   while (m_pGraphicsManager->isOpen()) {
-    m_pEventManager->pollEvents();
-    m_pGraphicsManager->addTime();
     m_pGraphicsManager->clear();
+    m_pEventManager->pollEvents();
     m_pStateStack->exec();
     m_pGraphicsManager->display();
+    m_pGraphicsManager->addTime();
   }
 }

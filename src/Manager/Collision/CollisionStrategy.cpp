@@ -7,8 +7,8 @@
 
 namespace Manager {
   namespace Collision {
-    CollisionStrategy::CollisionStrategy()
-      : m_delay(0)
+    CollisionStrategy::CollisionStrategy(const float m_delay)
+      : m_delay(m_delay)
     {
 
     }

@@ -13,7 +13,7 @@ namespace Manager {
         const float m_delay;
 
       public:
-        CollisionStrategy();
+        CollisionStrategy(const float m_delay = 0.f);
         ~CollisionStrategy();
 
         const float getDelay() const;

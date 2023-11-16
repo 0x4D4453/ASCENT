@@ -7,6 +7,7 @@
 namespace Entities {
   class Character : public Entity {
     protected:
+      sf::Clock m_collisionClock;
       int m_healthPoints;
     
     public:

@@ -4,6 +4,7 @@
 namespace Entities {
   Character::Character()
     : Entity(sf::Vector2f(0.f, 0.f))
+    , m_collisionClock()
     , m_healthPoints(3)
   {
     setEntityId(EntityID::CharacterE);

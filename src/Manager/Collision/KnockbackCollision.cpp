@@ -7,7 +7,7 @@
 namespace Manager {
   namespace Collision {
     KnockbackCollision::KnockbackCollision()
-      : CollisionStrategy()
+      : CollisionStrategy(1.f)
       , m_maxForce(5.f)
     {
 

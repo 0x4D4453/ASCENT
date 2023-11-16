@@ -5,7 +5,6 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
 #include "Manager/Collision/CollisionManager.h"
-#include "Manager/InputManager.h"
 
 /* SFML Library */
 #include <SFML/Audio.hpp>
@@ -19,7 +18,6 @@ namespace Stages {
       static Manager::GraphicsManager* m_pGraphicsManager;
       static const float m_dt;
       Manager::Collision::CollisionManager m_collisionManager;
-      Manager::InputManager* m_pInputManager;
       EntityList m_players;
       EntityList m_staticEntities;
       EntityList m_dynamicEntities;

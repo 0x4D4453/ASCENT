@@ -26,7 +26,6 @@ namespace Stages {
 
   Stage::Stage(const bool newGame) 
     : m_collisionManager()
-    , m_pInputManager(Manager::InputManager::getInstance())
     , m_players()
     , m_staticEntities()
     , m_dynamicEntities()
@@ -42,8 +41,6 @@ namespace Stages {
     m_collisionManager.setStaticEntities(&m_staticEntities);
     m_collisionManager.setDynamicEntities(&m_dynamicEntities);
 
-    m_pInputManager->setPlayersList(&m_players);
-
     m_bgMusic.openFromFile(Sounds::STAGE_BG);
     m_bgMusic.setVolume(10);
     m_bgMusic.setLoop(true);
@@ -51,8 +48,7 @@ namespace Stages {
   }
 
   Stage::~Stage() {
-    delete m_pInputManager;
-    m_pInputManager = NULL;
+    
   }
   
   EntityList* Stage::getPlayers() {
@@ -112,9 +108,15 @@ namespace Stages {
   }
   
   void Stage::update() {
-    updateEntities(m_dynamicEntities);
-    updateEntities(m_players);
-    m_collisionManager.verifyCollisions();
+    sf::Time* timeSinceLastUpdate = m_pGraphicsManager->getTimeSinceLastUpdate();
+    const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
+
+    while (*timeSinceLastUpdate >= *timePerFrame) {
+      updateEntities(m_dynamicEntities);
+      updateEntities(m_players);
+      m_collisionManager.verifyCollisions();
+      (*timeSinceLastUpdate) -= (*timePerFrame);
+    }
 
     Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
     m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);

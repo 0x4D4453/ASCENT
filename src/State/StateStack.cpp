@@ -17,8 +17,7 @@ namespace States {
   StateStack* StateStack::m_instance(NULL);
 
   StateStack::StateStack()
-    : Pause::PauseSubject()
-    , m_stack()
+    : m_stack()
     , m_commandQueue()
   {
     
@@ -60,7 +59,7 @@ namespace States {
 
     if (m_stack.size() > 0)
       m_stack.back()->setIsActive(false);
-      
+
     m_stack.push_back(state);
   }
 
@@ -127,11 +126,6 @@ namespace States {
       }
       
       m_commandQueue.pop();
-    }
-
-    if (m_stack.size() > 0) {
-      m_isPaused = m_stack.back()->getType() == StateType::Pause;
-      notifyPause();
     }
   }
 

@@ -29,16 +29,9 @@ Game::~Game() {
 
 void Game::run() {
   while (m_pGraphicsManager->isOpen()) {
-    sf::Time* timeSinceLastUpdate = m_pGraphicsManager->getTimeSinceLastUpdate();
-    const sf::Time* timePerFrame = m_pGraphicsManager->getTimePerFrame();
-
-    while (*timeSinceLastUpdate >= *timePerFrame) {
-      m_pGraphicsManager->clear();
-      m_pEventManager->pollEvents();
-      m_pStateStack->exec();
-      (*timeSinceLastUpdate) -= (*timePerFrame);
-    }
-
+    m_pGraphicsManager->clear();
+    m_pEventManager->pollEvents();
+    m_pStateStack->exec();
     m_pGraphicsManager->display();
     m_pGraphicsManager->addTime();
   }

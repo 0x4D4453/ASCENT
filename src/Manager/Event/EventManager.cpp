@@ -9,7 +9,7 @@ namespace Manager {
     EventManager* EventManager::m_instance(NULL);
 
     EventManager::EventManager()
-      : EventSubject(), States::Pause::PauseObserver(States::StateStack::getInstance())
+      : EventSubject()
       , m_pGraphicsManager(GraphicsManager::getInstance())
     {
       
@@ -44,14 +44,6 @@ namespace Manager {
           default:
             break;
         }
-    }
-
-    const bool EventManager::getIsPaused() const {
-      return m_isPaused;
-    }
-
-    void EventManager::updatePause() {
-      m_isPaused = m_pPauseSubject->getIsPaused();
     }
   }
 }

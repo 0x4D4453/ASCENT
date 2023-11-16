@@ -22,7 +22,6 @@ add_executable(GOTY
     src/State/Pause/PauseObserver.cpp src/State/Pause/PauseSubject.cpp
     src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp
     src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp
-    src/Manager/InputManager.cpp
     src/Utility/CustomVector.cpp)
 target_include_directories(GOTY PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(GOTY PRIVATE sfml-graphics sfml-audio)

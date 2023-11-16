@@ -22,7 +22,7 @@ namespace States {
       virtual void setup() = 0;
       virtual void movePreviousOption() = 0;
       virtual void moveNextOption() = 0;
-      virtual void changeState() =0;
+      virtual void changeState() = 0;
 
     public:
       OptionsState();

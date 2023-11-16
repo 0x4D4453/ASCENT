@@ -17,15 +17,15 @@ namespace Manager {
 
     }
 
-    void DefaultCollision::collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap) {
-      if (otherEntity->getEntityType() == Entities::EntityType::Static)
+    void DefaultCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+      if (pOtherEntity->getEntityType() == Entities::EntityType::Static)
         return;
 
       if (type == CollisionType::Horizontal) {
-        otherEntity->move(sf::Vector2f(overlap, 0));
+        pOtherEntity->move(sf::Vector2f(overlap, 0));
       } else {
-        otherEntity->setVelocity(sf::Vector2f(otherEntity->getVelocity().x, 0.f));
-        otherEntity->move(sf::Vector2f(0, overlap));
+        pOtherEntity->setVelocity(sf::Vector2f(pOtherEntity->getVelocity().x, 0.f));
+        pOtherEntity->move(sf::Vector2f(0, overlap));
       }
     }
   }

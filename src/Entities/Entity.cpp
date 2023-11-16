@@ -108,7 +108,7 @@ namespace Entities {
     m_sprite.move(movement);
   }
 
-  void Entity::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
+  void Entity::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
 
   }
 
@@ -124,7 +124,7 @@ namespace Entities {
     return m_collisionStrategies.at(tag);
   }
 
-  void Entity::setCollisionManager(Manager::Collision::CollisionManager* manager) {
-    m_pCollisionManager = manager;
+  void Entity::setCollisionManager(Manager::Collision::CollisionManager* pManager) {
+    m_pCollisionManager = pManager;
   }
 }

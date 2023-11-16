@@ -18,7 +18,7 @@ namespace Manager {
 
         const float getDelay() const;
         
-        virtual void collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap) = 0;
+        virtual void collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) = 0;
     };
   }
 }

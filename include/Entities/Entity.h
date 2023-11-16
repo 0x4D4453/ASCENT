@@ -66,7 +66,7 @@ namespace Entities {
       Entity(const sf::Vector2f position, const float speed = 200.f);
       virtual ~Entity();
 
-      static void setCollisionManager(Manager::Collision::CollisionManager* manager);
+      static void setCollisionManager(Manager::Collision::CollisionManager* pManager);
       EntityID getEntityId() const;
       EntityTag getEntityTag() const;
       EntityType getEntityType() const;
@@ -84,7 +84,7 @@ namespace Entities {
       std::unordered_map<int, Entity*> getCollisionMap() const;
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
-      virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
+      virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
       virtual void move(const sf::Vector2f movement);
       virtual void save() = 0;
       virtual void exec() = 0;

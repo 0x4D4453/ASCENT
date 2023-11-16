@@ -24,22 +24,22 @@ namespace Entities {
       
     }
 
-    void Platform::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
-      switch (entity->getEntityId()) {
+    void Platform::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      switch (pEntity->getEntityId()) {
         case EntityID::FlyE:
           return;
         case EntityID::PlayerE:
-          playerCollide(dynamic_cast<Characters::Player*>(entity), type);
+          playerCollide(dynamic_cast<Characters::Player*>(pEntity), type);
           break;
         default:
           break;
       }
     }
 
-    void Platform::playerCollide(Characters::Player* player, Manager::Collision::CollisionType type) {
-      if (type == Manager::Collision::CollisionType::Horizontal && player->getIsJumping()) {
-        player->setVelocity(sf::Vector2f(-player->getVelocity().x * .5f, player->getVelocity().y));
-        player->setIsStaggered(true);
+    void Platform::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
+      if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsJumping()) {
+        pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * .5f, pPlayer->getVelocity().y));
+        pPlayer->setIsStaggered(true);
       }
     }
 

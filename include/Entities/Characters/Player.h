@@ -48,7 +48,7 @@ namespace Entities {
         void handleInput();
         void update();
         const float getCurrentSpeed() const;
-        void attack(Enemy *enemy);
+        void attack(Enemy *pEnemy);
       
       public:
         Player(
@@ -63,7 +63,7 @@ namespace Entities {
         const bool getIsCharging() const;
         void setIsCharging(const bool isCharging);
         const bool isAttacking();
-        virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
+        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void exec();
         virtual void save();
     };

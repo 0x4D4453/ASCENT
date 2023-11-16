@@ -22,9 +22,9 @@ namespace Stages {
       Entities::EntityFactory m_entityFactory;
       ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
       ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
-      EntityList* m_players;
-      EntityList* m_staticEntities;
-      EntityList* m_dynamicEntities;
+      EntityList* m_pPlayers;
+      EntityList* m_pStaticEntities;
+      EntityList* m_pDynamicEntities;
       bool m_newGame;
       const bool m_multiplayer;
     

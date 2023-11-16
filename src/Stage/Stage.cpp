@@ -71,8 +71,8 @@ namespace Stages {
 
   }
 
-  void Stage::applyPhysics(Entities::Entity* entity) {
-    sf::Vector2f velocity = entity->getVelocity();
+  void Stage::applyPhysics(Entities::Entity* pEntity) {
+    sf::Vector2f velocity = pEntity->getVelocity();
 
     // Gravity
     velocity.y += Constants::GRAVITY * m_dt;
@@ -80,14 +80,14 @@ namespace Stages {
       velocity.y = Constants::MAX_FALL_SPEED;
 
     // Drag
-    if (entity->getIsStaggered()) {
+    if (pEntity->getIsStaggered()) {
       if (velocity.x > 0)
         velocity.x -= Constants::DRAG * m_dt;
       else if (velocity.x < 0)
         velocity.x += Constants::DRAG * m_dt;
     }
 
-    entity->setVelocity(velocity);
+    pEntity->setVelocity(velocity);
   }
 
   void Stage::drawEntities(EntityList& entityList) {

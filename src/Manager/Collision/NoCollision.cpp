@@ -17,7 +17,7 @@ namespace Manager {
 
     }
 
-    void NoCollision::collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap) {
+    void NoCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
 
     }
   }

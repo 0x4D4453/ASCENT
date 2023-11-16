@@ -168,14 +168,14 @@ namespace Entities {
       update();
     }
 
-    void Player::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
-      switch (entity->getEntityTag()) {
+    void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
           if (isAttacking())
-            attack(dynamic_cast<Enemy*>(entity));
+            attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
-          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= entity->getPosition().y && m_isJumping) {
+          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isJumping) {
             m_isJumping = false;
             setIsStaggered(false);
           }
@@ -183,8 +183,8 @@ namespace Entities {
       }
     }
 
-    void Player::attack(Enemy* enemy) {
-      enemy->setHealthPoints(enemy->getHealthPoints() - 1);
+    void Player::attack(Enemy* pEnemy) {
+      pEnemy->setHealthPoints(pEnemy->getHealthPoints() - 1);
     }
 
     void Player::save() {

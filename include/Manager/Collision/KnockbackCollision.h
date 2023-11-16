@@ -14,7 +14,7 @@ namespace Manager {
         KnockbackCollision();
         ~KnockbackCollision();
         
-        virtual void collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap);
+        virtual void collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
     };
   }
 }

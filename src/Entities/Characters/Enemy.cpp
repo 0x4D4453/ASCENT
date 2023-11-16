@@ -23,11 +23,11 @@ namespace Entities {
 
     }
 
-    void Enemy::collide(Entity *entity, Manager::Collision::CollisionType type, float overlap) {
-      if (entity->getEntityId() != EntityID::PlayerE || m_healthPoints < 1)
+    void Enemy::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      if (pEntity->getEntityId() != EntityID::PlayerE || m_healthPoints < 1)
         return;
 
-      Player* player = dynamic_cast<Player*>(entity);
+      Player* player = dynamic_cast<Player*>(pEntity);
       if (player->isAttacking()) {
         setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::NoCollision);
       } else {

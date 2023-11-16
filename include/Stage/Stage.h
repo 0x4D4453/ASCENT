@@ -26,7 +26,7 @@ namespace Stages {
 
     protected:
       virtual void setup() = 0;
-      void applyPhysics(Entities::Entity* entity);
+      void applyPhysics(Entities::Entity* pEntity);
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
       void update();

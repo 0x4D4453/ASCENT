@@ -24,22 +24,22 @@ namespace Manager {
       private:
         static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
         sf::FloatRect m_intersectionRect;
-        EntityList* m_players;
-        EntityList* m_staticEntities;
-        EntityList* m_dynamicEntities;
+        EntityList* m_pPlayers;
+        EntityList* m_pStaticEntities;
+        EntityList* m_pDynamicEntities;
 
       private:
         void applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap);
         void verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities);
-        void verifyCollisionStatic(Entities::Entity* entity);
-        void verifyCollisionDynamic(Entities::Entity* entity, List<Entities::Entity*>::Iterator it);
+        void verifyCollisionStatic(Entities::Entity* pEntity);
+        void verifyCollisionDynamic(Entities::Entity* pEntity, List<Entities::Entity*>::Iterator it);
       
       public:
         CollisionManager();
         ~CollisionManager();
-        void setPlayersList(EntityList* playersList);
-        void setStaticEntities(EntityList* staticList);
-        void setDynamicEntities(EntityList* dynamicList);
+        void setPlayersList(EntityList* pPlayersList);
+        void setStaticEntities(EntityList* pStaticList);
+        void setDynamicEntities(EntityList* pDynamicList);
         void verifyCollisions();
         CollisionStrategy* getCollisionStrategy(StrategyId id);
     };

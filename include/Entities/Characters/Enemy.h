@@ -21,7 +21,7 @@ namespace Entities {
         ~Enemy();
         void damagePlayer(Player* pPlayer);
         virtual void movementPattern() = 0;
-        virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
+        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
     };
   }
 }

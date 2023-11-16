@@ -17,20 +17,20 @@ namespace Manager {
 
     }
 
-    void KnockbackCollision::collide(Entities::Entity *ownEntity, Entities::Entity *otherEntity, CollisionType type, float overlap) {
-      if (otherEntity->getEntityType() == Entities::EntityType::Static)
+    void KnockbackCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+      if (pOtherEntity->getEntityType() == Entities::EntityType::Static)
         return;
       
-      float knockback = ownEntity->getKnockback();
+      float knockback = pOwnEntity->getKnockback();
       if (knockback > m_maxForce)
         knockback = m_maxForce;
       
-      if (otherEntity->getPosition().x < ownEntity->getPosition().x)
-        otherEntity->setVelocity(sf::Vector2f(-knockback, -knockback));
+      if (pOtherEntity->getPosition().x < pOwnEntity->getPosition().x)
+        pOtherEntity->setVelocity(sf::Vector2f(-knockback, -knockback));
       else
-        otherEntity->setVelocity(sf::Vector2f(knockback, -knockback));
+        pOtherEntity->setVelocity(sf::Vector2f(knockback, -knockback));
 
-      otherEntity->setIsStaggered(true);
+      pOtherEntity->setIsStaggered(true);
     }
   }
 }

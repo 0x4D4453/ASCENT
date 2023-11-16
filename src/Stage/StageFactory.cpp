@@ -74,9 +74,9 @@ namespace Stages {
   Stage* StageFactory::createStage(const std::string& stageTxt) {
     Stage* stage = new FirstStage(m_newGame);
 
-    m_players = stage->getPlayers();
-    m_staticEntities = stage->getPlatforms();
-    m_dynamicEntities = stage->getEnemies();
+    m_pPlayers = stage->getPlayers();
+    m_pStaticEntities = stage->getPlatforms();
+    m_pDynamicEntities = stage->getEnemies();
 
     createMap(stageTxt);
     return stage;
@@ -89,25 +89,25 @@ namespace Stages {
 
     switch (group) {
       case (EntityType::Static):
-        m_staticEntities->include(pEntity);
+        m_pStaticEntities->include(pEntity);
         break;
       case (EntityType::Dynamic):
-        m_dynamicEntities->include(pEntity);
+        m_pDynamicEntities->include(pEntity);
         break;
     }
   }
 
   void StageFactory::createPlayers(int stageHeight) {
-    m_players->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
+    m_pPlayers->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
     if (m_multiplayer)
-      m_players->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+      m_pPlayers->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;
     playerPosition.y = (stageHeight - 10) * Constants::TILE_SIZE;
 
-    List<Entities::Entity*>::Iterator it = m_players->first();
-    while (it != m_players->last()) {
+    List<Entities::Entity*>::Iterator it = m_pPlayers->first();
+    while (it != m_pPlayers->last()) {
       (*it)->setPosition(playerPosition);
       ++it;
     }

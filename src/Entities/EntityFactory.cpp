@@ -2,9 +2,9 @@
 #include "Entities/EntityFactory.h"
 
 /* Program Defined */
-#include "Entities/Goomba.h"
-#include "Entities/Fly.h"
-#include "Entities/Platform.h"
+#include "Entities/Characters/Goomba.h"
+#include "Entities/Characters/Fly.h"
+#include "Entities/Obstacles/Platform.h"
 
 /* Standard Library */
 #include <iostream>
@@ -39,16 +39,16 @@ namespace Entities {
 
     switch (entityID) {
       case (PlatformE): 
-        m_pEntity = static_cast<Entity*>(new Platform(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Obstacles::Platform(m_pTextureHolder->getResource(textureID), position));
         break;
       case (GoombaE):
-        m_pEntity = static_cast<Entity*>(new Goomba(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Goomba(m_pTextureHolder->getResource(textureID), position));
         break;
       case (FlyE):
-        m_pEntity = static_cast<Entity*>(new Fly(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Fly(m_pTextureHolder->getResource(textureID), position));
         break;
       case (EnemyE):
-        m_pEntity = static_cast<Entity*>(new Goomba(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Goomba(m_pTextureHolder->getResource(textureID), position));
         break;
     }
     

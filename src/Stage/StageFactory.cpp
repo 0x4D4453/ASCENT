@@ -5,8 +5,8 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityFactory.h"
 #include "Stage/FirstStage.h"
-#include "Entities/Goomba.h"
-#include "Entities/Platform.h"
+#include "Entities/Characters/Goomba.h"
+#include "Entities/Obstacles/Platform.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
 
@@ -98,9 +98,9 @@ namespace Stages {
   }
 
   void StageFactory::createPlayers(int stageHeight) {
-    m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
+    m_players->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
     if (m_multiplayer)
-      m_players->include(new Entities::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
+      m_players->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;

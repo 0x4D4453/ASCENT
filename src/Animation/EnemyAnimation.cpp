@@ -2,7 +2,7 @@
 #include "Animation/EnemyAnimation.h"
 
 /* Program Defined */
-#include "Entities/Enemy.h"
+#include "Entities/Characters/Enemy.h"
 #include "Utility/Constants.h"
 
 namespace Animations {
@@ -16,11 +16,11 @@ namespace Animations {
 
   }
 
-  void EnemyAnimation::update(const float deltaTime, Entities::Enemy* pEnemy) {
+  void EnemyAnimation::update(const float deltaTime, Entities::Characters::Enemy* pEnemy) {
     update(deltaTime, pEnemy, m_pEntity->getVelocity());
   }
 
-  void EnemyAnimation::update(const float deltaTime, Entities::Enemy* pEnemy, const sf::Vector2f velocity) {
+  void EnemyAnimation::update(const float deltaTime, Entities::Characters::Enemy* pEnemy, const sf::Vector2f velocity) {
     if (pEnemy->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * 4;
     else if (velocity.x == 0.f)

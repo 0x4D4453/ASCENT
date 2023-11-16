@@ -4,7 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
-#include "Entities/Player.h"
+#include "Entities/Characters/Player.h"
 
 /* Standard Library */
 #include <iostream>

@@ -8,7 +8,7 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityFactory.h"
 #include "Entities/EntityList.h"
-#include "Entities/Player.h"
+#include "Entities/Characters/Player.h"
 #include "Utility/ResourceHolder.h"
 #include "Utility/Sounds.h"
 #include "Utility/Textures.h"

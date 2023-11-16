@@ -3,7 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
-#include "Entities/Player.h"
+#include "Entities/Characters/Player.h"
 #include "Utility/Constants.h"
 
 namespace Animations {
@@ -17,7 +17,7 @@ namespace Animations {
 
   }
 
-  void PlayerAnimation::update(const float deltaTime, Entities::Player* pPlayer) {
+  void PlayerAnimation::update(const float deltaTime, Entities::Characters::Player* pPlayer) {
     if (pPlayer->getIsStaggered())
       m_textureRect.left = Constants::SPRITE_SIZE * 6;
     else if (pPlayer->getIsCharging())

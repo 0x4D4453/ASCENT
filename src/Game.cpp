@@ -2,7 +2,7 @@
 #include "Game.h"
 
 /* Program Defined */
-#include "Entities/Character.h"
+#include "Entities/Characters/Character.h"
 #include "State/MenuState.h"
 
 /* Standard Library */

@@ -2,7 +2,7 @@
 #include "Stage/Stage.h"
 
 /* Program Defined */
-#include "Entities/Player.h"
+#include "Entities/Characters/Player.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
@@ -118,7 +118,7 @@ namespace Stages {
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 
-    Entities::Player* player1 = static_cast<Entities::Player*>(*(m_players.first()));
+    Entities::Characters::Player* player1 = static_cast<Entities::Characters::Player*>(*(m_players.first()));
     m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
   }
 

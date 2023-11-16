@@ -18,6 +18,10 @@ Context::Context()
 {
   m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
   m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);
+  m_textureHolder.load(Textures::LeftArrow, Textures::LEFT_ARROW);
+  m_textureHolder.load(Textures::RightArrow, Textures::RIGHT_ARROW);
+  m_textureHolder.load(Textures::StagePlaceholder, Textures::STAGE_PLACEHOLDER);
+  m_textureHolder.load(Textures::StagePlaceholder2, Textures::STAGE_PLACEHOLDER2);
   m_fontHolder.load(Fonts::Monogram, Fonts::MONOGRAM);
   m_soundHolder.load(Sounds::menuSound, Sounds::MENU);
 }

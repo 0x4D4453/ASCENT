@@ -23,6 +23,10 @@ namespace Textures {
     StrippedPlatformMiddle,
     StrippedPlatformRight,
     Spikes,
+    LeftArrow,
+    RightArrow,
+    StagePlaceholder,
+    StagePlaceholder2,
   };
 
   constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
@@ -51,6 +55,11 @@ namespace Textures {
   constexpr char ENEMY3[] = "assets/tiles/tile_0122.png";
 
   constexpr char PROJECTILE[] = "assets/tiles/tile_0001.png";
+
+  constexpr char LEFT_ARROW[] = "assets/tiles/leftArrow.png";
+  constexpr char RIGHT_ARROW[] = "assets/tiles/rightArrow.png";
+  constexpr char STAGE_PLACEHOLDER[] = "assets/stagePlaceholder.png";
+  constexpr char STAGE_PLACEHOLDER2[] = "assets/stagePlaceholder2.png";
 }
 
 #endif

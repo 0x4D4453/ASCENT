@@ -11,6 +11,7 @@
 
 /* Standard Library */
 #include <unordered_map>
+#include <set>
 
 namespace Entities {
   // Added E (from enum) to avoid type name errors
@@ -42,7 +43,7 @@ namespace Entities {
     protected:
       static Manager::Collision::CollisionManager* m_pCollisionManager;
       std::unordered_map<EntityTag, Manager::Collision::CollisionStrategy*> m_collisionStrategies;
-      std::unordered_map<int, Entity*> m_collisionMap;
+      std::set<int> m_currentCollisions;
       EntityID m_entityId;
       EntityTag m_entityTag;
       EntityType m_entityType;
@@ -81,7 +82,7 @@ namespace Entities {
       const bool getIsStaggered() const;
 
       const bool getIsColliding() const;
-      std::unordered_map<int, Entity*> getCollisionMap() const;
+      std::set<int> getCurrentCollisions() const;
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
       virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

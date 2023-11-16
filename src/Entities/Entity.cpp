@@ -92,11 +92,11 @@ namespace Entities {
   }
 
   const bool Entity::getIsColliding() const {
-    return m_collisionMap.size() > 0;
+    return m_currentCollisions.size() > 0;
   }
 
-  std::unordered_map<int, Entity*> Entity::getCollisionMap() const {
-    return m_collisionMap;
+  std::set<int> Entity::getCurrentCollisions() const {
+    return m_currentCollisions;
   }
 
   void Entity::move() {

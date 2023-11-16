@@ -48,10 +48,10 @@ namespace Manager {
 
       const sf::FloatRect cEntityCoordinates = entities.first->getGlobalBounds();
       const sf::FloatRect mEntityCoordinates = entities.second->getGlobalBounds();
-      std::unordered_map<int, Entity*> collisionMap = entities.first->getCollisionMap();
+      std::set<int> currentCollisions = entities.first->getCurrentCollisions();
 
       if (mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect)) {
-        if (collisionMap.count(entities.second->getId()) > 0)
+        if (currentCollisions.count(entities.second->getId()) > 0)
           return;
 
         float xOverlap = m_intersectionRect.width;
@@ -67,8 +67,8 @@ namespace Manager {
           applyCollision(entities, CollisionType::Horizontal, xOverlap);
         }
       } else {
-        collisionMap.erase(entities.second->getId());
-        entities.second->getCollisionMap().erase(entities.first->getId());
+        currentCollisions.erase(entities.second->getId());
+        entities.second->getCurrentCollisions().erase(entities.first->getId());
       }
     }
 
@@ -76,8 +76,8 @@ namespace Manager {
       entities.first->collide(entities.second, type, overlap);
       entities.second->collide(entities.first, type, overlap);
 
-      entities.first->getCollisionMap().insert(std::make_pair(entities.second->getId(), entities.second));
-      entities.second->getCollisionMap().insert(std::make_pair(entities.first->getId(), entities.first));
+      entities.first->getCurrentCollisions().insert(entities.second->getId());
+      entities.second->getCurrentCollisions().insert(entities.first->getId());
       
       CollisionStrategy* strategy;
       strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());

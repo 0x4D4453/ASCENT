@@ -18,7 +18,7 @@ namespace Manager {
         it++;
       }
     }
-
+    
     sf::Event EventSubject::getEvent() const {
       return m_event;
     }
@@ -36,12 +36,33 @@ namespace Manager {
     void EventSubject::detach(EventObserver* o) {
       m_observers.remove(o);
     }
-
-    void EventSubject::notify() {
+    
+    void EventSubject::notifyKeyPressed(const sf::Keyboard::Key key) {
       std::list<EventObserver*>::iterator it = m_observers.begin();
 
       while (it != m_observers.end()) {
-        (*it)->eventUpdate(this);
+        if ((*it)->getIsActive())
+          (*it)->keyPressed(key);
+        it++;
+      }
+    }
+
+    void EventSubject::notifyKeyReleased(const sf::Keyboard::Key key) {
+      std::list<EventObserver*>::iterator it = m_observers.begin();
+
+      while (it != m_observers.end()) {
+        if ((*it)->getIsActive())
+          (*it)->keyReleased(key);
+        it++;
+      }
+    }
+
+    void EventSubject::notifyLostFocus() {
+      std::list<EventObserver*>::iterator it = m_observers.begin();
+
+      while (it != m_observers.end()) {
+        if ((*it)->getIsActive())
+          (*it)->lostFocus();
         it++;
       }
     }

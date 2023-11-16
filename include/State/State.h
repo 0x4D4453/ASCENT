@@ -15,6 +15,7 @@ namespace States { class StateStack; }
 
 namespace States {
   enum class StateType {
+    None = -1,
     Menu,
     PlayerSelect,
     StageSelect,
@@ -27,18 +28,22 @@ namespace States {
 
   class State : public Manager::Event::EventObserver {
     protected:
+      StateType m_type;
       States::StateStack* m_pStateStack;
       Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Event::EventManager* m_pEventManager;
       Context* m_pContext;
-
-    protected:
-      virtual void handleEvent(sf::Event& event) = 0;
     
     public:
       State();
       virtual ~State();
-      virtual void eventUpdate(Manager::Event::EventSubject* subject);
+
+      const StateType getType() const;
+      void setType(StateType type);
+
+      virtual void keyPressed(const sf::Keyboard::Key key) = 0;
+      virtual void keyReleased(const sf::Keyboard::Key key);
+      virtual void lostFocus();
       virtual void exec() = 0;
   };
 }

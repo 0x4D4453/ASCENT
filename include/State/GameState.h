@@ -16,13 +16,11 @@ namespace States {
       Stages::StageFactory m_stageFactory;
       Stages::Stage* m_pStage;
 
-    private:
-      void handleKeyEvent(sf::Keyboard::Scancode keyScancode);
-      void handleEvent(sf::Event& event);
-
     public:
       GameState(const bool newGame = true);
       ~GameState();
+      virtual void keyPressed(const sf::Keyboard::Key key);
+      virtual void lostFocus();
       void setPaused(const bool paused);
       void saveGame();
       void exec();

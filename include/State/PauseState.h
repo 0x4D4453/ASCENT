@@ -32,7 +32,6 @@ namespace States {
       Options m_currentOption;
     
     private:
-      void handleEvent(sf::Event& event);
       void setup();
       void movePreviousOption();
       void moveNextOption();
@@ -41,6 +40,7 @@ namespace States {
     public:
       PauseState(States::GameState* pGameState);
       ~PauseState();
+      virtual void keyPressed(const sf::Keyboard::Key key);
       void exec();
   };
 }

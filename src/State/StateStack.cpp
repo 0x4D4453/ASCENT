@@ -17,7 +17,8 @@ namespace States {
   StateStack* StateStack::m_instance(NULL);
 
   StateStack::StateStack()
-    : m_stack()
+    : Pause::PauseSubject()
+    , m_stack()
     , m_commandQueue()
   {
     
@@ -57,6 +58,9 @@ namespace States {
       return;
     }
 
+    if (m_stack.size() > 0)
+      m_stack.back()->setIsActive(false);
+      
     m_stack.push_back(state);
   }
 
@@ -87,6 +91,9 @@ namespace States {
     States::State* tmpState = m_stack.back();
     delete tmpState;
     m_stack.erase(m_stack.end() - 1);
+
+    if (m_stack.size() > 0)
+      m_stack.back()->setIsActive(true);
   }
 
   void StateStack::clearStates() {
@@ -120,6 +127,11 @@ namespace States {
       }
       
       m_commandQueue.pop();
+    }
+
+    if (m_stack.size() > 0) {
+      m_isPaused = m_stack.back()->getType() == StateType::Pause;
+      notifyPause();
     }
   }
 

@@ -8,7 +8,8 @@
 
 namespace States {
   State::State()
-    : Manager::Event::EventObserver()
+    : Manager::Event::EventObserver(Manager::Event::EventManager::getInstance())
+    , m_type(StateType::None)
     , m_pStateStack(States::StateStack::getInstance())
     , m_pGraphicsManager(Manager::GraphicsManager::getInstance())
     , m_pEventManager(Manager::Event::EventManager::getInstance())
@@ -24,13 +25,19 @@ namespace States {
     m_pEventManager = NULL;
   }
 
-  void State::eventUpdate(Manager::Event::EventSubject* subject) {
-    if (subject != m_pEventManager)
-      return;
+  const StateType State::getType() const {
+    return m_type;
+  }
 
-    sf::Event event = m_pEventManager->getEvent();
+  void State::setType(StateType type) {
+    m_type = type;
+  }
 
-    if (m_pStateStack->getBack() == this)
-      handleEvent(event);
+  void State::keyReleased(const sf::Keyboard::Key key) {
+
+  }
+
+  void State::lostFocus() {
+    
   }
 }

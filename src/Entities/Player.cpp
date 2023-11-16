@@ -9,8 +9,6 @@
 /* Standard Library */
 #include <cmath>
 #include <fstream>
-#include <map>
-#include <unordered_map>
 
 /* SFML Library */
 #include <SFML/Audio.hpp>
@@ -34,13 +32,9 @@ namespace Entities {
     setEntityId(EntityID::PlayerE);
     setEntityTag(EntityTag::PlayerTag);
 
-    m_keyBinding.insert(std::make_pair(MoveLeft, moveLeftKey));
-    m_keyBinding.insert(std::make_pair(MoveRight, moveRightKey));
-    m_keyBinding.insert(std::make_pair(Jump, jumpKey));
-
-    m_actionBinding.insert(std::make_pair(MoveLeft, &Player::moveLeft));
-    m_actionBinding.insert(std::make_pair(MoveRight, &Player::moveRight));
-    m_actionBinding.insert(std::make_pair(Jump, &Player::chargeJump));
+    m_keyBinding.insert(std::make_pair(moveLeftKey, MoveLeft));
+    m_keyBinding.insert(std::make_pair(moveRightKey, MoveRight));
+    m_keyBinding.insert(std::make_pair(jumpKey, Jump));
     
     setTexture(playerTexture);
     m_jumpSound.setBuffer(jumpSoundBuffer);
@@ -50,7 +44,6 @@ namespace Entities {
 
   Player::~Player() {
     m_keyBinding.clear();
-    m_actionBinding.clear();
   }
 
   void Player::setup() {  
@@ -59,11 +52,17 @@ namespace Entities {
   }
 
   void Player::moveLeft() {
-    m_velocity.x -= m_speed * m_dt;
+    if (m_isJumping || m_isCharging || m_isStaggered)
+      return;
+
+    m_velocity.x = -m_speed * m_dt;
   }
 
   void Player::moveRight() {
-    m_velocity.x += m_speed * m_dt;
+    if (m_isJumping || m_isCharging || m_isStaggered)
+      return;
+
+    m_velocity.x = m_speed * m_dt;
   }
 
   const bool Player::getIsJumping() const {
@@ -98,24 +97,12 @@ namespace Entities {
     return isAttacking;
   }
 
-  void Player::handleInput() {
-    m_velocity.x = 0.f;
+  Player::Actions Player::getKeyAction(sf::Keyboard::Key key) {
+    std::map<sf::Keyboard::Key, Actions>::iterator it = m_keyBinding.find(key);
+    if (it != m_keyBinding.end())
+      return (*it).second;
     
-    using sf::Keyboard;
-    std::map<Actions, Keyboard::Key>::iterator it = m_keyBinding.begin();
-
-    while (it != m_keyBinding.end()) {
-      if (Keyboard::isKeyPressed((*it).second)) {
-        Actions action = (*it).first;
-        using functionPointer = void (Player::*)();
-        functionPointer pFunction = m_actionBinding[action];
-        (this->*pFunction)();
-      }
-      ++it;
-    }
-
-    if (!Keyboard::isKeyPressed(m_keyBinding[Jump]) && m_isCharging)
-      jump();
+    return Actions::None;
   }
 
   void Player::chargeJump() {
@@ -134,11 +121,6 @@ namespace Entities {
   void Player::jump() {
     m_jumpSound.play();
 
-    if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
-      moveLeft();
-    else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))
-      moveRight();
-
     m_isCharging = false;
     m_isJumping = true;
     m_velocity.y = -m_jumpHeight;
@@ -154,6 +136,8 @@ namespace Entities {
     else if (m_velocity.x > 0)
       m_sprite.setScale(Constants::SCALE, Constants::SCALE);
 
+    std::cout << m_velocity.x << std::endl;
+
     move();
 
     if (!getIsColliding())
@@ -161,9 +145,6 @@ namespace Entities {
   }
 
   void Player::exec() {
-    if (!m_isJumping && !m_isStaggered)
-      handleInput();
-
     update();
   }
 

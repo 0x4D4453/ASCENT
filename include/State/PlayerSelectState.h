@@ -18,7 +18,6 @@ namespace States {
       std::vector<sf::Sprite> m_sprites;
     
     private:
-      void handleEvent(sf::Event& event);
       void setup();
       void movePreviousOption();
       void moveNextOption();
@@ -27,6 +26,7 @@ namespace States {
     public:
       PlayerSelectState();
       ~PlayerSelectState();
+      virtual void keyPressed(const sf::Keyboard::Key key);
       void exec();
   };
 }

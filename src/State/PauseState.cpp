@@ -19,6 +19,7 @@ namespace States {
     , m_title("Pause", m_pContext->getFont(Fonts::Monogram))
     , m_currentOption(Continue)
   {
+    setType(StateType::Pause);
     setup();
   }
 
@@ -46,26 +47,22 @@ namespace States {
     m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
   }
 
-  void PauseState::handleEvent(sf::Event& event) {
-    using namespace sf;
-
-    if (event.type == sf::Event::KeyPressed) {
-      switch (event.key.scancode) {
-        case (Keyboard::Scancode::W): 
-          movePreviousOption(); 
-          break;
-        case (Keyboard::Scancode::S): 
-          moveNextOption(); 
-          break;
-        case (Keyboard::Scancode::Enter): 
-          changeState(); 
-          break;
-        case (Keyboard::Scancode::Escape): 
-          m_pStateStack->popState();
-          m_pGameState->setPaused(false); 
-          break;
-        default: break;
-      }
+  void PauseState::keyPressed(const sf::Keyboard::Key key) {
+    switch (key) {
+      case (sf::Keyboard::W):
+        movePreviousOption();
+        break;
+      case (sf::Keyboard::S):
+        moveNextOption();
+        break;
+      case (sf::Keyboard::Enter):
+        changeState();
+        break;
+      case (sf::Keyboard::Escape):
+        m_pStateStack->popState();
+        m_pGameState->setPaused(false);
+        break;
+      default: break;
     }
   }
 

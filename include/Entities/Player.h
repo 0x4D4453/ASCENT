@@ -17,8 +17,9 @@ namespace Entities { class Enemy; }
 
 namespace Entities {
   class Player : public Character {
-    private:
+    public:
       enum Actions {
+        None,
         MoveLeft,
         MoveRight,
         Jump
@@ -26,8 +27,7 @@ namespace Entities {
 
     private:
       Animations::PlayerAnimation m_animation;
-      std::map<Actions, sf::Keyboard::Key> m_keyBinding;
-      std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
+      std::map<sf::Keyboard::Key, Actions> m_keyBinding;
       int m_points;
       bool m_isJumping;
       bool m_isCharging;
@@ -40,11 +40,6 @@ namespace Entities {
 
     private:
       void setup();
-      void moveLeft();
-      void moveRight();
-      void chargeJump();
-      void jump();
-      void handleInput();
       void update();
       const float getCurrentSpeed() const;
       void attack(Enemy *enemy);
@@ -57,11 +52,19 @@ namespace Entities {
             , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
             , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
       ~Player();
+
       const bool getIsJumping() const;
       void setIsJumping(const bool isJumping);
       const bool getIsCharging() const;
       void setIsCharging(const bool isCharging);
       const bool isAttacking();
+      Actions getKeyAction(sf::Keyboard::Key key);
+
+      void moveLeft();
+      void moveRight();
+      void chargeJump();
+      void jump();
+
       virtual void collide(Entity *entity, Manager::Collision::CollisionType type, float overlap);
       virtual void exec();
       virtual void save();

@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "State/State.h"
+#include "State/Pause/PauseSubject.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -13,7 +14,7 @@
 #include <queue>
 
 namespace States {
-  class StateStack : sf::NonCopyable {
+  class StateStack : public Pause::PauseSubject, public sf::NonCopyable {
     private:
       enum class Command {
         Push,

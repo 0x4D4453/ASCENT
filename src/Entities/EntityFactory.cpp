@@ -6,6 +6,7 @@
 #include "Entities/Characters/Fly.h"
 #include "Entities/Obstacles/MovingPlatform.h"
 #include "Entities/Obstacles/Platform.h"
+#include "Entities/Obstacles/Spike.h"
 
 /* Standard Library */
 #include <iostream>
@@ -53,6 +54,9 @@ namespace Entities {
         break;
       case (MovingPlatformE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::MovingPlatform(m_pTextureHolder->getResource(textureID), position));
+        break;
+      case (SpikesE): 
+        m_pEntity = static_cast<Entity*>(new Obstacles::Spike(m_pTextureHolder->getResource(textureID), position));
         break;
     }
     

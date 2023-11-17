@@ -47,7 +47,7 @@ namespace Textures {
   constexpr char STRIPPED_PLATFORM_LEFT[] = "assets/tiles/tile_0190.png";
   constexpr char STRIPPED_PLATFORM_MIDDLE[] = "assets/tiles/tile_0191.png";
   constexpr char STRIPPED_PLATFORM_RIGHT[] = "assets/tiles/tile_0192.png";
-  constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0192.png";
+  constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0183.png";
 
   constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
   constexpr char FLY[] = "assets/tiles/flySpriteSheet.png";

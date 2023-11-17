@@ -26,6 +26,7 @@ namespace Entities {
     PlatformE,
     GoombaE,
     FlyE,
+    SpikesE,
   };
 
   enum EntityTag {

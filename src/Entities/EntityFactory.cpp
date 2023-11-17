@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Characters/Fly.h"
+#include "Entities/Obstacles/MovingPlatform.h"
 #include "Entities/Obstacles/Platform.h"
 
 /* Standard Library */
@@ -49,6 +50,9 @@ namespace Entities {
         break;
       case (EnemyE):
         m_pEntity = static_cast<Entity*>(new Characters::Goomba(m_pTextureHolder->getResource(textureID), position));
+        break;
+      case (MovingPlatformE): 
+        m_pEntity = static_cast<Entity*>(new Obstacles::MovingPlatform(m_pTextureHolder->getResource(textureID), position));
         break;
     }
     

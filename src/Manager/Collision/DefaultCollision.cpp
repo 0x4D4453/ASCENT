@@ -8,7 +8,7 @@
 namespace Manager {
   namespace Collision {
     DefaultCollision::DefaultCollision()
-      : CollisionStrategy(0.5f)
+      : CollisionStrategy(0)
     {
 
     }

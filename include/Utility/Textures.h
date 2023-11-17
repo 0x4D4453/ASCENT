@@ -12,6 +12,7 @@ namespace Textures {
     Enemy3,
     Projectile,
     Platform,
+    MovingPlatform,
     PlatformLeft,
     PlatformLeftB,
     PlatformRight,
@@ -60,6 +61,8 @@ namespace Textures {
   constexpr char RIGHT_ARROW[] = "assets/tiles/rightArrow.png";
   constexpr char STAGE_PLACEHOLDER[] = "assets/stagePlaceholder.png";
   constexpr char STAGE_PLACEHOLDER2[] = "assets/stagePlaceholder2.png";
+
+  constexpr char MOVING_PLATFORM[] = "assets/tiles/movingPlatform.png";
 }
 
 #endif

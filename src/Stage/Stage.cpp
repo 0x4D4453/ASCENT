@@ -24,8 +24,9 @@ namespace Stages {
   Manager::GraphicsManager* Stage::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
   const float Stage::m_dt(Stage::m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
 
-  Stage::Stage(const bool newGame) 
+  Stage::Stage(const std::string& mapTxt) 
     : m_collisionManager()
+    , m_mapTxt(mapTxt)
     , m_players()
     , m_staticEntities()
     , m_dynamicEntities()
@@ -33,9 +34,6 @@ namespace Stages {
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
     m_pGraphicsManager->resetTime();
-
-    if (!newGame)
-      loadSaveGame();
 
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setStaticEntities(&m_staticEntities);
@@ -50,7 +48,11 @@ namespace Stages {
   Stage::~Stage() {
     
   }
-  
+
+  const std::string& Stage::getMapTxt() const {
+    return m_mapTxt;
+  } 
+
   EntityList* Stage::getPlayers() {
     return &m_players;
   }
@@ -67,8 +69,36 @@ namespace Stages {
     setup();
   }
 
-  void Stage::saveGame() {
+  void Stage::savePlayerData() {
+    nlohmann::ordered_json playerData;
+    List<Entities::Entity*>::Iterator playersIterator;
 
+    for (playersIterator = m_players.first(); playersIterator != m_players.last(); ++playersIterator)
+      (*playersIterator)->save(playerData);
+
+    std::ofstream jsonOut("saves/player.json");
+    jsonOut << std::setw(2) << playerData;
+    jsonOut.close();
+  }
+
+  void Stage::saveEntitiesData() {
+    nlohmann::ordered_json entitiesData;
+    List<Entities::Entity*>::Iterator entitiesIterator;
+
+    for (entitiesIterator = m_staticEntities.first(); entitiesIterator != m_staticEntities.last(); ++entitiesIterator)
+      (*entitiesIterator)->save(entitiesData);
+
+    for (entitiesIterator = m_dynamicEntities.first(); entitiesIterator != m_dynamicEntities.last(); ++entitiesIterator)
+      (*entitiesIterator)->save(entitiesData);
+
+    std::ofstream jsonOut("saves/entities.json");
+    jsonOut << std::setw(2) << entitiesData;
+    jsonOut.close();
+  }
+
+  void Stage::saveGame() {
+    savePlayerData();
+    saveEntitiesData();
   }
 
   void Stage::applyPhysics(Entities::Entity* pEntity) {

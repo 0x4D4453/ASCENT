@@ -10,7 +10,7 @@ namespace Stages {
       virtual void setup();
     
     public:
-      FirstStage(const bool newGame = true);
+      FirstStage(const std::string& mapTxt = Constants::STAGE_1);
       ~FirstStage();
   };
 }

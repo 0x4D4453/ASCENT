@@ -36,19 +36,20 @@ namespace Entities {
 
   Entity* EntityFactory::createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position) {
     m_pEntity = NULL;
+    sf::Texture& textureRef = m_pTextureHolder->getResource(textureID);
 
     switch (entityID) {
       case (PlatformE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::Platform(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Obstacles::Platform(textureID, textureRef, position));
         break;
       case (GoombaE):
-        m_pEntity = static_cast<Entity*>(new Characters::Goomba(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Goomba(textureID, textureRef, position));
         break;
       case (FlyE):
-        m_pEntity = static_cast<Entity*>(new Characters::Fly(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Fly(textureID, textureRef, position));
         break;
       case (EnemyE):
-        m_pEntity = static_cast<Entity*>(new Characters::Goomba(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Characters::Goomba(textureID, textureRef, position));
         break;
     }
     

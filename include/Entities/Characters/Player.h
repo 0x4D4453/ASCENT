@@ -12,6 +12,9 @@
 /* SFML Library */
 #include <SFML/Audio.hpp>
 
+/* JSON Library */
+#include "nlohmann/json.hpp"
+
 /* Forward Declaration */
 namespace Entities { namespace Characters { class Enemy; } }
 
@@ -64,8 +67,9 @@ namespace Entities {
         void setIsCharging(const bool isCharging);
         const bool isAttacking();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec();
-        virtual void save();
     };
   }
 }

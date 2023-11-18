@@ -5,6 +5,9 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityFactory.h"
 #include "Stage/FirstStage.h"
+#include "Stage/SecondStage.h"
+#include "Stage/ThirdStage.h"
+#include "Stage/Stage.h"
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Manager/GraphicsManager.h"
@@ -71,15 +74,89 @@ namespace Stages {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
-  Stage* StageFactory::createStage(const std::string& stageTxt) {
-    Stage* stage = new FirstStage(m_newGame);
+  Stage* StageFactory::createStage(Stages::ID stageID) {
+    Stage* stage =  NULL;
+
+    switch (stageID) {
+      case Stage1:
+        stage = new FirstStage;
+        break;
+      case Stage2:
+        stage = new SecondStage;
+        break;
+      case Stage3:
+        stage = new ThirdStage;
+        break;
+      default: break;
+    }
+
+    if (!stage) {
+      std::cerr << "Error creating stage!" << std::endl;
+      exit(1);
+    }
 
     m_pPlayers = stage->getPlayers();
     m_pStaticEntities = stage->getPlatforms();
     m_pDynamicEntities = stage->getEnemies();
 
-    createMap(stageTxt);
+    if (m_newGame) {
+      createMap(stage->getMapTxt());
+      createPlayers();
+    } else {
+      loadSaveGame();
+    }
+    
     return stage;
+  }
+
+  void StageFactory::loadPlayerData() {
+    using namespace nlohmann;
+    using namespace Entities;
+
+    std::ifstream playerStream("saves/player.json");
+    ordered_json playerData = ordered_json::parse(playerStream);
+
+    ordered_json::iterator it = playerData.begin();
+    
+    Characters::Player* pPlayer = new Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump));
+    pPlayer->loadSave(*it);
+    m_pPlayers->include(pPlayer);
+    ++it;
+
+    if (it != playerData.end()) {
+      pPlayer = new Characters::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up);
+      pPlayer->loadSave(*it);
+      m_pPlayers->include(pPlayer);
+    }
+
+    playerStream.close();
+  }
+
+  void StageFactory::loadEntitiesData() {
+    using namespace nlohmann;
+    using namespace Entities;
+
+    std::ifstream entitiesStream("saves/entities.json");
+    ordered_json entitiesData = ordered_json::parse(entitiesStream);
+
+    ordered_json::iterator it;
+    Entity* pEntity = NULL;
+    sf::Vector2f position;
+
+    for (it = entitiesData.begin(); it != entitiesData.end(); ++it) {
+      position.x = (*it)["position"]["x"].template get<float>();
+      position.y = (*it)["position"]["y"].template get<float>();
+      pEntity = m_entityFactory.createEntity((*it)["ID"].template get<EntityID>(), (*it)["textureID"].template get<Textures::ID>(), position);
+      pEntity->loadSave(*it);
+      defineType(pEntity);
+    }
+
+    entitiesStream.close();
+  }
+
+  void StageFactory::loadSaveGame() {
+    loadPlayerData();
+    loadEntitiesData();
   }
 
   void StageFactory::defineType(Entities::Entity* pEntity) {
@@ -97,14 +174,14 @@ namespace Stages {
     }
   }
 
-  void StageFactory::createPlayers(int stageHeight) {
+  void StageFactory::createPlayers() {
     m_pPlayers->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump)));
     if (m_multiplayer)
       m_pPlayers->include(new Entities::Characters::Player(m_textureHolder.getResource(Textures::Player2), m_soundHolder.getResource(Sounds::playerJump), sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up));
     
     sf::Vector2f playerPosition = sf::Vector2f();
     playerPosition.x = Constants::WINDOW_WIDTH / 2;
-    playerPosition.y = (stageHeight - 10) * Constants::TILE_SIZE;
+    playerPosition.y = (m_graphicsManager->getStageSize().y - (10.f * Constants::TILE_SIZE));
 
     List<Entities::Entity*>::Iterator it = m_pPlayers->first();
     while (it != m_pPlayers->last()) {
@@ -114,7 +191,7 @@ namespace Stages {
   }
 
   void StageFactory::createMap(const std::string& stageTxt) {
-    std::ifstream stage(stageTxt);
+    std::ifstream stage(stageTxt.c_str());
 
     if (!stage) {
       std::cout << "Error loading stage\n";
@@ -151,8 +228,6 @@ namespace Stages {
     }
 
     stage.close();
-
     m_graphicsManager->setStageSize(i * Constants::TILE_SIZE, j * Constants::TILE_SIZE);
-    createPlayers(i);
   }
 }

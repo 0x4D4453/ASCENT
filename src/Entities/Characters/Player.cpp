@@ -187,15 +187,26 @@ namespace Entities {
       pEnemy->setHealthPoints(pEnemy->getHealthPoints() - 1);
     }
 
-    void Player::save() {
-      nlohmann::json playerData;
+    void Player::save(nlohmann::ordered_json& jsonData) {
+      nlohmann::ordered_json playerData;
 
       playerData["hp"] = getHealthPoints();
+      playerData["score"] = m_points;
       playerData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
       playerData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-  
-      std::ofstream jsonOut("saves/player.json");
-      jsonOut << std::setw(2) << playerData;
+      playerData["isJumping"] = m_isJumping;  
+      playerData["isCharging"] = m_isCharging;
+      playerData["isStaggered"] = m_isStaggered;
+
+      jsonData.push_back(playerData);
+    }
+
+    void Player::loadSave(const nlohmann::ordered_json& jsonData) {
+      setPosition(sf::Vector2f(jsonData["position"]["x"].template get<float>(), jsonData["position"]["y"].template get<float>()));
+      setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
+      m_isJumping = jsonData["isJumping"].template get<bool>();
+      m_isCharging = jsonData["isCharging"].template get<bool>();
+      m_isStaggered = jsonData["isStaggered"].template get<bool>();
     }
   }
 }

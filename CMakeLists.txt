@@ -17,8 +17,7 @@ add_executable(GOTY
     src/Manager/GraphicsManager.cpp
     src/Manager/Collision/CollisionManager.cpp src/Manager/Collision/CollisionStrategy.cpp src/Manager/Collision/CollisionStrategyFactory.cpp
     src/Manager/Collision/DefaultCollision.cpp src/Manager/Collision/NoCollision.cpp src/Manager/Collision/KnockbackCollision.cpp
-    src/Stage/Stage.cpp src/Stage/StageFactory.cpp 
-    src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/FirstStage.cpp
+    src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/FirstStage.cpp src/Stage/SecondStage.cpp src/Stage/ThirdStage.cpp
     src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp  src/State/OptionsState.cpp src/State/PauseState.cpp src/State/MenuState.cpp src/State/PlayerSelectState.cpp src/State/StageSelectState.cpp src/State/RankingState.cpp
     src/State/Pause/PauseObserver.cpp src/State/Pause/PauseSubject.cpp
     src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp

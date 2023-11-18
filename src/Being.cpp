@@ -34,6 +34,10 @@ const sf::FloatRect Being::getGlobalBounds() const {
   return m_sprite.getGlobalBounds();
 }
 
+void Being::setTextureID(Textures::ID textureID) {
+  m_textureID = textureID;
+}
+
 void Being::setTexture(sf::Texture& texture) {
   m_sprite.setTexture(texture);
 }

@@ -55,6 +55,7 @@ namespace Manager {
       void addTime();
 
       void setStageSize(float height, float width);
+      sf::Vector2f getStageSize();
   };
 }
 

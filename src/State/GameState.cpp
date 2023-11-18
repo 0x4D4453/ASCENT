@@ -5,16 +5,23 @@
 #include "State/StateStack.h"
 #include "Utility/Context.h"
 
+/* Standard Library */
+#include <fstream>
+
+/* JSON Library */
+#include "nlohmann/json.hpp"
+
 namespace States {
   GameState::GameState(const bool newGame)
     : State()
     , m_stageFactory(newGame, m_pContext->getMultiplayer())
   {
     setType(StateType::Game);
-    m_pStage = m_stageFactory.createStage(m_pContext->getStage());
 
     if (!newGame)
-      m_pStage->loadSaveGame();
+      loadStageData();
+
+    m_pStage = m_stageFactory.createStage(m_pContext->getStage());
   }
 
   GameState::~GameState() {
@@ -43,7 +50,28 @@ namespace States {
   }
 
   void GameState::saveGame() {
+    nlohmann::ordered_json stageJSON;
+
+    stageJSON["stageID"] = m_pContext->getStage();
+    stageJSON["size"] = { {"x", m_pGraphicsManager->getStageSize().x}, {"y", m_pGraphicsManager->getStageSize().y} };
+    std::ofstream stageData("saves/stage.json");
+
+    stageData << std::setw(2) << stageJSON;
+    stageData.close();
+
     m_pStage->saveGame();
+  }
+
+  void GameState::loadStageData() {
+    using namespace nlohmann;
+
+    std::ifstream stageStream("saves/stage.json");
+    ordered_json stageData = ordered_json::parse(stageStream);
+
+    m_pContext->setStage(stageData["stageID"].template get<Stages::ID>());
+    m_pGraphicsManager->setStageSize(stageData["size"]["y"].template get<float>(), stageData["size"]["x"].template get<float>());
+
+    stageStream.close();
   }
 
   void GameState::exec() {

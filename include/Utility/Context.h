@@ -2,6 +2,7 @@
 #define CONTEXT_H
 
 /* Program Defined */
+#include "Stage/Stage.h"
 #include "Utility/Fonts.h"
 #include "Utility/Sounds.h"
 #include "Utility/Textures.h"
@@ -16,9 +17,8 @@ class Context {
     ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
     ResourceHolder<Fonts::ID, sf::Font> m_fontHolder;
     ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
-
     bool m_multiplayer;
-    std::string m_stagePath;
+    Stages::ID m_stageID;
   
   private:
     Context();
@@ -32,8 +32,8 @@ class Context {
 
     void setMultiplayer(const bool multiplayer);
     const bool getMultiplayer() const;
-    void setStage(const std::string& stage);
-    std::string& getStage();
+    void setStage(const Stages::ID stageID);
+    const Stages::ID getStage() const;
 };
 
 #endif

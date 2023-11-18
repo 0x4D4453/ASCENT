@@ -9,10 +9,11 @@
 
 namespace Entities {
   namespace Obstacles {
-    Platform::Platform(sf::Texture& texture, sf::Vector2f position) 
+    Platform::Platform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position) 
       : Obstacle(position)
     {
       setEntityId(EntityID::PlatformE);
+      setTextureID(textureID);
       setTexture(texture);
     }
 
@@ -41,10 +42,6 @@ namespace Entities {
         pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * .5f, pPlayer->getVelocity().y));
         pPlayer->setIsStaggered(true);
       }
-    }
-
-    void Platform::save() {
-
     }
 
     void Platform::exec() {

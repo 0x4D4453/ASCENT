@@ -14,7 +14,7 @@ Context::Context()
   , m_fontHolder()
   , m_soundHolder()
   , m_multiplayer(false)
-  , m_stagePath(Constants::STAGE_3)
+  , m_stageID(Stages::Stage1)
 {
   m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
   m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);
@@ -56,10 +56,10 @@ const bool Context::getMultiplayer() const {
   return m_multiplayer;
 }
 
-void Context::setStage(const std::string& stage) {
-  m_stagePath = stage;
+void Context::setStage(const Stages::ID stageID) {
+  m_stageID = stageID;
 }
 
-std::string& Context::getStage() {
-  return m_stagePath;
+const Stages::ID Context::getStage() const {
+  return m_stageID;
 }

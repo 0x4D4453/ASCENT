@@ -2,6 +2,7 @@
 #include "State/StageSelectState.h"
 
 /* Program Defined */
+#include "Stage/Stage.h"
 #include "State/StateStack.h"
 #include "Utility/Constants.h"
 #include "Utility/Context.h"
@@ -75,13 +76,13 @@ namespace States {
   void StageSelectState::changeState() {
     switch (m_currentOption) {
       case (Stage1):
-        m_pContext->setStage(Constants::STAGE_1);
+        m_pContext->setStage(Stages::Stage1);
         break;
       case (Stage2):
-        m_pContext->setStage(Constants::STAGE_2);
+        m_pContext->setStage(Stages::Stage2);
         break;
       case (Stage3):
-        m_pContext->setStage(Constants::STAGE_3);
+        m_pContext->setStage(Stages::Stage3);
         break;
     }
 

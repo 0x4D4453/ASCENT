@@ -140,4 +140,8 @@ namespace Manager {
     m_stageHeight = height;
     m_stageWidth = width;
   }
+
+  sf::Vector2f GraphicsManager::getStageSize() {
+    return sf::Vector2f(m_stageWidth, m_stageHeight);
+  }
 }

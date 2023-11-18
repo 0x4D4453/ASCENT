@@ -9,6 +9,7 @@
 #include "Entities/EntityFactory.h"
 #include "Entities/EntityList.h"
 #include "Entities/Characters/Player.h"
+#include "Stage/Stage.h"
 #include "Utility/ResourceHolder.h"
 #include "Utility/Sounds.h"
 #include "Utility/Textures.h"
@@ -25,21 +26,24 @@ namespace Stages {
       EntityList* m_pPlayers;
       EntityList* m_pStaticEntities;
       EntityList* m_pDynamicEntities;
-      bool m_newGame;
+      const bool m_newGame;
       const bool m_multiplayer;
     
     private:
       void loadTextures();
       void loadSounds();
+      void loadPlayerData();
+      void loadEntitiesData();
+      void loadSaveGame();
       void createMap(const std::string& stageTxt);
       void defineType(Entities::Entity* pEntity);
-      void createPlayers(int stageHeight);
+      void createPlayers();
     
     public:
       StageFactory(const bool newGame = true, const bool multiplayer = false);
       ~StageFactory();
 
-      Stage* createStage(const std::string& stageTxt);
+      Stage* createStage(Stages::ID stageID);
   };
 }
 

@@ -3,6 +3,10 @@
 
 /* Program Defined */
 #include "Entities/Characters/Enemy.h"
+#include "Utility/Textures.h"
+
+/* JSON Library */
+#include "nlohmann/json.hpp"
 
 namespace Entities {
   namespace Characters {
@@ -12,11 +16,12 @@ namespace Entities {
         bool m_direction;
 
       public:
-        Goomba(sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));
+        Goomba(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));
         ~Goomba();
         virtual void movementPattern();
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec();
-        virtual void save();
     };
   }
 }

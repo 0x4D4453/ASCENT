@@ -5,6 +5,7 @@
 #include "State/State.h"
 
 /* Program Defined */
+#include "Stage/Stage.h"
 #include "Stage/StageFactory.h"
 
 /* SFML Library */
@@ -23,6 +24,7 @@ namespace States {
       virtual void lostFocus();
       void setPaused(const bool paused);
       void saveGame();
+      void loadStageData();
       void exec();
   };
 }

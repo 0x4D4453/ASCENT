@@ -5,6 +5,7 @@
 #include "Entities/Entity.h"
 #include "Entities/EntityList.h"
 #include "Manager/Collision/CollisionManager.h"
+#include "Utility/Constants.h"
 
 /* SFML Library */
 #include <SFML/Audio.hpp>
@@ -13,11 +14,19 @@
 namespace Manager { class GraphicsManager; }
 
 namespace Stages {
+  enum ID {
+    Stage1,
+    Stage2,
+    Stage3,
+    TotalStages
+  };
+
   class Stage {
     protected:
-      static Manager::GraphicsManager* m_pGraphicsManager;
       static const float m_dt;
+      static Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Collision::CollisionManager m_collisionManager;
+      std::string m_mapTxt;
       EntityList m_players;
       EntityList m_staticEntities;
       EntityList m_dynamicEntities;
@@ -30,10 +39,15 @@ namespace Stages {
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
       void update();
+      void savePlayerData();
+      void saveEntitiesData();
     
     public:
-      Stage(const bool newGame = true);
+      Stage(const std::string& mapTxt);
       ~Stage();
+
+      const std::string& getMapTxt() const; 
+      const std::string& getEntitiesTxt() const;
 
       EntityList* getPlayers();
       EntityList* getPlatforms();

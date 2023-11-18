@@ -13,6 +13,9 @@
 #include <unordered_map>
 #include <set>
 
+/* JSON Library */
+#include "nlohmann/json.hpp"
+
 namespace Entities {
   // Added E (from enum) to avoid type name errors
   enum EntityID {
@@ -87,7 +90,8 @@ namespace Entities {
 
       virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
       virtual void move(const sf::Vector2f movement);
-      virtual void save() = 0;
+      virtual void save(nlohmann::ordered_json& jsonData) = 0;
+      virtual void loadSave(const nlohmann::ordered_json& jsonData) = 0;
       virtual void exec() = 0;
   };
 };

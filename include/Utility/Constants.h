@@ -19,9 +19,13 @@ namespace Constants {
   const sf::Color SELECTION_COLOR = sf::Color::Magenta;
   const sf::Color DEFAULT_COLOR = sf::Color::White;
 
-  constexpr char STAGE_1[] = "assets/stage_1.txt";
-  constexpr char STAGE_2[] = "assets/stage_2.txt";
-  constexpr char STAGE_3[] = "assets/stage_3.txt";
+  constexpr char STAGE_1[] = "assets/stages/stage1/stage_1.txt";
+  constexpr char STAGE_2[] = "assets/stages/stage2/stage_2.txt";
+  constexpr char STAGE_3[] = "assets/stages/stage3/stage_3.txt";
+
+  constexpr char ENTITIES_1[] = "assets/stages/stage1/entities_1.txt";
+  constexpr char ENTITIES_2[] = "assets/stages/stage2/entities_2.txt";
+  constexpr char ENTITIES_3[] = "assets/stages/stage3/entities_3.txt";
 }
 
 #endif

@@ -35,8 +35,9 @@ namespace Entities {
         velocity.x = -m_speed * m_dt;
       else
         velocity.x = m_speed * m_dt;
-      
-      move(velocity);
+
+      m_velocity = velocity;
+      move();
     }
 
     void MovingPlatform::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {

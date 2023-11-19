@@ -52,6 +52,7 @@ namespace Manager {
           break;
       }
 
+      m_strategyPool.insert(std::make_pair(id, strategy));
       return strategy;
     }
   }

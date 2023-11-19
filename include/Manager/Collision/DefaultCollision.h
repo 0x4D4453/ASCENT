@@ -7,6 +7,12 @@
 namespace Manager {
   namespace Collision {
     class DefaultCollision : public CollisionStrategy {
+      private:
+        const float m_friction;
+
+      private:
+        void applyFriction(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, sf::Vector2f* velocity);
+
       public:
         DefaultCollision();
         ~DefaultCollision();

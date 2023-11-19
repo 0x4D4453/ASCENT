@@ -37,6 +37,7 @@ namespace Entities {
         const float m_minJumpHeight;
         const float m_maxJumpHeight;
         const float m_attackSpeed;
+        const float m_maxSpeed;
         sf::Sound m_jumpSound;
 
       private:

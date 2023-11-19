@@ -86,7 +86,7 @@ namespace States {
         break;
     }
 
-    m_pStateStack->pushState(StateType::Game, NULL, true);
+    m_pStateStack->pushState(StateType::Loading, NULL, true);
   }
 
   void StageSelectState::keyPressed(const sf::Keyboard::Key key) {

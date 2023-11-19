@@ -33,7 +33,7 @@ namespace Manager {
     }
 
     CollisionStrategy* CollisionStrategyFactory::getCollisionStrategy(StrategyId id) {
-      if (m_strategyPool[id])
+      if (m_strategyPool.find(id) != m_strategyPool.end())
         return m_strategyPool[id];
       
       CollisionStrategy* strategy = NULL;

@@ -24,7 +24,16 @@ namespace Manager {
       if (type == CollisionType::Horizontal) {
         pOtherEntity->move(sf::Vector2f(overlap, 0));
       } else {
-        pOtherEntity->setVelocity(sf::Vector2f(pOtherEntity->getVelocity().x, 0.f));
+        sf::Vector2f velocity = pOtherEntity->getVelocity();
+        if (velocity.y < 0) {
+          if (pOtherEntity->getPosition().y >= pOwnEntity->getPosition().y)
+            velocity.y = 0.f;
+        } else {
+          if (pOtherEntity->getPosition().y <= pOwnEntity->getPosition().y)
+            velocity.y = 0.f;
+        }
+
+        pOtherEntity->setVelocity(velocity);
         pOtherEntity->move(sf::Vector2f(0, overlap));
       }
     }

@@ -46,45 +46,52 @@ namespace Manager {
     void CollisionManager::verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities) {
       using namespace Entities;
 
-      const sf::FloatRect cEntityCoordinates = entities.first->getGlobalBounds();
-      const sf::FloatRect mEntityCoordinates = entities.second->getGlobalBounds();
-      std::set<int> currentCollisions = entities.first->getCurrentCollisions();
+      const sf::FloatRect firstCoordinates = entities.first->getGlobalBounds();
+      const sf::FloatRect secondCoordinates = entities.second->getGlobalBounds();
 
-      if (mEntityCoordinates.intersects(cEntityCoordinates, m_intersectionRect)) {
-        if (currentCollisions.count(entities.second->getId()) > 0)
-          return;
+      if (secondCoordinates.intersects(firstCoordinates, m_intersectionRect)) {
+        CollisionInfo info;
 
         float xOverlap = m_intersectionRect.width;
         float yOverlap = m_intersectionRect.height;
 
         if (yOverlap < xOverlap) {
-          if (mEntityCoordinates.top < cEntityCoordinates.top)
+          if (secondCoordinates.top < firstCoordinates.top)
             yOverlap *= -1;
-          applyCollision(entities, CollisionType::Vertical, yOverlap);
+          info.type = CollisionType::Vertical;
+          info.overlap = yOverlap;
         } else {
-          if (mEntityCoordinates.left < cEntityCoordinates.left)
+          if (secondCoordinates.left < firstCoordinates.left)
             xOverlap *= -1;
-          applyCollision(entities, CollisionType::Horizontal, xOverlap);
+          info.type = CollisionType::Horizontal;
+          info.overlap = xOverlap;
         }
+
+        if (entities.first->getCurrentCollisions()->count(entities.second->getId()) == 0)
+          applyCollision(entities, &info);
+
+        applyCollisionReaction(entities, &info);
       } else {
-        currentCollisions.erase(entities.second->getId());
-        entities.second->getCurrentCollisions().erase(entities.first->getId());
+        entities.first->getCurrentCollisions()->erase(entities.second->getId());
+        entities.second->getCurrentCollisions()->erase(entities.first->getId());
       }
     }
 
-    void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap) {
-      entities.first->collide(entities.second, type, overlap);
-      entities.second->collide(entities.first, type, overlap);
+    void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
+      entities.first->collide(entities.second, info->type, info->overlap);
+      entities.second->collide(entities.first, info->type, info->overlap * -1);
 
-      entities.first->getCurrentCollisions().insert(entities.second->getId());
-      entities.second->getCurrentCollisions().insert(entities.first->getId());
-      
+      entities.first->getCurrentCollisions()->insert(entities.second->getId());
+      entities.second->getCurrentCollisions()->insert(entities.first->getId());
+    }
+
+    void CollisionManager::applyCollisionReaction(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
       CollisionStrategy* strategy;
       strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
-      strategy->collide(entities.first, entities.second, type, overlap);
+      strategy->collide(entities.first, entities.second, info->type, info->overlap);
 
       strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
-      strategy->collide(entities.second, entities.first, type, overlap);
+      strategy->collide(entities.second, entities.first, info->type, info->overlap * -1);
     }
 
     void CollisionManager::verifyCollisions() {

@@ -8,6 +8,7 @@ namespace Entities {
       : Obstacle(position, true)
       , m_attack(1)
     {
+      setEntityId(EntityID::SpikesE);
       setTexture(texture);
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
     }
@@ -19,7 +20,6 @@ namespace Entities {
 
     void Spike::damagePlayer(Characters::Player* pPlayer) {
       pPlayer->setHealthPoints(pPlayer->getHealthPoints() - m_attack);
-      std::cout << pPlayer->getHealthPoints() << std::endl;
     }
 
     void Spike::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {

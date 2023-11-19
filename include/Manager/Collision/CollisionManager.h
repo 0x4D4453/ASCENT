@@ -20,6 +20,11 @@ namespace Manager {
       Horizontal
     };
 
+    struct CollisionInfo {
+      CollisionType type;
+      float overlap;
+    };
+
     class CollisionManager : public sf::NonCopyable {
       private:
         static Manager::Collision::CollisionStrategyFactory* m_pCollisionFactory;
@@ -29,7 +34,8 @@ namespace Manager {
         EntityList* m_pDynamicEntities;
 
       private:
-        void applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionType type, float overlap);
+        void applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info);
+        void applyCollisionReaction(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info);
         void verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities);
         void verifyCollisionStatic(Entities::Entity* pEntity);
         void verifyCollisionDynamic(Entities::Entity* pEntity, List<Entities::Entity*>::Iterator it);

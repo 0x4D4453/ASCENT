@@ -2,6 +2,7 @@
 #include "Entities/Characters/Player.h"
 
 /* Program Defined */
+#include "Animation/PlayerAnimation.h"
 #include "Entities/Characters/Enemy.h"
 #include "Utility/Constants.h"
 #include "Utility/CustomVector.h"
@@ -22,7 +23,6 @@ namespace Entities {
   namespace Characters {
     Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
       : Character()
-      , m_animation(this)
       , m_points(0)
       , m_isJumping(false)
       , m_isCharging(false)
@@ -47,6 +47,7 @@ namespace Entities {
       setTexture(playerTexture);
       m_jumpSound.setBuffer(jumpSoundBuffer);
 
+      m_animation = new Animations::PlayerAnimation(this);
       setup();
     }
 
@@ -155,24 +156,11 @@ namespace Entities {
     }
 
     void Player::update() {
-      m_animation.update(m_dt, this);
-
-      if (m_velocity.x < 0)
-        m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
-      else if (m_velocity.x > 0)
-        m_sprite.setScale(Constants::SCALE, Constants::SCALE);
-
-      move();
-
-      if (!getIsColliding())
-        m_isJumping = true;
-    }
-
-    void Player::exec() {
       if (!m_isJumping && !m_isStaggered)
         handleInput();
 
-      update();
+      if (!getIsColliding())
+        m_isJumping = true;
     }
 
     void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {

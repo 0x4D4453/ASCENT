@@ -3,12 +3,12 @@
 
 /* Program Defined */
 #include "Entities/Characters/Player.h"
+#include "Animation/EnemyAnimation.h"
 
 namespace Entities {
   namespace Characters {
     Enemy::Enemy(const sf::Vector2f spawnPosition)
       : Character()
-      , m_animation(this)
       , m_attack(1)
       , m_spawnPosition(spawnPosition)
     {
@@ -17,6 +17,7 @@ namespace Entities {
       m_sprite.setPosition(spawnPosition);
 
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
+      m_animation = new Animations::EnemyAnimation(this);
     }
 
     Enemy::~Enemy() {

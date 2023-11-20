@@ -22,6 +22,7 @@ namespace Animations {
     public:
       Animation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~Animation();
+      virtual void update(const float deltaTime) = 0;
   };
 }
 

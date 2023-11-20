@@ -35,9 +35,6 @@ namespace Entities {
         m_velocity.x = -m_speed * m_dt;
       else
         m_velocity.x = m_speed * m_dt;
-
-      m_animation.update(m_dt, this);
-      move();
     }
 
     void Goomba::save(nlohmann::ordered_json& jsonData) {
@@ -61,12 +58,9 @@ namespace Entities {
       m_direction = jsonData["direction"];
     }
 
-    void Goomba::exec() {
-      // if (getIsColliding())
+    void Goomba::update() {
       if (m_healthPoints > 0)
         movementPattern();
-      else
-        m_animation.update(m_dt, this);
     }
   }
 }

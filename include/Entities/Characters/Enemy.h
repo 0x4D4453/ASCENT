@@ -3,7 +3,6 @@
 
 /* Program Defined */
 #include "Entities/Characters/Character.h"
-#include "Animation/EnemyAnimation.h"
 
 /* Forward Declaration */
 namespace Entities { namespace Characters { class Player; } }
@@ -12,7 +11,6 @@ namespace Entities {
   namespace Characters {
     class Enemy : public Character {
       protected:
-        Animations::EnemyAnimation m_animation;
         const int m_attack;
         sf::Vector2f m_spawnPosition;
 

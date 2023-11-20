@@ -16,14 +16,12 @@ namespace Animations {
 
   }
 
-  void EnemyAnimation::update(const float deltaTime, Entities::Characters::Enemy* pEnemy) {
-    update(deltaTime, pEnemy, m_pEntity->getVelocity());
-  }
+  void EnemyAnimation::update(const float deltaTime) {
+    Entities::Characters::Enemy* pEnemy = dynamic_cast<Entities::Characters::Enemy*>(m_pEntity);
 
-  void EnemyAnimation::update(const float deltaTime, Entities::Characters::Enemy* pEnemy, const sf::Vector2f velocity) {
     if (pEnemy->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * 4;
-    else if (velocity.x == 0.f)
+    else if (m_pEntity->getVelocity().x == 0.f)
       m_textureRect.left = 0;
     else {
       m_totalTime += deltaTime;

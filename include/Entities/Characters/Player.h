@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 /* Program Defined */
-#include "Animation/PlayerAnimation.h"
 #include "Entities/Characters/Character.h"
 
 /* Standard Library */
@@ -29,7 +28,6 @@ namespace Entities {
         };
 
       private:
-        Animations::PlayerAnimation m_animation;
         std::map<Actions, sf::Keyboard::Key> m_keyBinding;
         std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
         int m_points;
@@ -44,13 +42,13 @@ namespace Entities {
         sf::Sound m_jumpSound;
 
       private:
+        virtual void update();
         void setup();
         void moveLeft();
         void moveRight();
         void chargeJump();
         void jump();
         void handleInput();
-        void update();
         const float getCurrentSpeed() const;
         void attack(Enemy *pEnemy);
       
@@ -70,7 +68,6 @@ namespace Entities {
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
-        virtual void exec();
     };
   }
 }

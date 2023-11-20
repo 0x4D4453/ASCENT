@@ -4,9 +4,6 @@
 /* Program Defined */
 #include "Animation/Animation.h"
 
-/* Forward Declaration */
-namespace Entities { namespace Characters { class Enemy; } }
-
 namespace Animations {
   class EnemyAnimation : public Animation {
     public:
@@ -18,8 +15,7 @@ namespace Animations {
     public:
       EnemyAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~EnemyAnimation();
-      void update(const float deltaTime, Entities::Characters::Enemy* pEnemy);
-      void update(const float deltaTime, Entities::Characters::Enemy* pEnemy, const sf::Vector2f velocity);
+      void update(const float deltaTime);
   };
 }
 

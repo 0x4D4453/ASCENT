@@ -10,10 +10,12 @@ namespace Entities {
       : Entity(sf::Vector2f(0.f, 0.f))
       , m_animation(NULL)
       , m_collisionClock()
-      , m_healthPoints(3)
+      , m_maxHealthPoints(3)
     {
       setEntityId(EntityID::CharacterE);
       setEntityType(EntityType::Dynamic);
+
+      m_healthPoints = m_maxHealthPoints;
     }
 
     Character::~Character() {
@@ -38,6 +40,10 @@ namespace Entities {
       m_sprite.setColor(color);
     }
 
+    const int Character::getMaxHealthPoints() const {
+      return m_maxHealthPoints;
+    }
+
     const int Character::getHealthPoints() const {
       return m_healthPoints;
     }
@@ -57,9 +63,9 @@ namespace Entities {
         m_animation->update(m_dt);
 
       if (m_velocity.x < 0)
-        m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
+        m_sprite.setScale(-m_scale, m_scale);
       else if (m_velocity.x > 0)
-        m_sprite.setScale(Constants::SCALE, Constants::SCALE);
+        m_sprite.setScale(m_scale, m_scale);
 
       move();
     }

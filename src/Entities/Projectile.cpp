@@ -23,7 +23,7 @@ namespace Entities {
   }
 
   void Projectile::setup() {  
-    m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
+    m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
   }
 
   void Projectile::exec() {

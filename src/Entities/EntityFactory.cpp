@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Characters/Fly.h"
+#include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
@@ -36,7 +37,7 @@ namespace Entities {
       m_pSoundHolder = pSoundHolder;
   }
 
-  Entity* EntityFactory::createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position) {
+  Entity* EntityFactory::createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, EntityList* pPlayers) {
     m_pEntity = NULL;
     sf::Texture& textureRef = m_pTextureHolder->getResource(textureID);
 
@@ -49,6 +50,9 @@ namespace Entities {
         break;
       case (FlyE):
         m_pEntity = static_cast<Entity*>(new Characters::Fly(textureID, textureRef, position));
+        break;
+      case (TyrantE):
+        m_pEntity = static_cast<Entity*>(new Characters::Tyrant(textureID, textureRef, position, pPlayers));
         break;
       case (EnemyE):
         m_pEntity = static_cast<Entity*>(new Characters::Goomba(textureID, textureRef, position));

@@ -14,8 +14,9 @@ int Being::m_cont(0);
 
 Being::Being() 
   : m_id(m_cont++)
+  , m_scale(Constants::SCALE)
 {
-  m_sprite.setScale(sf::Vector2f(Constants::SCALE, Constants::SCALE));
+  m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
 }
 
 Being::~Being() {
@@ -32,6 +33,10 @@ const sf::Sprite* Being::getSprite() const {
 
 const sf::FloatRect Being::getGlobalBounds() const {
   return m_sprite.getGlobalBounds();
+}
+
+void Being::setColor(sf::Color color) {
+  m_sprite.setColor(color);
 }
 
 void Being::setTextureID(Textures::ID textureID) {

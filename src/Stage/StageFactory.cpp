@@ -51,6 +51,7 @@ namespace Stages {
 
     m_textureHolder.load(Textures::Goomba, Textures::GOOMBA);
     m_textureHolder.load(Textures::Fly, Textures::FLY);
+    m_textureHolder.load(Textures::Tyrant, Textures::TYRANT);
     m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
 
     m_textureHolder.load(Textures::Platform, Textures::PLATFORM);
@@ -224,6 +225,7 @@ namespace Stages {
           case ('E'): defineType(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
           case ('F'): defineType(m_entityFactory.createEntity(Entities::FlyE, Textures::Fly, position)); break;
           case ('G'): defineType(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
+          case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position)); break;
           case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
           case ('I'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
           default: break;

@@ -29,6 +29,7 @@ namespace Entities {
     PlatformE,
     GoombaE,
     FlyE,
+    TyrantE,
     SpikesE,
   };
 

@@ -14,6 +14,7 @@ namespace Entities {
       protected:
         Animations::Animation* m_animation;
         sf::Clock m_collisionClock;
+        const int m_maxHealthPoints;
         int m_healthPoints;
       
       protected:
@@ -23,6 +24,7 @@ namespace Entities {
       public:
         Character();
         virtual ~Character();
+        const int getMaxHealthPoints() const;
         const int getHealthPoints() const;
         void setHealthPoints(const int healthPoints);
         virtual void save(nlohmann::ordered_json& jsonData) = 0;

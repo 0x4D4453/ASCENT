@@ -16,6 +16,7 @@ class Being {
     static const float m_dt;
     static int m_cont;
     const int m_id;
+    float m_scale;
     Textures::ID m_textureID;
     sf::Sprite m_sprite;
   
@@ -25,6 +26,7 @@ class Being {
     const int getId() const;
     const sf::Sprite* getSprite() const;
     const sf::FloatRect getGlobalBounds() const;
+    void setColor(sf::Color color);
     void setTextureID(Textures::ID textureID);
     void setTexture(sf::Texture& texture);
     void setTextureRect(const sf::IntRect& textureRect);

@@ -22,7 +22,7 @@ namespace Entities {
       ~EntityFactory();
       void setTextureHolder(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder);
       void setSoundHolder(ResourceHolder<Sounds::ID, sf::SoundBuffer>* pSoundHolder);
-      Entity* createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position);
+      Entity* createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, EntityList* pPlayers = NULL);
   };
 }
 

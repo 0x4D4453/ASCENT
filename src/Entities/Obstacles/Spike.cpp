@@ -4,11 +4,12 @@
 
 namespace Entities {
   namespace Obstacles {
-    Spike::Spike(sf::Texture& texture, sf::Vector2f position)
+    Spike::Spike(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position)
       : Obstacle(position, true)
       , m_attack(1)
     {
       setEntityId(EntityID::SpikesE);
+      setTextureID(textureID);
       setTexture(texture);
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
     }

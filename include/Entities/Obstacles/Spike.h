@@ -13,7 +13,7 @@ namespace Entities {
         const int m_attack;
       
       public:
-        Spike(sf::Texture& texture, sf::Vector2f position);
+        Spike(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~Spike();
         void damagePlayer(Characters::Player* pPlayer);
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

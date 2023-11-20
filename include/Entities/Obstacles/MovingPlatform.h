@@ -20,7 +20,7 @@ namespace Entities {
         void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
 
       public:
-        MovingPlatform(sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
+        MovingPlatform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~MovingPlatform();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save();

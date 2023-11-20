@@ -7,7 +7,7 @@
 
 namespace Entities {
   namespace Obstacles {
-    MovingPlatform::MovingPlatform(sf::Texture& texture, sf::Vector2f position)
+    MovingPlatform::MovingPlatform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position)
       : Obstacle(position)
       , m_spawnPosition(position)
       , m_range(64.f)
@@ -15,6 +15,7 @@ namespace Entities {
     {
       setEntityId(EntityID::MovingPlatformE);
       setEntityType(EntityType::Dynamic);
+      setTextureID(textureID);
       setTexture(texture);
       setSpeed(50.f);
     }

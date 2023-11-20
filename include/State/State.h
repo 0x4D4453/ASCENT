@@ -19,6 +19,7 @@ namespace States {
     Menu,
     PlayerSelect,
     StageSelect,
+    Loading,
     Game,
     Continue,
     Pause,

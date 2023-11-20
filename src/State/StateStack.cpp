@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "State/State.h"
 #include "State/GameState.h"
+#include "State/LoadingState.h"
 #include "State/MenuState.h"
 #include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
@@ -36,11 +37,14 @@ namespace States {
       case (StateType::StageSelect): 
         state = new StageSelectState; 
         break;
+      case (StateType::Loading):
+        state = new LoadingState;
+        break;
       case (StateType::Game):
-        state = new GameState;
+        state = pState;
         break;
       case (StateType::Continue):
-        state = new GameState(false);
+        state = new LoadingState(false);
         break;
       case (StateType::Pause):
         state = new PauseState(static_cast<GameState*>(pState));

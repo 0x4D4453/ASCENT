@@ -25,9 +25,11 @@ namespace Entities {
     ProjectileE,
     EnemyE,
     PlayerE,
+    MovingPlatformE,
     PlatformE,
     GoombaE,
     FlyE,
+    SpikesE,
   };
 
   enum EntityTag {
@@ -85,7 +87,7 @@ namespace Entities {
       const bool getIsStaggered() const;
 
       const bool getIsColliding() const;
-      std::set<int> getCurrentCollisions() const;
+      std::set<int>* getCurrentCollisions();
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
       virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

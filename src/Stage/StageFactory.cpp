@@ -68,6 +68,8 @@ namespace Stages {
     m_textureHolder.load(Textures::StrippedPlatformRight, Textures::STRIPPED_PLATFORM_RIGHT);
 
     m_textureHolder.load(Textures::Spikes, Textures::GROUND_SPIKES);
+
+    m_textureHolder.load(Textures::MovingPlatform, Textures::MOVING_PLATFORM);
   }
 
   void StageFactory::loadSounds() {
@@ -222,6 +224,8 @@ namespace Stages {
           case ('E'): defineType(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
           case ('F'): defineType(m_entityFactory.createEntity(Entities::FlyE, Textures::Fly, position)); break;
           case ('G'): defineType(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
+          case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
+          case ('I'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
           default: break;
         }
       }

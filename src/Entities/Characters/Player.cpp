@@ -31,6 +31,7 @@ namespace Entities {
       , m_minJumpHeight(2.f)
       , m_maxJumpHeight(10.f)
       , m_attackSpeed(5.f)
+      , m_maxSpeed(2.5f)
     {
       setEntityId(EntityID::PlayerE);
       setEntityTag(EntityTag::PlayerTag);
@@ -61,10 +62,16 @@ namespace Entities {
 
     void Player::moveLeft() {
       m_velocity.x -= m_speed * m_dt;
+
+      if (m_velocity.x < -m_maxSpeed)
+        m_velocity.x = -m_maxSpeed;
     }
 
     void Player::moveRight() {
       m_velocity.x += m_speed * m_dt;
+
+      if (m_velocity.x > m_maxSpeed)
+        m_velocity.x = m_maxSpeed;
     }
 
     const bool Player::getIsJumping() const {
@@ -100,7 +107,7 @@ namespace Entities {
     }
 
     void Player::handleInput() {
-      m_velocity.x = 0.f;
+      // m_velocity.x = 0.f;
       
       using sf::Keyboard;
       std::map<Actions, Keyboard::Key>::iterator it = m_keyBinding.begin();

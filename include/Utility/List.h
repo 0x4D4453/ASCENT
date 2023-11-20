@@ -126,7 +126,7 @@ template <class TL>
 typename List<TL>::Iterator List<TL>::Iterator::operator+(int num) {
   List<TL>::Iterator it = *this;
   for (int i = 0; i < num && it.m_position->getNext(); i++)
-    it++;
+    ++it;
 
   return it;
 }

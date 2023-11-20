@@ -12,6 +12,7 @@ namespace Textures {
     Enemy3,
     Projectile,
     Platform,
+    MovingPlatform,
     PlatformLeft,
     PlatformLeftB,
     PlatformRight,
@@ -46,7 +47,7 @@ namespace Textures {
   constexpr char STRIPPED_PLATFORM_LEFT[] = "assets/tiles/tile_0190.png";
   constexpr char STRIPPED_PLATFORM_MIDDLE[] = "assets/tiles/tile_0191.png";
   constexpr char STRIPPED_PLATFORM_RIGHT[] = "assets/tiles/tile_0192.png";
-  constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0192.png";
+  constexpr char GROUND_SPIKES[] = "assets/tiles/tile_0183.png";
 
   constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
   constexpr char FLY[] = "assets/tiles/flySpriteSheet.png";
@@ -60,6 +61,8 @@ namespace Textures {
   constexpr char RIGHT_ARROW[] = "assets/tiles/rightArrow.png";
   constexpr char STAGE_PLACEHOLDER[] = "assets/stagePlaceholder.png";
   constexpr char STAGE_PLACEHOLDER2[] = "assets/stagePlaceholder2.png";
+
+  constexpr char MOVING_PLATFORM[] = "assets/tiles/movingPlatform.png";
 }
 
 #endif

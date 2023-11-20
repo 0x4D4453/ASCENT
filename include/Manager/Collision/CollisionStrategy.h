@@ -1,6 +1,9 @@
 #ifndef COLLISIONSTRATEGY_H
 #define COLLISIONSTRATEGY_H
 
+/* SFML Library */
+#include <SFML/Graphics.hpp>
+
 /* Forward Declaration */
 namespace Entities { class Entity; }
 
@@ -10,6 +13,7 @@ namespace Manager {
 
     class CollisionStrategy {
       protected:
+        static const float m_dt;
         const float m_delay;
 
       public:

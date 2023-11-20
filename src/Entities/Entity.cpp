@@ -23,7 +23,8 @@ namespace Entities {
   }
 
   Entity::~Entity() {
-
+    m_collisionStrategies.clear();
+    m_currentCollisions.clear();
   }
   
   void Entity::setEntityId(EntityID id) {
@@ -95,8 +96,8 @@ namespace Entities {
     return m_currentCollisions.size() > 0;
   }
 
-  std::set<int> Entity::getCurrentCollisions() const {
-    return m_currentCollisions;
+  std::set<int>* Entity::getCurrentCollisions() {
+    return &m_currentCollisions;
   }
 
   void Entity::move() {

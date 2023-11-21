@@ -17,6 +17,7 @@ namespace Entities {
         sf::Clock m_collisionClock;
         const int m_maxHealthPoints;
         int m_healthPoints;
+        bool m_isMidAir;
       
       protected:
         virtual void update() = 0;
@@ -27,9 +28,13 @@ namespace Entities {
       public:
         Character(const float scale = Constants::SCALE, const int maxHealth = 3);
         virtual ~Character();
+        
         const int getMaxHealthPoints() const;
         const int getHealthPoints() const;
         void setHealthPoints(const int healthPoints);
+        const bool getIsMidAir() const;
+        void setIsMidAir(const bool isMidAir);
+
         virtual void save(nlohmann::ordered_json& jsonData) = 0;
         virtual void loadSave(const nlohmann::ordered_json& jsonData) = 0;
         virtual void exec();

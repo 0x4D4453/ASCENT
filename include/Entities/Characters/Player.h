@@ -31,7 +31,6 @@ namespace Entities {
         std::map<Actions, sf::Keyboard::Key> m_keyBinding;
         std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
         int m_points;
-        bool m_isJumping;
         bool m_isCharging;
         float m_jumpHeight;
         const float m_chargingSpeed;
@@ -59,8 +58,6 @@ namespace Entities {
               , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
               , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
         ~Player();
-        const bool getIsJumping() const;
-        void setIsJumping(const bool isJumping);
         const bool getIsCharging() const;
         void setIsCharging(const bool isCharging);
         const bool isAttacking();

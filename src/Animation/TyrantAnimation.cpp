@@ -34,7 +34,7 @@ namespace Animations {
     if (pTyrant->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Dead);
     else if (m_pEntity->getVelocity().x == 0.f)
-      changeFrame(deltaTime, static_cast<int>(TyrantFrames::Idle1), static_cast<int>(TyrantFrames::Idle2));
+      changeFrame(deltaTime, static_cast<int>(TyrantFrames::Idle1), static_cast<int>(TyrantFrames::Idle4));
     else
       changeFrame(deltaTime, static_cast<int>(TyrantFrames::Walk1), static_cast<int>(TyrantFrames::Walk4));
 

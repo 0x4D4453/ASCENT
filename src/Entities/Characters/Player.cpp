@@ -24,7 +24,6 @@ namespace Entities {
     Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
       : Character(Constants::SCALE, 10.f)
       , m_points(0)
-      , m_isJumping(false)
       , m_isCharging(false)
       , m_chargingSpeed(10.f)
       , m_jumpHeight(2.f)
@@ -67,14 +66,6 @@ namespace Entities {
 
       if (m_velocity.x > m_maxSpeed)
         m_velocity.x = m_maxSpeed;
-    }
-
-    const bool Player::getIsJumping() const {
-      return m_isJumping;
-    }
-
-    void Player::setIsJumping(const bool isJumping) {
-      m_isJumping = isJumping;
     }
 
     const bool Player::getIsCharging() const {
@@ -122,7 +113,7 @@ namespace Entities {
     }
 
     void Player::chargeJump() {
-      if (m_isJumping)
+      if (m_isMidAir)
         return;
 
       m_isCharging = true;
@@ -143,18 +134,15 @@ namespace Entities {
         moveRight();
 
       m_isCharging = false;
-      m_isJumping = true;
+      m_isMidAir = true;
       m_velocity.y = -m_jumpHeight;
 
       m_jumpHeight = m_minJumpHeight;
     }
 
     void Player::update() {
-      if (!m_isJumping && !m_isStaggered)
+      if (!m_isMidAir && !m_isStaggered)
         handleInput();
-
-      if (!getIsColliding())
-        m_isJumping = true;
     }
 
     void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
@@ -164,8 +152,8 @@ namespace Entities {
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
-          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isJumping) {
-            m_isJumping = false;
+          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isMidAir) {
+            m_isMidAir = false;
             setIsStaggered(false);
           }
           break;
@@ -183,7 +171,6 @@ namespace Entities {
       playerData["score"] = m_points;
       playerData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
       playerData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-      playerData["isJumping"] = m_isJumping;  
       playerData["isCharging"] = m_isCharging;
       playerData["isStaggered"] = m_isStaggered;
 
@@ -193,7 +180,6 @@ namespace Entities {
     void Player::loadSave(const nlohmann::ordered_json& jsonData) {
       setPosition(sf::Vector2f(jsonData["position"]["x"].template get<float>(), jsonData["position"]["y"].template get<float>()));
       setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
-      m_isJumping = jsonData["isJumping"].template get<bool>();
       m_isCharging = jsonData["isCharging"].template get<bool>();
       m_isStaggered = jsonData["isStaggered"].template get<bool>();
     }

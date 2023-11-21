@@ -12,6 +12,7 @@ namespace Entities {
       , m_collisionClock()
       , m_maxHealthPoints(maxHealth)
       , m_healthPoints(maxHealth)
+      , m_isMidAir(false)
     {
       setEntityId(EntityID::CharacterE);
       setEntityType(EntityType::Dynamic);
@@ -70,9 +71,22 @@ namespace Entities {
       m_healthPoints = healthPoints;
     }
 
+    const bool Character::getIsMidAir() const {
+      return m_isMidAir;
+    }
+
+    void Character::setIsMidAir(const bool isMidAir) {
+      m_isMidAir = isMidAir;
+    }
+
     void Character::exec() {
       recoverColor();
-      update();
+
+      if (!getIsColliding())
+        m_isMidAir = true;
+
+      if (!m_isMidAir && !m_isStaggered)
+        update();
 
       if (m_animation)
         m_animation->update(m_dt);

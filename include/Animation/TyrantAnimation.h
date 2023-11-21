@@ -10,12 +10,15 @@ namespace Animations {
       enum TyrantFrames {
         Idle1 = 0,
         Idle2,
+        Idle3,
+        Idle4,
         Walk1 = 2,
         Walk2,
         Walk3,
         Walk4,
         Charge,
         Jump,
+        Land,
         Dead,
       };
 

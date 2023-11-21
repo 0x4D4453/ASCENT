@@ -26,7 +26,7 @@ namespace Animations {
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Stagger);
     else if (pPlayer->getIsCharging())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Charge);
-    else if (pPlayer->getIsJumping())
+    else if (pPlayer->getIsMidAir())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Jump);
     else if (pPlayer->getVelocity().x == 0.f)
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Idle);

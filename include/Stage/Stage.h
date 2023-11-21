@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
+#include "Entities/Projectile.h"
 #include "Entities/EntityList.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Utility/Constants.h"
@@ -12,12 +13,14 @@
 
 /* Forward Declaration */
 namespace Manager { class GraphicsManager; }
+namespace Entities { class EntityFactory; }
 
 namespace Stages {
   enum ID {
     Stage1,
     Stage2,
     Stage3,
+    Stage4,
     TotalStages
   };
 
@@ -26,6 +29,7 @@ namespace Stages {
       static const float m_dt;
       static Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Collision::CollisionManager m_collisionManager;
+      Entities::EntityFactory* m_pEntityFactory;
       std::string m_mapTxt;
       EntityList m_players;
       EntityList m_staticEntities;
@@ -50,9 +54,11 @@ namespace Stages {
       const std::string& getEntitiesTxt() const;
 
       EntityList* getPlayers();
-      EntityList* getPlatforms();
-      EntityList* getEnemies();
+      EntityList* getStaticEntities();
+      EntityList* getDynamicEntities();
 
+      void setEntityFactory(Entities::EntityFactory* pEntityFactory);
+      void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
       void setPaused(const bool paused);
       void loadSaveGame();
       void saveGame();

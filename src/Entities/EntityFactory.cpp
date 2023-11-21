@@ -4,9 +4,11 @@
 /* Program Defined */
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Characters/Fly.h"
+#include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
+#include "Entities/Projectile.h"
 
 /* Standard Library */
 #include <iostream>
@@ -36,7 +38,7 @@ namespace Entities {
       m_pSoundHolder = pSoundHolder;
   }
 
-  Entity* EntityFactory::createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position) {
+  Entity* EntityFactory::createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, Stages::Stage* pStage) {
     m_pEntity = NULL;
     sf::Texture& textureRef = m_pTextureHolder->getResource(textureID);
 
@@ -49,6 +51,9 @@ namespace Entities {
         break;
       case (FlyE):
         m_pEntity = static_cast<Entity*>(new Characters::Fly(textureID, textureRef, position));
+        break;
+      case (TyrantE):
+        m_pEntity = static_cast<Entity*>(new Characters::Tyrant(textureID, textureRef, position, pStage));
         break;
       case (EnemyE):
         m_pEntity = static_cast<Entity*>(new Characters::Goomba(textureID, textureRef, position));
@@ -67,5 +72,10 @@ namespace Entities {
     }
 
     return m_pEntity;
+  }
+
+  Projectile* EntityFactory::createProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle) {
+    sf::Texture& textureRef = m_pTextureHolder->getResource(textureID);
+    return new Projectile(textureID, textureRef, position, scale, speed, angle);
   }
 }

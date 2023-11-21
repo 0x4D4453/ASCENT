@@ -17,15 +17,22 @@ namespace Animations {
 
   }
 
-  void PlayerAnimation::update(const float deltaTime, Entities::Characters::Player* pPlayer) {
-    if (pPlayer->getIsStaggered())
-      m_textureRect.left = Constants::SPRITE_SIZE * 6;
+  void PlayerAnimation::update(const float deltaTime) {
+    Entities::Characters::Player* pPlayer = dynamic_cast<Entities::Characters::Player*>(m_pEntity);
+
+    if (pPlayer->getHealthPoints() <= 0)
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Dead);
+    else if (pPlayer->getIsStaggered())
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Stagger);
     else if (pPlayer->getIsCharging())
-      m_textureRect.left = Constants::SPRITE_SIZE * 4;
-    else if (pPlayer->getIsJumping())
-      m_textureRect.left = Constants::SPRITE_SIZE * 5;
-    else if (pPlayer->getVelocity().x == 0.f)
-      m_textureRect.left = 0;
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Charge);
+    else if (pPlayer->getIsMidAir()) {
+      if (pPlayer->getVelocity().x == 0.f)
+        m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::JumpStraight);
+      else
+        m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Jump);
+    } else if (pPlayer->getVelocity().x == 0.f)
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Idle);
     else {
       m_totalTime += deltaTime;
       if (m_totalTime >= m_timePerFrame) {

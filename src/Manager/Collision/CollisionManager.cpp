@@ -46,8 +46,8 @@ namespace Manager {
     void CollisionManager::verifyOverlap(std::pair<Entities::Entity*, Entities::Entity*> entities) {
       using namespace Entities;
 
-      const sf::FloatRect firstCoordinates = entities.first->getGlobalBounds();
-      const sf::FloatRect secondCoordinates = entities.second->getGlobalBounds();
+      const sf::FloatRect firstCoordinates = entities.first->getGlobalHitbox();
+      const sf::FloatRect secondCoordinates = entities.second->getGlobalHitbox();
 
       if (secondCoordinates.intersects(firstCoordinates, m_intersectionRect)) {
         CollisionInfo info;

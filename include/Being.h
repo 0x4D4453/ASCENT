@@ -3,6 +3,8 @@
 
 /* Program Defined */
 #include "Utility/Textures.h"
+#include "Utility/Constants.h"
+#include "Utility/HitboxSprite.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -16,18 +18,21 @@ class Being {
     static const float m_dt;
     static int m_cont;
     const int m_id;
+    float m_scale;
     Textures::ID m_textureID;
-    sf::Sprite m_sprite;
+    HitboxSprite m_sprite;
   
   public:
-    Being();
+    Being(const float scale = Constants::SCALE);
     virtual ~Being();
     const int getId() const;
-    const sf::Sprite* getSprite() const;
-    const sf::FloatRect getGlobalBounds() const;
+    const HitboxSprite* getSprite() const;
+    const sf::FloatRect getGlobalHitbox() const;
+    void setColor(sf::Color color);
     void setTextureID(Textures::ID textureID);
     void setTexture(sf::Texture& texture);
     void setTextureRect(const sf::IntRect& textureRect);
+    void refreshHitbox();
     void draw();
     virtual void exec() = 0;
 };

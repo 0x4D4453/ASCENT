@@ -15,6 +15,7 @@ class EntityList {
     EntityList();
     ~EntityList();
     void include(Entities::Entity* pEntity);
+    void remove(Entities::Entity* pEntity);
     List<Entities::Entity*>::Iterator first();
     List<Entities::Entity*>::Iterator last();
 };

@@ -12,15 +12,18 @@ class List {
       private:
         TE m_data;
         Element<TE>* m_next;
+        Element<TE>* m_prev;
 
       public:
         Element();
-        Element(TE data, Element<TE>* next);
+        Element(TE data, Element<TE>* next, Element<TE>* prev);
         ~Element();
         void setData(TE data);
         void setNext(Element<TE>* next);
+        void setPrev(Element<TE>* prev);
         TE getData() const;
         Element<TE>* getNext() const;
+        Element<TE>* getPrev() const;
     };
 
   private:
@@ -46,6 +49,7 @@ class List {
     List();
     ~List();
     void pushBack(TL element);
+    void remove(TL element);
     Element<TL>* getHead() const;
     Element<TL>* getTail() const;
 };
@@ -57,14 +61,16 @@ template <class TE>
 List<TL>::Element<TE>::Element()
   : m_data(NULL)
   , m_next(NULL)
+  , m_prev(NULL)
 {
 
 }
 
 template <class TL>
 template <class TE>
-List<TL>::Element<TE>::Element(TE data, Element<TE>* next)
+List<TL>::Element<TE>::Element(TE data, Element<TE>* next, Element<TE>* prev)
   : m_data(data)
+  , m_prev(prev)
   , m_next(next)
 {
 
@@ -75,6 +81,7 @@ template <class TE>
 List<TL>::Element<TE>::~Element() {
   delete m_data;
   m_next = NULL;
+  m_prev = NULL;
 }
 
 template <class TL>
@@ -93,6 +100,13 @@ void List<TL>::Element<TE>::setNext(Element<TE>* next) {
 
 template <class TL>
 template <class TE>
+void List<TL>::Element<TE>::setPrev(Element<TE>* prev) {
+  if (prev != NULL)
+    m_prev = prev;
+}
+
+template <class TL>
+template <class TE>
 TE List<TL>::Element<TE>::getData() const {
   return m_data;
 }
@@ -101,6 +115,12 @@ template <class TL>
 template <class TE>
 List<TL>::Element<TE>* List<TL>::Element<TE>::getNext() const {
   return m_next;
+}
+
+template <class TL>
+template <class TE>
+List<TL>::Element<TE>* List<TL>::Element<TE>::getPrev() const {
+  return m_prev;
 }
 
 /* Iterator's Method Definition */
@@ -187,7 +207,31 @@ void List<TL>::pushBack(TL element) {
   else
     m_tail->setNext(tmp);
 
+  tmp->setPrev(m_tail);
   m_tail = tmp;
+}
+
+template <class TL>
+void List<TL>::remove(TL element) {
+  Element<TL>* tmp = m_head;
+
+  while (tmp != NULL && tmp->getData() != element)
+    tmp = tmp->getNext();
+
+  if (tmp == NULL)
+    return;
+  
+  Element<TL>* prev = tmp->getPrev();
+  Element<TL>* next = tmp->getNext();
+  
+  if (tmp == m_head)
+    m_head = next;
+
+  if (prev != NULL)
+    prev->setPrev(next);
+
+  if (next != NULL)
+    next->setNext(next);
 }
 
 template <class TL>

@@ -38,7 +38,7 @@ namespace Entities {
     }
 
     void Platform::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsJumping()) {
+      if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
         pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * .5f, pPlayer->getVelocity().y));
         pPlayer->setIsStaggered(true);
       }

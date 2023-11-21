@@ -26,6 +26,10 @@ void EntityList::include(Entities::Entity* pEntity) {
   m_entities.pushBack(pEntity);
 }
 
+void EntityList::remove(Entities::Entity* pEntity) {
+  m_entities.remove(pEntity);
+}
+
 List<Entities::Entity*>::Iterator EntityList::first() {
   return m_entities.getHead();
 }

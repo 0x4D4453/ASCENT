@@ -7,8 +7,8 @@
 namespace Entities {
   Manager::Collision::CollisionManager* Entity::m_pCollisionManager = NULL;
 
-  Entity::Entity(const sf::Vector2f position, const float speed)
-    : Being()
+  Entity::Entity(const sf::Vector2f position, const float scale, const float speed)
+    : Being(scale)
     , m_entityId(EntityID::EntityE)
     , m_entityTag(EntityTag::ObstacleTag)
     , m_entityType(EntityType::Static)
@@ -16,6 +16,7 @@ namespace Entities {
     , m_speed(speed)
     , m_knockbackForce(2.5f)
     , m_velocity(sf::Vector2f(0.f, 0.f))
+    , m_isKnockbackResistant(false)
     , m_isStaggered(false)
     , m_moved(true)
   {
@@ -59,6 +60,10 @@ namespace Entities {
     m_knockbackForce = force;
   }
 
+  const float Entity::getSpeed() const {
+    return m_speed;
+  }
+
   const float Entity::getKnockback() const {
     return m_knockbackForce;
   }
@@ -90,6 +95,10 @@ namespace Entities {
 
   const bool Entity::getIsStaggered() const {
     return m_isStaggered;
+  }
+
+  const bool Entity::getIsKnockbackResistant() const {
+    return m_isKnockbackResistant;
   }
 
   const bool Entity::getIsColliding() const {

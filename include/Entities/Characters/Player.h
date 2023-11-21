@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 /* Program Defined */
-#include "Animation/PlayerAnimation.h"
 #include "Entities/Characters/Character.h"
 
 /* Standard Library */
@@ -29,28 +28,27 @@ namespace Entities {
         };
 
       private:
-        Animations::PlayerAnimation m_animation;
         std::map<Actions, sf::Keyboard::Key> m_keyBinding;
         std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
         int m_points;
-        bool m_isJumping;
+        bool m_isAttacking;
         bool m_isCharging;
         float m_jumpHeight;
         const float m_chargingSpeed;
         const float m_minJumpHeight;
         const float m_maxJumpHeight;
         const float m_attackSpeed;
-        const float m_maxSpeed;
+        const float m_maxWalkingSpeed;
         sf::Sound m_jumpSound;
 
       private:
-        void setup();
+        virtual void update();
         void moveLeft();
         void moveRight();
         void chargeJump();
         void jump();
         void handleInput();
-        void update();
+        void checkIsAttacking();
         const float getCurrentSpeed() const;
         void attack(Enemy *pEnemy);
       
@@ -62,15 +60,12 @@ namespace Entities {
               , sf::Keyboard::Key moveRightKey = sf::Keyboard::D
               , sf::Keyboard::Key jumpKey = sf::Keyboard::W);
         ~Player();
-        const bool getIsJumping() const;
-        void setIsJumping(const bool isJumping);
         const bool getIsCharging() const;
         void setIsCharging(const bool isCharging);
-        const bool isAttacking();
+        const bool getIsAttacking();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
-        virtual void exec();
     };
   }
 }

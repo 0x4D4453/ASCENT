@@ -18,6 +18,7 @@ namespace Entities {
       setTextureID(textureID);
       setTexture(texture);
       setSpeed(20.f);
+      setVelocity(sf::Vector2f(0.f, m_speed * m_dt));
     }
 
     Fly::~Fly() {
@@ -25,20 +26,15 @@ namespace Entities {
     }
 
     void Fly::movementPattern() {
-      sf::Vector2f velocity = sf::Vector2f(0.f, m_speed * m_dt);
-
       if (getPosition().y >= (m_spawnPosition.y + m_range))
         m_direction = true;
       else if (getPosition().y <= (m_spawnPosition.y - m_range))
         m_direction = false;
       
       if (m_direction)
-        velocity.y = -m_speed * m_dt;
+        m_velocity.y = -m_speed * m_dt;
       else
-        velocity.y = m_speed * m_dt;
-
-      m_animation.update(m_dt, this, velocity);
-      move(velocity);
+        m_velocity.y = m_speed * m_dt;
     }
 
     void Fly::save(nlohmann::ordered_json& jsonData) {
@@ -62,11 +58,9 @@ namespace Entities {
       m_direction = jsonData["direction"].template get<bool>();
     }
 
-    void Fly::exec() {
-      if (m_healthPoints > 0)
+    void Fly::update() {
+      if (!m_isStaggered && m_healthPoints > 0)
         movementPattern();
-      else
-        m_animation.update(m_dt, this, sf::Vector2f(0.f, 0.f));
     }
   }
 }

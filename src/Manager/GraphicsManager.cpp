@@ -103,6 +103,10 @@ namespace Manager {
     m_window.setView(m_window.getDefaultView());
   }
 
+  sf::View* GraphicsManager::getView() {
+    return &m_view;
+  }
+
   const sf::Vector2f GraphicsManager::getViewSize() const {
     return m_view.getSize();
   }

@@ -9,6 +9,7 @@ namespace Textures {
     TwoPlayers,
     Goomba,
     Fly,
+    Tyrant,
     Enemy3,
     Projectile,
     Platform,
@@ -51,6 +52,7 @@ namespace Textures {
 
   constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
   constexpr char FLY[] = "assets/tiles/flySpriteSheet.png";
+  constexpr char TYRANT[] = "assets/tiles/bossSpriteSheet.png";
   constexpr char ENEMY1[] = "assets/tiles/tile_0320.png";
   constexpr char ENEMY2[] = "assets/tiles/tile_0340.png";
   constexpr char ENEMY3[] = "assets/tiles/tile_0122.png";

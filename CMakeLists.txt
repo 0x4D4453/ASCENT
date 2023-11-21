@@ -13,16 +13,17 @@ add_executable(GOTY
     src/main.cpp src/Context.cpp src/Game.cpp src/Being.cpp 
     src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/EntityFactory.cpp
     src/Entities/Characters/Character.cpp src/Entities/Characters/Player.cpp src/Entities/Characters/Enemy.cpp src/Entities/Characters/Goomba.cpp src/Entities/Characters/Fly.cpp
+    src/Entities/Characters/Tyrant.cpp src/Entities/Characters/TyrantStates/TyrantState.cpp src/Entities/Characters/TyrantStates/TyrantIdleState.cpp src/Entities/Characters/TyrantStates/TyrantFollowingState.cpp src/Entities/Characters/TyrantStates/TyrantShootingState.cpp 
     src/Entities/Obstacles/Platform.cpp src/Entities/Obstacles/Obstacle.cpp src/Entities/Obstacles/MovingPlatform.cpp src/Entities/Obstacles/Spike.cpp src/Entities/Projectile.cpp
     src/Manager/GraphicsManager.cpp
     src/Manager/Collision/CollisionManager.cpp src/Manager/Collision/CollisionStrategy.cpp src/Manager/Collision/CollisionStrategyFactory.cpp
     src/Manager/Collision/DefaultCollision.cpp src/Manager/Collision/NoCollision.cpp src/Manager/Collision/KnockbackCollision.cpp
-    src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/FirstStage.cpp src/Stage/SecondStage.cpp src/Stage/ThirdStage.cpp
+    src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/FirstStage.cpp src/Stage/SecondStage.cpp src/Stage/ThirdStage.cpp src/Stage/FourthStage.cpp
     src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp src/State/LoadingState.cpp src/State/OptionsState.cpp src/State/PauseState.cpp src/State/MenuState.cpp src/State/PlayerSelectState.cpp src/State/StageSelectState.cpp src/State/RankingState.cpp
     src/State/Pause/PauseObserver.cpp src/State/Pause/PauseSubject.cpp
-    src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp
+    src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp src/Animation/TyrantAnimation.cpp
     src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp
-    src/Utility/CustomVector.cpp src/Utility/Threads/Thread.cpp src/Utility/Threads/LoadingThread.cpp)
+    src/Utility/CustomVector.cpp src/Utility/HitboxSprite.cpp src/Utility/ViewShake.cpp src/Utility/Threads/Thread.cpp src/Utility/Threads/LoadingThread.cpp)
 target_include_directories(GOTY PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(GOTY PRIVATE sfml-graphics sfml-audio)
 target_compile_features(GOTY PRIVATE cxx_std_17)

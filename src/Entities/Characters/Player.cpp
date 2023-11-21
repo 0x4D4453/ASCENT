@@ -2,6 +2,7 @@
 #include "Entities/Characters/Player.h"
 
 /* Program Defined */
+#include "Animation/PlayerAnimation.h"
 #include "Entities/Characters/Enemy.h"
 #include "Utility/Constants.h"
 #include "Utility/CustomVector.h"
@@ -21,17 +22,16 @@
 namespace Entities {
   namespace Characters {
     Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
-      : Character()
-      , m_animation(this)
+      : Character(Constants::SCALE, 10.f)
       , m_points(0)
-      , m_isJumping(false)
+      , m_isAttacking(false)
       , m_isCharging(false)
       , m_chargingSpeed(10.f)
       , m_jumpHeight(2.f)
       , m_minJumpHeight(2.f)
-      , m_maxJumpHeight(10.f)
-      , m_attackSpeed(5.f)
-      , m_maxSpeed(2.5f)
+      , m_maxJumpHeight(12.5f)
+      , m_attackSpeed(3.5f)
+      , m_maxWalkingSpeed(2.5f)
     {
       setEntityId(EntityID::PlayerE);
       setEntityTag(EntityTag::PlayerTag);
@@ -47,7 +47,7 @@ namespace Entities {
       setTexture(playerTexture);
       m_jumpSound.setBuffer(jumpSoundBuffer);
 
-      setup();
+      setAnimation(new Animations::PlayerAnimation(this));
     }
 
     Player::~Player() {
@@ -55,31 +55,18 @@ namespace Entities {
       m_actionBinding.clear();
     }
 
-    void Player::setup() {  
-      m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
-      m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
-    }
-
     void Player::moveLeft() {
       m_velocity.x -= m_speed * m_dt;
 
-      if (m_velocity.x < -m_maxSpeed)
-        m_velocity.x = -m_maxSpeed;
+      if (m_velocity.x < -m_maxWalkingSpeed)
+        m_velocity.x = -m_maxWalkingSpeed;
     }
 
     void Player::moveRight() {
       m_velocity.x += m_speed * m_dt;
 
-      if (m_velocity.x > m_maxSpeed)
-        m_velocity.x = m_maxSpeed;
-    }
-
-    const bool Player::getIsJumping() const {
-      return m_isJumping;
-    }
-
-    void Player::setIsJumping(const bool isJumping) {
-      m_isJumping = isJumping;
+      if (m_velocity.x > m_maxWalkingSpeed)
+        m_velocity.x = m_maxWalkingSpeed;
     }
 
     const bool Player::getIsCharging() const {
@@ -95,15 +82,20 @@ namespace Entities {
       return speedVector.getMagnitude();
     }
 
-    const bool Player::isAttacking() {
-      bool isAttacking = getCurrentSpeed() > m_attackSpeed;
+    const bool Player::getIsAttacking() {
+      return m_isAttacking;
+    }
+
+    void Player::checkIsAttacking() {
+      const float speed = getCurrentSpeed();
+      bool isAttacking = speed > m_attackSpeed;
 
       if (isAttacking)
         setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::KnockbackCollision);
       else
         setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::NoCollision);
 
-      return isAttacking;
+      m_isAttacking = isAttacking;
     }
 
     void Player::handleInput() {
@@ -127,7 +119,7 @@ namespace Entities {
     }
 
     void Player::chargeJump() {
-      if (m_isJumping)
+      if (m_isMidAir)
         return;
 
       m_isCharging = true;
@@ -143,49 +135,35 @@ namespace Entities {
       m_jumpSound.play();
 
       if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
-        moveLeft();
+        m_velocity.x = -m_speed * 1.5f * m_dt;
       else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))
-        moveRight();
+        m_velocity.x = m_speed * 1.5f * m_dt;
 
       m_isCharging = false;
-      m_isJumping = true;
+      m_isMidAir = true;
       m_velocity.y = -m_jumpHeight;
 
       m_jumpHeight = m_minJumpHeight;
     }
 
     void Player::update() {
-      m_animation.update(m_dt, this);
-
-      if (m_velocity.x < 0)
-        m_sprite.setScale(-Constants::SCALE, Constants::SCALE);
-      else if (m_velocity.x > 0)
-        m_sprite.setScale(Constants::SCALE, Constants::SCALE);
-
-      move();
-
-      if (!getIsColliding())
-        m_isJumping = true;
-    }
-
-    void Player::exec() {
-      if (!m_isJumping && !m_isStaggered)
+      if (!m_isMidAir && !m_isStaggered)
         handleInput();
 
-      update();
+      if (m_isMidAir)
+        checkIsAttacking();
+      else
+        m_isAttacking = false;
     }
 
     void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
-          if (isAttacking())
+          if (getIsAttacking())
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
-          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isJumping) {
-            m_isJumping = false;
-            setIsStaggered(false);
-          }
+          checkGrounded(pEntity, type);
           break;
       }
     }
@@ -201,7 +179,6 @@ namespace Entities {
       playerData["score"] = m_points;
       playerData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
       playerData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-      playerData["isJumping"] = m_isJumping;  
       playerData["isCharging"] = m_isCharging;
       playerData["isStaggered"] = m_isStaggered;
 
@@ -211,7 +188,6 @@ namespace Entities {
     void Player::loadSave(const nlohmann::ordered_json& jsonData) {
       setPosition(sf::Vector2f(jsonData["position"]["x"].template get<float>(), jsonData["position"]["y"].template get<float>()));
       setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
-      m_isJumping = jsonData["isJumping"].template get<bool>();
       m_isCharging = jsonData["isCharging"].template get<bool>();
       m_isStaggered = jsonData["isStaggered"].template get<bool>();
     }

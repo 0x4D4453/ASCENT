@@ -19,7 +19,7 @@ namespace Animations {
         Charge,
         Jump,
         Land,
-        Launch,
+        Shoot,
         Dead
       };
 

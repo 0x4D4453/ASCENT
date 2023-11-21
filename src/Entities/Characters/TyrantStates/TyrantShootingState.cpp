@@ -30,6 +30,9 @@ namespace Entities {
     }
 
     void TyrantShootingState::shoot() {
+      m_pTyrant->setIsShooting(true);
+      m_isReadyToChange = false;
+
       m_timeSinceLastShot += m_dt;
       if (m_timeSinceLastShot > m_timeBetweenShots) {
         if (m_currentSpot >= m_shootingSpots.size())
@@ -39,6 +42,8 @@ namespace Entities {
         float angle = m_shootingSpots[m_currentSpot].x > 0 ? m_shootingAngle : M_PI - m_shootingAngle;
         m_pStage->spawnProjectile(Textures::Projectile, position, Constants::SCALE * 2.0f, m_shootingSpeed, angle);
 
+        m_pTyrant->setIsShooting(false);
+        m_isReadyToChange = true;
         m_timeSinceLastShot = 0.f;
         m_currentSpot++;
       }

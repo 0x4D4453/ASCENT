@@ -21,6 +21,7 @@ namespace Entities {
       , m_pState(new TyrantFollowingState(this, pStage))
       , m_isCharging(false)
       , m_isLanding(false)
+      , m_isShooting(false)
     {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
@@ -79,6 +80,14 @@ namespace Entities {
 
     void Tyrant::setIsLanding(const bool is) {
       m_isLanding = is;
+    }
+
+    const bool Tyrant::getIsShooting() const {
+      return m_isShooting;
+    }
+
+    void Tyrant::setIsShooting(const bool is) {
+      m_isShooting = is;
     }
 
     const int Tyrant::getCurrentFrame() const {

@@ -20,6 +20,7 @@ namespace Entities {
         TyrantState* m_pState;
         bool m_isLanding;
         bool m_isCharging;
+        bool m_isShooting;
 
       private:
         virtual void update();
@@ -34,6 +35,8 @@ namespace Entities {
         void setIsCharging(const bool is);
         const bool getIsLanding() const;
         void setIsLanding(const bool is);
+        const bool getIsShooting() const;
+        void setIsShooting(const bool is);
         const int getCurrentFrame() const;
 
         virtual void movementPattern();

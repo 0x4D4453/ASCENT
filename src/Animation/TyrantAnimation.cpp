@@ -39,6 +39,8 @@ namespace Animations {
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Charge);
     else if (pTyrant->getIsLanding())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Land);
+    else if (pTyrant->getIsShooting())
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Shoot);
     else if (m_pEntity->getVelocity().x == 0.f)
       changeFrame(deltaTime, TyrantFrames::Idle1, TyrantFrames::Idle4);
     else

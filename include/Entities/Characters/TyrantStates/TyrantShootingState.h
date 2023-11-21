@@ -14,6 +14,7 @@ namespace Entities {
         std::vector<sf::Vector2f> m_shootingSpots;
         const float m_timeBetweenShots;
         const float m_shootingAngle;
+        const float m_angleRange;
         const float m_shootingSpeed;
         float m_timeSinceLastShot;
         int m_currentSpot;

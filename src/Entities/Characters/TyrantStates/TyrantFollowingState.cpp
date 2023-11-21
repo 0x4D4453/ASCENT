@@ -8,9 +8,9 @@
 namespace Entities {
   namespace Characters {
     TyrantFollowingState::TyrantFollowingState(Tyrant* pTyrant, Stages::Stage* pStage)
-      : TyrantState(pTyrant, pStage, 10.f)
-      , m_followDistance(500.f)
-      , m_stompDistance(300.f)
+      : TyrantState(pTyrant, pStage, 20.f)
+      , m_followDistance(1000.f)
+      , m_stompDistance(750.f)
       , m_jumpHeight(500.f)
       , m_totalStompTime(3.f)
       , m_stompDelay(5.f)
@@ -100,7 +100,7 @@ namespace Entities {
 
     void TyrantFollowingState::checkLanding() {
       if (m_pTyrant->getIsMidAir()) {
-        followPlayer(10.f);
+        followPlayer(20.f);
         return;
       }
 

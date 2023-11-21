@@ -16,6 +16,7 @@ namespace Entities {
       private:
         TyrantState* m_pState;
         EntityList* m_pPlayers;
+        bool m_isLanding;
         bool m_isCharging;
 
       private:
@@ -28,6 +29,9 @@ namespace Entities {
 
         void changeState(TyrantStateID id);
         const bool getIsCharging() const;
+        void setIsCharging(const bool is);
+        const bool getIsLanding() const;
+        void setIsLanding(const bool is);
         const int getCurrentFrame() const;
 
         virtual void movementPattern();

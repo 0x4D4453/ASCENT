@@ -10,7 +10,14 @@ namespace Entities {
     TyrantFollowingState::TyrantFollowingState(Tyrant* pTyrant, EntityList* pPlayers)
       : TyrantState(pTyrant, pPlayers, 10.f)
       , m_followDistance(500.f)
+      , m_stompDistance(300.f)
+      , m_jumpHeight(500.f)
+      , m_totalStompTime(3.f)
+      , m_stompDelay(5.f)
       , m_pPlayer(NULL)
+      , m_elapsedStompTime(0.f)
+      , m_isStomping(false)
+      , m_isJumping(false)
     {
       m_id = TyrantStateID::Following;
       definePlayer();
@@ -22,13 +29,13 @@ namespace Entities {
 
     void TyrantFollowingState::definePlayer() {
       List<Entity*>::Iterator it = m_pPlayers->first();
-      sf::Vector2f tyrantPostion = m_pTyrant->getPosition();
+      sf::Vector2f tyrantPosition = m_pTyrant->getPosition();
       float minDistance = m_followDistance;
 
       while (it != m_pPlayers->last()) {
         sf::Vector2f playerPosition = (*it)->getPosition();
-        float distance = fabs(playerPosition.x - tyrantPostion.x);
-        if (distance <= minDistance && fabs(playerPosition.y - tyrantPostion.y) <= m_followDistance) {
+        float distance = fabs(playerPosition.x - tyrantPosition.x);
+        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
           m_pPlayer = dynamic_cast<Player*>(*it);
           minDistance = distance;
         }
@@ -38,12 +45,7 @@ namespace Entities {
     }
 
     // Código altamente baseado no código do monitor Giovane
-    void TyrantFollowingState::movementPattern() {
-      definePlayer();
-
-      if (!m_pPlayer)
-        return;
-
+    void TyrantFollowingState::followPlayer() {
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
 
@@ -55,14 +57,83 @@ namespace Entities {
       m_pTyrant->setVelocity(tyrantVelocity);
 
       int frame = m_pTyrant->getCurrentFrame();
-      std::cout << frame << std::endl;
-
       if (frame == Animations::TyrantAnimation::TyrantFrames::Walk2 || frame == Animations::TyrantAnimation::TyrantFrames::Walk4) {
-        if (!m_viewShake.finished(0.5f))
-          m_viewShake.shake(m_dt, 20.f, 0.1f);
+        if (!m_viewShake.finished(0.3f))
+          m_viewShake.shake(m_dt, 15.f, 0.1f);
       } else {
         m_viewShake.reset();
       }
+    }
+
+    void TyrantFollowingState::checkStomp() {
+      if (m_elapsedStompTime < m_stompDelay)
+        return;
+
+      sf::Vector2f playerPosition = m_pPlayer->getPosition();
+      sf::Vector2f tyrantPosition = m_pTyrant->getPosition();
+
+      if (fabs(playerPosition.x - tyrantPosition.x) <= m_stompDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
+        m_elapsedStompTime = 0.f;
+        m_isReadyToChange = false;
+        setIsStomping(true);
+      }
+    }
+
+    void TyrantFollowingState::chargeStomp() {
+      m_elapsedStompTime += m_dt;
+      if (m_elapsedStompTime >= m_totalStompTime) {
+        setIsStomping(false);
+        jump();
+
+        m_elapsedStompTime = 0.f;
+      }
+    }
+
+    void TyrantFollowingState::jump() {
+      m_pTyrant->setVelocity(sf::Vector2f(0.f, -sqrt(2 * m_jumpHeight * m_dt * Constants::GRAVITY)));
+      m_pTyrant->setIsMidAir(true);
+      m_isJumping = true;
+    }
+
+    void TyrantFollowingState::checkLanding() {
+      if (m_pTyrant->getIsMidAir())
+        return;
+
+      m_pTyrant->setIsLanding(true);
+      if (!m_viewShake.finished(3.f)) {
+        m_viewShake.shake(m_dt, 15.f, 0.15f);
+      } else {
+        m_isJumping = false;
+        m_viewShake.reset();
+        m_pTyrant->setIsLanding(false);
+        m_isReadyToChange = true;
+      }
+    }
+
+    void TyrantFollowingState::setIsStomping(const bool is) {
+      m_pTyrant->setIsCharging(is);
+      m_isStomping = is;
+    }
+
+    void TyrantFollowingState::movementPattern() {
+      if (m_isJumping) {
+        checkLanding();
+        return;
+      }
+
+      if (m_isStomping) {
+        chargeStomp();
+        return;
+      }
+
+      definePlayer();
+
+      if (!m_pPlayer)
+        return;
+
+      m_elapsedStompTime += m_dt;
+      followPlayer();
+      checkStomp();
     }
 
 

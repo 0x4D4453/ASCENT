@@ -21,6 +21,7 @@ namespace Entities {
       , m_pPlayers(pPlayers)
       , m_timeLimit(timeLimit)
       , m_timeElapsed(0.f)
+      , m_isReadyToChange(false)
     {
 
     }
@@ -38,12 +39,13 @@ namespace Entities {
       doAction();
 
       m_timeElapsed += timeElapsed;
-      if (m_timeElapsed >= m_timeLimit)
+      if (m_timeElapsed >= m_timeLimit && m_isReadyToChange)
         changeState(m_nextState);
     }
 
     void TyrantState::changeState(TyrantStateID id) {
-      m_pTyrant->changeState(id);
+      if (m_isReadyToChange)
+        m_pTyrant->changeState(id);
     }
   }
 }

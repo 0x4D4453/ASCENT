@@ -18,6 +18,7 @@ namespace Entities {
       , m_pState(new TyrantIdleState(this, pPlayers))
       , m_pPlayers(pPlayers)
       , m_isCharging(false)
+      , m_isLanding(false)
     {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
@@ -25,7 +26,7 @@ namespace Entities {
       setSpeed(25.f);
       setKnockback(5.f);
 
-      setAnimation(new Animations::TyrantAnimation(this, 0.75f));
+      setAnimation(new Animations::TyrantAnimation(this, 0.5f));
       m_sprite.setHitbox({ 4.f, 5.f, 8.f, 11.f });
 
       m_isKnockbackResistant = true;
@@ -61,6 +62,18 @@ namespace Entities {
 
     const bool Tyrant::getIsCharging() const {
       return m_isCharging;
+    }
+
+    void Tyrant::setIsCharging(const bool is) {
+      m_isCharging = is;
+    }
+
+    const bool Tyrant::getIsLanding() const {
+      return m_isLanding;
+    }
+
+    void Tyrant::setIsLanding(const bool is) {
+      m_isLanding = is;
     }
 
     const int Tyrant::getCurrentFrame() const {

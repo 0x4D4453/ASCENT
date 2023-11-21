@@ -32,6 +32,7 @@ namespace Entities {
         EntityList* m_pPlayers;
         const float m_timeLimit;
         float m_timeElapsed;
+        bool m_isReadyToChange;
 
       private:
         virtual void doAction() = 0;

@@ -2,7 +2,8 @@
 #include "Utility/HitboxSprite.h"
 
 HitboxSprite::HitboxSprite()
-  : m_hitbox({ 0.f, 0.f, 16.f, 16.f })
+  : Sprite()
+  , m_hitbox()
 {
 
 };

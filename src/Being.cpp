@@ -45,10 +45,15 @@ void Being::setTextureID(Textures::ID textureID) {
 
 void Being::setTexture(sf::Texture& texture) {
   m_sprite.setTexture(texture);
+  refreshHitbox();
 }
 
 void Being::setTextureRect(const sf::IntRect& textureRect) {
   m_sprite.setTextureRect(textureRect);
+}
+
+void Being::refreshHitbox() {
+  m_sprite.setHitbox({ 0.f, 0.f, m_sprite.getGlobalBounds().width / m_scale, m_sprite.getGlobalBounds().height / m_scale });
 }
 
 void Being::draw() {

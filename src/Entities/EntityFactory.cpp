@@ -58,10 +58,10 @@ namespace Entities {
         m_pEntity = static_cast<Entity*>(new Characters::Goomba(textureID, textureRef, position));
         break;
       case (MovingPlatformE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::MovingPlatform(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Obstacles::MovingPlatform(textureRef, position));
         break;
       case (SpikesE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::Spike(m_pTextureHolder->getResource(textureID), position));
+        m_pEntity = static_cast<Entity*>(new Obstacles::Spike(textureRef, position));
         break;
     }
     

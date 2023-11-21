@@ -32,6 +32,7 @@ class Being {
     void setTextureID(Textures::ID textureID);
     void setTexture(sf::Texture& texture);
     void setTextureRect(const sf::IntRect& textureRect);
+    void refreshHitbox();
     void draw();
     virtual void exec() = 0;
 };

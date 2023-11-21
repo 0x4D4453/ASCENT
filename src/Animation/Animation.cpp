@@ -12,7 +12,8 @@ namespace Animations {
     , m_totalTime(0.f)
     , m_timePerFrame(timePerFrame)
   {
-
+    m_pEntity->setTextureRect(m_textureRect);
+    m_pEntity->refreshHitbox();
   }
 
   Animation::~Animation() {

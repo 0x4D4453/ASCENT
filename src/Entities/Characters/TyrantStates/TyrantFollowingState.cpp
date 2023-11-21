@@ -22,6 +22,7 @@ namespace Entities {
       m_id = TyrantStateID::Following;
       m_nextState = TyrantStateID::Shooting;
       definePlayer();
+      changeTyrantSpeed(25.f);
     }
 
     TyrantFollowingState::~TyrantFollowingState() {
@@ -59,7 +60,7 @@ namespace Entities {
     }
 
     void TyrantFollowingState::stomping() {
-      int frame = m_pTyrant->getCurrentFrame();
+      int frame = m_pTyrant->getAnimation()->getCurrentFrame();
       if (frame == Animations::TyrantAnimation::TyrantFrames::Walk2 || frame == Animations::TyrantAnimation::TyrantFrames::Walk4) {
         if (!m_viewShake.finished(0.3f))
           m_viewShake.shake(m_dt, 15.f, 0.1f);

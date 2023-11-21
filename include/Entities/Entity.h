@@ -66,7 +66,6 @@ namespace Entities {
       void setEntityId(EntityID id);
       void setEntityTag(EntityTag tag);
       void setEntityType(EntityType group);
-      void setSpeed(const float speed);
       void setKnockback(const float force);
       void setCollisionStrategy(EntityTag tag, Manager::Collision::StrategyId strategy);
       void move();
@@ -81,6 +80,7 @@ namespace Entities {
       EntityType getEntityType() const;
 
       const float getSpeed() const;
+      void setSpeed(const float speed);
       const float getKnockback() const;
       const bool getMoved() const;
       sf::Vector2f getPosition() const;

@@ -15,6 +15,7 @@ namespace Entities {
       m_id = TyrantStateID::Idle;
       m_nextState = TyrantStateID::Following;
       m_isReadyToChange = true;
+      changeTyrantSpeed(30.f);
     }
 
     TyrantIdleState::~TyrantIdleState() {

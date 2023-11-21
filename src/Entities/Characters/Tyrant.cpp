@@ -90,8 +90,8 @@ namespace Entities {
       m_isShooting = is;
     }
 
-    const int Tyrant::getCurrentFrame() const {
-      return m_animation->getCurrentFrame();
+    Animations::Animation* Tyrant::getAnimation() {
+      return m_animation;
     }
 
     void Tyrant::movementPattern() {

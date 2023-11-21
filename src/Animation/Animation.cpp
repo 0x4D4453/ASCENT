@@ -23,4 +23,8 @@ namespace Animations {
   const int Animation::getCurrentFrame() const {
     return m_currentFrame;
   }
+
+  void Animation::setTimePerFrame(const float timePerFrame) {
+    m_timePerFrame = timePerFrame;
+  }
 }

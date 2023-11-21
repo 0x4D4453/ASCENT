@@ -49,5 +49,10 @@ namespace Entities {
       if (m_isReadyToChange)
         m_pTyrant->changeState(id);
     }
+
+    void TyrantState::changeTyrantSpeed(const float speed) {
+      m_pTyrant->setSpeed(speed);
+      m_pTyrant->getAnimation()->setTimePerFrame(12.5f / speed);
+    }
   }
 }

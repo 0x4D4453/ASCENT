@@ -52,16 +52,16 @@ namespace Entities {
     return m_entityType;
   }
 
-  void Entity::setSpeed(const float speed) {
-    m_speed = speed;
-  }
-
   void Entity::setKnockback(const float force) {
     m_knockbackForce = force;
   }
 
   const float Entity::getSpeed() const {
     return m_speed;
+  }
+
+  void Entity::setSpeed(const float speed) {
+    m_speed = speed;
   }
 
   const float Entity::getKnockback() const {

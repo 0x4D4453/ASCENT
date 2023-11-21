@@ -37,7 +37,7 @@ namespace Entities {
         void setIsLanding(const bool is);
         const bool getIsShooting() const;
         void setIsShooting(const bool is);
-        const int getCurrentFrame() const;
+        Animations::Animation* getAnimation();
 
         virtual void movementPattern();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

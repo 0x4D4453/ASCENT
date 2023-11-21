@@ -34,9 +34,10 @@ namespace Entities {
         float m_timeElapsed;
         bool m_isReadyToChange;
 
-      private:
+      protected:
         virtual void doAction() = 0;
         void changeState(TyrantStateID id);
+        void changeTyrantSpeed(const float speed);
 
       public:
         TyrantState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL, const float timeLimit = 5.f);

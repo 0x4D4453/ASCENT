@@ -7,11 +7,13 @@
 namespace Entities {
   namespace Characters {
     TyrantIdleState::TyrantIdleState(Tyrant* pTyrant, EntityList* pPlayers)
-      : TyrantState(pTyrant, pPlayers)
-      , m_healing(5.f)
+      : TyrantState(pTyrant, pPlayers, 10.f)
+      , m_healing(0.75f)
       , m_healCooldown(1.f)
+      , m_timeSinceHeal(0.f)
     {
       m_id = TyrantStateID::Idle;
+      m_nextState = TyrantStateID::Following;
     }
 
     TyrantIdleState::~TyrantIdleState() {
@@ -23,10 +25,11 @@ namespace Entities {
       if (health >= m_pTyrant->getMaxHealthPoints())
         return;
 
-      m_timeSinceHeal += m_timeElapsed;
+      m_timeSinceHeal += m_dt;
       if (m_timeSinceHeal > m_healCooldown) {
         m_pTyrant->setColor(sf::Color::Green);
         m_pTyrant->setHealthPoints(health + m_healing);
+        m_timeSinceHeal = 0.f;
       }
     }
 

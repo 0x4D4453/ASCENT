@@ -19,7 +19,8 @@ namespace Animations {
         Charge,
         Jump,
         Land,
-        Dead,
+        Launch,
+        Dead
       };
 
     private:

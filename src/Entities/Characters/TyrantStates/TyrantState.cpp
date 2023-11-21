@@ -10,11 +10,15 @@
 
 namespace Entities {
   namespace Characters {
-    TyrantState::TyrantState(Tyrant* pTyrant, EntityList* pPlayers)
+    Manager::GraphicsManager* TyrantState::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
+    const float TyrantState::m_dt(TyrantState::m_pGraphicsManager->getTimePerFrame()->asSeconds());
+
+    TyrantState::TyrantState(Tyrant* pTyrant, EntityList* pPlayers, const float timeLimit)
       : m_id(TyrantStateID::Idle)
+      , m_nextState(TyrantStateID::Following)
       , m_pTyrant(pTyrant)
       , m_pPlayers(pPlayers)
-      , m_timeLimit(50.f)
+      , m_timeLimit(timeLimit)
       , m_timeElapsed(0.f)
     {
 
@@ -29,15 +33,16 @@ namespace Entities {
       return m_id;
     }
 
-    void TyrantState::updateTime(const float timeElapsed) {
-      m_timeElapsed += timeElapsed;
+    void TyrantState::update(const float timeElapsed) {
+      doAction();
 
+      m_timeElapsed += timeElapsed;
       if (m_timeElapsed >= m_timeLimit)
-        changeState();
+        changeState(m_nextState);
     }
 
-    void TyrantState::changeState() {
-      m_pTyrant->changeState(TyrantStateID::Following);
+    void TyrantState::changeState(TyrantStateID id) {
+      m_pTyrant->changeState(id);
     }
   }
 }

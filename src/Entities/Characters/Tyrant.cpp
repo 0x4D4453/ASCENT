@@ -1,6 +1,7 @@
 /* Main Include */
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Characters/TyrantStates/TyrantIdleState.h"
+#include "Entities/Characters/TyrantStates/TyrantFollowingState.h"
 #include "Animation/TyrantAnimation.h"
 
 /* Program Defined */
@@ -14,10 +15,8 @@ namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, EntityList* pPlayers)
       : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
-      , m_followDistance(128.f)
       , m_pState(new TyrantIdleState(this, pPlayers))
       , m_pPlayers(pPlayers)
-      , m_timeSinceAction(0.f)
       , m_isCharging(false)
     {
       setEntityId(EntityID::TyrantE);
@@ -43,12 +42,18 @@ namespace Entities {
 
       switch (id) {
         case TyrantStateID::Idle:
-          m_pState = new TyrantIdleState(this, m_pPlayers);
+          pState = new TyrantIdleState(this, m_pPlayers);
+          break;
+        case TyrantStateID::Following:
+          pState = new TyrantFollowingState(this, m_pPlayers);
           break;
         default:
-          m_pState = new TyrantIdleState(this, m_pPlayers);
+          pState = new TyrantIdleState(this, m_pPlayers);
           break;
       }
+
+      if (!pState)
+        pState = new TyrantIdleState(this, m_pPlayers);
 
       delete m_pState;
       m_pState = pState;
@@ -57,37 +62,6 @@ namespace Entities {
     const bool Tyrant::getIsCharging() const {
       return m_isCharging;
     }
-
-    // void Tyrant::jump() {
-
-    // }
-
-    // void Tyrant::chargeJump() {
-
-    // }
-
-    // void Tyrant::launchProjectiles() {
-
-    // }
-
-    // // Código altamente baseado no código do monitor Giovane
-    // void Tyrant::followPlayer(sf::Vector2f playerPosition) {
-    //   if (playerPosition.x - m_position.x > 0.f)
-    //     m_velocity.x = m_speed;
-    //   else 
-    //     m_velocity.x = -m_speed;
-    // }
-
-    // void Tyrant::movementPattern() {
-    //   if (m_pPlayers) {
-    //     sf::Vector2f playerPosition = m_pPlayer->getPosition();
-    //     if (fabs(playerPosition.x - m_position.x) <= m_followDistance &&
-    //         fabs(playerPosition.y - m_position.y) <= m_followDistance)
-    //       followPlayer(playerPosition);
-    //     else
-    //       m_velocity.x = 0.f;
-    //   }
-    // }
 
     void Tyrant::movementPattern() {
       m_pState->movementPattern();
@@ -147,7 +121,7 @@ namespace Entities {
     void Tyrant::update() {
       if (!m_isMidAir && !m_isStaggered && m_healthPoints > 0) {
         movementPattern();
-        m_pState->doAction();
+        m_pState->update(m_dt);
       }
     }
   }

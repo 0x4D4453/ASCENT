@@ -60,6 +60,10 @@ namespace Entities {
     m_knockbackForce = force;
   }
 
+  const float Entity::getSpeed() const {
+    return m_speed;
+  }
+
   const float Entity::getKnockback() const {
     return m_knockbackForce;
   }

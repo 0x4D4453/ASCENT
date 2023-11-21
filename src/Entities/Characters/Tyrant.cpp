@@ -108,12 +108,13 @@ namespace Entities {
     }
 
     void Tyrant::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (pPlayer->isAttacking()) {
-        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
-        
+      if (pPlayer->getIsAttacking()) {        
         if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
+          setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
           pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x, pPlayer->getVelocity().y));
           pPlayer->setIsStaggered(true);
+        } else {
+          setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
         }
       } else {
         if (m_collisionClock.restart().asSeconds() < getCollisionStrategy(EntityTag::PlayerTag)->getDelay())
@@ -144,7 +145,7 @@ namespace Entities {
     }
 
     void Tyrant::update() {
-      if (m_healthPoints > 0) {
+      if (!m_isMidAir && !m_isStaggered && m_healthPoints > 0) {
         movementPattern();
         m_pState->doAction();
       }

@@ -73,13 +73,6 @@ namespace Entities {
     m_sprite.setPosition(m_position);
   }
 
-  sf::Vector2f Entity::getCenteredPosition() const {
-    sf::Vector2f position = m_sprite.getPosition();
-    position.x += m_sprite.getGlobalBounds().width / 2;
-    position.y += m_sprite.getGlobalBounds().height / 2;
-    return position;
-  }
-
   sf::Vector2f Entity::getPosition() const {
     return m_sprite.getPosition();
   }

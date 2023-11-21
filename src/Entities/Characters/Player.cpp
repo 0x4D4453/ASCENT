@@ -24,11 +24,12 @@ namespace Entities {
     Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
       : Character(Constants::SCALE, 10.f)
       , m_points(0)
+      , m_isAttacking(false)
       , m_isCharging(false)
       , m_chargingSpeed(10.f)
       , m_jumpHeight(2.f)
       , m_minJumpHeight(2.f)
-      , m_maxJumpHeight(10.f)
+      , m_maxJumpHeight(12.5f)
       , m_attackSpeed(3.5f)
       , m_maxWalkingSpeed(2.5f)
     {
@@ -57,14 +58,14 @@ namespace Entities {
     void Player::moveLeft() {
       m_velocity.x -= m_speed * m_dt;
 
-      if (!m_isMidAir && m_velocity.x < -m_maxWalkingSpeed)
+      if (m_velocity.x < -m_maxWalkingSpeed)
         m_velocity.x = -m_maxWalkingSpeed;
     }
 
     void Player::moveRight() {
       m_velocity.x += m_speed * m_dt;
 
-      if (!m_isMidAir && m_velocity.x > m_maxWalkingSpeed)
+      if (m_velocity.x > m_maxWalkingSpeed)
         m_velocity.x = m_maxWalkingSpeed;
     }
 
@@ -81,15 +82,20 @@ namespace Entities {
       return speedVector.getMagnitude();
     }
 
-    const bool Player::isAttacking() {
-      bool isAttacking = getCurrentSpeed() > m_attackSpeed;
+    const bool Player::getIsAttacking() {
+      return m_isAttacking;
+    }
+
+    void Player::checkIsAttacking() {
+      const float speed = getCurrentSpeed();
+      bool isAttacking = speed > m_attackSpeed;
 
       if (isAttacking)
         setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::KnockbackCollision);
       else
         setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::NoCollision);
 
-      return isAttacking;
+      m_isAttacking = isAttacking;
     }
 
     void Player::handleInput() {
@@ -129,9 +135,9 @@ namespace Entities {
       m_jumpSound.play();
 
       if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveLeft]))
-        moveLeft();
+        m_velocity.x = -m_speed * 1.5f * m_dt;
       else if (sf::Keyboard::isKeyPressed(m_keyBinding[MoveRight]))
-        moveRight();
+        m_velocity.x = m_speed * 1.5f * m_dt;
 
       m_isCharging = false;
       m_isMidAir = true;
@@ -143,12 +149,17 @@ namespace Entities {
     void Player::update() {
       if (!m_isMidAir && !m_isStaggered)
         handleInput();
+
+      if (m_isMidAir)
+        checkIsAttacking();
+      else
+        m_isAttacking = false;
     }
 
     void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
-          if (isAttacking())
+          if (getIsAttacking())
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:

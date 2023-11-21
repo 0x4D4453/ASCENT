@@ -15,7 +15,8 @@ namespace Animations {
         Charge,
         Jump,
         Stagger,
-        Dead = 8,
+        JumpStraight,
+        Dead,
       };
 
     public:

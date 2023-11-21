@@ -31,6 +31,7 @@ namespace Entities {
         std::map<Actions, sf::Keyboard::Key> m_keyBinding;
         std::unordered_map<Actions, void(Player::*)()> m_actionBinding;
         int m_points;
+        bool m_isAttacking;
         bool m_isCharging;
         float m_jumpHeight;
         const float m_chargingSpeed;
@@ -47,6 +48,7 @@ namespace Entities {
         void chargeJump();
         void jump();
         void handleInput();
+        void checkIsAttacking();
         const float getCurrentSpeed() const;
         void attack(Enemy *pEnemy);
       
@@ -60,7 +62,7 @@ namespace Entities {
         ~Player();
         const bool getIsCharging() const;
         void setIsCharging(const bool isCharging);
-        const bool isAttacking();
+        const bool getIsAttacking();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);

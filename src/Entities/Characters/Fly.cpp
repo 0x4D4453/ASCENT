@@ -59,7 +59,7 @@ namespace Entities {
     }
 
     void Fly::update() {
-      if (m_healthPoints > 0)
+      if (!m_isStaggered && m_healthPoints > 0)
         movementPattern();
     }
   }

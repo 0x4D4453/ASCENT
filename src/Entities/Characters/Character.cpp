@@ -88,12 +88,10 @@ namespace Entities {
 
     void Character::exec() {
       recoverColor();
+      update();
 
       if (!getIsColliding())
         m_isMidAir = true;
-
-      if (!m_isMidAir && !m_isStaggered)
-        update();
 
       if (m_animation)
         m_animation->update(m_dt);

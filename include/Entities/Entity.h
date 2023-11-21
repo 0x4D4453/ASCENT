@@ -82,7 +82,6 @@ namespace Entities {
 
       const float getKnockback() const;
       const bool getMoved() const;
-      sf::Vector2f getCenteredPosition() const;
       sf::Vector2f getPosition() const;
       void setPosition(sf::Vector2f position);
       sf::Vector2f getVelocity() const;

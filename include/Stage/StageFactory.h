@@ -23,6 +23,7 @@ namespace Stages {
       Entities::EntityFactory m_entityFactory;
       ResourceHolder<Textures::ID, sf::Texture> m_textureHolder;
       ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
+      Stage* m_pStage;
       EntityList* m_pPlayers;
       EntityList* m_pStaticEntities;
       EntityList* m_pDynamicEntities;

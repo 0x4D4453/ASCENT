@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Characters/Player.h"
+#include "Entities/EntityFactory.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
 #include "Utility/Constants.h"
@@ -57,16 +58,26 @@ namespace Stages {
     return &m_players;
   }
 
-  EntityList* Stage::getPlatforms() {
+  EntityList* Stage::getStaticEntities() {
     return &m_staticEntities;
   }
 
-  EntityList* Stage::getEnemies() {
+  EntityList* Stage::getDynamicEntities() {
     return &m_dynamicEntities;
   }
 
   void Stage::loadSaveGame() {
     setup();
+  }
+
+  void Stage::setEntityFactory(Entities::EntityFactory* pEntityFactory) {
+    m_pEntityFactory = pEntityFactory;
+  }
+
+  void Stage::spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle) {
+    Entities::Projectile* projectile = m_pEntityFactory->createProjectile(textureID, position, scale, speed, angle);
+    m_dynamicEntities.include(static_cast<Entities::Entity*>(projectile));
+    projectile->setList(&m_dynamicEntities);
   }
 
   void Stage::savePlayerData() {

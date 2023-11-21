@@ -33,6 +33,7 @@ namespace Stages {
     , m_entityFactory()
     , m_textureHolder()
     , m_soundHolder()
+    , m_pStage(NULL)
     , m_multiplayer(multiplayer)
   {
     loadTextures();
@@ -43,7 +44,7 @@ namespace Stages {
   }
 
   StageFactory::~StageFactory() {
-
+    m_pStage = NULL;
   }
 
   void StageFactory::loadTextures() {
@@ -54,6 +55,7 @@ namespace Stages {
     m_textureHolder.load(Textures::Fly, Textures::FLY);
     m_textureHolder.load(Textures::Tyrant, Textures::TYRANT);
     m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
+    m_textureHolder.load(Textures::Projectile, Textures::PROJECTILE);
 
     m_textureHolder.load(Textures::Platform, Textures::PLATFORM);
     m_textureHolder.load(Textures::PlatformLeft, Textures::PLATFORM_LEFT_CORNER);
@@ -79,41 +81,40 @@ namespace Stages {
   }
 
   Stage* StageFactory::createStage(Stages::ID stageID) {
-    Stage* stage =  NULL;
-
     switch (stageID) {
       case Stage1:
-        stage = new FirstStage;
+        m_pStage = new FirstStage;
         break;
       case Stage2:
-        stage = new SecondStage;
+        m_pStage = new SecondStage;
         break;
       case Stage3:
-        stage = new ThirdStage;
+        m_pStage = new ThirdStage;
         break;
       case Stage4:
-        stage = new FourthStage;
+        m_pStage = new FourthStage;
         break;
       default: break;
     }
 
-    if (!stage) {
+    if (!m_pStage) {
       std::cerr << "Error creating stage!" << std::endl;
       exit(1);
     }
 
-    m_pPlayers = stage->getPlayers();
-    m_pStaticEntities = stage->getPlatforms();
-    m_pDynamicEntities = stage->getEnemies();
+    m_pPlayers = m_pStage->getPlayers();
+    m_pStaticEntities = m_pStage->getStaticEntities();
+    m_pDynamicEntities = m_pStage->getDynamicEntities();
+    m_pStage->setEntityFactory(&m_entityFactory);
 
     if (m_newGame) {
-      createMap(stage->getMapTxt());
+      createMap(m_pStage->getMapTxt());
       createPlayers();
     } else {
       loadSaveGame();
     }
     
-    return stage;
+    return m_pStage;
   }
 
   void StageFactory::loadPlayerData() {
@@ -229,7 +230,7 @@ namespace Stages {
           case ('E'): defineType(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
           case ('F'): defineType(m_entityFactory.createEntity(Entities::FlyE, Textures::Fly, position)); break;
           case ('G'): defineType(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
-          case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position, m_pPlayers)); break;
+          case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position, m_pStage)); break;
           case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
           case ('I'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
           default: break;

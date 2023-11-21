@@ -7,8 +7,8 @@
 
 namespace Entities {
   namespace Characters {
-    TyrantFollowingState::TyrantFollowingState(Tyrant* pTyrant, EntityList* pPlayers)
-      : TyrantState(pTyrant, pPlayers, 10.f)
+    TyrantFollowingState::TyrantFollowingState(Tyrant* pTyrant, Stages::Stage* pStage)
+      : TyrantState(pTyrant, pStage, 10.f)
       , m_followDistance(500.f)
       , m_stompDistance(300.f)
       , m_jumpHeight(500.f)
@@ -20,6 +20,7 @@ namespace Entities {
       , m_isJumping(false)
     {
       m_id = TyrantStateID::Following;
+      m_nextState = TyrantStateID::Shooting;
       definePlayer();
     }
 

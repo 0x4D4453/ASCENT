@@ -13,12 +13,13 @@ namespace Entities {
     Manager::GraphicsManager* TyrantState::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
     const float TyrantState::m_dt(TyrantState::m_pGraphicsManager->getTimePerFrame()->asSeconds());
 
-    TyrantState::TyrantState(Tyrant* pTyrant, EntityList* pPlayers, const float timeLimit)
+    TyrantState::TyrantState(Tyrant* pTyrant, Stages::Stage* pStage, const float timeLimit)
       : m_id(TyrantStateID::Idle)
       , m_nextState(TyrantStateID::Following)
-      , m_viewShake(m_pGraphicsManager->getView())
+      , m_pStage(pStage)
       , m_pTyrant(pTyrant)
-      , m_pPlayers(pPlayers)
+      , m_pPlayers(pStage->getPlayers())
+      , m_viewShake(m_pGraphicsManager->getView())
       , m_timeLimit(timeLimit)
       , m_timeElapsed(0.f)
       , m_isReadyToChange(false)
@@ -29,6 +30,7 @@ namespace Entities {
     TyrantState::~TyrantState() {
       m_pTyrant = NULL;
       m_pPlayers = NULL;
+      m_pStage = NULL;
     }
 
     const TyrantStateID TyrantState::getId() const {

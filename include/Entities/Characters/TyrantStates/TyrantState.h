@@ -6,6 +6,7 @@
 #include "Entities/EntityList.h"
 #include "Utility/ViewShake.h"
 #include "Animation/TyrantAnimation.h"
+#include "Stage/Stage.h"
 
 namespace Entities {
   namespace Characters {
@@ -15,9 +16,7 @@ namespace Entities {
     enum TyrantStateID {
       Idle,
       Following,
-      Charging,
-      Jumping,
-      Launching,
+      Shooting,
       Dead
     };
 
@@ -27,9 +26,10 @@ namespace Entities {
         static const float m_dt;
         TyrantStateID m_id;
         TyrantStateID m_nextState;
-        ViewShake m_viewShake;
+        Stages::Stage* m_pStage;
         Tyrant* m_pTyrant;
         EntityList* m_pPlayers;
+        ViewShake m_viewShake;
         const float m_timeLimit;
         float m_timeElapsed;
         bool m_isReadyToChange;
@@ -39,7 +39,7 @@ namespace Entities {
         void changeState(TyrantStateID id);
 
       public:
-        TyrantState(Tyrant* pTyrant = NULL, EntityList* pPlayers = NULL, const float timeLimit = 5.f);
+        TyrantState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL, const float timeLimit = 5.f);
         ~TyrantState();
 
         void update(const float timeElapsed);

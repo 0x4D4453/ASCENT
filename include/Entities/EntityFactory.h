@@ -3,6 +3,8 @@
 
 /* Program Defined */
 #include "Entities/Entity.h"
+#include "Entities/Projectile.h"
+#include "Stage/Stage.h"
 #include "Utility/Textures.h"
 #include "Utility/Sounds.h"
 #include "Utility/ResourceHolder.h"
@@ -22,7 +24,8 @@ namespace Entities {
       ~EntityFactory();
       void setTextureHolder(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder);
       void setSoundHolder(ResourceHolder<Sounds::ID, sf::SoundBuffer>* pSoundHolder);
-      Entity* createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, EntityList* pPlayers = NULL);
+      Entity* createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, Stages::Stage* pStage = NULL);
+      Projectile* createProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
   };
 }
 

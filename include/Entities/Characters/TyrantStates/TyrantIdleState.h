@@ -17,7 +17,7 @@ namespace Entities {
         void heal();
 
       public:
-        TyrantIdleState(Tyrant* pTyrant = NULL, EntityList* pPlayers = NULL);
+        TyrantIdleState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL);
         ~TyrantIdleState();
 
         virtual void movementPattern();

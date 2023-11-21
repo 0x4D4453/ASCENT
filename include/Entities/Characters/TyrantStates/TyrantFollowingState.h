@@ -33,7 +33,7 @@ namespace Entities {
         void setIsCharging(const bool is);
 
       public:
-        TyrantFollowingState(Tyrant* pTyrant = NULL, EntityList* pPlayers = NULL);
+        TyrantFollowingState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL);
         ~TyrantFollowingState();
 
         virtual void movementPattern();

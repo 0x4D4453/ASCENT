@@ -1,11 +1,13 @@
 /* Main Include */
 #include "Entities/Characters/Tyrant.h"
-#include "Entities/Characters/TyrantStates/TyrantIdleState.h"
-#include "Entities/Characters/TyrantStates/TyrantFollowingState.h"
-#include "Animation/TyrantAnimation.h"
 
 /* Program Defined */
+#include "Entities/Characters/TyrantStates/TyrantIdleState.h"
+#include "Entities/Characters/TyrantStates/TyrantFollowingState.h"
+#include "Entities/Characters/TyrantStates/TyrantShootingState.h"
 #include "Entities/Characters/Player.h"
+#include "Animation/TyrantAnimation.h"
+#include "Stage/Stage.h"
 #include "Utility/Constants.h"
 
 /* Standard Library */
@@ -13,10 +15,10 @@
 
 namespace Entities {
   namespace Characters {
-    Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, EntityList* pPlayers)
+    Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
       : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
-      , m_pState(new TyrantIdleState(this, pPlayers))
-      , m_pPlayers(pPlayers)
+      , m_pStage(pStage)
+      , m_pState(new TyrantFollowingState(this, pStage))
       , m_isCharging(false)
       , m_isLanding(false)
     {
@@ -34,8 +36,8 @@ namespace Entities {
 
     Tyrant::~Tyrant() {
       delete m_pState;
+      m_pStage = NULL;
       m_pState = NULL;
-      m_pPlayers = NULL;
     }
 
     void Tyrant::changeState(TyrantStateID id) {
@@ -43,18 +45,21 @@ namespace Entities {
 
       switch (id) {
         case TyrantStateID::Idle:
-          pState = new TyrantIdleState(this, m_pPlayers);
+          pState = new TyrantIdleState(this, m_pStage);
           break;
         case TyrantStateID::Following:
-          pState = new TyrantFollowingState(this, m_pPlayers);
+          pState = new TyrantFollowingState(this, m_pStage);
+          break;
+        case TyrantStateID::Shooting:
+          pState = new TyrantShootingState(this, m_pStage);
           break;
         default:
-          pState = new TyrantIdleState(this, m_pPlayers);
+          pState = new TyrantIdleState(this, m_pStage);
           break;
       }
 
       if (!pState)
-        pState = new TyrantIdleState(this, m_pPlayers);
+        pState = new TyrantIdleState(this, m_pStage);
 
       delete m_pState;
       m_pState = pState;

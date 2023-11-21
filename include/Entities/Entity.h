@@ -58,6 +58,7 @@ namespace Entities {
       sf::Vector2f m_velocity;
       float m_knockbackForce;
       float m_speed;
+      bool m_isKnockbackResistant;
       bool m_isStaggered;
       bool m_moved;
     
@@ -71,7 +72,7 @@ namespace Entities {
       void move();
     
     public:
-      Entity(const sf::Vector2f position, const float scale = Constants::SCALE, const float speed = 200.f);
+      Entity(const sf::Vector2f position, const float scale = Constants::SCALE, const float speed = 250.f);
       virtual ~Entity();
 
       static void setCollisionManager(Manager::Collision::CollisionManager* pManager);
@@ -88,6 +89,7 @@ namespace Entities {
       void setVelocity(const sf::Vector2f velocity);
       void setIsStaggered(const bool isStaggered);
       const bool getIsStaggered() const;
+      const bool getIsKnockbackResistant() const;
 
       const bool getIsColliding() const;
       std::set<int>* getCurrentCollisions();

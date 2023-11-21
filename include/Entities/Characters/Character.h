@@ -24,6 +24,7 @@ namespace Entities {
         virtual void setup();
         void recoverColor();
         void setAnimation(Animations::Animation* animation);
+        void checkGrounded(Entity *pEntity, Manager::Collision::CollisionType type);
       
       public:
         Character(const float scale = Constants::SCALE, const int maxHealth = 3);

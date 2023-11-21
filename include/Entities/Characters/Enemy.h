@@ -15,6 +15,9 @@ namespace Entities {
         const int m_attack;
         sf::Vector2f m_spawnPosition;
 
+      protected:
+        virtual void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
+
       public:
         Enemy(const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f), const float scale = Constants::SCALE, const int maxHealth = 3);
         ~Enemy();

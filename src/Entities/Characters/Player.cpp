@@ -29,8 +29,8 @@ namespace Entities {
       , m_jumpHeight(2.f)
       , m_minJumpHeight(2.f)
       , m_maxJumpHeight(10.f)
-      , m_attackSpeed(5.f)
-      , m_maxSpeed(2.5f)
+      , m_attackSpeed(3.5f)
+      , m_maxWalkingSpeed(2.5f)
     {
       setEntityId(EntityID::PlayerE);
       setEntityTag(EntityTag::PlayerTag);
@@ -57,15 +57,15 @@ namespace Entities {
     void Player::moveLeft() {
       m_velocity.x -= m_speed * m_dt;
 
-      if (m_velocity.x < -m_maxSpeed)
-        m_velocity.x = -m_maxSpeed;
+      if (!m_isMidAir && m_velocity.x < -m_maxWalkingSpeed)
+        m_velocity.x = -m_maxWalkingSpeed;
     }
 
     void Player::moveRight() {
       m_velocity.x += m_speed * m_dt;
 
-      if (m_velocity.x > m_maxSpeed)
-        m_velocity.x = m_maxSpeed;
+      if (!m_isMidAir && m_velocity.x > m_maxWalkingSpeed)
+        m_velocity.x = m_maxWalkingSpeed;
     }
 
     const bool Player::getIsCharging() const {
@@ -152,10 +152,7 @@ namespace Entities {
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
-          if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isMidAir) {
-            m_isMidAir = false;
-            setIsStaggered(false);
-          }
+          checkGrounded(pEntity, type);
           break;
       }
     }

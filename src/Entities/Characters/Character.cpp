@@ -56,6 +56,13 @@ namespace Entities {
       m_animation = animation;
     }
 
+    void Character::checkGrounded(Entity *pEntity, Manager::Collision::CollisionType type) {
+      if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isMidAir) {
+        m_isMidAir = false;
+        setIsStaggered(false);
+      }
+    }
+
     const int Character::getMaxHealthPoints() const {
       return m_maxHealthPoints;
     }

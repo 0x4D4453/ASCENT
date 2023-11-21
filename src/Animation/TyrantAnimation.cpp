@@ -33,6 +33,10 @@ namespace Animations {
 
     if (pTyrant->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Dead);
+    else if (pTyrant->getIsCharging())
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Charge);
+    else if (pTyrant->getIsMidAir())
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Jump);
     else if (m_pEntity->getVelocity().x == 0.f)
       changeFrame(deltaTime, static_cast<int>(TyrantFrames::Idle1), static_cast<int>(TyrantFrames::Idle4));
     else

@@ -16,6 +16,7 @@ namespace Entities {
     , m_speed(speed)
     , m_knockbackForce(2.5f)
     , m_velocity(sf::Vector2f(0.f, 0.f))
+    , m_isKnockbackResistant(false)
     , m_isStaggered(false)
     , m_moved(true)
   {
@@ -97,6 +98,10 @@ namespace Entities {
 
   const bool Entity::getIsStaggered() const {
     return m_isStaggered;
+  }
+
+  const bool Entity::getIsKnockbackResistant() const {
+    return m_isKnockbackResistant;
   }
 
   const bool Entity::getIsColliding() const {

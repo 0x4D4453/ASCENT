@@ -20,9 +20,11 @@ namespace Entities {
         TyrantState* m_pState;
         EntityList* m_pPlayers;
         float m_timeSinceAction;
+        bool m_isCharging;
 
       private:
         virtual void update();
+        virtual void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
         // void jump();
         // void chargeJump();
         // void launchProjectiles();
@@ -31,8 +33,12 @@ namespace Entities {
       public:
         Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f), EntityList* pPlayers = NULL);
         ~Tyrant();
+
         void changeState(TyrantStateID id);
+        const bool getIsCharging() const;
+
         virtual void movementPattern();
+        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };

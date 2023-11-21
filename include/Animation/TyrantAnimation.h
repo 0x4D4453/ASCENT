@@ -12,7 +12,7 @@ namespace Animations {
         Idle2,
         Idle3,
         Idle4,
-        Walk1 = 2,
+        Walk1 = 4,
         Walk2,
         Walk3,
         Walk4,

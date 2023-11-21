@@ -4,6 +4,7 @@
 #include "Animation/TyrantAnimation.h"
 
 /* Program Defined */
+#include "Entities/Characters/Player.h"
 #include "Utility/Constants.h"
 
 /* Standard Library */
@@ -17,6 +18,7 @@ namespace Entities {
       , m_pState(new TyrantIdleState(this, pPlayers))
       , m_pPlayers(pPlayers)
       , m_timeSinceAction(0.f)
+      , m_isCharging(false)
     {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
@@ -25,7 +27,9 @@ namespace Entities {
       setKnockback(5.f);
 
       setAnimation(new Animations::TyrantAnimation(this, 0.5f));
-      m_sprite.setHitbox({ 2.f, 5.f, 12.f, 11.f });
+      m_sprite.setHitbox({ 4.f, 5.f, 8.f, 11.f });
+
+      m_isKnockbackResistant = true;
     }
 
     Tyrant::~Tyrant() {
@@ -48,6 +52,10 @@ namespace Entities {
 
       delete m_pState;
       m_pState = pState;
+    }
+
+    const bool Tyrant::getIsCharging() const {
+      return m_isCharging;
     }
 
     // void Tyrant::jump() {
@@ -83,6 +91,37 @@ namespace Entities {
 
     void Tyrant::movementPattern() {
       m_pState->movementPattern();
+    }
+
+    void Tyrant::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      if (m_healthPoints <= 0)
+        return;
+
+      switch (pEntity->getEntityTag()) {
+        case EntityTag::PlayerTag:
+          playerCollide(dynamic_cast<Player*>(pEntity), type);
+          break;
+        default:
+          checkGrounded(pEntity, type);
+          break;
+      }
+    }
+
+    void Tyrant::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
+      if (pPlayer->isAttacking()) {
+        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
+        
+        if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
+          pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x, pPlayer->getVelocity().y));
+          pPlayer->setIsStaggered(true);
+        }
+      } else {
+        if (m_collisionClock.restart().asSeconds() < getCollisionStrategy(EntityTag::PlayerTag)->getDelay())
+          return;
+
+        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
+        damagePlayer(pPlayer);
+      }
     }
 
     void Tyrant::save(nlohmann::ordered_json& jsonData) {

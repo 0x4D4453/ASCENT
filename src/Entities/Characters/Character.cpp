@@ -6,16 +6,16 @@
 
 namespace Entities {
   namespace Characters {
-    Character::Character()
-      : Entity(sf::Vector2f(0.f, 0.f))
+    Character::Character(const float scale, const int maxHealth)
+      : Entity(sf::Vector2f(0.f, 0.f), scale)
       , m_animation(NULL)
       , m_collisionClock()
-      , m_maxHealthPoints(3)
+      , m_maxHealthPoints(maxHealth)
+      , m_healthPoints(maxHealth)
     {
       setEntityId(EntityID::CharacterE);
       setEntityType(EntityType::Dynamic);
-
-      m_healthPoints = m_maxHealthPoints;
+      setup();
     }
 
     Character::~Character() {
@@ -23,6 +23,11 @@ namespace Entities {
         delete m_animation;
 
       m_animation = NULL;
+    }
+
+    void Character::setup() {  
+      m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
+      m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 
     void Character::recoverColor() {
@@ -38,6 +43,16 @@ namespace Entities {
         color += sf::Color(0, 0, 1000.f * m_dt);
 
       m_sprite.setColor(color);
+    }
+
+    void Character::setAnimation(Animations::Animation* animation) {
+      if (!animation)
+        return;
+        
+      if (m_animation)
+        delete m_animation;
+
+      m_animation = animation;
     }
 
     const int Character::getMaxHealthPoints() const {

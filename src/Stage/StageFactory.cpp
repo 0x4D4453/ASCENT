@@ -7,6 +7,7 @@
 #include "Stage/FirstStage.h"
 #include "Stage/SecondStage.h"
 #include "Stage/ThirdStage.h"
+#include "Stage/FourthStage.h"
 #include "Stage/Stage.h"
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Obstacles/Platform.h"
@@ -89,6 +90,9 @@ namespace Stages {
         break;
       case Stage3:
         stage = new ThirdStage;
+        break;
+      case Stage4:
+        stage = new FourthStage;
         break;
       default: break;
     }

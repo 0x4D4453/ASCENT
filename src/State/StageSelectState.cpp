@@ -39,6 +39,7 @@ namespace States {
     m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder)));
     m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder)));
     m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder2)));
+    m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder2)));
 
     for (int i = 0; i < static_cast<int>(TotalOptions); ++i) {
       m_stageImages[i].setOrigin(400.f/2.f, 0);
@@ -55,6 +56,7 @@ namespace States {
     createOption("Cave", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
     createOption("Factory", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
     createOption("Challenge", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
+    createOption("Tyrant Fight", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
   }
 
   void StageSelectState::movePreviousOption() {
@@ -84,6 +86,9 @@ namespace States {
       case (Stage3):
         m_pContext->setStage(Stages::Stage3);
         break;
+      case (Stage4):
+        m_pContext->setStage(Stages::Stage4);
+        break;
     }
 
     m_pStateStack->pushState(StateType::Loading, NULL, true);
@@ -111,7 +116,7 @@ namespace States {
     if (m_currentOption > Stage1)
       m_pGraphicsManager->draw(m_leftArrow);
     
-    if (m_currentOption < Stage3)
+    if (m_currentOption < Stage4)
       m_pGraphicsManager->draw(m_rightArrow);
 
     m_pGraphicsManager->draw(m_stageImages[m_currentOption]);

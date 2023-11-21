@@ -41,7 +41,7 @@ PPPPPPPPPPB                                C
           D                                C
           D         E                      C
           D     XYYYYYYYYZ                 C
-          D                       T        C
+          D                                C
           D                                C
           D                                C
 PPPPPPPPPPPPPPPPB        APPPPPPPPPPPPPPPPPP

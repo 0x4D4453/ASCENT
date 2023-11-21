@@ -5,6 +5,7 @@
 #include "Being.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/Collision/CollisionStrategy.h"
+#include "Utility/Constants.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -70,7 +71,7 @@ namespace Entities {
       void move();
     
     public:
-      Entity(const sf::Vector2f position, const float speed = 200.f);
+      Entity(const sf::Vector2f position, const float scale = Constants::SCALE, const float speed = 200.f);
       virtual ~Entity();
 
       static void setCollisionManager(Manager::Collision::CollisionManager* pManager);
@@ -80,6 +81,7 @@ namespace Entities {
 
       const float getKnockback() const;
       const bool getMoved() const;
+      sf::Vector2f getCenteredPosition() const;
       sf::Vector2f getPosition() const;
       void setPosition(sf::Vector2f position);
       sf::Vector2f getVelocity() const;

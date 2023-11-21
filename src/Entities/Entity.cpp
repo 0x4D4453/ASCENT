@@ -7,8 +7,8 @@
 namespace Entities {
   Manager::Collision::CollisionManager* Entity::m_pCollisionManager = NULL;
 
-  Entity::Entity(const sf::Vector2f position, const float speed)
-    : Being()
+  Entity::Entity(const sf::Vector2f position, const float scale, const float speed)
+    : Being(scale)
     , m_entityId(EntityID::EntityE)
     , m_entityTag(EntityTag::ObstacleTag)
     , m_entityType(EntityType::Static)
@@ -70,6 +70,13 @@ namespace Entities {
   void Entity::setPosition(sf::Vector2f position) {
     m_position = position;
     m_sprite.setPosition(m_position);
+  }
+
+  sf::Vector2f Entity::getCenteredPosition() const {
+    sf::Vector2f position = m_sprite.getPosition();
+    position.x += m_sprite.getGlobalBounds().width / 2;
+    position.y += m_sprite.getGlobalBounds().height / 2;
+    return position;
   }
 
   sf::Vector2f Entity::getPosition() const {

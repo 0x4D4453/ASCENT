@@ -42,10 +42,10 @@ namespace Manager {
       } else {
         sf::Vector2f velocity = pOtherEntity->getVelocity();
         if (velocity.y < 0) {
-          if (pOtherEntity->getPosition().y >= pOwnEntity->getPosition().y)
+          if (pOtherEntity->getCenteredPosition().y >= pOwnEntity->getCenteredPosition().y)
             velocity.y = 0.f;
         } else {
-          if (pOtherEntity->getPosition().y <= pOwnEntity->getPosition().y) {
+          if (pOtherEntity->getCenteredPosition().y <= pOwnEntity->getCenteredPosition().y) {
             applyFriction(pOwnEntity, pOtherEntity, &velocity);
             velocity.y = 0.f;
           }

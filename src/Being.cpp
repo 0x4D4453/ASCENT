@@ -3,7 +3,6 @@
 
 /* Program Defined */
 #include "Manager/GraphicsManager.h"
-#include "Utility/Constants.h"
 
 /* Standard Library */
 #include <iostream>
@@ -12,9 +11,10 @@ Manager::GraphicsManager* Being::m_pGraphicsManager(Manager::GraphicsManager::ge
 const float Being::m_dt(m_pGraphicsManager->getTimePerFrame()->asSeconds());
 int Being::m_cont(0);
 
-Being::Being() 
+Being::Being(const float scale) 
   : m_id(m_cont++)
-  , m_scale(Constants::SCALE)
+  , m_scale(scale)
+  , m_sprite()
 {
   m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
 }
@@ -27,12 +27,12 @@ const int Being::getId() const {
   return m_id;
 }
 
-const sf::Sprite* Being::getSprite() const {
+const HitboxSprite* Being::getSprite() const {
   return &m_sprite;
 }
 
-const sf::FloatRect Being::getGlobalBounds() const {
-  return m_sprite.getGlobalBounds();
+const sf::FloatRect Being::getGlobalHitbox() const {
+  return m_sprite.getGlobalHitbox();
 }
 
 void Being::setColor(sf::Color color) {

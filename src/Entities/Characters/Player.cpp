@@ -22,7 +22,7 @@
 namespace Entities {
   namespace Characters {
     Player::Player(sf::Texture& playerTexture, sf::SoundBuffer& jumpSoundBuffer, sf::Keyboard::Key moveLeftKey, sf::Keyboard::Key moveRightKey, sf::Keyboard::Key jumpKey)
-      : Character()
+      : Character(Constants::SCALE, 10.f)
       , m_points(0)
       , m_isJumping(false)
       , m_isCharging(false)
@@ -47,18 +47,12 @@ namespace Entities {
       setTexture(playerTexture);
       m_jumpSound.setBuffer(jumpSoundBuffer);
 
-      m_animation = new Animations::PlayerAnimation(this);
-      setup();
+      setAnimation(new Animations::PlayerAnimation(this));
     }
 
     Player::~Player() {
       m_keyBinding.clear();
       m_actionBinding.clear();
-    }
-
-    void Player::setup() {  
-      m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
-      m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 
     void Player::moveLeft() {

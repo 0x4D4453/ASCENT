@@ -1,6 +1,7 @@
 /* Main Include */
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Characters/TyrantStates/TyrantIdleState.h"
+#include "Animation/TyrantAnimation.h"
 
 /* Program Defined */
 #include "Utility/Constants.h"
@@ -11,7 +12,7 @@
 namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, EntityList* pPlayers)
-      : Enemy(spawnPosition)
+      : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
       , m_followDistance(128.f)
       , m_pState(new TyrantIdleState(this, pPlayers))
       , m_pPlayers(pPlayers)
@@ -23,7 +24,8 @@ namespace Entities {
       setSpeed(30.f);
       setKnockback(5.f);
 
-      m_scale = Constants::SCALE * 4.f;
+      setAnimation(new Animations::TyrantAnimation(this, 0.5f));
+      m_sprite.setHitbox({ 2.f, 5.f, 12.f, 11.f });
     }
 
     Tyrant::~Tyrant() {

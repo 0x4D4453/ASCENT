@@ -25,7 +25,7 @@ namespace Manager {
       if (knockback > m_maxForce)
         knockback = m_maxForce;
       
-      if (pOtherEntity->getPosition().x < pOwnEntity->getPosition().x)
+      if (pOtherEntity->getCenteredPosition().x < pOwnEntity->getCenteredPosition().x)
         pOtherEntity->setVelocity(sf::Vector2f(-knockback, -knockback));
       else
         pOtherEntity->setVelocity(sf::Vector2f(knockback, -knockback));

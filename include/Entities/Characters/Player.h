@@ -43,7 +43,6 @@ namespace Entities {
 
       private:
         virtual void update();
-        void setup();
         void moveLeft();
         void moveRight();
         void chargeJump();

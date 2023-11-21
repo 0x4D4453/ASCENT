@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Animation/Animation.h"
+#include "Utility/Constants.h"
 
 /* JSON Library */
 #include "nlohmann/json.hpp"
@@ -19,10 +20,12 @@ namespace Entities {
       
       protected:
         virtual void update() = 0;
+        virtual void setup();
         void recoverColor();
+        void setAnimation(Animations::Animation* animation);
       
       public:
-        Character();
+        Character(const float scale = Constants::SCALE, const int maxHealth = 3);
         virtual ~Character();
         const int getMaxHealthPoints() const;
         const int getHealthPoints() const;

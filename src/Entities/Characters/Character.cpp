@@ -34,7 +34,7 @@ namespace Entities {
     void Character::recoverColor() {
       sf::Color color = m_sprite.getColor();
 
-      if (color.a < 255)
+      if (color.r < 255)
         color += sf::Color(1000.f * m_dt, 0, 0);
 
       if (color.g < 255)

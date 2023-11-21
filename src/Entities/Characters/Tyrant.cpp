@@ -136,7 +136,7 @@ namespace Entities {
     }
 
     void Tyrant::update() {
-      if (!m_isMidAir && !m_isStaggered && m_healthPoints > 0) {
+      if (!m_isStaggered && m_healthPoints > 0) {
         movementPattern();
         m_pState->update(m_dt);
       }

@@ -18,18 +18,19 @@ namespace Entities {
         const float m_stompDelay;
         Player* m_pPlayer;
         float m_elapsedStompTime;
-        bool m_isStomping;
+        bool m_isCharging;
         bool m_isJumping;
 
       private:
         virtual void doAction();
         void definePlayer();
-        void followPlayer();
-        void checkStomp();
-        void chargeStomp();
+        void followPlayer(const float speedMultiplier = 1.f);
+        void stomping();
+        void checkJumpDistance();
+        void chargeJump();
         void jump();
         void checkLanding();
-        void setIsStomping(const bool is);
+        void setIsCharging(const bool is);
 
       public:
         TyrantFollowingState(Tyrant* pTyrant = NULL, EntityList* pPlayers = NULL);

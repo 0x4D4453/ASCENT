@@ -16,7 +16,7 @@ namespace Entities {
       , m_stompDelay(5.f)
       , m_pPlayer(NULL)
       , m_elapsedStompTime(0.f)
-      , m_isStomping(false)
+      , m_isCharging(false)
       , m_isJumping(false)
     {
       m_id = TyrantStateID::Following;
@@ -45,17 +45,19 @@ namespace Entities {
     }
 
     // Código altamente baseado no código do monitor Giovane
-    void TyrantFollowingState::followPlayer() {
+    void TyrantFollowingState::followPlayer(const float speedMultiplier) {
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
 
       if (playerPosition.x - m_pTyrant->getPosition().x > 0.f)
-        tyrantVelocity.x = m_pTyrant->getSpeed() * m_dt;
+        tyrantVelocity.x = m_pTyrant->getSpeed() * speedMultiplier * m_dt;
       else 
-        tyrantVelocity.x = -m_pTyrant->getSpeed() * m_dt;
+        tyrantVelocity.x = -m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
       m_pTyrant->setVelocity(tyrantVelocity);
+    }
 
+    void TyrantFollowingState::stomping() {
       int frame = m_pTyrant->getCurrentFrame();
       if (frame == Animations::TyrantAnimation::TyrantFrames::Walk2 || frame == Animations::TyrantAnimation::TyrantFrames::Walk4) {
         if (!m_viewShake.finished(0.3f))
@@ -65,7 +67,7 @@ namespace Entities {
       }
     }
 
-    void TyrantFollowingState::checkStomp() {
+    void TyrantFollowingState::checkJumpDistance() {
       if (m_elapsedStompTime < m_stompDelay)
         return;
 
@@ -75,14 +77,14 @@ namespace Entities {
       if (fabs(playerPosition.x - tyrantPosition.x) <= m_stompDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
         m_elapsedStompTime = 0.f;
         m_isReadyToChange = false;
-        setIsStomping(true);
+        setIsCharging(true);
       }
     }
 
-    void TyrantFollowingState::chargeStomp() {
+    void TyrantFollowingState::chargeJump() {
       m_elapsedStompTime += m_dt;
       if (m_elapsedStompTime >= m_totalStompTime) {
-        setIsStomping(false);
+        setIsCharging(false);
         jump();
 
         m_elapsedStompTime = 0.f;
@@ -96,8 +98,10 @@ namespace Entities {
     }
 
     void TyrantFollowingState::checkLanding() {
-      if (m_pTyrant->getIsMidAir())
+      if (m_pTyrant->getIsMidAir()) {
+        followPlayer(10.f);
         return;
+      }
 
       m_pTyrant->setIsLanding(true);
       if (!m_viewShake.finished(3.f)) {
@@ -110,35 +114,38 @@ namespace Entities {
       }
     }
 
-    void TyrantFollowingState::setIsStomping(const bool is) {
+    void TyrantFollowingState::setIsCharging(const bool is) {
       m_pTyrant->setIsCharging(is);
-      m_isStomping = is;
+      m_isCharging = is;
     }
 
     void TyrantFollowingState::movementPattern() {
-      if (m_isJumping) {
-        checkLanding();
+      if (m_isJumping || m_isCharging)
         return;
-      }
-
-      if (m_isStomping) {
-        chargeStomp();
-        return;
-      }
 
       definePlayer();
 
       if (!m_pPlayer)
         return;
 
-      m_elapsedStompTime += m_dt;
       followPlayer();
-      checkStomp();
+      stomping();
     }
 
 
     void TyrantFollowingState::doAction() {
+      if (m_isJumping) {
+        checkLanding();
+        return;
+      }
 
+      if (m_isCharging) {
+        chargeJump();
+        return;
+      }
+      
+      m_elapsedStompTime += m_dt;
+      checkJumpDistance();
     }
   }
 }

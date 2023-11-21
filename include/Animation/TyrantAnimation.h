@@ -24,12 +24,13 @@ namespace Animations {
       };
 
     private:
-      void changeFrame(const float deltaTime, int firstFrame, int lastFrame);
+      void changeFrame(const float deltaTime, TyrantFrames firstFrame, TyrantFrames lastFrame);
 
     public:
       TyrantAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~TyrantAnimation();
       void update(const float deltaTime);
+      const int getCurrentFrame() const;
   };
 }
 

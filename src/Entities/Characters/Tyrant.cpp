@@ -63,6 +63,10 @@ namespace Entities {
       return m_isCharging;
     }
 
+    const int Tyrant::getCurrentFrame() const {
+      return m_animation.getCurrentFrame();
+    }
+
     void Tyrant::movementPattern() {
       m_pState->movementPattern();
     }

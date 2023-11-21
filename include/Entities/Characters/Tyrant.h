@@ -30,6 +30,7 @@ namespace Entities {
 
         void changeState(TyrantStateID id);
         const bool getIsCharging() const;
+        const int getCurrentFrame() const;
 
         virtual void movementPattern();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

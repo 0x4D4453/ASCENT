@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Manager/GraphicsManager.h"
 #include "Entities/EntityList.h"
+#include "Utility/ViewShake.h"
 
 namespace Entities {
   namespace Characters {
@@ -25,6 +26,7 @@ namespace Entities {
         static const float m_dt;
         TyrantStateID m_id;
         TyrantStateID m_nextState;
+        ViewShake m_viewShake;
         Tyrant* m_pTyrant;
         EntityList* m_pPlayers;
         const float m_timeLimit;

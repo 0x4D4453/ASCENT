@@ -16,6 +16,7 @@ namespace Entities {
     TyrantState::TyrantState(Tyrant* pTyrant, EntityList* pPlayers, const float timeLimit)
       : m_id(TyrantStateID::Idle)
       , m_nextState(TyrantStateID::Following)
+      , m_viewShake(m_pGraphicsManager->getView())
       , m_pTyrant(pTyrant)
       , m_pPlayers(pPlayers)
       , m_timeLimit(timeLimit)

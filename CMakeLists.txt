@@ -23,7 +23,7 @@ add_executable(GOTY
     src/State/Pause/PauseObserver.cpp src/State/Pause/PauseSubject.cpp
     src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp src/Animation/TyrantAnimation.cpp
     src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp
-    src/Utility/CustomVector.cpp src/Utility/HitboxSprite.cpp src/Utility/Threads/Thread.cpp src/Utility/Threads/LoadingThread.cpp)
+    src/Utility/CustomVector.cpp src/Utility/HitboxSprite.cpp src/Utility/ViewShake.cpp src/Utility/Threads/Thread.cpp src/Utility/Threads/LoadingThread.cpp)
 target_include_directories(GOTY PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(GOTY PRIVATE sfml-graphics sfml-audio)
 target_compile_features(GOTY PRIVATE cxx_std_17)

@@ -53,6 +53,14 @@ namespace Entities {
         tyrantVelocity.x = -m_pTyrant->getSpeed() * m_dt;
 
       m_pTyrant->setVelocity(tyrantVelocity);
+
+      int frame = m_pTyrant->getCurrentFrame();
+      if (frame == Animations::TyrantAnimation::TyrantFrames::Walk1 || frame == Animations::TyrantAnimation::TyrantFrames::Walk3) {
+        if (!m_viewShake.finished(1.f))
+          m_viewShake.shake(m_dt, 20.f, 0.1f);
+      } else {
+        m_viewShake.reset();
+      }
     }
 
 

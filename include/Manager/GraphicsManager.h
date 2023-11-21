@@ -44,6 +44,7 @@ namespace Manager {
       void setViewCenter(float x, float y);
       void updateView(float x, float y);
       void resetView();
+      sf::View* getView();
       const sf::Vector2f getViewSize() const;
       const sf::Vector2f getViewCenter() const;
       const sf::Vector2f getViewCoordinates() const;

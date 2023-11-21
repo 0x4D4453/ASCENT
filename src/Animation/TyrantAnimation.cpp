@@ -16,7 +16,7 @@ namespace Animations {
 
   }
 
-  void TyrantAnimation::changeFrame(const float deltaTime, int firstFrame, int lastFrame) {
+  void TyrantAnimation::changeFrame(const float deltaTime, TyrantFrames firstFrame, TyrantFrames lastFrame) {
     m_totalTime += deltaTime;
     if (m_totalTime >= m_timePerFrame) {
       if (m_currentFrame < firstFrame || m_currentFrame > lastFrame)
@@ -38,10 +38,14 @@ namespace Animations {
     else if (pTyrant->getIsMidAir())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Jump);
     else if (m_pEntity->getVelocity().x == 0.f)
-      changeFrame(deltaTime, static_cast<int>(TyrantFrames::Idle1), static_cast<int>(TyrantFrames::Idle4));
+      changeFrame(deltaTime, TyrantFrames::Idle1, TyrantFrames::Idle4);
     else
-      changeFrame(deltaTime, static_cast<int>(TyrantFrames::Walk1), static_cast<int>(TyrantFrames::Walk4));
+      changeFrame(deltaTime, TyrantFrames::Walk1, TyrantFrames::Walk4);
 
     m_pEntity->setTextureRect(m_textureRect);
+  }
+
+  const int TyrantAnimation::getCurrentFrame() const {
+    return m_currentFrame;
   }
 }

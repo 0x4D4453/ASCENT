@@ -11,9 +11,9 @@ namespace Entities {
     TyrantShootingState::TyrantShootingState(Tyrant* pTyrant, Stages::Stage* pStage)
       : TyrantState(pTyrant, pStage, 10.f)
       , m_shootingSpots()
-      , m_timeBetweenShots(1.25f)
-      , m_shootingAngle(60.f)
-      , m_shootingSpeed(25.f)
+      , m_timeBetweenShots(0.5f)
+      , m_shootingAngle(M_PI / 3)
+      , m_shootingSpeed(5.f)
       , m_timeSinceLastShot(0.f)
       , m_currentSpot(0)
     {
@@ -36,7 +36,7 @@ namespace Entities {
           m_currentSpot = 0;
 
         sf::Vector2f position = sf::Vector2f(m_pTyrant->getPosition() + m_shootingSpots[m_currentSpot]);
-        float angle = m_shootingSpots[m_currentSpot].x > 0 ? m_shootingAngle : 180 - m_shootingAngle;
+        float angle = m_shootingSpots[m_currentSpot].x > 0 ? m_shootingAngle : M_PI - m_shootingAngle;
         m_pStage->spawnProjectile(Textures::Projectile, position, Constants::SCALE * 2.0f, m_shootingSpeed, angle);
 
         m_timeSinceLastShot = 0.f;

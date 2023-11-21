@@ -23,8 +23,7 @@ namespace Entities {
     setTextureID(textureID);
     setTexture(texture);
     setKnockback(0.5f);
-    setVelocity(sf::Vector2f(speed * cos(angle), speed * sin(angle)));
-
+    setVelocity(sf::Vector2f(speed * cos(angle), -speed * sin(angle)));
     setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
   }
 

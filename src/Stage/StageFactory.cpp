@@ -154,7 +154,7 @@ namespace Stages {
     for (it = entitiesData.begin(); it != entitiesData.end(); ++it) {
       position.x = (*it)["position"]["x"].template get<float>();
       position.y = (*it)["position"]["y"].template get<float>();
-      pEntity = m_entityFactory.createEntity((*it)["ID"].template get<EntityID>(), (*it)["textureID"].template get<Textures::ID>(), position);
+      pEntity = m_entityFactory.createEntity((*it)["ID"].template get<EntityID>(), (*it)["textureID"].template get<Textures::ID>(), position, m_pStage);
       pEntity->loadSave(*it);
       defineType(pEntity);
     }

@@ -5,7 +5,6 @@
 #include "Entities/Characters/Enemy.h"
 #include "Entities/EntityList.h"
 #include "Entities/Characters/TyrantStates/TyrantState.h"
-#include "Animation/TyrantAnimation.h"
 #include "Utility/Textures.h"
 
 /* JSON Library */
@@ -15,7 +14,6 @@ namespace Entities {
   namespace Characters {
     class Tyrant : public Enemy {
       private:
-        Animations::TyrantAnimation m_animation;
         TyrantState* m_pState;
         EntityList* m_pPlayers;
         bool m_isCharging;

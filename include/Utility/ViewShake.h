@@ -7,7 +7,6 @@
 class ViewShake {
   private:
     sf::View* m_view;
-    float m_backTrack;
     float m_elapsed;
     float m_totalTime;
     int m_direction;

@@ -30,7 +30,6 @@ namespace Animations {
       TyrantAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~TyrantAnimation();
       void update(const float deltaTime);
-      const int getCurrentFrame() const;
   };
 }
 

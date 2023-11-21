@@ -18,4 +18,8 @@ namespace Animations {
   Animation::~Animation() {
 
   }
+
+  const int Animation::getCurrentFrame() const {
+    return m_currentFrame;
+  }
 }

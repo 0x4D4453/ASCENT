@@ -19,12 +19,12 @@ namespace Animations {
   void TyrantAnimation::changeFrame(const float deltaTime, TyrantFrames firstFrame, TyrantFrames lastFrame) {
     m_totalTime += deltaTime;
     if (m_totalTime >= m_timePerFrame) {
+      m_currentFrame++;
       if (m_currentFrame < firstFrame || m_currentFrame > lastFrame)
         m_currentFrame = firstFrame;
 
       m_totalTime -= m_timePerFrame;
       m_textureRect.left = Constants::SPRITE_SIZE * m_currentFrame;
-      ++m_currentFrame;
     }
   }
 
@@ -43,9 +43,5 @@ namespace Animations {
       changeFrame(deltaTime, TyrantFrames::Walk1, TyrantFrames::Walk4);
 
     m_pEntity->setTextureRect(m_textureRect);
-  }
-
-  const int TyrantAnimation::getCurrentFrame() const {
-    return m_currentFrame;
   }
 }

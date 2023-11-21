@@ -22,10 +22,10 @@ namespace Entities {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
       setTexture(texture);
-      setSpeed(30.f);
+      setSpeed(25.f);
       setKnockback(5.f);
 
-      setAnimation(new Animations::TyrantAnimation(this, 0.5f));
+      setAnimation(new Animations::TyrantAnimation(this, 0.75f));
       m_sprite.setHitbox({ 4.f, 5.f, 8.f, 11.f });
 
       m_isKnockbackResistant = true;
@@ -64,7 +64,7 @@ namespace Entities {
     }
 
     const int Tyrant::getCurrentFrame() const {
-      return m_animation.getCurrentFrame();
+      return m_animation->getCurrentFrame();
     }
 
     void Tyrant::movementPattern() {

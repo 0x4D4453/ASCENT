@@ -5,6 +5,7 @@
 #include "Manager/GraphicsManager.h"
 #include "Entities/EntityList.h"
 #include "Utility/ViewShake.h"
+#include "Animation/TyrantAnimation.h"
 
 namespace Entities {
   namespace Characters {

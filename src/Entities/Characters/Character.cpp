@@ -35,13 +35,13 @@ namespace Entities {
       sf::Color color = m_sprite.getColor();
 
       if (color.r < 255)
-        color += sf::Color(1000.f * m_dt, 0, 0);
+        color += sf::Color(750.f * m_dt, 0, 0);
 
       if (color.g < 255)
-        color += sf::Color(0, 1000.f * m_dt, 0);
+        color += sf::Color(0, 750.f * m_dt, 0);
 
       if (color.b < 255)
-        color += sf::Color(0, 0, 1000.f * m_dt);
+        color += sf::Color(0, 0, 750.f * m_dt);
 
       m_sprite.setColor(color);
     }

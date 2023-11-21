@@ -9,7 +9,7 @@ namespace Entities {
     TyrantIdleState::TyrantIdleState(Tyrant* pTyrant, EntityList* pPlayers)
       : TyrantState(pTyrant, pPlayers, 10.f)
       , m_healing(0.75f)
-      , m_healCooldown(1.f)
+      , m_healCooldown(1.5f)
       , m_timeSinceHeal(0.f)
     {
       m_id = TyrantStateID::Idle;

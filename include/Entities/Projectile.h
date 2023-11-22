@@ -21,7 +21,6 @@ namespace Entities {
       const float m_angle;
       const float m_attack;
       Stages::Stage* m_pStage;
-      EntityList* m_pList;
       float m_distance;
       float m_timeElapsed;
       bool m_waitingDeletion;

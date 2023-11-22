@@ -17,7 +17,6 @@ namespace Entities {
     , m_angle(angle)
     , m_attack(1.f)
     , m_pStage(NULL)
-    , m_pList(NULL)
     , m_distance(0.f)
     , m_timeElapsed(0.f)
     , m_waitingDeletion(false)
@@ -35,7 +34,6 @@ namespace Entities {
 
   Projectile::~Projectile() {
     m_pStage = NULL;
-    m_pList = NULL;
   }
 
   void Projectile::autoRemove() {
@@ -90,7 +88,6 @@ namespace Entities {
 
   void Projectile::setStage(Stages::Stage* pStage) {
     m_pStage = pStage;
-    m_pList = pStage->getDynamicEntities();
   }
 
   void Projectile::exec() {

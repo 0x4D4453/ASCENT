@@ -238,6 +238,9 @@ void List<TL>::remove(TL element) {
   if (tmp == m_head)
     m_head = next;
 
+  if (tmp == m_tail)
+    m_tail = prev;
+
   if (next != NULL)
     next->setPrev(prev);
 

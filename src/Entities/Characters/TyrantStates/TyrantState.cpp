@@ -64,9 +64,10 @@ namespace Entities {
         m_pTyrant->changeState(id);
     }
 
-    void TyrantState::changeTyrantSpeed(const float speed) {
+    void TyrantState::changeTyrantSpeed(const float speed, const float maxSpeed, const float timePerFrame) {
       m_pTyrant->setSpeed(speed);
-      m_pTyrant->getAnimation()->setTimePerFrame(10.f / speed);
+      m_pTyrant->changeMaxSpeed(maxSpeed);
+      m_pTyrant->getAnimation()->setTimePerFrame(timePerFrame);
     }
 
     void TyrantState::definePlayer() {
@@ -87,14 +88,22 @@ namespace Entities {
     }
 
     // Código altamente baseado no código do monitor Giovane
-    void TyrantState::followPlayer(const float speedMultiplier) {
+    void TyrantState::followPlayer(const float speedMultiplier, const float maxSpeedMultiplier) {
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
+      const float maxSpeed = m_pTyrant->getMaxSpeed() * maxSpeedMultiplier;
 
-      if (playerPosition.x - m_pTyrant->getPosition().x > 0.f)
-        tyrantVelocity.x = m_pTyrant->getSpeed() * speedMultiplier * m_dt;
-      else 
-        tyrantVelocity.x = -m_pTyrant->getSpeed() * speedMultiplier * m_dt;
+      if (playerPosition.x - m_pTyrant->getPosition().x > 0.f) {
+        tyrantVelocity.x += m_pTyrant->getSpeed() * speedMultiplier * m_dt;
+
+        if (tyrantVelocity.x > maxSpeed)
+          tyrantVelocity.x = maxSpeed;
+      } else {
+        tyrantVelocity.x -= m_pTyrant->getSpeed() * speedMultiplier * m_dt;
+
+        if (tyrantVelocity.x < -maxSpeed)
+          tyrantVelocity.x = -maxSpeed;
+      } 
 
       m_pTyrant->setVelocity(tyrantVelocity);
     }

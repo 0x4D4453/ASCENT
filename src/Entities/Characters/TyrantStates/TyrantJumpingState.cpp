@@ -9,7 +9,7 @@ namespace Entities {
     TyrantJumpingState::TyrantJumpingState(Tyrant* pTyrant, Stages::Stage* pStage)
       : TyrantState(pTyrant, pStage, 25.f)
       , m_jumpDistance(750.f)
-      , m_jumpHeight(500.f)
+      , m_jumpHeight(700.f)
       , m_chargeTimeLimit(3.f)
       , m_chargeTimeElapsed(0.f)
       , m_isCharging(false)
@@ -18,7 +18,7 @@ namespace Entities {
     {
       m_id = TyrantStateID::Jumping;
       m_nextState = TyrantStateID::Shooting;
-      changeTyrantSpeed(25.f);
+      changeTyrantSpeed(25.f, 0.5f, 0.5f);
     }
 
     TyrantJumpingState::~TyrantJumpingState() {
@@ -53,7 +53,7 @@ namespace Entities {
 
     void TyrantJumpingState::checkLanding() {
       if (m_pTyrant->getIsMidAir()) {
-        followPlayer(20.f);
+        followPlayer(1.f, 7.5f);
         return;
       }
 

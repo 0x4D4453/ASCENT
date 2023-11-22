@@ -18,6 +18,7 @@ namespace Entities {
       private:
         Stages::Stage* m_pStage;
         TyrantState* m_pState;
+        float m_maxSpeed;
 
       private:
         virtual void update();
@@ -30,6 +31,8 @@ namespace Entities {
         TyrantState* getState() const;
         void changeState(TyrantStateID id);
         Animations::Animation* getAnimation();
+        const float getMaxSpeed() const;
+        void changeMaxSpeed(const float maxSpeed);
 
         virtual void movementPattern();
         virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);

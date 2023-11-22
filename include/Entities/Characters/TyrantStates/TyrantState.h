@@ -43,9 +43,9 @@ namespace Entities {
       protected:
         virtual void doAction() = 0;
         void changeState(TyrantStateID id);
-        void changeTyrantSpeed(const float speed);
+        void changeTyrantSpeed(const float speed, const float maxSpeed, const float timePerFrame);
         void definePlayer();
-        void followPlayer(const float speedMultiplier = 1.f);
+        void followPlayer(const float speedMultiplier = 1.f, const float maxSpeedMultiplier = 1.f);
         void stomp();
 
       public:

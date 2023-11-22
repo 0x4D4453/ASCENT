@@ -24,7 +24,7 @@ namespace Entities {
       m_id = TyrantStateID::Shooting;
       m_nextState = TyrantStateID::Idle;
       m_isReadyToChange = true;
-      changeTyrantSpeed(50.f);
+      changeTyrantSpeed(50.f, 1.2f, 0.3f);
 
       m_shootingSpots.push_back(sf::Vector2f(Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));
       m_shootingSpots.push_back(sf::Vector2f(-Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));

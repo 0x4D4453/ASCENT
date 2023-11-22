@@ -15,7 +15,7 @@ namespace Entities {
       m_id = TyrantStateID::Idle;
       m_nextState = TyrantStateID::Jumping;
       m_isReadyToChange = true;
-      changeTyrantSpeed(30.f);
+      changeTyrantSpeed(25.f, 0.5f, 0.8f);
     }
 
     TyrantIdleState::~TyrantIdleState() {

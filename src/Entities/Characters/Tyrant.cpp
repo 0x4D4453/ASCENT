@@ -19,6 +19,7 @@ namespace Entities {
       : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
       , m_pStage(pStage)
       , m_pState(new TyrantJumpingState(this, pStage))
+      , m_maxSpeed(0.5f)
     {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
@@ -69,6 +70,14 @@ namespace Entities {
 
     Animations::Animation* Tyrant::getAnimation() {
       return m_animation;
+    }
+
+    const float Tyrant::getMaxSpeed() const {
+      return m_maxSpeed;
+    }
+
+    void Tyrant::changeMaxSpeed(const float maxSpeed) {
+      m_maxSpeed = maxSpeed;
     }
 
     void Tyrant::movementPattern() {

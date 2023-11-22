@@ -15,17 +15,19 @@ namespace States {
   class OptionsState : public State {
     protected:
       std::vector<sf::Text*> m_options;
+      int m_currentOption;
+      const int m_maxOption;
       sf::Sound m_optionSound;
    
     protected:
       virtual void createOption(const char* optionName, const sf::Vector2f& position);
+      virtual void movePreviousOption();
+      virtual void moveNextOption();
       virtual void setup() = 0;
-      virtual void movePreviousOption() = 0;
-      virtual void moveNextOption() = 0;
       virtual void changeState() = 0;
 
     public:
-      OptionsState();
+      OptionsState(const int maxOption = 0);
       virtual ~OptionsState();
       virtual void keyPressed(const sf::Keyboard::Key key) = 0;
   };

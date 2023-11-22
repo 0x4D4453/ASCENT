@@ -15,7 +15,7 @@ namespace Stages {
 
   }
 
-  void FourthStage::setup() {
+  void FourthStage::createRandomEnemy(sf::Vector2f& position) {
     
   }
 }

@@ -78,4 +78,8 @@ namespace Entities {
     sf::Texture& textureRef = m_pTextureHolder->getResource(textureID);
     return new Projectile(textureID, textureRef, position, scale, speed, angle);
   }
+
+  sf::Texture& EntityFactory::getTexture(Textures::ID textureID) {
+    return m_pTextureHolder->getResource(textureID);
+  }
 }

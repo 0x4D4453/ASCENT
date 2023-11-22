@@ -9,12 +9,11 @@ namespace States { class GameState; }
 
 namespace Stages {
   class FourthStage : public Stage {
-    private:
-      virtual void setup();
-    
     public:
       FourthStage(States::GameState* pGameState, const std::string& mapTxt = Constants::STAGE_4);
       ~FourthStage();
+
+      virtual void createRandomEnemy(sf::Vector2f& position);
   };
 }
 

@@ -69,10 +69,6 @@ namespace Stages {
     return &m_dynamicEntities;
   }
 
-  void Stage::loadSaveGame() {
-    setup();
-  }
-
   void Stage::setEntityFactory(Entities::EntityFactory* pEntityFactory) {
     m_pEntityFactory = pEntityFactory;
   }

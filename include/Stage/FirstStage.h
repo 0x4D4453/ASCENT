@@ -3,6 +3,8 @@
 
 /* Program Defined */
 #include "Stage/Stage.h"
+#include "Entities/Characters/Fly.h"
+#include "Entities/Characters/Goomba.h"
 
 /* Forward Declaration */
 namespace States { class GameState; }
@@ -10,11 +12,24 @@ namespace States { class GameState; }
 namespace Stages {
   class FirstStage : public Stage {
     private:
-      virtual void setup();
+      Entities::Characters::Fly* m_pFly;
+      Entities::Characters::Goomba* m_pGoomba;
+      const int m_maxFlyInstances;
+      const int m_maxGoombaInstances;
+      const int m_flyChance;
+      const int m_goombaChance;
+      int m_flyNumber;
+      int m_goombaNumber;
+
+    private:
+      virtual void createFly(sf::Vector2f& position);
+      virtual void createGoomba(sf::Vector2f& position);
     
     public:
       FirstStage(States::GameState* pGameState, const std::string& mapTxt = Constants::STAGE_1);
       ~FirstStage();
+
+      virtual void createRandomEnemy(sf::Vector2f& position);
   };
 }
 

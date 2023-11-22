@@ -44,7 +44,6 @@ namespace Stages {
       sf::Music m_bgMusic;
 
     protected:
-      virtual void setup() = 0;
       void applyPhysics(Entities::Entity* pEntity);
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
@@ -66,11 +65,12 @@ namespace Stages {
       EntityList* getStaticEntities();
       EntityList* getDynamicEntities();
 
+      virtual void createRandomEnemy(sf::Vector2f& position) = 0;
+
       void setEntityFactory(Entities::EntityFactory* pEntityFactory);
       void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
       void addToDeletionList(Entities::Entity* pEntity);
       void setPaused(const bool paused);
-      void loadSaveGame();
       void saveGame();
       // virtual void exec();
       void exec();

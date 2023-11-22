@@ -15,7 +15,6 @@ Game::Game()
   , m_pStateStack(States::StateStack::getInstance())
   , m_pContext(Context::getInstance())
 {
-  srand(time(NULL));
   m_pStateStack->pushState(States::StateType::Menu);
   run();
 }

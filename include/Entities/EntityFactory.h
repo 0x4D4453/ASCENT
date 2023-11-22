@@ -26,6 +26,7 @@ namespace Entities {
       void setSoundHolder(ResourceHolder<Sounds::ID, sf::SoundBuffer>* pSoundHolder);
       Entity* createEntity(Entities::EntityID entityID, Textures::ID textureID, sf::Vector2f& position, Stages::Stage* pStage = NULL);
       Projectile* createProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
+      sf::Texture& getTexture(Textures::ID textureID);
   };
 }
 

@@ -17,6 +17,7 @@ namespace States {
     : m_thread(newGame)
     , m_loadingText("Loading...", m_pContext->getFont(Fonts::Monogram))
   {
+    m_pGraphicsManager->resetView();
     m_loadingText.setFillColor(Constants::DEFAULT_COLOR);
     m_loadingText.setCharacterSize(80.f);
     m_loadingText.setPosition(Constants::WINDOW_WIDTH - 350.f, Constants::WINDOW_HEIGHT - 150.f);

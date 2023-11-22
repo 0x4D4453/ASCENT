@@ -3,18 +3,19 @@
 
 /* Program Defined */
 #include "Manager/Collision/CollisionStrategy.h"
+#include "Utility/Constants.h"
 
 namespace Manager {
   namespace Collision {
     class DefaultCollision : public CollisionStrategy {
-      private:
+      protected:
         const float m_friction;
 
-      private:
-        void applyFriction(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, sf::Vector2f* velocity);
+      protected:
+        sf::Vector2f getFriction(sf::Vector2f velocity);
 
       public:
-        DefaultCollision();
+        DefaultCollision(const float friction = Constants::DRAG * 15.0f);
         ~DefaultCollision();
         
         virtual void collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);

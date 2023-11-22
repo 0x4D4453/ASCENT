@@ -12,6 +12,7 @@ namespace Entities {
 
       setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::Default);
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
+      setCollisionStrategy(EntityTag::ProjectileTag, Manager::Collision::StrategyId::BounceCollision);
     }
 
     Obstacle::~Obstacle() {

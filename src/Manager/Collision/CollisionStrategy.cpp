@@ -10,8 +10,8 @@ namespace Manager {
   namespace Collision {
     const float CollisionStrategy::m_dt(Constants::FIXED_STEP);
 
-    CollisionStrategy::CollisionStrategy(const float m_delay)
-      : m_delay(m_delay)
+    CollisionStrategy::CollisionStrategy(const float delay)
+      : m_delay(delay)
     {
 
     }

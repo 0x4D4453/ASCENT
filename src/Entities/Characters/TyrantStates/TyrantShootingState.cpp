@@ -9,13 +9,13 @@
 namespace Entities {
   namespace Characters {
     TyrantShootingState::TyrantShootingState(Tyrant* pTyrant, Stages::Stage* pStage)
-      : TyrantState(pTyrant, pStage, 20.f)
+      : TyrantState(pTyrant, pStage, 20.f, 3.f)
       , m_shootingSpots()
-      , m_timeBetweenShots(0.25f)
+      , m_timeBetweenShots(1.2f)
       , m_shootingAngle(M_PI / 4)
       , m_angleRange(M_PI / 6)
-      , m_shootingSpeed(7.f)
-      , m_shootingTimeLimit(5.f)
+      , m_shootingSpeed(10.f)
+      , m_shootingTimeLimit(12.f)
       , m_shootingTimeElapsed(0.f)
       , m_timeSinceLastShot(0.f)
       , m_currentSpot(0)
@@ -31,7 +31,7 @@ namespace Entities {
     }
 
     TyrantShootingState::~TyrantShootingState() {
-
+      m_shootingSpots.clear();
     }
 
     void TyrantShootingState::shoot() {

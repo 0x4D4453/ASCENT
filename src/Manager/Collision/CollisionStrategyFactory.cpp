@@ -5,6 +5,7 @@
 #include "Manager/Collision/NoCollision.h"
 #include "Manager/Collision/DefaultCollision.h"
 #include "Manager/Collision/KnockbackCollision.h"
+#include "Manager/Collision/BounceCollision.h"
 
 namespace Manager {
   namespace Collision {
@@ -46,6 +47,9 @@ namespace Manager {
           break;
         case StrategyId::KnockbackCollision:
           strategy = new KnockbackCollision();
+          break;
+        case StrategyId::BounceCollision:
+          strategy = new BounceCollision();
           break;
         default:
           strategy = new NoCollision();

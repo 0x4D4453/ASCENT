@@ -16,17 +16,20 @@ namespace Stages { class Stage; }
 namespace Entities {
   class Projectile : public Entity {
     private:
+      const float m_timeLimit;
       const float m_maxRange;
       const float m_angle;
       const float m_attack;
       Stages::Stage* m_pStage;
       EntityList* m_pList;
       float m_distance;
+      float m_timeElapsed;
       bool m_waitingDeletion;
 
     private:
       void autoRemove();
       void checkOutOfBounds();
+      void checkTimeLimit();
       void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
       void damagePlayer(Characters::Player* pPlayer);
     

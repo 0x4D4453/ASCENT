@@ -12,12 +12,14 @@
 namespace Entities {
   Projectile::Projectile(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, const float scale, const float speed, const float angle) 
     : Entity(position, scale, speed)
+    , m_timeLimit(5.f)
     , m_maxRange(500.f)
     , m_angle(angle)
     , m_attack(1.f)
     , m_pStage(NULL)
     , m_pList(NULL)
     , m_distance(0.f)
+    , m_timeElapsed(0.f)
     , m_waitingDeletion(false)
   {
     setEntityId(EntityID::ProjectileE);
@@ -28,6 +30,7 @@ namespace Entities {
     setKnockback(0.5f);
     setVelocity(sf::Vector2f(speed * cos(angle), -speed * sin(angle)));
     setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
+    m_sprite.setHitbox({ 4.f, 4.f, 8.f, 8.f });
   }
 
   Projectile::~Projectile() {
@@ -44,9 +47,15 @@ namespace Entities {
 
   void Projectile::checkOutOfBounds() {
     CustomVector vector(m_velocity);
-    m_distance += vector.getMagnitude();
+    m_distance += vector.getMagnitude() * m_dt;
 
     if (m_distance >= m_maxRange)
+      autoRemove();
+  }
+
+  void Projectile::checkTimeLimit() {
+    m_timeElapsed += m_dt;
+    if (m_timeElapsed >= m_timeLimit)
       autoRemove();
   }
 
@@ -57,8 +66,10 @@ namespace Entities {
         break;
       case EntityTag::EnemyTag:
         break;
+      // case EntityTag::ObstacleTag:
+      //   autoRemove();
+        break;
       default:
-        autoRemove();
         break;
     }
   }
@@ -85,6 +96,7 @@ namespace Entities {
   void Projectile::exec() {
     move();
     checkOutOfBounds();
+    checkTimeLimit();
   }
 
   void Projectile::save(nlohmann::ordered_json& jsonData) {

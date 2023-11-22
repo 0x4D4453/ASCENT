@@ -8,9 +8,9 @@
 
 namespace Manager {
   namespace Collision {
-    DefaultCollision::DefaultCollision()
+    DefaultCollision::DefaultCollision(const float friction)
       : CollisionStrategy(0)
-      , m_friction(Constants::DRAG * 15.0f)
+      , m_friction(friction)
     {
 
     }
@@ -19,18 +19,18 @@ namespace Manager {
 
     }
 
-    void DefaultCollision::applyFriction(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, sf::Vector2f* velocity) {
-      const float speed = velocity->x > 0 ? velocity->x : -velocity->x;
+    sf::Vector2f DefaultCollision::getFriction(sf::Vector2f velocity) {
+      const float speed = fabs(velocity.x);
 
-      if (velocity->x > 0)
-        velocity->x -= m_friction * m_dt;
-      else if (velocity->x < 0)
-        velocity->x += m_friction * m_dt;
+      if (velocity.x > 0)
+        velocity.x -= m_friction * m_dt;
+      else if (velocity.x < 0)
+        velocity.x += m_friction * m_dt;
 
       if (speed < 0.1f)
-        velocity->x = 0.f;
-
-      pOtherEntity->move(pOwnEntity->getVelocity());
+        velocity.x = 0.f;
+      
+      return velocity;
     }
 
     void DefaultCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
@@ -46,7 +46,9 @@ namespace Manager {
             velocity.y = 0.f;
         } else {
           if (pOtherEntity->getPosition().y <= pOwnEntity->getPosition().y) {
-            applyFriction(pOwnEntity, pOtherEntity, &velocity);
+            velocity = getFriction(velocity);
+            pOtherEntity->move(pOwnEntity->getVelocity());
+            pOtherEntity->setIsStaggered(false);
             velocity.y = 0.f;
           }
         }

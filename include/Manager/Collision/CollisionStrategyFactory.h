@@ -13,6 +13,7 @@ namespace Manager {
       Default,
       NoCollision,
       KnockbackCollision,
+      BounceCollision,
     };
 
     class CollisionStrategyFactory {

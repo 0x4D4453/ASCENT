@@ -23,6 +23,8 @@ namespace States {
     Game,
     Continue,
     Pause,
+    EndStage,
+    SaveScore,
     Ranking,
     TotalStates
   };
@@ -45,6 +47,7 @@ namespace States {
       virtual void keyPressed(const sf::Keyboard::Key key) = 0;
       virtual void keyReleased(const sf::Keyboard::Key key);
       virtual void lostFocus();
+      virtual void textEntered(const char character);
       virtual void exec() = 0;
   };
 }

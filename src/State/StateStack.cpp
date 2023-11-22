@@ -9,6 +9,8 @@
 #include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
 #include "State/StageSelectState.h"
+#include "State/EndStageState.h"
+#include "State/SaveScoreState.h"
 #include "State/RankingState.h"
 
 /* Standard Library */
@@ -48,6 +50,12 @@ namespace States {
         break;
       case (StateType::Pause):
         state = new PauseState(static_cast<GameState*>(pState));
+        break;
+      case (StateType::EndStage):
+        state = new EndStageState(static_cast<GameState*>(pState));
+        break;
+      case (StateType::SaveScore):
+        state = new SaveScoreState;
         break;
       case (StateType::Ranking):
         state = new RankingState();

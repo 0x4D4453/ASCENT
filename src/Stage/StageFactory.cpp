@@ -9,6 +9,7 @@
 #include "Stage/ThirdStage.h"
 #include "Stage/FourthStage.h"
 #include "Stage/Stage.h"
+#include "State/GameState.h"
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Manager/GraphicsManager.h"
@@ -80,19 +81,19 @@ namespace Stages {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
-  Stage* StageFactory::createStage(Stages::ID stageID) {
+  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID) {
     switch (stageID) {
       case Stage1:
-        m_pStage = new FirstStage;
+        m_pStage = new FirstStage(pGameState);
         break;
       case Stage2:
-        m_pStage = new SecondStage;
+        m_pStage = new SecondStage(pGameState);
         break;
       case Stage3:
-        m_pStage = new ThirdStage;
+        m_pStage = new ThirdStage(pGameState);
         break;
       case Stage4:
-        m_pStage = new FourthStage;
+        m_pStage = new FourthStage(pGameState);
         break;
       default: break;
     }

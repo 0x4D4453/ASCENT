@@ -40,4 +40,8 @@ namespace States {
   void State::lostFocus() {
     
   }
+
+  void State::textEntered(const char character) {
+    
+  }
 }

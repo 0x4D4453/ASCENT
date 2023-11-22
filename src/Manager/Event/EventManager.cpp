@@ -41,6 +41,9 @@ namespace Manager {
           case sf::Event::LostFocus:
             notifyLostFocus();
             break;
+          case sf::Event::TextEntered:
+            notifyTextEntered(m_event.text.unicode);
+            break;
           default:
             break;
         }

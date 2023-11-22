@@ -21,7 +21,7 @@ namespace States {
     if (!newGame)
       loadStageData();
 
-    m_pStage = m_stageFactory.createStage(m_pContext->getStage());
+    m_pStage = m_stageFactory.createStage(this, m_pContext->getStage());
   }
 
   GameState::~GameState() {
@@ -72,6 +72,11 @@ namespace States {
     m_pGraphicsManager->setStageSize(stageData["size"]["y"].template get<float>(), stageData["size"]["x"].template get<float>());
 
     stageStream.close();
+  }
+
+  void GameState::gameOver() {
+    m_pStateStack->pushState(StateType::EndStage, static_cast<State*>(this));
+    setPaused(true);
   }
 
   void GameState::exec() {

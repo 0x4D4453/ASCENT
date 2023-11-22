@@ -29,6 +29,7 @@ namespace Manager {
         virtual void notifyKeyPressed(const sf::Keyboard::Key key);
         virtual void notifyKeyReleased(const sf::Keyboard::Key key);
         virtual void notifyLostFocus();
+        virtual void notifyTextEntered(const char character);
     };
   };
 }

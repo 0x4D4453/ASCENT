@@ -66,7 +66,7 @@ namespace Entities {
 
     void TyrantState::changeTyrantSpeed(const float speed) {
       m_pTyrant->setSpeed(speed);
-      m_pTyrant->getAnimation()->setTimePerFrame(12.5f / speed);
+      m_pTyrant->getAnimation()->setTimePerFrame(10.f / speed);
     }
 
     void TyrantState::definePlayer() {

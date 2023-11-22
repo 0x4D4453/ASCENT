@@ -13,7 +13,7 @@
 
 namespace States {
   StageSelectState::StageSelectState()
-    : m_currentOption(Stage1)
+    : OptionsState(static_cast<int>(TotalOptions))
     , m_leftArrow(m_pContext->getTexture(Textures::LeftArrow))
     , m_rightArrow(m_pContext->getTexture(Textures::RightArrow))
     , m_stageImages()
@@ -57,22 +57,6 @@ namespace States {
     createOption("Factory", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
     createOption("Challenge", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
     createOption("Tyrant Fight", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
-  }
-
-  void StageSelectState::movePreviousOption() {
-    if (static_cast<int>(m_currentOption - 1) < static_cast<int>(Stage1))
-      return;
-    
-    m_optionSound.play();
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
-  }
-
-  void StageSelectState::moveNextOption() {
-    if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
-      return;
-    
-    m_optionSound.play();
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
   }
 
   void StageSelectState::changeState() {

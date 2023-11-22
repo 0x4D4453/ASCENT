@@ -12,7 +12,7 @@
 
 namespace States {
   PlayerSelectState::PlayerSelectState()
-    : m_currentOption(OnePlayer)
+    : OptionsState(static_cast<int>(TotalOptions))
     , m_sprites()
   {
     setType(StateType::PlayerSelect);
@@ -41,12 +41,13 @@ namespace States {
     m_sprites[0].setPosition(330.f, distanceFromTop + 50.f);
     m_sprites[1].setPosition(Constants::WINDOW_WIDTH - 350.f, distanceFromTop + 50.f);
 
+    m_currentOption = static_cast<int>(OnePlayer);
     m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
     m_sprites[m_currentOption].setColor(Constants::SELECTION_COLOR);
   }
 
   void PlayerSelectState::movePreviousOption() {
-    if (static_cast<int>(m_currentOption - 1) < static_cast<int>(OnePlayer))
+    if (m_currentOption - 1 < static_cast<int>(OnePlayer))
       return;
 
     m_optionSound.play();
@@ -55,11 +56,11 @@ namespace States {
     m_options[m_currentOption - 1]->setFillColor(Constants::SELECTION_COLOR);
     m_sprites[m_currentOption - 1].setColor(Constants::SELECTION_COLOR);
 
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
+    m_currentOption = m_currentOption - 1;
   }
 
   void PlayerSelectState::moveNextOption() {
-    if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
+    if (m_currentOption + 1 >= static_cast<int>(TotalOptions))
       return;
     
     m_optionSound.play();
@@ -68,7 +69,7 @@ namespace States {
     m_options[m_currentOption + 1]->setFillColor(Constants::SELECTION_COLOR);
     m_sprites[m_currentOption + 1].setColor(Constants::SELECTION_COLOR);
 
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
+    m_currentOption = m_currentOption + 1;
   }
 
   void PlayerSelectState::changeState() {
@@ -100,7 +101,7 @@ namespace States {
 
   void PlayerSelectState::exec() {
     std::vector<sf::Text*>::iterator it = m_options.begin();
-    
+
     while (it != m_options.end()) {
       m_pGraphicsManager->draw(*(*it));
       ++it;

@@ -14,7 +14,7 @@
 
 namespace States {
   MenuState::MenuState()
-    : m_currentOption(NewGame)
+    : OptionsState(static_cast<int>(TotalOptions))
   { 
     setType(StateType::Menu);
     m_pGraphicsManager->resetView();
@@ -64,28 +64,6 @@ namespace States {
         break;
       default: break;
     }
-  }
-
-  void MenuState::movePreviousOption() {
-    if (static_cast<int>(m_currentOption - 1) < static_cast<int>(NewGame))
-      return;
-    
-    m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
-    m_options[m_currentOption - 1]->setFillColor(Constants::SELECTION_COLOR);
-
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) - 1);
-  }
-
-  void MenuState::moveNextOption() {
-    if (static_cast<int>(m_currentOption + 1) >= static_cast<int>(TotalOptions))
-      return;
-    
-    m_optionSound.play();
-    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
-    m_options[m_currentOption + 1]->setFillColor(Constants::SELECTION_COLOR);
-
-    m_currentOption = static_cast<Options>(static_cast<int>(m_currentOption) + 1);
   }
 
   void MenuState::changeState() {

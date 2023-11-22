@@ -7,8 +7,10 @@
 #include "Utility/Sounds.h"
 
 namespace States {
-  OptionsState::OptionsState() 
+  OptionsState::OptionsState(const int maxOption) 
     : m_options()
+    , m_currentOption(0)
+    , m_maxOption(maxOption)
   {
     m_optionSound.setBuffer(m_pContext->getSound(Sounds::menuSound));
     m_optionSound.setVolume(10);
@@ -42,5 +44,27 @@ namespace States {
     pText->setPosition(position);
 
     m_options.push_back(pText);
+  }
+
+  void OptionsState::movePreviousOption() {
+    if (static_cast<int>(m_currentOption - 1) < 0)
+      return;
+    
+    m_optionSound.play();
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption - 1]->setFillColor(Constants::SELECTION_COLOR);
+
+    m_currentOption = m_currentOption - 1;
+  }
+  
+  void OptionsState::moveNextOption() {
+    if (static_cast<int>(m_currentOption + 1) >= m_maxOption)
+      return;
+    
+    m_optionSound.play();
+    m_options[m_currentOption]->setFillColor(Constants::DEFAULT_COLOR);
+    m_options[m_currentOption + 1]->setFillColor(Constants::SELECTION_COLOR);
+
+    m_currentOption = m_currentOption + 1;
   }
 }

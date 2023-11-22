@@ -14,7 +14,6 @@ namespace States {
       };
 
     private:
-      Options m_currentOption;
       std::vector<sf::Sprite> m_sprites;
     
     private:

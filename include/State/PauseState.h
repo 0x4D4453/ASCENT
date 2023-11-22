@@ -2,7 +2,7 @@
 #define PAUSESTATE_H
 
 /* Main Include */
-#include "State/OptionsState.h"
+#include "State/InStageState.h"
 
 /* SFML Library */
 #include <SFML/Graphics.hpp>
@@ -15,7 +15,7 @@
 namespace States { class GameState; }
 
 namespace States {
-  class PauseState : public OptionsState, public sf::NonCopyable {
+  class PauseState : public InStageState, public sf::NonCopyable {
     private:
       enum Options {
         Continue,
@@ -26,22 +26,13 @@ namespace States {
       };
 
     private:
-      States::GameState* m_pGameState;
-      sf::RectangleShape m_background;
-      sf::Text m_title;
-      Options m_currentOption;
-    
-    private:
       void setup();
-      void movePreviousOption();
-      void moveNextOption();
       void changeState();
     
     public:
       PauseState(States::GameState* pGameState);
       ~PauseState();
       virtual void keyPressed(const sf::Keyboard::Key key);
-      void exec();
   };
 }
 

@@ -19,7 +19,6 @@ namespace States {
       };
 
     private:
-      Options m_currentOption;
       sf::Sprite m_leftArrow;
       sf::Sprite m_rightArrow;
       std::vector<sf::Sprite> m_stageImages;
@@ -27,8 +26,6 @@ namespace States {
 
     private:
       void setup();
-      void movePreviousOption();
-      void moveNextOption();
       void changeState();
 
     public:

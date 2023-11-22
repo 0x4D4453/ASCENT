@@ -6,6 +6,7 @@
 #include "Entities/EntityFactory.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
+#include "State/GameState.h"
 #include "Utility/Constants.h"
 #include "Utility/List.h"
 #include "Utility/Sounds.h"
@@ -25,8 +26,9 @@ namespace Stages {
   Manager::GraphicsManager* Stage::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
   const float Stage::m_dt(Stage::m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
 
-  Stage::Stage(const std::string& mapTxt) 
+  Stage::Stage(States::GameState* pGameState, const std::string& mapTxt) 
     : m_collisionManager()
+    , m_pGameState(pGameState)
     , m_mapTxt(mapTxt)
     , m_players()
     , m_staticEntities()
@@ -162,6 +164,25 @@ namespace Stages {
       ++it;
     }
   }
+
+  void Stage::updateView() {
+    Entities::Characters::Player* player1 = static_cast<Entities::Characters::Player*>(*(m_players.first()));
+    m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
+  }
+
+  void Stage::verifyGameOver() {
+    bool gameOver = true;
+    List<Entities::Entity*>::Iterator it;
+    
+    for (it = m_players.first(); it != m_players.last(); ++it) {
+      Entities::Characters::Player* player = static_cast<Entities::Characters::Player*>(*it);
+      if (player->getHealthPoints() > 0)
+        gameOver = false;
+    }
+
+    if (gameOver)
+      m_pGameState->gameOver();
+  }
   
   void Stage::update() {
     sf::Time* timeSinceLastUpdate = m_pGraphicsManager->getTimeSinceLastUpdate();
@@ -174,8 +195,8 @@ namespace Stages {
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 
-    Entities::Characters::Player* player1 = static_cast<Entities::Characters::Player*>(*(m_players.first()));
-    m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
+    updateView();
+    verifyGameOver();
   }
 
   void Stage::setPaused(const bool paused) {

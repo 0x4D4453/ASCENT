@@ -66,5 +66,15 @@ namespace Manager {
         it++;
       }
     }
+
+    void EventSubject::notifyTextEntered(const char character) {
+      std::list<EventObserver*>::iterator it = m_observers.begin();
+
+      while (it != m_observers.end()) {
+        if ((*it)->getIsActive())
+          (*it)->textEntered(character);
+        it++;
+      }
+    }
   };
 }

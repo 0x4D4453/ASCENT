@@ -25,6 +25,7 @@ namespace States {
       void setPaused(const bool paused);
       void saveGame();
       void loadStageData();
+      void gameOver();
       void exec();
   };
 }

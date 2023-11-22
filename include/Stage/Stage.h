@@ -17,6 +17,7 @@
 /* Forward Declaration */
 namespace Manager { class GraphicsManager; }
 namespace Entities { class EntityFactory; }
+namespace States { class GameState; }
 
 namespace Stages {
   enum ID {
@@ -32,6 +33,7 @@ namespace Stages {
       static const float m_dt;
       static Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Collision::CollisionManager m_collisionManager;
+      States::GameState* m_pGameState;
       Entities::EntityFactory* m_pEntityFactory;
       std::string m_mapTxt;
       EntityList m_players;
@@ -46,13 +48,15 @@ namespace Stages {
       void applyPhysics(Entities::Entity* pEntity);
       void drawEntities(EntityList& entityList);
       void updateEntities(EntityList& entityList);
+      void updateView();
+      void verifyGameOver();
       void update();
       void savePlayerData();
       void saveEntitiesData();
       void deleteEntitiesInQueue();
     
     public:
-      Stage(const std::string& mapTxt);
+      Stage(States::GameState* pGameState, const std::string& mapTxt);
       ~Stage();
 
       const std::string& getMapTxt() const; 

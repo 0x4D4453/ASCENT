@@ -4,13 +4,16 @@
 /* Program Defined */
 #include "Stage/Stage.h"
 
+/* Forward Declaration */
+namespace States { class GameState; }
+
 namespace Stages {
   class FirstStage : public Stage {
     private:
       virtual void setup();
     
     public:
-      FirstStage(const std::string& mapTxt = Constants::STAGE_1);
+      FirstStage(States::GameState* pGameState, const std::string& mapTxt = Constants::STAGE_1);
       ~FirstStage();
   };
 }

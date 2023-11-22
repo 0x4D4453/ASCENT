@@ -1,9 +1,13 @@
 /* Main Include */
 #include "Stage/SecondStage.h"
 
+/* Program Defined */
+#include "State/GameState.h"
+
+
 namespace Stages {
-  SecondStage::SecondStage(const std::string& mapTxt) 
-    : Stage(mapTxt)
+  SecondStage::SecondStage(States::GameState* pGameState, const std::string& mapTxt) 
+    : Stage(pGameState, mapTxt)
   {
 
   }

@@ -44,7 +44,7 @@ namespace Stages {
       StageFactory(const bool newGame = true, const bool multiplayer = false);
       ~StageFactory();
 
-      Stage* createStage(Stages::ID stageID);
+      Stage* createStage(States::GameState* pGameState, Stages::ID stageID);
   };
 }
 

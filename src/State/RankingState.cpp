@@ -89,15 +89,12 @@ namespace States {
     int i = 0;
     json::iterator it = scoresData["scores"].begin();
 
-    while (it != scoresData["scores"].end()) {
+    for (int i = 0; i < 5 && it != scoresData["scores"].end(); ++i, ++it) {
       std::string name = (*it)["name"];
       int score = (*it)["score"];
 
       m_names[i].setString(name);
       m_scores[i].setString(std::to_string(score));
-
-      ++i;
-      ++it;
     }
   }
 

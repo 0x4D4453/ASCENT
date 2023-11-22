@@ -45,11 +45,15 @@ class List {
         bool operator!=(const Iterator& it);
     };
 
+  private:
+    Element<TL>* search(TL element);
+
   public:
     List();
     ~List();
     void pushBack(TL element);
     void remove(TL element);
+    bool in(TL element);
     Element<TL>* getHead() const;
     Element<TL>* getTail() const;
 };
@@ -94,15 +98,13 @@ void List<TL>::Element<TE>::setData(TE data) {
 template <class TL>
 template <class TE>
 void List<TL>::Element<TE>::setNext(Element<TE>* next) {
-  if (next != NULL)
-    m_next = next;
+  m_next = next;
 }
 
 template <class TL>
 template <class TE>
 void List<TL>::Element<TE>::setPrev(Element<TE>* prev) {
-  if (prev != NULL)
-    m_prev = prev;
+  m_prev = prev;
 }
 
 template <class TL>
@@ -191,6 +193,19 @@ List<TL>::~List() {
 }
 
 template <class TL>
+List<TL>::Element<TL>* List<TL>::search(TL element) {
+  Element<TL>* tmp = m_head;
+
+  while (tmp != NULL) {
+    if (tmp->getData() == element)
+      return tmp;
+    tmp = tmp->getNext();
+  }
+
+  return NULL;
+}
+
+template <class TL>
 void List<TL>::pushBack(TL element) {
   Element<TL>* tmp = new Element<TL>;
 
@@ -213,25 +228,27 @@ void List<TL>::pushBack(TL element) {
 
 template <class TL>
 void List<TL>::remove(TL element) {
-  Element<TL>* tmp = m_head;
-
-  while (tmp != NULL && tmp->getData() != element)
-    tmp = tmp->getNext();
-
+  Element<TL>* tmp = search(element);
   if (tmp == NULL)
     return;
-  
+
   Element<TL>* prev = tmp->getPrev();
   Element<TL>* next = tmp->getNext();
   
   if (tmp == m_head)
     m_head = next;
 
-  if (prev != NULL)
-    prev->setPrev(next);
-
   if (next != NULL)
-    next->setNext(next);
+    next->setPrev(prev);
+
+  if (prev != NULL)
+    prev->setNext(next);
+}
+
+template <class TL>
+bool List<TL>::in(TL element) {
+  Element<TL>* tmp = search(element);
+  return tmp != NULL;
 }
 
 template <class TL>

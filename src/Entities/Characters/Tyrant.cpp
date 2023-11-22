@@ -18,7 +18,7 @@ namespace Entities {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
       : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
       , m_pStage(pStage)
-      , m_pState(new TyrantJumpingState(this, pStage))
+      , m_pState(new TyrantShootingState(this, pStage))
       , m_maxSpeed(0.5f)
     {
       setEntityId(EntityID::TyrantE);

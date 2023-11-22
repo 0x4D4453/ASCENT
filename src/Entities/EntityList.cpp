@@ -30,6 +30,10 @@ void EntityList::remove(Entities::Entity* pEntity) {
   m_entities.remove(pEntity);
 }
 
+bool EntityList::in(Entities::Entity* pEntity) {
+  return m_entities.in(pEntity);
+}
+
 List<Entities::Entity*>::Iterator EntityList::first() {
   return m_entities.getHead();
 }

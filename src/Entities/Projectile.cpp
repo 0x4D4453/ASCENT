@@ -2,6 +2,7 @@
 #include "Entities/Projectile.h"
 
 /* Program Defined */
+#include "Stage/Stage.h"
 #include "Utility/Constants.h"
 #include "Utility/Textures.h"
 #include "Utility/CustomVector.h"
@@ -14,8 +15,10 @@ namespace Entities {
     , m_maxRange(500.f)
     , m_angle(angle)
     , m_attack(1.f)
+    , m_pStage(NULL)
     , m_pList(NULL)
     , m_distance(0.f)
+    , m_waitingDeletion(false)
   {
     setEntityId(EntityID::ProjectileE);
     setEntityTag(EntityTag::ProjectileTag);
@@ -28,14 +31,15 @@ namespace Entities {
   }
 
   Projectile::~Projectile() {
+    m_pStage = NULL;
     m_pList = NULL;
   }
 
   void Projectile::autoRemove() {
-    // if (m_pList)
-    //   m_pList->remove(this);
-    
-    // delete this;
+    if (!m_waitingDeletion)
+      m_pStage->addToDeletionList(static_cast<Entity*>(this));
+
+    m_waitingDeletion = true;
   }
 
   void Projectile::checkOutOfBounds() {
@@ -73,8 +77,9 @@ namespace Entities {
     pPlayer->setHealthPoints(pPlayer->getHealthPoints() - m_attack);
   }
 
-  void Projectile::setList(EntityList* pList) {
-    m_pList = pList;
+  void Projectile::setStage(Stages::Stage* pStage) {
+    m_pStage = pStage;
+    m_pList = pStage->getDynamicEntities();
   }
 
   void Projectile::exec() {

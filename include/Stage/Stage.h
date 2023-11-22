@@ -11,6 +11,9 @@
 /* SFML Library */
 #include <SFML/Audio.hpp>
 
+/* Standard Library */
+#include <queue>
+
 /* Forward Declaration */
 namespace Manager { class GraphicsManager; }
 namespace Entities { class EntityFactory; }
@@ -34,6 +37,7 @@ namespace Stages {
       EntityList m_players;
       EntityList m_staticEntities;
       EntityList m_dynamicEntities;
+      std::queue<Entities::Entity*> m_dynamicDeletionQueue;
       bool m_paused;
       sf::Music m_bgMusic;
 
@@ -45,6 +49,7 @@ namespace Stages {
       void update();
       void savePlayerData();
       void saveEntitiesData();
+      void deleteEntitiesInQueue();
     
     public:
       Stage(const std::string& mapTxt);
@@ -59,6 +64,7 @@ namespace Stages {
 
       void setEntityFactory(Entities::EntityFactory* pEntityFactory);
       void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
+      void addToDeletionList(Entities::Entity* pEntity);
       void setPaused(const bool paused);
       void loadSaveGame();
       void saveGame();

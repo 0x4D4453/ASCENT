@@ -31,6 +31,7 @@ namespace Stages {
     , m_players()
     , m_staticEntities()
     , m_dynamicEntities()
+    , m_dynamicDeletionQueue()
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
@@ -47,7 +48,7 @@ namespace Stages {
   }
 
   Stage::~Stage() {
-    
+    deleteEntitiesInQueue();
   }
 
   const std::string& Stage::getMapTxt() const {
@@ -77,7 +78,21 @@ namespace Stages {
   void Stage::spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle) {
     Entities::Projectile* projectile = m_pEntityFactory->createProjectile(textureID, position, scale, speed, angle);
     m_dynamicEntities.include(static_cast<Entities::Entity*>(projectile));
-    projectile->setList(&m_dynamicEntities);
+    projectile->setStage(this);
+  }
+
+  void Stage::addToDeletionList(Entities::Entity* pEntity) {
+    m_dynamicDeletionQueue.push(pEntity);
+  }
+
+  void Stage::deleteEntitiesInQueue() {
+    while (!m_dynamicDeletionQueue.empty()) {
+      Entities::Entity* pEntity = m_dynamicDeletionQueue.front();
+      m_dynamicEntities.remove(pEntity);
+      m_dynamicDeletionQueue.pop();
+
+      delete pEntity;
+    }
   }
 
   void Stage::savePlayerData() {
@@ -170,6 +185,7 @@ namespace Stages {
   void Stage::exec() {
     if (!m_paused)
       update();
+    deleteEntitiesInQueue();
     drawEntities(m_staticEntities);
     drawEntities(m_dynamicEntities);
     drawEntities(m_players);

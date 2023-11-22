@@ -10,14 +10,19 @@
 /* SFML Library */
 #include <SFML/Graphics.hpp>
 
+/* Forward Declaration */
+namespace Stages { class Stage; }
+
 namespace Entities {
   class Projectile : public Entity {
     private:
       const float m_maxRange;
       const float m_angle;
       const float m_attack;
+      Stages::Stage* m_pStage;
       EntityList* m_pList;
       float m_distance;
+      bool m_waitingDeletion;
 
     private:
       void autoRemove();
@@ -34,7 +39,7 @@ namespace Entities {
         const float angle = 0.f
       );
       ~Projectile();
-      void setList(EntityList* pList);
+      void setStage(Stages::Stage* pStage);
       virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
       virtual void save(nlohmann::ordered_json& jsonData);
       virtual void loadSave(const nlohmann::ordered_json& jsonData);

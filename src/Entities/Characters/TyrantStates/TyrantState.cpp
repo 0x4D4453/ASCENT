@@ -13,22 +13,28 @@ namespace Entities {
     Manager::GraphicsManager* TyrantState::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
     const float TyrantState::m_dt(TyrantState::m_pGraphicsManager->getTimePerFrame()->asSeconds());
 
-    TyrantState::TyrantState(Tyrant* pTyrant, Stages::Stage* pStage, const float timeLimit)
+    TyrantState::TyrantState(Tyrant* pTyrant, Stages::Stage* pStage, const float timeLimit, const float moveTimeLimit)
       : m_id(TyrantStateID::Idle)
-      , m_nextState(TyrantStateID::Following)
+      , m_nextState(TyrantStateID::Jumping)
       , m_pStage(pStage)
       , m_pTyrant(pTyrant)
+      , m_pPlayer(NULL)
       , m_pPlayers(pStage->getPlayers())
       , m_viewShake(m_pGraphicsManager->getView())
+      , m_followDistance(1000.f)
+      , m_moveTimeLimit(moveTimeLimit)
       , m_timeLimit(timeLimit)
+      , m_moveTimeElapsed(0.f)
       , m_timeElapsed(0.f)
       , m_isReadyToChange(false)
+      , m_isMoving(true)
     {
 
     }
 
     TyrantState::~TyrantState() {
       m_pTyrant = NULL;
+      m_pPlayer = NULL;
       m_pPlayers = NULL;
       m_pStage = NULL;
     }
@@ -37,8 +43,16 @@ namespace Entities {
       return m_id;
     }
 
+    const bool TyrantState::getIsMoving() const {
+      return m_isMoving;
+    }
+
     void TyrantState::update(const float timeElapsed) {
-      doAction();
+      m_moveTimeElapsed += m_dt;
+      if (m_moveTimeElapsed >= m_moveTimeLimit) {
+        m_isMoving = false;
+        doAction();
+      }
 
       m_timeElapsed += timeElapsed;
       if (m_timeElapsed >= m_timeLimit && m_isReadyToChange)
@@ -53,6 +67,52 @@ namespace Entities {
     void TyrantState::changeTyrantSpeed(const float speed) {
       m_pTyrant->setSpeed(speed);
       m_pTyrant->getAnimation()->setTimePerFrame(12.5f / speed);
+    }
+
+    void TyrantState::definePlayer() {
+      List<Entity*>::Iterator it = m_pPlayers->first();
+      sf::Vector2f tyrantPosition = m_pTyrant->getPosition();
+      float minDistance = m_followDistance;
+
+      while (it != m_pPlayers->last()) {
+        sf::Vector2f playerPosition = (*it)->getPosition();
+        float distance = fabs(playerPosition.x - tyrantPosition.x);
+        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
+          m_pPlayer = dynamic_cast<Player*>(*it);
+          minDistance = distance;
+        }
+
+        ++it;
+      }
+    }
+
+    // Código altamente baseado no código do monitor Giovane
+    void TyrantState::followPlayer(const float speedMultiplier) {
+      sf::Vector2f playerPosition = m_pPlayer->getPosition();
+      sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
+
+      if (playerPosition.x - m_pTyrant->getPosition().x > 0.f)
+        tyrantVelocity.x = m_pTyrant->getSpeed() * speedMultiplier * m_dt;
+      else 
+        tyrantVelocity.x = -m_pTyrant->getSpeed() * speedMultiplier * m_dt;
+
+      m_pTyrant->setVelocity(tyrantVelocity);
+    }
+
+    void TyrantState::stomp() {
+      m_isMoving = true;
+
+      int frame = m_pTyrant->getAnimation()->getCurrentFrame();
+      if (frame == Animations::TyrantAnimation::TyrantFrames::Walk2 || frame == Animations::TyrantAnimation::TyrantFrames::Walk4) {
+        if (!m_viewShake.finished(0.3f))
+          m_viewShake.shake(m_dt, 15.f, 0.1f);
+      } else {
+        m_viewShake.reset();
+      }
+    }
+
+    void TyrantState::movementPattern() {
+      
     }
   }
 }

@@ -12,10 +12,11 @@ namespace Entities {
   namespace Characters {
     /* Forward Declaration */
     class Tyrant;
+    class Player;
 
     enum TyrantStateID {
       Idle,
-      Following,
+      Jumping,
       Shooting,
       Dead
     };
@@ -28,25 +29,34 @@ namespace Entities {
         TyrantStateID m_nextState;
         Stages::Stage* m_pStage;
         Tyrant* m_pTyrant;
+        Player* m_pPlayer;
         EntityList* m_pPlayers;
         ViewShake m_viewShake;
+        const float m_followDistance;
+        const float m_moveTimeLimit;
         const float m_timeLimit;
+        float m_moveTimeElapsed;
         float m_timeElapsed;
         bool m_isReadyToChange;
+        bool m_isMoving;
 
       protected:
         virtual void doAction() = 0;
         void changeState(TyrantStateID id);
         void changeTyrantSpeed(const float speed);
+        void definePlayer();
+        void followPlayer(const float speedMultiplier = 1.f);
+        void stomp();
 
       public:
-        TyrantState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL, const float timeLimit = 5.f);
+        TyrantState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL, const float timeLimit = 5.f, const float moveTimeLimit = 5.f);
         ~TyrantState();
 
         void update(const float timeElapsed);
         const TyrantStateID getId() const;
+        const bool getIsMoving() const;
 
-        virtual void movementPattern() = 0;
+        virtual void movementPattern();
     };
   }
 }

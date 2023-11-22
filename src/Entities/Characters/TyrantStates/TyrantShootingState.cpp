@@ -9,19 +9,22 @@
 namespace Entities {
   namespace Characters {
     TyrantShootingState::TyrantShootingState(Tyrant* pTyrant, Stages::Stage* pStage)
-      : TyrantState(pTyrant, pStage, 12.5f)
+      : TyrantState(pTyrant, pStage, 20.f)
       , m_shootingSpots()
       , m_timeBetweenShots(0.25f)
       , m_shootingAngle(M_PI / 4)
       , m_angleRange(M_PI / 6)
       , m_shootingSpeed(7.f)
+      , m_shootingTimeLimit(5.f)
+      , m_shootingTimeElapsed(0.f)
       , m_timeSinceLastShot(0.f)
       , m_currentSpot(0)
+      , m_isShooting(false)
     {
       m_id = TyrantStateID::Shooting;
       m_nextState = TyrantStateID::Idle;
       m_isReadyToChange = true;
-      changeTyrantSpeed(70.f);
+      changeTyrantSpeed(50.f);
 
       m_shootingSpots.push_back(sf::Vector2f(Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));
       m_shootingSpots.push_back(sf::Vector2f(-Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));
@@ -32,8 +35,7 @@ namespace Entities {
     }
 
     void TyrantShootingState::shoot() {
-      m_pTyrant->setIsShooting(true);
-      m_isReadyToChange = false;
+      m_isShooting = true;
 
       m_timeSinceLastShot += m_dt;
       if (m_timeSinceLastShot > m_timeBetweenShots) {
@@ -47,18 +49,34 @@ namespace Entities {
           angle = M_PI - angle;
 
         m_pStage->spawnProjectile(Textures::Projectile, position, Constants::SCALE * 2.0f, m_shootingSpeed, angle);
-
-        m_pTyrant->setIsShooting(false);
-        m_isReadyToChange = true;
         m_timeSinceLastShot = 0.f;
         m_currentSpot++;
       }
+
+      m_shootingTimeElapsed += m_dt;
+      if (m_shootingTimeElapsed >= m_shootingTimeLimit) {
+        m_isShooting = false;
+        m_shootingTimeElapsed = 0.f;
+        m_moveTimeElapsed = 0.f;
+      }
+    }
+
+    const bool TyrantShootingState::getIsShooting() const {
+      return m_isShooting;
     }
 
     void TyrantShootingState::movementPattern() {
-      
-    }
+      if (m_isShooting)
+        return;
 
+      definePlayer();
+
+      if (!m_pPlayer)
+        return;
+
+      followPlayer();
+      stomp();
+    }
 
     void TyrantShootingState::doAction() {
       shoot();

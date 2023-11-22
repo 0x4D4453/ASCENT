@@ -13,14 +13,12 @@ namespace Entities {
         float m_timeSinceHeal;
 
       private:
-        virtual void doAction();
         void heal();
 
       public:
         TyrantIdleState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL);
         ~TyrantIdleState();
-
-        virtual void movementPattern();
+        virtual void doAction();
     };
   }
 }

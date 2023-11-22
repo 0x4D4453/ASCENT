@@ -3,7 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Characters/TyrantStates/TyrantIdleState.h"
-#include "Entities/Characters/TyrantStates/TyrantFollowingState.h"
+#include "Entities/Characters/TyrantStates/TyrantJumpingState.h"
 #include "Entities/Characters/TyrantStates/TyrantShootingState.h"
 #include "Entities/Characters/Player.h"
 #include "Animation/TyrantAnimation.h"
@@ -18,10 +18,7 @@ namespace Entities {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
       : Enemy(spawnPosition, Constants::SCALE * 15.f, 15)
       , m_pStage(pStage)
-      , m_pState(new TyrantFollowingState(this, pStage))
-      , m_isCharging(false)
-      , m_isLanding(false)
-      , m_isShooting(false)
+      , m_pState(new TyrantJumpingState(this, pStage))
     {
       setEntityId(EntityID::TyrantE);
       setTextureID(textureID);
@@ -41,6 +38,10 @@ namespace Entities {
       m_pState = NULL;
     }
 
+    TyrantState* Tyrant::getState() const {
+      return m_pState;
+    }
+
     void Tyrant::changeState(TyrantStateID id) {
       TyrantState* pState;
 
@@ -48,8 +49,8 @@ namespace Entities {
         case TyrantStateID::Idle:
           pState = new TyrantIdleState(this, m_pStage);
           break;
-        case TyrantStateID::Following:
-          pState = new TyrantFollowingState(this, m_pStage);
+        case TyrantStateID::Jumping:
+          pState = new TyrantJumpingState(this, m_pStage);
           break;
         case TyrantStateID::Shooting:
           pState = new TyrantShootingState(this, m_pStage);
@@ -64,30 +65,6 @@ namespace Entities {
 
       delete m_pState;
       m_pState = pState;
-    }
-
-    const bool Tyrant::getIsCharging() const {
-      return m_isCharging;
-    }
-
-    void Tyrant::setIsCharging(const bool is) {
-      m_isCharging = is;
-    }
-
-    const bool Tyrant::getIsLanding() const {
-      return m_isLanding;
-    }
-
-    void Tyrant::setIsLanding(const bool is) {
-      m_isLanding = is;
-    }
-
-    const bool Tyrant::getIsShooting() const {
-      return m_isShooting;
-    }
-
-    void Tyrant::setIsShooting(const bool is) {
-      m_isShooting = is;
     }
 
     Animations::Animation* Tyrant::getAnimation() {
@@ -151,8 +128,8 @@ namespace Entities {
 
     void Tyrant::update() {
       if (!m_isStaggered && m_healthPoints > 0) {
-        movementPattern();
         m_pState->update(m_dt);
+        movementPattern();
       }
     }
   }

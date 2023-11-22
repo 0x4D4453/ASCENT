@@ -7,13 +7,13 @@
 namespace Entities {
   namespace Characters {
     TyrantIdleState::TyrantIdleState(Tyrant* pTyrant, Stages::Stage* pStage)
-      : TyrantState(pTyrant, pStage, 10.f)
+      : TyrantState(pTyrant, pStage, 10.f, 0.f)
       , m_healing(0.75f)
       , m_healCooldown(1.5f)
       , m_timeSinceHeal(0.f)
     {
       m_id = TyrantStateID::Idle;
-      m_nextState = TyrantStateID::Following;
+      m_nextState = TyrantStateID::Jumping;
       m_isReadyToChange = true;
       changeTyrantSpeed(30.f);
     }
@@ -34,11 +34,6 @@ namespace Entities {
         m_timeSinceHeal = 0.f;
       }
     }
-
-    void TyrantIdleState::movementPattern() {
-      
-    }
-
 
     void TyrantIdleState::doAction() {
       heal();

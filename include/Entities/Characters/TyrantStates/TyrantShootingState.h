@@ -16,17 +16,22 @@ namespace Entities {
         const float m_shootingAngle;
         const float m_angleRange;
         const float m_shootingSpeed;
+        const float m_shootingTimeLimit;
+        float m_shootingTimeElapsed;
         float m_timeSinceLastShot;
         int m_currentSpot;
+        bool m_isShooting;
 
       private:
-        virtual void doAction();
         void shoot();
 
       public:
         TyrantShootingState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL);
         ~TyrantShootingState();
 
+        const bool getIsShooting() const;
+
+        virtual void doAction();
         virtual void movementPattern();
     };
   }

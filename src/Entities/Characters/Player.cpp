@@ -5,7 +5,6 @@
 #include "Animation/PlayerAnimation.h"
 #include "Entities/Characters/Enemy.h"
 #include "Utility/Constants.h"
-#include "Utility/CustomVector.h"
 
 /* Standard Library */
 #include <cmath>
@@ -75,11 +74,6 @@ namespace Entities {
 
     void Player::setIsCharging(const bool isCharging) {
       m_isCharging = isCharging;
-    }
-
-    const float Player::getCurrentSpeed() const {
-      CustomVector speedVector(m_velocity);
-      return speedVector.getMagnitude();
     }
 
     const bool Player::getIsAttacking() {
@@ -157,19 +151,22 @@ namespace Entities {
     }
 
     void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      if (checkGrounded(pEntity, type))
+        m_isAttacking = false;
+        
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
           if (getIsAttacking())
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
-          checkGrounded(pEntity, type);
           break;
       }
     }
 
     void Player::attack(Enemy* pEnemy) {
       pEnemy->setHealthPoints(pEnemy->getHealthPoints() - 1);
+      pEnemy->setIsStaggered(true);
     }
 
     void Player::save(nlohmann::ordered_json& jsonData) {

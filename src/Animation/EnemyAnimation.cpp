@@ -6,8 +6,9 @@
 #include "Utility/Constants.h"
 
 namespace Animations {
-  EnemyAnimation::EnemyAnimation(Entities::Entity* pEntity, float timePerFrame) 
+  EnemyAnimation::EnemyAnimation(Entities::Entity* pEntity, MDirection direction, float timePerFrame) 
     : Animation(pEntity, timePerFrame)
+    , m_mDirection(direction)
   {
     m_currentFrame = static_cast<int>(Walk1);
   }
@@ -21,7 +22,9 @@ namespace Animations {
 
     if (pEnemy->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * 4;
-    else if (m_pEntity->getVelocity().x == 0.f)
+    else if (m_mDirection == MDirection::X && m_pEntity->getVelocity().x == 0.f)
+      m_textureRect.left = 0;
+    else if (m_mDirection == MDirection::Y && m_pEntity->getVelocity().y == 0.f)
       m_textureRect.left = 0;
     else {
       m_totalTime += deltaTime;

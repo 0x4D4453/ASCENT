@@ -2,6 +2,7 @@
 #include "Entities/Characters/Character.h"
 
 /* Program Defined */
+#include "Utility/CustomVector.h"
 #include "Utility/Constants.h"
 
 namespace Entities {
@@ -56,11 +57,14 @@ namespace Entities {
       m_animation = animation;
     }
 
-    void Character::checkGrounded(Entity *pEntity, Manager::Collision::CollisionType type) {
+    bool Character::checkGrounded(Entity *pEntity, Manager::Collision::CollisionType type) {
       if (type == Manager::Collision::CollisionType::Vertical && getPosition().y <= pEntity->getPosition().y && m_isMidAir) {
         m_isMidAir = false;
         setIsStaggered(false);
+        return true;
       }
+
+      return false;
     }
 
     const int Character::getMaxHealthPoints() const {
@@ -86,6 +90,11 @@ namespace Entities {
       m_isMidAir = isMidAir;
     }
 
+    const float Character::getCurrentSpeed() const {
+      CustomVector speedVector(m_velocity);
+      return speedVector.getMagnitude();
+    }
+
     void Character::exec() {
       recoverColor();
       update();
@@ -100,6 +109,9 @@ namespace Entities {
         m_sprite.setScale(-m_scale, m_scale);
       else if (m_velocity.x > 0)
         m_sprite.setScale(m_scale, m_scale);
+
+      if (m_isStaggered && getCurrentSpeed() < 0.5f)
+        m_isStaggered = false;
 
       move();
     }

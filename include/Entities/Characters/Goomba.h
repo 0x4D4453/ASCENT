@@ -21,6 +21,7 @@ namespace Entities {
       public:
         Goomba(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));
         ~Goomba();
+        virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void movementPattern();
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);

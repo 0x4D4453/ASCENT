@@ -11,6 +11,11 @@
 namespace Entities { class Entity; }
 
 namespace Animations {
+  enum MDirection {
+    X,
+    Y
+  };
+
   class Animation {
     protected:
       Entities::Entity* m_pEntity;

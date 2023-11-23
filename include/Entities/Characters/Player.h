@@ -49,7 +49,6 @@ namespace Entities {
         void jump();
         void handleInput();
         void checkIsAttacking();
-        const float getCurrentSpeed() const;
         void attack(Enemy *pEnemy);
       
       public:

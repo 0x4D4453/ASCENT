@@ -12,11 +12,16 @@ namespace Entities {
   namespace Characters {
     class Fly : public Enemy {
       private:
+        const float m_timeBetweenFlaps;
+        const float m_buoyancy;
         const float m_range;
-        bool m_direction;
+        float m_timeSinceLastFlap;
       
       private:
         virtual void update();
+        void glide();
+        void flapWings();
+        bool checkDistanceToSpawn();
 
       public:
         Fly(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));

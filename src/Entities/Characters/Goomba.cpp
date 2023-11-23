@@ -2,6 +2,7 @@
 #include "Entities/Characters/Goomba.h"
 
 /* Program Defined */
+#include "Entities/Characters/Player.h"
 #include "Utility/Constants.h"
 
 /* Standard Library */
@@ -23,6 +24,28 @@ namespace Entities {
 
     Goomba::~Goomba() {
 
+    }
+
+    void Goomba::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      if (m_healthPoints <= 0)
+        return;
+
+      checkGrounded(pEntity, type);
+      switch (pEntity->getEntityTag()) {
+        case EntityTag::PlayerTag:
+          playerCollide(dynamic_cast<Player*>(pEntity), type);
+          break;
+        case EntityTag::ObstacleTag:
+          if (type == Manager::Collision::CollisionType::Horizontal && fabs(overlap) > 0.1f) {
+            if (pEntity->getPosition().x > getPosition().x)
+              m_spawnPosition = sf::Vector2f(getPosition().x - m_range, getPosition().y);
+            else
+              m_spawnPosition = sf::Vector2f(getPosition().x + m_range, getPosition().y);
+          }
+          break;
+        default:
+          break;
+      }
     }
 
     void Goomba::movementPattern() {

@@ -6,6 +6,9 @@
 
 namespace Animations {
   class EnemyAnimation : public Animation {
+    private:
+      const MDirection m_mDirection;
+
     public:
       enum DefaultFrames {
         Walk1 = 1,
@@ -13,7 +16,7 @@ namespace Animations {
       };
 
     public:
-      EnemyAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
+      EnemyAnimation(Entities::Entity* pEntity = NULL, MDirection direction = X, float timePerFrame = 0.1f);
       ~EnemyAnimation();
       void update(const float deltaTime);
   };

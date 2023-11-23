@@ -38,6 +38,7 @@ namespace Stages {
       EntityList m_staticEntities;
       EntityList m_dynamicEntities;
       std::queue<Entities::Entity*> m_dynamicDeletionQueue;
+      std::vector<sf::View> m_views;
       bool m_paused;
       sf::Music m_bgMusic;
 
@@ -48,6 +49,7 @@ namespace Stages {
       void updateView();
       void verifyGameOver();
       void update();
+      void draw();
       void savePlayerData();
       void saveEntitiesData();
       void deleteEntitiesInQueue();
@@ -61,6 +63,7 @@ namespace Stages {
       EntityList* getPlayers();
       EntityList* getStaticEntities();
       EntityList* getDynamicEntities();
+      std::vector<sf::View>* getViews();
 
       virtual void createRandomEnemy(sf::Vector2f& position) = 0;
 

@@ -23,6 +23,7 @@ namespace States {
   }
 
   void InStageState::setup() {
+    m_pGraphicsManager->resetView();
     sf::Vector2f viewCenterPosition = m_pGraphicsManager->getViewCenter();
     
     m_background.setSize(sf::Vector2f(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT));
@@ -36,6 +37,7 @@ namespace States {
   } 
 
   void InStageState::exec() {
+    m_pGraphicsManager->resetView();
     m_pGraphicsManager->draw(m_background);
     m_pGraphicsManager->draw(m_title);
 

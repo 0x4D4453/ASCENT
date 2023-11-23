@@ -73,7 +73,8 @@ namespace Manager {
 
   /* View Methods */
 
-  void GraphicsManager::setView() {
+  void GraphicsManager::setView(const sf::View& view) {
+    m_view = view;
     m_window.setView(m_view);
   }
 
@@ -96,11 +97,12 @@ namespace Manager {
       y = m_stageHeight - height/2;
 
     setViewCenter(x, y);
-    setView();
+    setView(m_view);
   }
 
   void GraphicsManager::resetView() {
-    m_window.setView(m_window.getDefaultView());
+    m_view = m_window.getDefaultView();
+    m_window.setView(m_view);
   }
 
   sf::View* GraphicsManager::getView() {

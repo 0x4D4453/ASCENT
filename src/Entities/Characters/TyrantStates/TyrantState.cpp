@@ -21,7 +21,7 @@ namespace Entities {
       , m_pPlayer(NULL)
       , m_pPlayers(pStage->getPlayers())
       , m_viewShake(pStage->getViews())
-      , m_followDistance(1000.f)
+      , m_followDistance(500.f)
       , m_moveTimeLimit(moveTimeLimit)
       , m_timeLimit(timeLimit)
       , m_moveTimeElapsed(0.f)
@@ -75,11 +75,12 @@ namespace Entities {
       List<Entity*>::Iterator it = m_pPlayers->first();
       sf::Vector2f tyrantPosition = m_pTyrant->getPosition();
       float minDistance = m_followDistance;
+      m_pPlayer = NULL;
 
       while (it != m_pPlayers->last()) {
         sf::Vector2f playerPosition = (*it)->getPosition();
         float distance = fabs(playerPosition.x - tyrantPosition.x);
-        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
+        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance / 2) {
           m_pPlayer = dynamic_cast<Player*>(*it);
           minDistance = distance;
         }
@@ -93,13 +94,17 @@ namespace Entities {
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
       const float maxSpeed = m_pTyrant->getMaxSpeed() * maxSpeedMultiplier;
+      const float distance = playerPosition.x - m_pTyrant->getPosition().x;
+      const float size = m_pTyrant->getSprite()->getGlobalBounds().width;
 
-      if (playerPosition.x - m_pTyrant->getPosition().x > 0.f) {
+      if (abs(distance) < size) {
+        tyrantVelocity.x -= tyrantVelocity.x * m_dt;
+      } if (distance > 0.f) {
         tyrantVelocity.x += m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
         if (tyrantVelocity.x > maxSpeed)
           tyrantVelocity.x = maxSpeed;
-      } else {
+      } else if (distance < 0.f) {
         tyrantVelocity.x -= m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
         if (tyrantVelocity.x < -maxSpeed)
@@ -122,7 +127,7 @@ namespace Entities {
     }
 
     void TyrantState::movementPattern() {
-      
+      definePlayer();
     }
   }
 }

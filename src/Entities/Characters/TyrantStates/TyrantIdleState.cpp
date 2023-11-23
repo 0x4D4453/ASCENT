@@ -14,7 +14,6 @@ namespace Entities {
     {
       m_id = TyrantStateID::Idle;
       m_nextState = TyrantStateID::Jumping;
-      m_isReadyToChange = true;
       changeTyrantSpeed(25.f, 0.5f, 0.8f);
     }
 
@@ -33,6 +32,9 @@ namespace Entities {
         m_pTyrant->setHealthPoints(health + m_healing);
         m_timeSinceHeal = 0.f;
       }
+
+      if (m_pPlayer)
+        m_isReadyToChange = true;
     }
 
     void TyrantIdleState::doAction() {

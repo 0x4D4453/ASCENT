@@ -16,9 +16,9 @@
 namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
-      : Enemy(spawnPosition, Constants::SCALE * 10.f, 10)
+      : Enemy(spawnPosition, Constants::SCALE * 10.f, 8.f)
       , m_pStage(pStage)
-      , m_pState(new TyrantJumpingState(this, pStage))
+      , m_pState(new TyrantIdleState(this, pStage))
       , m_maxSpeed(0.5f)
     {
       setEntityId(EntityID::TyrantE);
@@ -29,6 +29,7 @@ namespace Entities {
 
       setAnimation(new Animations::TyrantAnimation(this, 0.5f));
       m_sprite.setHitbox({ 4.f, 5.f, 8.f, 11.f });
+      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, (Constants::SPRITE_SIZE)/2.f);
 
       m_isKnockbackResistant = true;
     }
@@ -99,7 +100,7 @@ namespace Entities {
     }
 
     void Tyrant::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (pPlayer->getIsAttacking() || pPlayer->getIsImmune()) {        
+      if (pPlayer->getIsAttacking()) {        
         if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
           setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
           pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x, pPlayer->getVelocity().y));
@@ -107,6 +108,8 @@ namespace Entities {
         } else {
           setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
         }
+      } else if (pPlayer->getIsImmune() || pPlayer->getIsStaggered()) {
+        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
       } else {
         if (m_collisionClock.restart().asSeconds() < getCollisionStrategy(EntityTag::PlayerTag)->getDelay())
           return;

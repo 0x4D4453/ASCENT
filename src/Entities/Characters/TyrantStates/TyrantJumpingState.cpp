@@ -9,8 +9,8 @@ namespace Entities {
     TyrantJumpingState::TyrantJumpingState(Tyrant* pTyrant, Stages::Stage* pStage)
       : TyrantState(pTyrant, pStage, 25.f)
       , m_jumpDistance(750.f)
-      , m_jumpHeight(700.f)
-      , m_chargeTimeLimit(3.f)
+      , m_jumpHeight(500.f)
+      , m_chargeTimeLimit(1.5f)
       , m_chargeTimeElapsed(0.f)
       , m_isCharging(false)
       , m_isJumping(false)
@@ -18,7 +18,7 @@ namespace Entities {
     {
       m_id = TyrantStateID::Jumping;
       m_nextState = TyrantStateID::Shooting;
-      changeTyrantSpeed(25.f, 0.5f, 0.5f);
+      changeTyrantSpeed(25.f, 0.5f, 0.45f);
     }
 
     TyrantJumpingState::~TyrantJumpingState() {
@@ -36,6 +36,7 @@ namespace Entities {
     }
 
     void TyrantJumpingState::chargeJump() {
+      m_viewShake.reset();
       m_chargeTimeElapsed += m_dt;
       if (m_chargeTimeElapsed >= m_chargeTimeLimit) {
         m_isCharging = false;

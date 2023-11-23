@@ -33,6 +33,7 @@ namespace Entities {
     }
 
     TyrantState::~TyrantState() {
+      m_viewShake.reset();
       m_pTyrant = NULL;
       m_pPlayer = NULL;
       m_pPlayers = NULL;

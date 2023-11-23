@@ -82,9 +82,9 @@ namespace Manager {
     m_view.setCenter(sf::Vector2f(x, y));
   }
 
-  void GraphicsManager::updateView(float x, float y) {
-    float height = getViewSize().y;
-    float width = getViewSize().x;
+  void GraphicsManager::updateView(sf::View& view, float x, float y) {
+    float height = view.getSize().y;
+    float width = view.getSize().x;
 
     if (x - width/2 < 0)
       x = width/2;
@@ -96,8 +96,7 @@ namespace Manager {
     else if (y + height/2 > m_stageHeight)
       y = m_stageHeight - height/2;
 
-    setViewCenter(x, y);
-    setView(m_view);
+    view.setCenter(sf::Vector2f(x, y));
   }
 
   void GraphicsManager::resetView() {

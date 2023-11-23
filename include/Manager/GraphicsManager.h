@@ -42,7 +42,7 @@ namespace Manager {
       /* View Methods */
       void setView(const sf::View& view);
       void setViewCenter(float x, float y);
-      void updateView(float x, float y);
+      void updateView(sf::View& view, float x, float y);
       void resetView();
       sf::View* getView();
       const sf::Vector2f getViewSize() const;

@@ -171,7 +171,7 @@ namespace Stages {
     int i;
 
     for (it = m_players.first(), i = 0; it != m_players.last(); ++it, ++i)
-      m_views[i].setCenter((*it)->getPosition().x, (*it)->getPosition().y);
+      m_pGraphicsManager->updateView(m_views[i], (*it)->getPosition().x, (*it)->getPosition().y);
   }
 
   void Stage::verifyGameOver() {

@@ -32,6 +32,7 @@ namespace Entities {
     FlyE,
     TyrantE,
     SpikesE,
+    DoorE,
   };
 
   enum EntityTag {

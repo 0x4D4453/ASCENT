@@ -20,7 +20,7 @@ namespace UI {
     , m_totalTime(0.f)
     , m_currentFrame(0)
   {
-    if (m_heartTexture.loadFromFile(Textures::HEART))
+    if (!m_heartTexture.loadFromFile(Textures::HEART))
       std::cerr << "Error loading heart font" << std::endl;
 
     for (int i = 0; i < m_maxHearts; ++i) {

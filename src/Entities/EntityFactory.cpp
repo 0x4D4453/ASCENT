@@ -6,6 +6,7 @@
 #include "Entities/Characters/Fly.h"
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
+#include "Entities/Obstacles/Door.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
 #include "Entities/Projectile.h"
@@ -63,6 +64,9 @@ namespace Entities {
         break;
       case (SpikesE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spike(textureID, textureRef, position));
+        break;
+      case (DoorE): 
+        m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position));
         break;
     }
     

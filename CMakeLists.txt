@@ -14,7 +14,7 @@ add_executable(GOTY
     src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/EntityFactory.cpp
     src/Entities/Characters/Character.cpp src/Entities/Characters/Player.cpp src/Entities/Characters/Enemy.cpp src/Entities/Characters/Goomba.cpp src/Entities/Characters/Fly.cpp
     src/Entities/Characters/Tyrant.cpp src/Entities/Characters/TyrantStates/TyrantState.cpp src/Entities/Characters/TyrantStates/TyrantIdleState.cpp src/Entities/Characters/TyrantStates/TyrantJumpingState.cpp src/Entities/Characters/TyrantStates/TyrantShootingState.cpp 
-    src/Entities/Obstacles/Platform.cpp src/Entities/Obstacles/Obstacle.cpp src/Entities/Obstacles/MovingPlatform.cpp src/Entities/Obstacles/Spike.cpp src/Entities/Projectile.cpp
+    src/Entities/Obstacles/Platform.cpp src/Entities/Obstacles/Obstacle.cpp src/Entities/Obstacles/MovingPlatform.cpp src/Entities/Obstacles/Spike.cpp src/Entities/Obstacles/Door.cpp src/Entities/Projectile.cpp
     src/Manager/GraphicsManager.cpp
     src/Manager/Collision/CollisionManager.cpp src/Manager/Collision/CollisionStrategy.cpp src/Manager/Collision/CollisionStrategyFactory.cpp
     src/Manager/Collision/DefaultCollision.cpp src/Manager/Collision/PhaseCollision.cpp src/Manager/Collision/KnockbackCollision.cpp src/Manager/Collision/BounceCollision.cpp

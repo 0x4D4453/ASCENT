@@ -40,6 +40,7 @@ namespace Stages {
     m_pTextureHolder->load(Textures::BridgeRight, Textures::FLOATING_STRIPPED_PLATFORM_RIGHT);
 
     m_pTextureHolder->load(Textures::Spikes, Textures::GROUND_SPIKES);
+    m_pTextureHolder->load(Textures::Door, Textures::DOOR);
     m_pTextureHolder->load(Textures::Fly, Textures::FLY_FACTORY);
   }
 

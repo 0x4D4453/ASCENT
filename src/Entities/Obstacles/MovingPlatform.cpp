@@ -60,10 +60,6 @@ namespace Entities {
       }
     }
 
-    void MovingPlatform::save() {
-
-    }
-
     void MovingPlatform::exec() {
       movementPattern();
     }

@@ -24,18 +24,17 @@ namespace Entities {
     }
 
     void Spike::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
-      Characters::Player* player = dynamic_cast<Characters::Player*>(pEntity);
-      damagePlayer(player);
-    }
-
-    
-    void Spike::save() {
-
+      switch (pEntity->getEntityTag()) {
+        case EntityTag::PlayerTag:
+          damagePlayer(dynamic_cast<Characters::Player*>(pEntity));
+          break;
+        default:
+          break;
+      }
     }
 
     void Spike::exec() {
       
     }
-
   } 
 }

@@ -23,7 +23,6 @@ namespace Entities {
         MovingPlatform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~MovingPlatform();
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
-        virtual void save();
         virtual void exec();
     };
   }

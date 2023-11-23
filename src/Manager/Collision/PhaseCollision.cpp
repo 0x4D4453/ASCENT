@@ -26,6 +26,9 @@ namespace Manager {
       if (component < 0)
         return component + m_drag * m_dt;
 
+      if (fabs(component) < 0.1f)
+        return 0.f;
+
       return component;
     }
 

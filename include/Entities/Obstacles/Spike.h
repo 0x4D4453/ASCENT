@@ -17,7 +17,6 @@ namespace Entities {
         ~Spike();
         void damagePlayer(Characters::Player* pPlayer);
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
-        virtual void save();
         virtual void exec();
     };
   }

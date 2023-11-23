@@ -101,6 +101,8 @@ namespace Stages {
     m_pStaticEntities = m_pStage->getStaticEntities();
     m_pDynamicEntities = m_pStage->getDynamicEntities();
     m_pStage->setEntityFactory(&m_entityFactory);
+    m_pViews = m_pStage->getViews();
+    createViews();
 
     if (m_newGame) {
       createMap(m_pStage->getMapTxt());
@@ -190,6 +192,17 @@ namespace Stages {
     while (it != m_pPlayers->last()) {
       (*it)->setPosition(playerPosition);
       ++it;
+    }
+  }
+
+  void StageFactory::createViews() {
+    m_pViews->push_back(sf::View(sf::Vector2f(0.f, 0.f), sf::Vector2f(static_cast<float>(Constants::WINDOW_WIDTH), static_cast<float>(Constants::WINDOW_HEIGHT))));
+
+    if (m_multiplayer) {
+      (*m_pViews)[0].setViewport(sf::FloatRect(0.f, 0.f, 0.5f, 1.f));
+      (*m_pViews)[0].setSize(Constants::WINDOW_WIDTH/2, Constants::WINDOW_HEIGHT);
+      m_pViews->push_back(sf::View(sf::Vector2f(0.f, 0.f), sf::Vector2f(static_cast<float>(Constants::WINDOW_WIDTH/2), static_cast<float>(Constants::WINDOW_HEIGHT))));
+      (*m_pViews)[1].setViewport(sf::FloatRect(0.5f, 0.f, 0.5f, 1.f));
     }
   }
 

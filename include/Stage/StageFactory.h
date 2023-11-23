@@ -27,6 +27,7 @@ namespace Stages {
       EntityList* m_pPlayers;
       EntityList* m_pStaticEntities;
       EntityList* m_pDynamicEntities;
+      std::vector<sf::View>* m_pViews;
       const bool m_newGame;
       const bool m_multiplayer;
     
@@ -39,6 +40,7 @@ namespace Stages {
       void createMap(const std::string& stageTxt);
       void defineType(Entities::Entity* pEntity);
       void createPlayers();
+      void createViews();
     
     public:
       StageFactory(const bool newGame = true, const bool multiplayer = false);

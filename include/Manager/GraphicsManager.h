@@ -40,7 +40,7 @@ namespace Manager {
       void draw(sf::Drawable& drawable);
 
       /* View Methods */
-      void setView();
+      void setView(const sf::View& view);
       void setViewCenter(float x, float y);
       void updateView(float x, float y);
       void resetView();

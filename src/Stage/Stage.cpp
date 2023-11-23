@@ -34,6 +34,7 @@ namespace Stages {
     , m_staticEntities()
     , m_dynamicEntities()
     , m_dynamicDeletionQueue()
+    , m_views()
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
@@ -67,6 +68,10 @@ namespace Stages {
 
   EntityList* Stage::getDynamicEntities() {
     return &m_dynamicEntities;
+  }
+
+  std::vector<sf::View>* Stage::getViews() {
+    return &m_views;
   }
 
   void Stage::setEntityFactory(Entities::EntityFactory* pEntityFactory) {
@@ -162,8 +167,11 @@ namespace Stages {
   }
 
   void Stage::updateView() {
-    Entities::Characters::Player* player1 = static_cast<Entities::Characters::Player*>(*(m_players.first()));
-    m_pGraphicsManager->updateView(player1->getPosition().x, player1->getPosition().y);
+    List<Entities::Entity*>::Iterator it;
+    int i;
+
+    for (it = m_players.first(), i = 0; it != m_players.last(); ++it, ++i)
+      m_views[i].setCenter((*it)->getPosition().x, (*it)->getPosition().y);
   }
 
   void Stage::verifyGameOver() {
@@ -195,6 +203,15 @@ namespace Stages {
     verifyGameOver();
   }
 
+  void Stage::draw() {
+    for (int i = 0; i < static_cast<int>(m_views.size()); ++i) {
+      m_pGraphicsManager->setView(m_views[i]);
+      drawEntities(m_staticEntities);
+      drawEntities(m_dynamicEntities);
+      drawEntities(m_players);
+    }
+  }
+
   void Stage::setPaused(const bool paused) {
     m_paused = paused;
   }
@@ -203,8 +220,6 @@ namespace Stages {
     if (!m_paused)
       update();
     deleteEntitiesInQueue();
-    drawEntities(m_staticEntities);
-    drawEntities(m_dynamicEntities);
-    drawEntities(m_players);
+    draw();
   }
 }

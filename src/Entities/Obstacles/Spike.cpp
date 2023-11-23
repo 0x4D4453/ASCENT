@@ -20,6 +20,9 @@ namespace Entities {
 
 
     void Spike::damagePlayer(Characters::Player* pPlayer) {
+      if (pPlayer->getIsImmune())
+        return;
+
       pPlayer->setHealthPoints(pPlayer->getHealthPoints() - m_attack);
     }
 

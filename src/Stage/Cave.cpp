@@ -8,22 +8,15 @@ namespace Stages {
   Cave::Cave(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder, Entities::EntityFactory* pEntityFactory, States::GameState* pGameState) 
     : Stage(pTextureHolder, pEntityFactory, pGameState, Constants::CAVE)
     , m_pFly(NULL)
-    , m_pGoomba(NULL)
     , m_maxFlyInstances(4)
-    , m_maxGoombaInstances(2)
-    , m_maxSpikeInstances(3)
     , m_flyChance(50)
-    , m_goombaChance(33)
-    , m_spikeChance(25)
     , m_flyNumber(0)
-    , m_spikeNumber(0)
   {
 
   }
 
   Cave::~Cave() {
     m_pFly = NULL;
-    m_pGoomba = NULL;
   }
 
   void Cave::loadTextures() {
@@ -62,30 +55,6 @@ namespace Stages {
       sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Fly);
       m_pFly = new Entities::Characters::Fly(Textures::Fly, textureRef, position);
       m_dynamicEntities.include(static_cast<Entities::Entity*>(m_pFly));
-    }
-  }
-
-  void Cave::createGoomba(sf::Vector2f& position) {
-    if (m_goombaNumber >= m_maxGoombaInstances)
-      return;
-
-    const int random = 1 + rand() % 100;
-    if (random < m_goombaChance) {
-      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Goomba);
-      m_pGoomba = new Entities::Characters::Goomba(Textures::Goomba, textureRef, position);
-      m_dynamicEntities.include(static_cast<Entities::Entity*>(m_pGoomba));
-    }
-  }
-
-  void Cave::createSpike(sf::Vector2f& position) {
-    if (m_spikeNumber >= m_maxSpikeInstances)
-      return;
-
-    const int random = 1 + rand() % 100;
-    if (random < m_spikeChance) {
-      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Spikes);
-      m_pSpike = new Entities::Obstacles::Spike(Textures::Spikes, textureRef, position);
-      m_staticEntities.include(static_cast<Entities::Entity*>(m_pSpike));
     }
   }
 

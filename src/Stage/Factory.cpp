@@ -44,7 +44,13 @@ namespace Stages {
   }
 
   void Factory::createRandomEnemy(sf::Vector2f& position) {
-    
+    sf::Vector2f size = m_pGraphicsManager->getStageSize();
+
+    if (position.y > size.y / 2) {
+      createGoomba(position);
+    } else {
+      // Spawn Tyrant
+    }
   }
 
   void Factory::createRandomObstacle(sf::Vector2f& position) {

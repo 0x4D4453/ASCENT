@@ -33,11 +33,19 @@ namespace Stages {
     , m_pEntityFactory(pEntityFactory)
     , m_pGameState(pGameState)
     , m_mapTxt(mapTxt)
+    , m_dynamicDeletionQueue()
+    , m_views()
     , m_players()
     , m_staticEntities()
     , m_dynamicEntities()
-    , m_dynamicDeletionQueue()
-    , m_views()
+    , m_pGoomba(NULL)
+    , m_maxGoombaInstances(2)
+    , m_goombaChance(33)
+    , m_goombaNumber(0)
+    , m_pSpike(NULL)
+    , m_maxSpikeInstances(3)
+    , m_spikeChance(25)
+    , m_spikeNumber(0)
     , m_paused(false)
   {
     Entities::Entity::setCollisionManager(&m_collisionManager);
@@ -58,6 +66,8 @@ namespace Stages {
     m_pTextureHolder = NULL;
     m_pEntityFactory = NULL;
     m_pGameState = NULL;
+    m_pGoomba = NULL;
+    m_pSpike = NULL;
   }
 
   const std::string& Stage::getMapTxt() const {
@@ -84,6 +94,30 @@ namespace Stages {
     Entities::Projectile* projectile = m_pEntityFactory->createProjectile(textureID, position, scale, speed, angle);
     m_dynamicEntities.include(static_cast<Entities::Entity*>(projectile));
     projectile->setStage(this);
+  }
+
+  void Stage::createGoomba(sf::Vector2f& position) {
+    if (m_goombaNumber >= m_maxGoombaInstances)
+      return;
+
+    const int random = 1 + rand() % 100;
+    if (random < m_goombaChance) {
+      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Goomba);
+      m_pGoomba = new Entities::Characters::Goomba(Textures::Goomba, textureRef, position);
+      m_dynamicEntities.include(static_cast<Entities::Entity*>(m_pGoomba));
+    }
+  }
+
+  void Stage::createSpike(sf::Vector2f& position) {
+    if (m_spikeNumber >= m_maxSpikeInstances)
+      return;
+
+    const int random = 1 + rand() % 100;
+    if (random < m_spikeChance) {
+      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Spikes);
+      m_pSpike = new Entities::Obstacles::Spike(Textures::Spikes, textureRef, position);
+      m_staticEntities.include(static_cast<Entities::Entity*>(m_pSpike));
+    }
   }
 
   void Stage::addToDeletionList(Entities::Entity* pEntity) {

@@ -46,4 +46,8 @@ namespace Stages {
   void Factory::createRandomEnemy(sf::Vector2f& position) {
     
   }
+
+  void Factory::createRandomObstacle(sf::Vector2f& position) {
+    
+  }
 }

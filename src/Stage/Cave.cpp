@@ -11,10 +11,12 @@ namespace Stages {
     , m_pGoomba(NULL)
     , m_maxFlyInstances(4)
     , m_maxGoombaInstances(2)
+    , m_maxSpikeInstances(3)
     , m_flyChance(50)
     , m_goombaChance(33)
+    , m_spikeChance(25)
     , m_flyNumber(0)
-    , m_goombaNumber(0)
+    , m_spikeNumber(0)
   {
 
   }
@@ -75,10 +77,26 @@ namespace Stages {
     }
   }
 
+  void Cave::createSpike(sf::Vector2f& position) {
+    if (m_spikeNumber >= m_maxSpikeInstances)
+      return;
+
+    const int random = 1 + rand() % 100;
+    if (random < m_spikeChance) {
+      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::Spikes);
+      m_pSpike = new Entities::Obstacles::Spike(Textures::Spikes, textureRef, position);
+      m_staticEntities.include(static_cast<Entities::Entity*>(m_pSpike));
+    }
+  }
+
   void Cave::createRandomEnemy(sf::Vector2f& position) {
     if (rand() % 2)
       createFly(position);
     else
       createGoomba(position);
+  }
+
+  void Cave::createRandomObstacle(sf::Vector2f& position) {
+    createSpike(position);
   }
 }

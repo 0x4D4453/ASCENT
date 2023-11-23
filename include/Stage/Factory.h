@@ -21,6 +21,7 @@ namespace Stages {
       ~Factory();
 
       virtual void createRandomEnemy(sf::Vector2f& position);
+      virtual void createRandomObstacle(sf::Vector2f& position);
   };
 }
 

@@ -259,7 +259,8 @@ namespace Stages {
           case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position, m_pStage)); break;
           case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
           case ('^'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
-          case ('R'): m_pStage->createRandomEnemy(position); break;
+          case ('E'): m_pStage->createRandomEnemy(position); break;
+          case ('O'): m_pStage->createRandomObstacle(position); break;
           default: break;
         }
       }

@@ -76,6 +76,7 @@ namespace Stages {
 
       virtual void loadTextures() = 0;
       virtual void createRandomEnemy(sf::Vector2f& position) = 0;
+      virtual void createRandomObstacle(sf::Vector2f& position) = 0;
 
       void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
       void addToDeletionList(Entities::Entity* pEntity);

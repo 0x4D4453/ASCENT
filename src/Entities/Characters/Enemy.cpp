@@ -17,7 +17,7 @@ namespace Entities {
       m_sprite.setPosition(spawnPosition);
 
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
-      setAnimation(new Animations::EnemyAnimation(this));
+      setAnimation(new Animations::EnemyAnimation(this, Animations::MDirection::X, 0.2f));
     }
 
     Enemy::~Enemy() {

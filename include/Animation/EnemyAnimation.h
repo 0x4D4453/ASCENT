@@ -14,7 +14,7 @@ namespace Animations {
         Idle = 0,
         Walk1 = 1,
         Walk2,
-        Dead = 4,
+        Neutralized = 4,
       };
 
     public:

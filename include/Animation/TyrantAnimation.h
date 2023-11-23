@@ -20,7 +20,7 @@ namespace Animations {
         Jump,
         Land,
         Shoot,
-        Dead
+        Neutralized
       };
 
     public:

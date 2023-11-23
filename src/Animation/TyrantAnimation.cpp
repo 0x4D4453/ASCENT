@@ -24,7 +24,7 @@ namespace Animations {
     Tyrant* pTyrant = dynamic_cast<Tyrant*>(m_pEntity);
 
     if (pTyrant->getHealthPoints() <= 0)
-      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Dead);
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Neutralized);
     else if (pTyrant->getIsMidAir())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(TyrantFrames::Jump);
     else if (m_pEntity->getVelocity().x != 0.f && pTyrant->getState()->getIsMoving())

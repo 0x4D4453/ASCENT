@@ -21,7 +21,7 @@ namespace Animations {
     Entities::Characters::Player* pPlayer = dynamic_cast<Entities::Characters::Player*>(m_pEntity);
 
     if (pPlayer->getHealthPoints() <= 0)
-      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Dead);
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Neutralized);
     else if (pPlayer->getIsStaggered())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Stagger);
     else if (pPlayer->getIsCharging())
@@ -35,7 +35,7 @@ namespace Animations {
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Idle);
     else
       changeFrame(deltaTime, PlayerFrames::Walk1, PlayerFrames::Walk3);
-      
+
     m_pEntity->setTextureRect(m_textureRect);
   }
 } 

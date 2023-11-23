@@ -87,8 +87,17 @@ namespace Entities {
         m_sprite.setColor(sf::Color::Red);
         handleDamage();
       }
-
+      
       m_healthPoints = healthPoints;
+
+      if (m_healthPoints <= 0.f) {
+        m_sprite.setColor(sf::Color::White);
+        m_collisionStrategies.clear();
+        m_isKnockbackResistant = true;
+
+        if (m_animation)
+          m_animation->update(m_dt);
+      }
     }
 
     const bool Character::getIsMidAir() const {
@@ -109,22 +118,24 @@ namespace Entities {
     }
 
     void Character::exec() {
-      recoverColor();
-      update();
+      if (m_healthPoints > 0) {
+        recoverColor();
+        update();
 
-      if (!getIsColliding())
-        m_isMidAir = true;
+        if (!getIsColliding())
+          m_isMidAir = true;
 
-      if (m_animation)
-        m_animation->update(m_dt);
+        if (m_animation)
+          m_animation->update(m_dt);
 
-      if (m_velocity.x < 0)
-        m_sprite.setScale(-m_scale, m_scale);
-      else if (m_velocity.x > 0)
-        m_sprite.setScale(m_scale, m_scale);
+        if (m_velocity.x < 0)
+          m_sprite.setScale(-m_scale, m_scale);
+        else if (m_velocity.x > 0)
+          m_sprite.setScale(m_scale, m_scale);
 
-      if (m_isStaggered && getCurrentSpeed() < 0.5f)
-        m_isStaggered = false;
+        if (m_isStaggered && getCurrentSpeed() < 0.5f)
+          m_isStaggered = false;
+      }
 
       move();
     }

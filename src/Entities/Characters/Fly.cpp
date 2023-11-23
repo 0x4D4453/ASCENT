@@ -84,12 +84,10 @@ namespace Entities {
     }
 
     void Fly::update() {
-      if (m_healthPoints > 0) {
-        if (m_isStaggered)
-          glide();
-        else
-          movementPattern();
-      }
+      if (m_isStaggered)
+        glide();
+      else
+        movementPattern();
     }
   }
 }

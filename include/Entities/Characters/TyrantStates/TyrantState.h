@@ -18,7 +18,7 @@ namespace Entities {
       Idle,
       Jumping,
       Shooting,
-      Dead
+      Neutralized
     };
 
     class TyrantState {

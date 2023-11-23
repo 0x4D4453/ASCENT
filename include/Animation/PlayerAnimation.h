@@ -16,7 +16,7 @@ namespace Animations {
         Jump,
         Stagger,
         JumpStraight,
-        Dead,
+        Neutralized,
       };
 
     public:

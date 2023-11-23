@@ -89,7 +89,7 @@ namespace Entities {
     }
 
     void Goomba::update() {
-      if (!m_isMidAir && !m_isStaggered && m_healthPoints > 0)
+      if (!m_isMidAir && !m_isStaggered)
         movementPattern();
     }
   }

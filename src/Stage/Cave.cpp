@@ -1,11 +1,11 @@
 /* Main Include */
-#include "Stage/FirstStage.h"
+#include "Stage/Cave.h"
 
 /* Program Defined */
 #include "State/GameState.h"
 
 namespace Stages {
-  FirstStage::FirstStage(States::GameState* pGameState, const std::string& mapTxt) 
+  Cave::Cave(States::GameState* pGameState, const std::string& mapTxt) 
     : Stage(pGameState, mapTxt)
     , m_pFly(NULL)
     , m_pGoomba(NULL)
@@ -19,12 +19,12 @@ namespace Stages {
 
   }
 
-  FirstStage::~FirstStage() {
+  Cave::~Cave() {
     m_pFly = NULL;
     m_pGoomba = NULL;
   }
 
-  void FirstStage::createFly(sf::Vector2f& position) {
+  void Cave::createFly(sf::Vector2f& position) {
     if (m_flyNumber >= m_maxFlyInstances)
       return;
 
@@ -36,7 +36,7 @@ namespace Stages {
     }
   }
 
-  void FirstStage::createGoomba(sf::Vector2f& position) {
+  void Cave::createGoomba(sf::Vector2f& position) {
     if (m_goombaNumber >= m_maxGoombaInstances)
       return;
 
@@ -48,7 +48,7 @@ namespace Stages {
     }
   }
 
-  void FirstStage::createRandomEnemy(sf::Vector2f& position) {
+  void Cave::createRandomEnemy(sf::Vector2f& position) {
     if (rand() % 2)
       createFly(position);
     else

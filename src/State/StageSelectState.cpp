@@ -37,8 +37,6 @@ namespace States {
     m_rightArrow.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH - 150.f, Constants::WINDOW_HEIGHT/2.f));
 
     m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder)));
-    m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder)));
-    m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder2)));
     m_stageImages.push_back(sf::Sprite(m_pContext->getTexture(Textures::StagePlaceholder2)));
 
     for (int i = 0; i < static_cast<int>(TotalOptions); ++i) {
@@ -55,24 +53,17 @@ namespace States {
 
     createOption("Cave", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
     createOption("Factory", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
-    createOption("Challenge", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
-    createOption("Tyrant Fight", sf::Vector2f(Constants::WINDOW_WIDTH/2.f, distanceFromTop + 205.f));
   }
 
   void StageSelectState::changeState() {
     switch (m_currentOption) {
-      case (Stage1):
-        m_pContext->setStage(Stages::Stage1);
+      case (Cave):
+        m_pContext->setStage(Stages::CaveID);
         break;
-      case (Stage2):
-        m_pContext->setStage(Stages::Stage2);
+      case (Factory):
+        m_pContext->setStage(Stages::FactoryID);
         break;
-      case (Stage3):
-        m_pContext->setStage(Stages::Stage3);
-        break;
-      case (Stage4):
-        m_pContext->setStage(Stages::Stage4);
-        break;
+      default: break;
     }
 
     m_pStateStack->pushState(StateType::Loading, NULL, true);
@@ -97,10 +88,10 @@ namespace States {
   }
 
   void StageSelectState::exec() {
-    if (m_currentOption > Stage1)
+    if (m_currentOption > Cave)
       m_pGraphicsManager->draw(m_leftArrow);
     
-    if (m_currentOption < Stage4)
+    if (m_currentOption < Factory)
       m_pGraphicsManager->draw(m_rightArrow);
 
     m_pGraphicsManager->draw(m_stageImages[m_currentOption]);

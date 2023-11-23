@@ -10,7 +10,7 @@
 namespace States { class GameState; }
 
 namespace Stages {
-  class FirstStage : public Stage {
+  class Cave : public Stage {
     private:
       Entities::Characters::Fly* m_pFly;
       Entities::Characters::Goomba* m_pGoomba;
@@ -26,8 +26,8 @@ namespace Stages {
       virtual void createGoomba(sf::Vector2f& position);
     
     public:
-      FirstStage(States::GameState* pGameState, const std::string& mapTxt = Constants::STAGE_1);
-      ~FirstStage();
+      Cave(States::GameState* pGameState, const std::string& mapTxt = Constants::CAVE);
+      ~Cave();
 
       virtual void createRandomEnemy(sf::Vector2f& position);
   };

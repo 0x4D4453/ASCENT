@@ -14,7 +14,7 @@ Context::Context()
   , m_fontHolder()
   , m_soundHolder()
   , m_multiplayer(false)
-  , m_stageID(Stages::Stage1)
+  , m_stageID(Stages::CaveID)
 {
   m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
   m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);

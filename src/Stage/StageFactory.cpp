@@ -4,10 +4,8 @@
 /* Program Defined */
 #include "Entities/Entity.h"
 #include "Entities/EntityFactory.h"
-#include "Stage/FirstStage.h"
-#include "Stage/SecondStage.h"
-#include "Stage/ThirdStage.h"
-#include "Stage/FourthStage.h"
+#include "Stage/Cave.h"
+#include "Stage/Factory.h"
 #include "Stage/Stage.h"
 #include "State/GameState.h"
 #include "Entities/Characters/Goomba.h"
@@ -85,17 +83,11 @@ namespace Stages {
     srand(time(NULL));
 
     switch (stageID) {
-      case Stage1:
-        m_pStage = new FirstStage(pGameState);
+      case CaveID:
+        m_pStage = new Cave(pGameState);
         break;
-      case Stage2:
-        m_pStage = new SecondStage(pGameState);
-        break;
-      case Stage3:
-        m_pStage = new ThirdStage(pGameState);
-        break;
-      case Stage4:
-        m_pStage = new FourthStage(pGameState);
+      case FactoryID:
+        m_pStage = new Factory(pGameState);
         break;
       default: break;
     }

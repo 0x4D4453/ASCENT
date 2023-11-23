@@ -21,10 +21,8 @@ namespace States { class GameState; }
 
 namespace Stages {
   enum ID {
-    Stage1,
-    Stage2,
-    Stage3,
-    Stage4,
+    CaveID,
+    FactoryID,
     TotalStages
   };
 
@@ -59,7 +57,6 @@ namespace Stages {
       ~Stage();
 
       const std::string& getMapTxt() const; 
-      const std::string& getEntitiesTxt() const;
 
       EntityList* getPlayers();
       EntityList* getStaticEntities();

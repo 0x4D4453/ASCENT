@@ -1,5 +1,5 @@
-#ifndef FOURTHSTAGE_H
-#define FOURTHSTAGE_H
+#ifndef SECONDSTAGE_H
+#define SECONDSTAGE_H
 
 /* Program Defined */
 #include "Stage/Stage.h"
@@ -8,10 +8,10 @@
 namespace States { class GameState; }
 
 namespace Stages {
-  class FourthStage : public Stage {
+  class Factory : public Stage {
     public:
-      FourthStage(States::GameState* pGameState, const std::string& mapTxt = Constants::STAGE_4);
-      ~FourthStage();
+      Factory(States::GameState* pGameState, const std::string& mapTxt = Constants::FACTORY);
+      ~Factory();
 
       virtual void createRandomEnemy(sf::Vector2f& position);
   };

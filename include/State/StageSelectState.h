@@ -11,10 +11,8 @@ namespace States {
   class StageSelectState : public OptionsState {
     private:
       enum Options {
-        Stage1,
-        Stage2,
-        Stage3,
-        Stage4,
+        Cave,
+        Factory,
         TotalOptions
       };
 

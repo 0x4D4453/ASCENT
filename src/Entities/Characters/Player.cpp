@@ -28,7 +28,7 @@ namespace Entities {
       , m_chargingSpeed(10.f)
       , m_jumpHeight(2.f)
       , m_minJumpHeight(2.f)
-      , m_maxJumpHeight(12.5f)
+      , m_maxJumpHeight(10.f)
       , m_attackSpeed(3.5f)
       , m_maxWalkingSpeed(2.5f)
     {
@@ -151,15 +151,14 @@ namespace Entities {
     }
 
     void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
-      if (checkGrounded(pEntity, type))
-        m_isAttacking = false;
-        
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
           if (getIsAttacking())
             attack(dynamic_cast<Enemy*>(pEntity));
           break;
         default:
+          if (checkGrounded(pEntity, type))
+            m_isAttacking = false;
           break;
       }
     }

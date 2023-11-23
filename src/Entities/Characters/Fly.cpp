@@ -15,15 +15,14 @@ namespace Entities {
     Fly::Fly(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition)
       : Enemy(spawnPosition)
       , m_timeBetweenFlaps(0.2f)
-      , m_buoyancy(Constants::GRAVITY * 0.9f)
+      , m_buoyancy(Constants::GRAVITY * (0.9f + (rand() % 5) / 100.f))
       , m_range(16.f)
-      , m_timeSinceLastFlap((rand() % 20) / 100.f)
+      , m_timeSinceLastFlap(0.f)
     {
       setEntityId(EntityID::FlyE);
       setTextureID(textureID);
       setTexture(texture);
-      setSpeed(20.f);
-      setVelocity(sf::Vector2f(0.f, m_speed * m_dt));
+      setSpeed(25.f);
 
       setAnimation(new Animations::EnemyAnimation(this, Animations::MDirection::Y, 0.2f));
     }

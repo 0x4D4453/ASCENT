@@ -21,7 +21,7 @@ namespace Entities {
       , m_pPlayer(NULL)
       , m_pPlayers(pStage->getPlayers())
       , m_viewShake(pStage->getViews())
-      , m_followDistance(1000.f)
+      , m_followDistance(500.f)
       , m_moveTimeLimit(moveTimeLimit)
       , m_timeLimit(timeLimit)
       , m_moveTimeElapsed(0.f)
@@ -75,11 +75,12 @@ namespace Entities {
       List<Entity*>::Iterator it = m_pPlayers->first();
       sf::Vector2f tyrantPosition = m_pTyrant->getPosition();
       float minDistance = m_followDistance;
+      m_pPlayer = NULL;
 
       while (it != m_pPlayers->last()) {
         sf::Vector2f playerPosition = (*it)->getPosition();
         float distance = fabs(playerPosition.x - tyrantPosition.x);
-        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance) {
+        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance / 2) {
           m_pPlayer = dynamic_cast<Player*>(*it);
           minDistance = distance;
         }

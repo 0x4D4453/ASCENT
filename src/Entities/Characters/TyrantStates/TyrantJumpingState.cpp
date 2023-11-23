@@ -103,7 +103,8 @@ namespace Entities {
         return;
       }
       
-      checkJumpDistance();
+      if (m_pPlayer)
+        checkJumpDistance();
     }
   }
 }

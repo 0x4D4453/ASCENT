@@ -35,7 +35,7 @@ namespace Entities {
         void changeMaxSpeed(const float maxSpeed);
 
         virtual void movementPattern();
-        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
+        virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };

@@ -84,7 +84,7 @@ namespace Entities {
       m_pState->movementPattern();
     }
 
-    void Tyrant::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+    void Tyrant::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       if (m_healthPoints <= 0)
         return;
 

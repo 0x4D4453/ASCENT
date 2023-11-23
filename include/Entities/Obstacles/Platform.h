@@ -21,7 +21,7 @@ namespace Entities {
       public:
         Platform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~Platform();
-        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
+        virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void exec();
     };
   }

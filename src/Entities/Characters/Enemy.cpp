@@ -24,7 +24,7 @@ namespace Entities {
 
     }
 
-    void Enemy::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+    void Enemy::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       if (m_healthPoints <= 0)
         return;
 
@@ -40,7 +40,7 @@ namespace Entities {
 
     void Enemy::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
       if (pPlayer->getIsAttacking()) {
-        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::NoCollision);
+        setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
       } else {
         if (m_collisionClock.restart().asSeconds() < getCollisionStrategy(EntityTag::PlayerTag)->getDelay())
           return;

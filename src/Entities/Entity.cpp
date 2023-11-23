@@ -118,7 +118,7 @@ namespace Entities {
     m_sprite.move(movement);
   }
 
-  void Entity::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+  void Entity::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
 
   }
 
@@ -129,7 +129,7 @@ namespace Entities {
 
   Manager::Collision::CollisionStrategy* Entity::getCollisionStrategy(EntityTag tag) const {
     if (m_collisionStrategies.count(tag) == 0)
-      return m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::NoCollision);
+      return m_pCollisionManager->getCollisionStrategy(Manager::Collision::StrategyId::PhaseCollision);
       
     return m_collisionStrategies.at(tag);
   }

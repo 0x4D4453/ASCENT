@@ -78,8 +78,8 @@ namespace Manager {
     }
 
     void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
-      entities.first->collide(entities.second, info->type, info->overlap);
-      entities.second->collide(entities.first, info->type, info->overlap * -1);
+      entities.first->reactToCollision(entities.second, info->type, info->overlap);
+      entities.second->reactToCollision(entities.first, info->type, info->overlap * -1);
 
       entities.first->getCurrentCollisions()->insert(entities.second->getId());
       entities.second->getCurrentCollisions()->insert(entities.first->getId());
@@ -88,10 +88,10 @@ namespace Manager {
     void CollisionManager::applyCollisionReaction(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
       CollisionStrategy* strategy;
       strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
-      strategy->collide(entities.first, entities.second, info->type, info->overlap);
+      strategy->reactToCollision(entities.first, entities.second, info->type, info->overlap);
 
       strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
-      strategy->collide(entities.second, entities.first, info->type, info->overlap * -1);
+      strategy->reactToCollision(entities.second, entities.first, info->type, info->overlap * -1);
     }
 
     void CollisionManager::verifyCollisions() {

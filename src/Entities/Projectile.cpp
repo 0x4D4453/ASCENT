@@ -57,7 +57,7 @@ namespace Entities {
       autoRemove();
   }
 
-  void Projectile::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+  void Projectile::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
     switch (pEntity->getEntityTag()) {
       case EntityTag::PlayerTag:
         playerCollide(dynamic_cast<Characters::Player*>(pEntity), type);
@@ -74,7 +74,7 @@ namespace Entities {
 
   void Projectile::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
     if (pPlayer->getIsAttacking()) {
-      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::NoCollision);
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
     } else {
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::KnockbackCollision);
       damagePlayer(pPlayer);

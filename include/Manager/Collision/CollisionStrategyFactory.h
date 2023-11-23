@@ -11,7 +11,7 @@ namespace Manager {
   namespace Collision {
     enum class StrategyId {
       Default,
-      NoCollision,
+      PhaseCollision,
       KnockbackCollision,
       BounceCollision,
     };

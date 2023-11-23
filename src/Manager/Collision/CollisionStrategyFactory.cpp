@@ -2,7 +2,7 @@
 #include "Manager/Collision/CollisionStrategyFactory.h"
 
 /* Program defined */
-#include "Manager/Collision/NoCollision.h"
+#include "Manager/Collision/PhaseCollision.h"
 #include "Manager/Collision/DefaultCollision.h"
 #include "Manager/Collision/KnockbackCollision.h"
 #include "Manager/Collision/BounceCollision.h"
@@ -39,8 +39,8 @@ namespace Manager {
       
       CollisionStrategy* strategy = NULL;
       switch (id) {
-        case StrategyId::NoCollision:
-          strategy = new NoCollision();
+        case StrategyId::PhaseCollision:
+          strategy = new PhaseCollision();
           break;
         case StrategyId::Default:
           strategy = new DefaultCollision();
@@ -52,7 +52,7 @@ namespace Manager {
           strategy = new BounceCollision();
           break;
         default:
-          strategy = new NoCollision();
+          strategy = new PhaseCollision();
           break;
       }
 

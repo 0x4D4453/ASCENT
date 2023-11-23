@@ -93,7 +93,7 @@ namespace Entities {
       if (isAttacking)
         setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::KnockbackCollision);
       else
-        setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::NoCollision);
+        setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::PhaseCollision);
 
       m_isAttacking = isAttacking;
     }
@@ -156,7 +156,7 @@ namespace Entities {
         m_isAttacking = false;
     }
 
-    void Player::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+    void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
           if (getIsAttacking())

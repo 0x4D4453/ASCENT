@@ -19,7 +19,7 @@ namespace Entities {
       public:
         Obstacle(sf::Vector2f position = sf::Vector2f(0.f, 0.f), const bool harmful = false);
         virtual ~Obstacle();
-        virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) = 0;
+        virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) = 0;
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec() = 0;

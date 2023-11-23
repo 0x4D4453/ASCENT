@@ -1,18 +1,21 @@
-#ifndef KNOCKBACKCOLLISION_H
-#define KNOCKBACKCOLLISION_H
+#ifndef PHASECOLLISION_H
+#define PHASECOLLISION_H
 
 /* Program Defined */
 #include "Manager/Collision/CollisionStrategy.h"
 
 namespace Manager {
   namespace Collision {
-    class KnockbackCollision : public CollisionStrategy {
+    class PhaseCollision : public CollisionStrategy {
       private:
-        const float m_maxForce;
-        
+        const float m_drag;
+
+      private:
+        const float applyDrag(Entities::Entity *pOwnEntity, const float component);
+
       public:
-        KnockbackCollision();
-        ~KnockbackCollision();
+        PhaseCollision();
+        ~PhaseCollision();
         
         virtual void reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
     };

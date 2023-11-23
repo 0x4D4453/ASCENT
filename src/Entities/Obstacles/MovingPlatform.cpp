@@ -41,7 +41,7 @@ namespace Entities {
       move();
     }
 
-    void MovingPlatform::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+    void MovingPlatform::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityId()) {
         case EntityID::FlyE:
           return;

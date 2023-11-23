@@ -17,7 +17,7 @@ namespace Manager {
 
     }
 
-    void KnockbackCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+    void KnockbackCollision::reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
       if (pOtherEntity->getEntityType() == Entities::EntityType::Static || pOtherEntity->getIsKnockbackResistant())
         return;
       

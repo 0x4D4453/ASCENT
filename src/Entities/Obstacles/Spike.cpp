@@ -23,7 +23,7 @@ namespace Entities {
       pPlayer->setHealthPoints(pPlayer->getHealthPoints() - m_attack);
     }
 
-    void Spike::collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+    void Spike::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       Characters::Player* player = dynamic_cast<Characters::Player*>(pEntity);
       damagePlayer(player);
     }

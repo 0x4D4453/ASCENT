@@ -33,7 +33,7 @@ namespace Manager {
       return velocity;
     }
 
-    void DefaultCollision::collide(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+    void DefaultCollision::reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
       if (pOtherEntity->getEntityType() == Entities::EntityType::Static)
         return;
 

@@ -95,7 +95,7 @@ namespace Entities {
       std::set<int>* getCurrentCollisions();
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 
-      virtual void collide(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
+      virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
       virtual void move(const sf::Vector2f movement);
       virtual void save(nlohmann::ordered_json& jsonData) = 0;
       virtual void loadSave(const nlohmann::ordered_json& jsonData) = 0;

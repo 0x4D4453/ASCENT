@@ -22,6 +22,7 @@ namespace Entities {
 
       private:
         virtual void update();
+        virtual void handleDamage(const int damage);
         virtual void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
 
       public:

@@ -55,6 +55,7 @@ namespace Entities {
         void update(const float timeElapsed);
         const TyrantStateID getId() const;
         const bool getIsMoving() const;
+        void resetView();
 
         virtual void movementPattern();
     };

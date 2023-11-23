@@ -119,6 +119,11 @@ namespace Entities {
       }
     }
 
+    void Tyrant::handleDamage(const int damage) {
+      if (m_healthPoints - damage <= 0.f)
+        m_pState->resetView();
+    }
+
     void Tyrant::save(nlohmann::ordered_json& jsonData) {
       nlohmann::ordered_json tyrantData;
 

@@ -181,7 +181,7 @@ namespace Entities {
       pEnemy->setIsStaggered(true);
     }
 
-    void Player::handleDamage() {
+    void Player::handleDamage(const int damage) {
       m_isImmune = true;
     }
 

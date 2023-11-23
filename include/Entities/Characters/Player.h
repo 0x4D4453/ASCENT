@@ -47,7 +47,7 @@ namespace Entities {
 
       private:
         virtual void update();
-        virtual void handleDamage();
+        virtual void handleDamage(const int damage);
         void moveLeft();
         void moveRight();
         void chargeJump();

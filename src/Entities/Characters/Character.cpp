@@ -32,7 +32,7 @@ namespace Entities {
       m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 
-    void Character::handleDamage() {
+    void Character::handleDamage(const int damage) {
       
     }
 
@@ -85,7 +85,7 @@ namespace Entities {
     void Character::setHealthPoints(const int healthPoints) {
       if (healthPoints < m_healthPoints) {
         m_sprite.setColor(sf::Color::Red);
-        handleDamage();
+        handleDamage(m_healthPoints - healthPoints);
       }
       
       m_healthPoints = healthPoints;

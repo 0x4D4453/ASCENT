@@ -99,7 +99,7 @@ namespace Entities {
     }
 
     void Tyrant::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (pPlayer->getIsAttacking()) {        
+      if (pPlayer->getIsAttacking() || pPlayer->getIsImmune()) {        
         if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
           setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
           pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x, pPlayer->getVelocity().y));

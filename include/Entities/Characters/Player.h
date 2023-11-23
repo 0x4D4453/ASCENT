@@ -33,16 +33,21 @@ namespace Entities {
         int m_points;
         bool m_isAttacking;
         bool m_isCharging;
+        bool m_isImmune;
         float m_jumpHeight;
+        float m_blinkElapsedTime;
+        float m_immunityElapsedTime;
         const float m_chargingSpeed;
         const float m_minJumpHeight;
         const float m_maxJumpHeight;
         const float m_attackSpeed;
         const float m_maxWalkingSpeed;
+        const float m_immunityLimitTime;
         sf::Sound m_jumpSound;
 
       private:
         virtual void update();
+        virtual void handleDamage();
         void moveLeft();
         void moveRight();
         void chargeJump();
@@ -50,6 +55,7 @@ namespace Entities {
         void handleInput();
         void checkIsAttacking();
         void attack(Enemy *pEnemy);
+        void updateImmunity();
       
       public:
         Player(
@@ -61,7 +67,8 @@ namespace Entities {
         ~Player();
         const bool getIsCharging() const;
         void setIsCharging(const bool isCharging);
-        const bool getIsAttacking();
+        const bool getIsAttacking() const;
+        const bool getIsImmune() const;
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);

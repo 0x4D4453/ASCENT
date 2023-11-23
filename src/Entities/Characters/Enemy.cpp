@@ -39,7 +39,7 @@ namespace Entities {
     }
 
     void Enemy::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (pPlayer->getIsAttacking()) {
+      if (pPlayer->getIsAttacking() || pPlayer->getIsImmune()) {
         setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
       } else {
         if (m_collisionClock.restart().asSeconds() < getCollisionStrategy(EntityTag::PlayerTag)->getDelay())

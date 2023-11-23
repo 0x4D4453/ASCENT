@@ -25,12 +25,16 @@ namespace Entities {
       , m_points(0)
       , m_isAttacking(false)
       , m_isCharging(false)
+      , m_isImmune(false)
       , m_chargingSpeed(10.f)
       , m_jumpHeight(2.f)
       , m_minJumpHeight(2.f)
       , m_maxJumpHeight(10.f)
       , m_attackSpeed(3.5f)
       , m_maxWalkingSpeed(2.5f)
+      , m_blinkElapsedTime(0.f)
+      , m_immunityElapsedTime(0.f)
+      , m_immunityLimitTime(1.2f)
     {
       setEntityId(EntityID::PlayerE);
       setEntityTag(EntityTag::PlayerTag);
@@ -76,8 +80,12 @@ namespace Entities {
       m_isCharging = isCharging;
     }
 
-    const bool Player::getIsAttacking() {
+    const bool Player::getIsAttacking() const {
       return m_isAttacking;
+    }
+
+    const bool Player::getIsImmune() const {
+      return m_isImmune;
     }
 
     void Player::checkIsAttacking() {
@@ -141,13 +149,18 @@ namespace Entities {
     }
 
     void Player::update() {
+      if (m_isImmune)
+        updateImmunity();
+
       if (!m_isMidAir && !m_isStaggered)
         handleInput();
 
-      if (m_isMidAir)
+      if (m_isMidAir) {
         checkIsAttacking();
-      else
+      } else {
+        setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::PhaseCollision);
         m_isAttacking = false;
+      }
     }
 
     void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
@@ -166,6 +179,24 @@ namespace Entities {
     void Player::attack(Enemy* pEnemy) {
       pEnemy->setHealthPoints(pEnemy->getHealthPoints() - 1);
       pEnemy->setIsStaggered(true);
+    }
+
+    void Player::handleDamage() {
+      m_isImmune = true;
+    }
+
+    void Player::updateImmunity() {
+      m_blinkElapsedTime += m_dt;
+      if (m_blinkElapsedTime > m_immunityLimitTime / 4) {
+        m_blinkElapsedTime = 0.f;
+        m_sprite.setColor(sf::Color(255, 255, 255, 50.f));
+      }
+
+      m_immunityElapsedTime += m_dt;
+      if (m_immunityElapsedTime > m_immunityLimitTime) {
+        m_immunityElapsedTime = 0.f;
+        m_isImmune = false;
+      }
     }
 
     void Player::save(nlohmann::ordered_json& jsonData) {

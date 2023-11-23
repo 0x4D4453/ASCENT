@@ -32,6 +32,10 @@ namespace Entities {
       m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 
+    void Character::handleDamage() {
+      
+    }
+
     void Character::recoverColor() {
       sf::Color color = m_sprite.getColor();
 
@@ -43,6 +47,9 @@ namespace Entities {
 
       if (color.b < 255)
         color += sf::Color(0, 0, 750.f * m_dt);
+
+      if (color.a < 255)
+        color += sf::Color(0, 0, 0, 750.f * m_dt);
 
       m_sprite.setColor(color);
     }
@@ -76,8 +83,10 @@ namespace Entities {
     }
 
     void Character::setHealthPoints(const int healthPoints) {
-      if (healthPoints < m_healthPoints)
+      if (healthPoints < m_healthPoints) {
         m_sprite.setColor(sf::Color::Red);
+        handleDamage();
+      }
 
       m_healthPoints = healthPoints;
     }

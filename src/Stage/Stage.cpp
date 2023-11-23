@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Characters/Player.h"
+#include "Entities/Characters/Enemy.h"
 #include "Entities/EntityFactory.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Manager/GraphicsManager.h"
@@ -172,8 +173,8 @@ namespace Stages {
   void Stage::updateEntities(EntityList& entityList) {
     List<Entities::Entity*>::Iterator it = entityList.first();
     while (it != entityList.last()) {
-      applyPhysics((*it));
-      checkOutOfBounds((*it));
+      applyPhysics(*it);
+      checkOutOfBounds(*it);
       (*it)->exec();
       ++it;
     }

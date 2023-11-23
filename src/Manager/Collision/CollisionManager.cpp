@@ -98,14 +98,14 @@ namespace Manager {
       List<Entities::Entity*>::Iterator staticIterator;
       List<Entities::Entity*>::Iterator dynamicIterator;
 
-      for (dynamicIterator = m_pPlayers->first(); dynamicIterator != m_pPlayers->last(); ++dynamicIterator)
-        verifyCollisionStatic(*dynamicIterator);
-
       for (dynamicIterator = m_pDynamicEntities->first(); dynamicIterator != m_pDynamicEntities->last(); ++dynamicIterator) {
         verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
         verifyCollisionDynamic(*dynamicIterator, m_pPlayers->first());
         verifyCollisionStatic(*dynamicIterator);
       }
+
+      for (dynamicIterator = m_pPlayers->first(); dynamicIterator != m_pPlayers->last(); ++dynamicIterator)
+        verifyCollisionStatic(*dynamicIterator);
     }
 
     void CollisionManager::verifyCollisionStatic(Entities::Entity* pEntity) {

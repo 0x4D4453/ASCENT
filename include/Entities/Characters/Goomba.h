@@ -17,6 +17,7 @@ namespace Entities {
       
       private:
         virtual void update();
+        void checkNewTerritory(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
 
       public:
         Goomba(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition = sf::Vector2f(0.f, 0.f));

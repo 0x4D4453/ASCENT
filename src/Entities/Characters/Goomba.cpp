@@ -36,15 +36,22 @@ namespace Entities {
           playerCollide(dynamic_cast<Player*>(pEntity), type);
           break;
         case EntityTag::ObstacleTag:
-          if (type == Manager::Collision::CollisionType::Horizontal && fabs(overlap) > 0.1f) {
-            if (pEntity->getPosition().x > getPosition().x)
-              m_spawnPosition = sf::Vector2f(getPosition().x - m_range, getPosition().y);
-            else
-              m_spawnPosition = sf::Vector2f(getPosition().x + m_range, getPosition().y);
-          }
+          checkNewTerritory(pEntity, type, overlap);
+          break;
+        case EntityTag::EnemyTag:
+          checkNewTerritory(pEntity, type, overlap);
           break;
         default:
           break;
+      }
+    }
+
+    void Goomba::checkNewTerritory(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
+      if (type == Manager::Collision::CollisionType::Horizontal && fabs(overlap) > 0.1f) {
+        if (pEntity->getPosition().x > getPosition().x)
+          m_spawnPosition = sf::Vector2f(getPosition().x - m_range * 1.1f, getPosition().y);
+        else
+          m_spawnPosition = sf::Vector2f(getPosition().x + m_range * 1.1f, getPosition().y);
       }
     }
 

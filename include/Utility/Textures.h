@@ -51,11 +51,14 @@ namespace Textures {
 
     Spring,
     Spikes,
+    Door,
 
     LeftArrow,
     RightArrow,
     StagePlaceholder,
     StagePlaceholder2,
+
+    Heart,
   };
 
   constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
@@ -136,6 +139,10 @@ namespace Textures {
   constexpr char STAGE_PLACEHOLDER2[] = "assets/stagePlaceholder2.png";
 
   constexpr char MOVING_PLATFORM[] = "assets/tiles/movingPlatform.png";
+  constexpr char DOOR[] = "assets/tiles/tile_0059.png";
+  
+  // UI 
+  constexpr char HEART[] = "assets/tiles/heartSpriteSheet.png";
 }
 
 #endif

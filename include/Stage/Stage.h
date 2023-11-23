@@ -8,6 +8,7 @@
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Obstacles/Spike.h"
 #include "Manager/Collision/CollisionManager.h"
+#include "UI/PlayerHealth.h"
 #include "Utility/Constants.h"
 #include "Utility/ResourceHolder.h"
 #include "Utility/Textures.h"
@@ -43,6 +44,8 @@ namespace Stages {
       std::string m_mapTxt;
       std::queue<Entities::Entity*> m_dynamicDeletionQueue;
       std::vector<sf::View> m_views;
+      sf::RectangleShape m_viewSeparation;
+      UI::PlayerHealth m_playerHealth;
       sf::Music m_bgMusic;
       EntityList m_players;
       EntityList m_staticEntities;

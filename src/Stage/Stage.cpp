@@ -35,9 +35,11 @@ namespace Stages {
     , m_mapTxt(mapTxt)
     , m_dynamicDeletionQueue()
     , m_views()
+    , m_viewSeparation(sf::Vector2f(2.f, Constants::WINDOW_HEIGHT))
     , m_players()
     , m_staticEntities()
     , m_dynamicEntities()
+    , m_playerHealth()
     , m_pGoomba(NULL)
     , m_maxGoombaInstances(2)
     , m_goombaChance(33)
@@ -54,6 +56,9 @@ namespace Stages {
     m_collisionManager.setPlayersList(&m_players);
     m_collisionManager.setStaticEntities(&m_staticEntities);
     m_collisionManager.setDynamicEntities(&m_dynamicEntities);
+
+    m_viewSeparation.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f, 0.f));
+    m_viewSeparation.setFillColor(sf::Color::White);
 
     m_bgMusic.openFromFile(Sounds::STAGE_BG);
     m_bgMusic.setVolume(10);
@@ -244,6 +249,7 @@ namespace Stages {
       updateEntities(m_dynamicEntities);
       updateEntities(m_players);
       m_collisionManager.verifyCollisions();
+      m_playerHealth.update(m_dt);
       (*timeSinceLastUpdate) -= (*timePerFrame);
     }
 
@@ -252,11 +258,20 @@ namespace Stages {
   }
 
   void Stage::draw() {
-    for (int i = 0; i < static_cast<int>(m_views.size()); ++i) {
+    int i;
+    List<Entities::Entity*>::Iterator it = m_players.first();
+
+    for (i = 0; i < static_cast<int>(m_views.size()); ++i, ++it) {
       m_pGraphicsManager->setView(m_views[i]);
       drawEntities(m_staticEntities);
       drawEntities(m_dynamicEntities);
       drawEntities(m_players);
+      m_playerHealth.draw(static_cast<Entities::Characters::Player*>(*it), m_pGraphicsManager);
+    }
+
+    if (i > 1) {
+      m_pGraphicsManager->resetView();
+      m_pGraphicsManager->draw(m_viewSeparation);
     }
   }
 

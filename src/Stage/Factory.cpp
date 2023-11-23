@@ -38,7 +38,9 @@ namespace Stages {
     m_pTextureHolder->load(Textures::Bridge, Textures::FLOATING_STRIPPED_PLATFORM_MIDDLE);
     m_pTextureHolder->load(Textures::BridgeLeft, Textures::FLOATING_STRIPPED_PLATFORM_LEFT);
     m_pTextureHolder->load(Textures::BridgeRight, Textures::FLOATING_STRIPPED_PLATFORM_RIGHT);
+
     m_pTextureHolder->load(Textures::Spikes, Textures::GROUND_SPIKES);
+    m_pTextureHolder->load(Textures::Fly, Textures::FLY_FACTORY);
   }
 
   void Factory::createRandomEnemy(sf::Vector2f& position) {

@@ -51,7 +51,6 @@ namespace Stages {
     m_textureHolder.load(Textures::Player2, Textures::PLAYER2);
 
     m_textureHolder.load(Textures::Goomba, Textures::GOOMBA);
-    m_textureHolder.load(Textures::Fly, Textures::FLY);
     m_textureHolder.load(Textures::Tyrant, Textures::TYRANT);
     m_textureHolder.load(Textures::Projectile, Textures::PROJECTILE);
 

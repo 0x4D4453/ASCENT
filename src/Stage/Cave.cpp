@@ -46,7 +46,9 @@ namespace Stages {
     m_pTextureHolder->load(Textures::Bridge, Textures::BRIDGE_MIDDLE);
     m_pTextureHolder->load(Textures::BridgeLeft, Textures::BRIDGE_LEFT);
     m_pTextureHolder->load(Textures::BridgeRight, Textures::BRIDGE_RIGHT);
+
     m_pTextureHolder->load(Textures::Spikes, Textures::STALACTITE);
+    m_pTextureHolder->load(Textures::Fly, Textures::FLY);
   }
 
   void Cave::createFly(sf::Vector2f& position) {

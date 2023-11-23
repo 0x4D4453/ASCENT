@@ -125,6 +125,7 @@ namespace Textures {
 
   constexpr char GOOMBA[] = "assets/tiles/goombaSpriteSheet.png";
   constexpr char FLY[] = "assets/tiles/flySpriteSheet.png";
+  constexpr char FLY_FACTORY[] = "assets/tiles/flyFactorySpriteSheet.png";
   constexpr char TYRANT[] = "assets/tiles/bossSpriteSheet.png";
 
   constexpr char PROJECTILE[] = "assets/tiles/tile_0001.png";

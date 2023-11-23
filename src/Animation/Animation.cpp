@@ -20,6 +20,18 @@ namespace Animations {
 
   }
 
+  void Animation::changeFrame(const float deltaTime, const int firstFrame, const int lastFrame) {
+    m_totalTime += deltaTime;
+    if (m_totalTime >= m_timePerFrame) {
+      m_currentFrame++;
+      if (m_currentFrame < firstFrame || m_currentFrame > lastFrame)
+        m_currentFrame = firstFrame;
+
+      m_totalTime -= m_timePerFrame;
+      m_textureRect.left = Constants::SPRITE_SIZE * m_currentFrame;
+    }
+  }
+
   const int Animation::getCurrentFrame() const {
     return m_currentFrame;
   }

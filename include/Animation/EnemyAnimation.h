@@ -11,8 +11,10 @@ namespace Animations {
 
     public:
       enum DefaultFrames {
+        Idle = 0,
         Walk1 = 1,
-        Walk2
+        Walk2,
+        Dead = 4,
       };
 
     public:

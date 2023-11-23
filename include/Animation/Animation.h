@@ -23,6 +23,9 @@ namespace Animations {
       int m_currentFrame;
       float m_totalTime;
       float m_timePerFrame;
+
+    protected:
+      void changeFrame(const float deltaTime, const int firstFrame, const int lastFrame);
     
     public:
       Animation(Entities::Entity* pEntity = NULL, const float timePerFrame = 0.1f);

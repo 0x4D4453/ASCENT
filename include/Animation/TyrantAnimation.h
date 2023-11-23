@@ -23,9 +23,6 @@ namespace Animations {
         Dead
       };
 
-    private:
-      void changeFrame(const float deltaTime, TyrantFrames firstFrame, TyrantFrames lastFrame);
-
     public:
       TyrantAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~TyrantAnimation();

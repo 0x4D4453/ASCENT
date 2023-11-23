@@ -21,21 +21,13 @@ namespace Animations {
     Entities::Characters::Enemy* pEnemy = dynamic_cast<Entities::Characters::Enemy*>(m_pEntity);
 
     if (pEnemy->getHealthPoints() <= 0)
-      m_textureRect.left = Constants::SPRITE_SIZE * 4;
-    else if (m_mDirection == MDirection::X && m_pEntity->getVelocity().x == 0.f)
-      m_textureRect.left = 0;
-    else if (m_mDirection == MDirection::Y && m_pEntity->getVelocity().y == 0.f)
-      m_textureRect.left = 0;
-    else {
-      m_totalTime += deltaTime;
-      if (m_totalTime >= m_timePerFrame) {
-        m_totalTime -= m_timePerFrame;
-        m_textureRect.left = Constants::SPRITE_SIZE * m_currentFrame;
-        ++m_currentFrame;
-        if (m_currentFrame > static_cast<int>(DefaultFrames::Walk2))
-          m_currentFrame = static_cast<int>(DefaultFrames::Walk1);
-      }
-    }
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(DefaultFrames::Dead);
+    else if ((m_mDirection == MDirection::X && m_pEntity->getVelocity().x == 0.f) ||
+              (m_mDirection == MDirection::Y && m_pEntity->getVelocity().y == 0.f))
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(DefaultFrames::Idle);
+    else
+      changeFrame(deltaTime, DefaultFrames::Walk1, DefaultFrames::Walk2);
+
     m_pEntity->setTextureRect(m_textureRect);
   }
 }

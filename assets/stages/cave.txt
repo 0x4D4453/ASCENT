@@ -1,22 +1,24 @@
-D                                          C
-D                                          C
-D                                          C
-D                     T                    C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-D                                          C
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+6                                          4
+88888888888888889                          4
+                6                   (-------
+                6               (-----
+                6           (-----
+                6        (-----
+--------------------------------------------
+
 
 
 

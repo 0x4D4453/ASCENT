@@ -26,8 +26,10 @@ namespace Stages {
   Manager::GraphicsManager* Stage::m_pGraphicsManager(Manager::GraphicsManager::getInstance());
   const float Stage::m_dt(Stage::m_pGraphicsManager->getTimePerFrame()->asSeconds()); 
 
-  Stage::Stage(States::GameState* pGameState, const std::string& mapTxt) 
+  Stage::Stage(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder, Entities::EntityFactory* pEntityFactory, States::GameState* pGameState, const std::string& mapTxt) 
     : m_collisionManager()
+    , m_pTextureHolder(pTextureHolder)
+    , m_pEntityFactory(pEntityFactory)
     , m_pGameState(pGameState)
     , m_mapTxt(mapTxt)
     , m_players()
@@ -52,11 +54,14 @@ namespace Stages {
 
   Stage::~Stage() {
     deleteEntitiesInQueue();
+    m_pTextureHolder = NULL;
+    m_pEntityFactory = NULL;
+    m_pGameState = NULL;
   }
 
   const std::string& Stage::getMapTxt() const {
     return m_mapTxt;
-  } 
+  }
 
   EntityList* Stage::getPlayers() {
     return &m_players;
@@ -72,10 +77,6 @@ namespace Stages {
 
   std::vector<sf::View>* Stage::getViews() {
     return &m_views;
-  }
-
-  void Stage::setEntityFactory(Entities::EntityFactory* pEntityFactory) {
-    m_pEntityFactory = pEntityFactory;
   }
 
   void Stage::spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle) {

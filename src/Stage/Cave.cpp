@@ -5,8 +5,8 @@
 #include "State/GameState.h"
 
 namespace Stages {
-  Cave::Cave(States::GameState* pGameState, const std::string& mapTxt) 
-    : Stage(pGameState, mapTxt)
+  Cave::Cave(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder, Entities::EntityFactory* pEntityFactory, States::GameState* pGameState) 
+    : Stage(pTextureHolder, pEntityFactory, pGameState, Constants::CAVE)
     , m_pFly(NULL)
     , m_pGoomba(NULL)
     , m_maxFlyInstances(4)
@@ -22,6 +22,31 @@ namespace Stages {
   Cave::~Cave() {
     m_pFly = NULL;
     m_pGoomba = NULL;
+  }
+
+  void Cave::loadTextures() {
+    if (!m_pTextureHolder) {
+      std::cerr << "Error loading textures" << std::endl;
+      exit(1);
+    }
+
+    m_pTextureHolder->load(Textures::StagePlatform, Textures::STONE_PLATFORM_MIDDLE);
+    m_pTextureHolder->load(Textures::StagePlatformLeft, Textures::STONE_PLATFORM_LEFT);
+    m_pTextureHolder->load(Textures::StagePlatformRight, Textures::STONE_PLATFORM_RIGHT);
+    m_pTextureHolder->load(Textures::StageWallLeft, Textures::STONE_WALL_LEFT);
+    m_pTextureHolder->load(Textures::StageWallMiddle, Textures::STONE_WALL_MIDDLE);
+    m_pTextureHolder->load(Textures::StageWallRight, Textures::STONE_WALL_RIGHT);
+    m_pTextureHolder->load(Textures::StageCeiling, Textures::STONE_CEILING_MIDDLE);
+    m_pTextureHolder->load(Textures::StageCeilingLeft, Textures::STONE_CEILING_LEFT);
+    m_pTextureHolder->load(Textures::StageCeilingRight, Textures::STONE_CEILING_RIGHT);
+    m_pTextureHolder->load(Textures::StagePilar, Textures::STONE_PILAR_MIDDLE);
+    m_pTextureHolder->load(Textures::StagePilarTop, Textures::STONE_PILAR_TOP);
+    m_pTextureHolder->load(Textures::StagePilarBottom, Textures::STONE_PILAR_BOTTOM);
+
+    m_pTextureHolder->load(Textures::Bridge, Textures::BRIDGE_MIDDLE);
+    m_pTextureHolder->load(Textures::BridgeLeft, Textures::BRIDGE_LEFT);
+    m_pTextureHolder->load(Textures::BridgeRight, Textures::BRIDGE_RIGHT);
+    m_pTextureHolder->load(Textures::Spikes, Textures::STALACTITE);
   }
 
   void Cave::createFly(sf::Vector2f& position) {

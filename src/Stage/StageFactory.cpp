@@ -53,7 +53,6 @@ namespace Stages {
     m_textureHolder.load(Textures::Goomba, Textures::GOOMBA);
     m_textureHolder.load(Textures::Fly, Textures::FLY);
     m_textureHolder.load(Textures::Tyrant, Textures::TYRANT);
-    m_textureHolder.load(Textures::Enemy3, Textures::ENEMY3);
     m_textureHolder.load(Textures::Projectile, Textures::PROJECTILE);
 
     m_textureHolder.load(Textures::Platform, Textures::PLATFORM);
@@ -62,16 +61,16 @@ namespace Stages {
     m_textureHolder.load(Textures::PlatformRight, Textures::PLATFORM_RIGHT_CORNER);
     m_textureHolder.load(Textures::PlatformRightB, Textures::PLATFORM_RIGHT_CORNER_BLACK);
 
-    m_textureHolder.load(Textures::BeltLeft, Textures::BELT_LEFT);
-    m_textureHolder.load(Textures::BeltMiddle, Textures::BELT_MIDDLE);
-    m_textureHolder.load(Textures::BeltRight, Textures::BELT_RIGHT);
+    m_textureHolder.load(Textures::PipeTopLeft, Textures::PIPE_TOP_LEFT);
+    m_textureHolder.load(Textures::PipeTopRight, Textures::PIPE_TOP_RIGHT);
+    m_textureHolder.load(Textures::PipeBottomLeft, Textures::PIPE_BOTTOM_LEFT);
+    m_textureHolder.load(Textures::PipeBottomRight, Textures::PIPE_BOTTOM_RIGHT);
+    m_textureHolder.load(Textures::PipeHorizontal, Textures::PIPE_HORIZONTAL);
+    m_textureHolder.load(Textures::PipeVertical, Textures::PIPE_VERTICAL);
+    m_textureHolder.load(Textures::PipeHorizontalBroken, Textures::PIPE_HORIZONTAL_BROKEN);
+    m_textureHolder.load(Textures::PipeVerticalBroken, Textures::PIPE_VERTICAL_BROKEN);
 
-    m_textureHolder.load(Textures::StrippedPlatformLeft, Textures::STRIPPED_PLATFORM_LEFT);
-    m_textureHolder.load(Textures::StrippedPlatformMiddle, Textures::STRIPPED_PLATFORM_MIDDLE);
-    m_textureHolder.load(Textures::StrippedPlatformRight, Textures::STRIPPED_PLATFORM_RIGHT);
-
-    m_textureHolder.load(Textures::Spikes, Textures::GROUND_SPIKES);
-
+    m_textureHolder.load(Textures::Spring, Textures::SPRING);
     m_textureHolder.load(Textures::MovingPlatform, Textures::MOVING_PLATFORM);
   }
 
@@ -84,10 +83,10 @@ namespace Stages {
 
     switch (stageID) {
       case CaveID:
-        m_pStage = new Cave(pGameState);
+        m_pStage = new Cave(&m_textureHolder, &m_entityFactory, pGameState);
         break;
       case FactoryID:
-        m_pStage = new Factory(pGameState);
+        m_pStage = new Factory(&m_textureHolder, &m_entityFactory, pGameState);
         break;
       default: break;
     }
@@ -97,10 +96,10 @@ namespace Stages {
       exit(1);
     }
 
+    m_pStage->loadTextures();
     m_pPlayers = m_pStage->getPlayers();
     m_pStaticEntities = m_pStage->getStaticEntities();
     m_pDynamicEntities = m_pStage->getDynamicEntities();
-    m_pStage->setEntityFactory(&m_entityFactory);
     m_pViews = m_pStage->getViews();
     createViews();
 
@@ -224,23 +223,43 @@ namespace Stages {
         position.y = i * Constants::TILE_SIZE;
 
         switch (line[j]) {
-          case ('P'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::Platform, position)); break;
-          case ('A'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeft, position)); break;
-          case ('B'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRight, position)); break;
-          case ('C'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeftB, position)); break;
-          case ('D'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRightB, position)); break;
-          case ('X'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltLeft, position)); break;
-          case ('Y'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltMiddle, position)); break;
-          case ('Z'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::BeltRight, position)); break;
-          case ('S'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformLeft, position)); break;
-          case ('O'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformMiddle, position)); break;
-          case ('Q'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StrippedPlatformRight, position)); break;
-          case ('E'): defineType(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
+          case ('-'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::Platform, position)); break;
+          case ('<'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeft, position)); break;
+          case ('>'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRight, position)); break;
+          case ('['): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformLeftB, position)); break;
+          case (']'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PlatformRightB, position)); break;
+
+          case ('('): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePlatformLeft, position)); break;
+          case ('='): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePlatform, position)); break;
+          case (')'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePlatformRight, position)); break;
+          case ('{'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageWallLeft, position)); break;
+          case ('@'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageWallMiddle, position)); break;
+          case ('}'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageWallRight, position)); break;
+          case ('L'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageCeilingLeft, position)); break;
+          case ('_'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageCeiling, position)); break;
+          case ('J'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StageCeilingRight, position)); break;
+          case ('A'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePilarTop, position)); break;
+          case ('B'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePilar, position)); break;
+          case ('C'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::StagePilarBottom, position)); break;
+
+          case ('X'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::BridgeLeft, position)); break;
+          case ('Y'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::Bridge, position)); break;
+          case ('Z'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::BridgeRight, position)); break;
+
+          case ('7'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeTopLeft, position)); break;
+          case ('8'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeHorizontal, position)); break;
+          case ('9'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeTopRight, position)); break;
+          case ('4'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeVertical, position)); break;
+          case ('6'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeVerticalBroken, position)); break;
+          case ('1'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeBottomLeft, position)); break;
+          case ('2'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeHorizontalBroken, position)); break;
+          case ('3'): defineType(m_entityFactory.createEntity(Entities::PlatformE, Textures::PipeBottomRight, position)); break;
+
+          case ('G'): defineType(m_entityFactory.createEntity(Entities::GoombaE, Textures::Goomba, position)); break;
           case ('F'): defineType(m_entityFactory.createEntity(Entities::FlyE, Textures::Fly, position)); break;
-          case ('G'): defineType(m_entityFactory.createEntity(Entities::EnemyE, Textures::Enemy3, position)); break;
           case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position, m_pStage)); break;
           case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
-          case ('I'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
+          case ('^'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
           case ('R'): m_pStage->createRandomEnemy(position); break;
           default: break;
         }

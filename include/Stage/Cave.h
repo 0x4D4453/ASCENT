@@ -22,11 +22,16 @@ namespace Stages {
       int m_goombaNumber;
 
     private:
+      virtual void loadTextures();
       virtual void createFly(sf::Vector2f& position);
       virtual void createGoomba(sf::Vector2f& position);
     
     public:
-      Cave(States::GameState* pGameState, const std::string& mapTxt = Constants::CAVE);
+      Cave(
+        ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder,
+        Entities::EntityFactory* pEntityFactory,
+        States::GameState* pGameState
+      );
       ~Cave();
 
       virtual void createRandomEnemy(sf::Vector2f& position);

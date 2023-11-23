@@ -7,6 +7,8 @@
 #include "Entities/EntityList.h"
 #include "Manager/Collision/CollisionManager.h"
 #include "Utility/Constants.h"
+#include "Utility/ResourceHolder.h"
+#include "Utility/Textures.h"
 
 /* SFML Library */
 #include <SFML/Audio.hpp>
@@ -30,9 +32,10 @@ namespace Stages {
     protected:
       static const float m_dt;
       static Manager::GraphicsManager* m_pGraphicsManager;
-      Manager::Collision::CollisionManager m_collisionManager;
-      States::GameState* m_pGameState;
+      ResourceHolder<Textures::ID, sf::Texture>* m_pTextureHolder;
       Entities::EntityFactory* m_pEntityFactory;
+      States::GameState* m_pGameState;
+      Manager::Collision::CollisionManager m_collisionManager;
       std::string m_mapTxt;
       EntityList m_players;
       EntityList m_staticEntities;
@@ -55,7 +58,12 @@ namespace Stages {
       void deleteEntitiesInQueue();
     
     public:
-      Stage(States::GameState* pGameState, const std::string& mapTxt);
+      Stage(
+        ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder,
+        Entities::EntityFactory* pEntityFactory,
+        States::GameState* pGameState,
+        const std::string& mapTxt
+      );
       ~Stage();
 
       const std::string& getMapTxt() const; 
@@ -65,9 +73,9 @@ namespace Stages {
       EntityList* getDynamicEntities();
       std::vector<sf::View>* getViews();
 
+      virtual void loadTextures() = 0;
       virtual void createRandomEnemy(sf::Vector2f& position) = 0;
 
-      void setEntityFactory(Entities::EntityFactory* pEntityFactory);
       void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
       void addToDeletionList(Entities::Entity* pEntity);
       void setPaused(const bool paused);

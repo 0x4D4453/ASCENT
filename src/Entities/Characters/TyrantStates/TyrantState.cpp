@@ -20,7 +20,7 @@ namespace Entities {
       , m_pTyrant(pTyrant)
       , m_pPlayer(NULL)
       , m_pPlayers(pStage->getPlayers())
-      , m_viewShake(m_pGraphicsManager->getView())
+      , m_viewShake(pStage->getViews())
       , m_followDistance(1000.f)
       , m_moveTimeLimit(moveTimeLimit)
       , m_timeLimit(timeLimit)

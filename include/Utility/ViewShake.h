@@ -6,7 +6,7 @@
 
 class ViewShake {
   private:
-    sf::View* m_view;
+    std::vector<sf::View>* m_views;
     float m_elapsed;
     float m_totalTime;
     int m_direction;
@@ -14,7 +14,7 @@ class ViewShake {
   private:
 
   public:
-    ViewShake(sf::View* view);
+    ViewShake(std::vector<sf::View>* views);
     ~ViewShake();
     void shake(const float dt, const int maxIntensity, const float interval);
     void reset();

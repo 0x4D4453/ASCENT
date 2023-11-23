@@ -94,13 +94,17 @@ namespace Entities {
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
       const float maxSpeed = m_pTyrant->getMaxSpeed() * maxSpeedMultiplier;
+      const float distance = playerPosition.x - m_pTyrant->getPosition().x;
+      const float size = m_pTyrant->getSprite()->getGlobalBounds().width;
 
-      if (playerPosition.x - m_pTyrant->getPosition().x > 0.f) {
+      if (abs(distance) < size) {
+        tyrantVelocity.x -= tyrantVelocity.x * m_dt;
+      } if (distance > 0.f) {
         tyrantVelocity.x += m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
         if (tyrantVelocity.x > maxSpeed)
           tyrantVelocity.x = maxSpeed;
-      } else {
+      } else if (distance < 0.f) {
         tyrantVelocity.x -= m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
         if (tyrantVelocity.x < -maxSpeed)
@@ -124,9 +128,6 @@ namespace Entities {
 
     void TyrantState::movementPattern() {
       definePlayer();
-
-      if (m_pPlayer)
-        m_isReadyToChange = true;
     }
   }
 }

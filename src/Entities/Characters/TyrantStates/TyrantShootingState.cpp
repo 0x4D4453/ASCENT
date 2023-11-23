@@ -26,8 +26,8 @@ namespace Entities {
       m_isReadyToChange = true;
       changeTyrantSpeed(50.f, 1.75f, 0.25f);
 
-      m_shootingSpots.push_back(sf::Vector2f(Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));
-      m_shootingSpots.push_back(sf::Vector2f(-Constants::SPRITE_SIZE * 10, Constants::SPRITE_SIZE * 10));
+      m_shootingSpots.push_back(sf::Vector2f(Constants::SPRITE_SIZE * 10, -Constants::SPRITE_SIZE * 2));
+      m_shootingSpots.push_back(sf::Vector2f(-Constants::SPRITE_SIZE * 10, -Constants::SPRITE_SIZE * 2));
     }
 
     TyrantShootingState::~TyrantShootingState() {
@@ -74,8 +74,10 @@ namespace Entities {
 
       definePlayer();
 
-      if (!m_pPlayer)
+      if (!m_pPlayer) {
+        changeState(TyrantStateID::Idle);
         return;
+      }
 
       followPlayer();
       stomp();

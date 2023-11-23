@@ -18,7 +18,7 @@ namespace Entities {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
       : Enemy(spawnPosition, Constants::SCALE * 10.f, 10)
       , m_pStage(pStage)
-      , m_pState(new TyrantJumpingState(this, pStage))
+      , m_pState(new TyrantIdleState(this, pStage))
       , m_maxSpeed(0.5f)
     {
       setEntityId(EntityID::TyrantE);
@@ -29,6 +29,7 @@ namespace Entities {
 
       setAnimation(new Animations::TyrantAnimation(this, 0.5f));
       m_sprite.setHitbox({ 4.f, 5.f, 8.f, 11.f });
+      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, (Constants::SPRITE_SIZE)/2.f);
 
       m_isKnockbackResistant = true;
     }

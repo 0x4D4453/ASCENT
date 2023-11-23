@@ -84,8 +84,10 @@ namespace Entities {
 
       definePlayer();
 
-      if (!m_pPlayer)
+      if (!m_pPlayer) {
+        changeState(TyrantStateID::Idle);
         return;
+      }
 
       followPlayer();
       stomp();

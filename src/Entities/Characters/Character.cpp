@@ -28,7 +28,7 @@ namespace Entities {
     }
 
     void Character::setup() {  
-      m_sprite.setOrigin(Constants::SPRITE_SIZE/2.f, 0);
+      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, 0);
       m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 

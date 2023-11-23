@@ -123,7 +123,10 @@ namespace Entities {
     }
 
     void TyrantState::movementPattern() {
-      
+      definePlayer();
+
+      if (m_pPlayer)
+        m_isReadyToChange = true;
     }
   }
 }

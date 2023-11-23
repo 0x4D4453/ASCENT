@@ -95,6 +95,10 @@ namespace Entities {
       return speedVector.getMagnitude();
     }
 
+    void Character::outOfBounds() {
+      setHealthPoints(0);
+    }
+
     void Character::exec() {
       recoverColor();
       update();

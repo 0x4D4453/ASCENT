@@ -99,6 +99,17 @@ namespace Stages {
     }
   }
 
+  void Stage::checkOutOfBounds(Entities::Entity* pEntity) {
+    if (pEntity->getEntityType() == Entities::EntityType::Static)
+      return;
+
+    sf::Vector2f pos = pEntity->getPosition();
+    sf::Vector2f size = m_pGraphicsManager->getStageSize();
+
+    if (pos.x < 0.f || pos.x > size.x || pos.y < 0.f || pos.y > size.y)
+      pEntity->outOfBounds();
+  }
+
   void Stage::savePlayerData() {
     nlohmann::ordered_json playerData;
     List<Entities::Entity*>::Iterator playersIterator;
@@ -162,6 +173,7 @@ namespace Stages {
     List<Entities::Entity*>::Iterator it = entityList.first();
     while (it != entityList.last()) {
       applyPhysics((*it));
+      checkOutOfBounds((*it));
       (*it)->exec();
       ++it;
     }

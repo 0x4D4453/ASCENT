@@ -118,6 +118,10 @@ namespace Entities {
     m_sprite.move(movement);
   }
 
+  void Entity::outOfBounds() {
+    
+  }
+
   void Entity::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
 
   }

@@ -42,8 +42,8 @@ namespace Stages {
       EntityList m_dynamicEntities;
       std::queue<Entities::Entity*> m_dynamicDeletionQueue;
       std::vector<sf::View> m_views;
-      bool m_paused;
       sf::Music m_bgMusic;
+      bool m_paused;
 
     protected:
       void applyPhysics(Entities::Entity* pEntity);
@@ -56,6 +56,7 @@ namespace Stages {
       void savePlayerData();
       void saveEntitiesData();
       void deleteEntitiesInQueue();
+      void checkOutOfBounds(Entities::Entity* pEntity);
     
     public:
       Stage(

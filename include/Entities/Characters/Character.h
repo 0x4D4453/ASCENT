@@ -37,6 +37,7 @@ namespace Entities {
         void setIsMidAir(const bool isMidAir);
         const float getCurrentSpeed() const;
 
+        virtual void outOfBounds();
         virtual void save(nlohmann::ordered_json& jsonData) = 0;
         virtual void loadSave(const nlohmann::ordered_json& jsonData) = 0;
         virtual void exec();

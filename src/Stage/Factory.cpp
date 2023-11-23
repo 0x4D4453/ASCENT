@@ -9,11 +9,14 @@ namespace Stages {
   Factory::Factory(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder, Entities::EntityFactory* pEntityFactory, States::GameState* pGameState) 
     : Stage(pTextureHolder, pEntityFactory, pGameState, Constants::FACTORY)
   {
-
+    m_bgMusic.openFromFile(Sounds::FACTORY_BG);
+    m_bgMusic.setVolume(10);
+    m_bgMusic.setLoop(true);
+    m_bgMusic.play();
   }
 
   Factory::~Factory() {
-
+    m_bgMusic.stop();
   }
 
   void Factory::loadTextures() {

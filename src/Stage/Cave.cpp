@@ -12,11 +12,15 @@ namespace Stages {
     , m_flyChance(50)
     , m_flyNumber(0)
   {
-
+    m_bgMusic.openFromFile(Sounds::CAVE_BG);
+    m_bgMusic.setVolume(10);
+    m_bgMusic.setLoop(true);
+    m_bgMusic.play();
   }
 
   Cave::~Cave() {
     m_pFly = NULL;
+    m_bgMusic.stop();
   }
 
   void Cave::loadTextures() {

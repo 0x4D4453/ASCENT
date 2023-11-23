@@ -59,11 +59,6 @@ namespace Stages {
 
     m_viewSeparation.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f, 0.f));
     m_viewSeparation.setFillColor(sf::Color::White);
-
-    m_bgMusic.openFromFile(Sounds::STAGE_BG);
-    m_bgMusic.setVolume(10);
-    m_bgMusic.setLoop(true);
-    m_bgMusic.play();
   }
 
   Stage::~Stage() {

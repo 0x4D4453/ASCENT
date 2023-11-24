@@ -93,6 +93,7 @@ namespace Entities {
       const bool getIsKnockbackResistant() const;
 
       const bool getIsColliding() const;
+      const bool getIsColliding(const int id) const;
       std::set<int>* getCurrentCollisions();
       Manager::Collision::CollisionStrategy* getCollisionStrategy(EntityTag tag) const;
 

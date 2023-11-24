@@ -105,6 +105,10 @@ namespace Entities {
     return m_currentCollisions.size() > 0;
   }
 
+  const bool Entity::getIsColliding(const int id) const {
+    return (bool) m_currentCollisions.count(id);
+  }
+
   std::set<int>* Entity::getCurrentCollisions() {
     return &m_currentCollisions;
   }

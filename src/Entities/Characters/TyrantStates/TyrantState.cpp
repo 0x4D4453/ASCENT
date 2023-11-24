@@ -91,15 +91,15 @@ namespace Entities {
 
     // Código altamente baseado no código do monitor Giovane
     void TyrantState::followPlayer(const float speedMultiplier, const float maxSpeedMultiplier) {
-      sf::Vector2f playerPosition = m_pPlayer->getPosition();
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
+      if (m_pPlayer->getIsImmune() || m_pPlayer->getIsColliding(m_pTyrant->getId()))
+        tyrantVelocity.x = 0.f;
+
+      sf::Vector2f playerPosition = m_pPlayer->getPosition();
       const float maxSpeed = m_pTyrant->getMaxSpeed() * maxSpeedMultiplier;
       const float distance = playerPosition.x - m_pTyrant->getPosition().x;
-      const float size = m_pTyrant->getSprite()->getGlobalBounds().width;
 
-      if (abs(distance) < size) {
-        tyrantVelocity.x -= tyrantVelocity.x * m_dt;
-      } if (distance > 0.f) {
+      if (distance > 0.f) {
         tyrantVelocity.x += m_pTyrant->getSpeed() * speedMultiplier * m_dt;
 
         if (tyrantVelocity.x > maxSpeed)

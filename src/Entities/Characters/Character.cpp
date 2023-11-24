@@ -118,6 +118,18 @@ namespace Entities {
       setHealthPoints(0);
     }
 
+    void Character::save(nlohmann::ordered_json& jsonData) {
+      Entity::save(jsonData);
+      jsonData["hp"] = m_healthPoints;
+      jsonData["isMidAir"] = m_isMidAir;
+    }
+
+    void Character::loadSave(const nlohmann::ordered_json& jsonData) {
+      Entity::loadSave(jsonData);
+      m_healthPoints = jsonData["hp"].template get<int>();
+      m_isMidAir = jsonData["isMidAir"].template get<bool>();
+    }
+
     void Character::exec() {
       if (m_healthPoints > 0) {
         recoverColor();

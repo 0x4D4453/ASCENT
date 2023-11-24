@@ -76,8 +76,9 @@ namespace Stages {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
-  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID) {
+  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer) {
     srand(time(NULL));
+    m_multiplayer = multiplayer;
 
     switch (stageID) {
       case CaveID:
@@ -115,9 +116,11 @@ namespace Stages {
     using namespace nlohmann;
     using namespace Entities;
 
-    std::ifstream playerStream("saves/player.json");
-    ordered_json playerData = ordered_json::parse(playerStream);
+    std::ifstream playerStream("saves/players.json");
+    if (!playerStream)
+      throw -1;
 
+    ordered_json playerData = ordered_json::parse(playerStream);
     ordered_json::iterator it = playerData.begin();
     
     Characters::Player* pPlayer = new Characters::Player(m_textureHolder.getResource(Textures::Player1), m_soundHolder.getResource(Sounds::playerJump));
@@ -139,6 +142,9 @@ namespace Stages {
     using namespace Entities;
 
     std::ifstream entitiesStream("saves/entities.json");
+    if (!entitiesStream)
+      throw -2;
+
     ordered_json entitiesData = ordered_json::parse(entitiesStream);
 
     ordered_json::iterator it;
@@ -157,8 +163,20 @@ namespace Stages {
   }
 
   void StageFactory::loadSaveGame() {
-    loadPlayerData();
-    loadEntitiesData();
+    try {
+      loadPlayerData();
+      loadEntitiesData();
+    } catch (int err) {
+      switch (err) {
+        case -1: 
+          std::cerr << "Error loading players data!" << std::endl;
+          break;
+        case -2:
+          std::cerr << "Error loading entities data!" << std::endl;
+          break;
+        default: break;
+      }
+    }
   }
 
   void StageFactory::defineType(Entities::Entity* pEntity) {

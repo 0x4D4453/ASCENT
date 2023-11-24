@@ -31,10 +31,8 @@ namespace States {
 
   void SaveScoreState::setup() {
     m_pGraphicsManager->resetView();
-
     m_playerName.setCharacterSize(80.f);
-    sf::FloatRect textRect = m_playerName.getLocalBounds();
-    m_playerName.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    centerTextOrigin(m_playerName);
     m_playerName.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2.f), 200.f);
   }
 
@@ -61,7 +59,7 @@ namespace States {
     for (it = scoresJson["scores"].begin(); it != scoresJson["scores"].end(); ++it)
       scoresMap.insert(make_pair((*it)["score"].template get<int>(), (*it)["name"].template get<string>()));
     
-    scoresMap.insert(make_pair(50, m_textInput.getString()));
+    scoresMap.insert(make_pair(m_pContext->getScore(), m_textInput.getString()));
     
     json scores;
     json playerScore;

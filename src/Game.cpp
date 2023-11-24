@@ -3,7 +3,7 @@
 
 /* Program Defined */
 #include "Entities/Characters/Character.h"
-#include "State/MenuState.h"
+#include "State/TitleState.h"
 
 /* Standard Library */
 #include <stdlib.h>
@@ -14,7 +14,7 @@ Game::Game()
   , m_pEventManager(Manager::Event::EventManager::getInstance())
   , m_pStateStack(States::StateStack::getInstance())
 {
-  m_pStateStack->pushState(States::StateType::Menu);
+  m_pStateStack->pushState(States::StateType::Title);
   run();
 }
 

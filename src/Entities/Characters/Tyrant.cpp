@@ -16,7 +16,7 @@
 namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
-      : Enemy(spawnPosition, Constants::SCALE * 10.f, 10)
+      : Enemy(20, spawnPosition, Constants::SCALE * 10.f, 10)
       , m_pStage(pStage)
       , m_pState(new TyrantIdleState(this, pStage))
       , m_maxSpeed(0.5f)
@@ -136,22 +136,11 @@ namespace Entities {
     }
 
     void Tyrant::save(nlohmann::ordered_json& jsonData) {
-      nlohmann::ordered_json tyrantData;
-
-      tyrantData["ID"] = getEntityId();
-      tyrantData["textureID"] = m_textureID;
-      tyrantData["hp"] = getHealthPoints();
-      tyrantData["spawnPosition"] = { {"x", m_spawnPosition.x}, {"y", m_spawnPosition.y} };
-      tyrantData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
-      tyrantData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-
-      jsonData.push_back(tyrantData);
+      Enemy::save(jsonData);
     }
 
     void Tyrant::loadSave(const nlohmann::ordered_json& jsonData) {
-      m_spawnPosition = sf::Vector2f(jsonData["spawnPosition"]["x"].template get<float>(), jsonData["spawnPosition"]["y"].template get<float>());
-      setVelocity(sf::Vector2f(jsonData["velocity"]["x"], jsonData["velocity"]["y"]));
-      m_healthPoints = jsonData["hp"];
+      Enemy::loadSave(jsonData);
     }
 
     void Tyrant::update() {

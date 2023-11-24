@@ -39,10 +39,8 @@ namespace States {
     pText->setOutlineColor(sf::Color::Black);
     pText->setOutlineThickness(2.f);
     pText->setCharacterSize(characterSize);
-    sf::FloatRect textRect = pText->getLocalBounds();
-    pText->setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    centerTextOrigin(*pText);
     pText->setPosition(position);
-
     m_options.push_back(pText);
   }
 

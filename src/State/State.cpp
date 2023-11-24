@@ -25,6 +25,11 @@ namespace States {
     m_pEventManager = NULL;
   }
 
+  void State::centerTextOrigin(sf::Text& text) {
+    sf::FloatRect textRect = text.getLocalBounds();
+    text.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+  }
+
   const StateType State::getType() const {
     return m_type;
   }

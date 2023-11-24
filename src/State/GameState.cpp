@@ -18,10 +18,12 @@ namespace States {
   {
     setType(StateType::Game);
 
+    m_pContext->setScore(0);
+
     if (!newGame)
       loadStageData();
 
-    m_pStage = m_stageFactory.createStage(this, m_pContext->getStage());
+    m_pStage = m_stageFactory.createStage(this, m_pContext->getStage(), m_pContext->getMultiplayer());
   }
 
   GameState::~GameState() {
@@ -54,6 +56,7 @@ namespace States {
 
     stageJSON["stageID"] = m_pContext->getStage();
     stageJSON["size"] = { {"x", m_pGraphicsManager->getStageSize().x}, {"y", m_pGraphicsManager->getStageSize().y} };
+    stageJSON["multiplayer"] = m_pContext->getMultiplayer();
     std::ofstream stageData("saves/stage.json");
 
     stageData << std::setw(2) << stageJSON;
@@ -70,6 +73,7 @@ namespace States {
 
     m_pContext->setStage(stageData["stageID"].template get<Stages::ID>());
     m_pGraphicsManager->setStageSize(stageData["size"]["y"].template get<float>(), stageData["size"]["x"].template get<float>());
+    m_pContext->setMultiplayer(stageData["multiplayer"].template get<bool>());
 
     stageStream.close();
   }
@@ -81,5 +85,6 @@ namespace States {
 
   void GameState::exec() {
     m_pStage->exec();
+    m_pContext->setScore(m_pStage->getScore());
   }
 }

@@ -20,17 +20,11 @@ namespace Entities {
     }
 
     void Obstacle::save(nlohmann::ordered_json& jsonData) {
-      nlohmann::ordered_json obstacleData;
-
-      obstacleData["ID"] = getEntityId();
-      obstacleData["textureID"] = m_textureID;
-      obstacleData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
-
-      jsonData.push_back(obstacleData);
+      Entity::save(jsonData);
     }
 
     void Obstacle::loadSave(const nlohmann::ordered_json& jsonData) {
-      
+      Entity::loadSave(jsonData);
     }
   }
 }

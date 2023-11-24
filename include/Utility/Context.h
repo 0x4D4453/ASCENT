@@ -19,6 +19,7 @@ class Context {
     ResourceHolder<Sounds::ID, sf::SoundBuffer> m_soundHolder;
     bool m_multiplayer;
     Stages::ID m_stageID;
+    int m_totalScore;
   
   private:
     Context();
@@ -34,6 +35,8 @@ class Context {
     const bool getMultiplayer() const;
     void setStage(const Stages::ID stageID);
     const Stages::ID getStage() const;
+    void setScore(const int score);
+    const int getScore() const;
 };
 
 #endif

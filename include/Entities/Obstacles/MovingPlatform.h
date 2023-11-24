@@ -21,6 +21,8 @@ namespace Entities {
       public:
         MovingPlatform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~MovingPlatform();
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec();
     };
   }

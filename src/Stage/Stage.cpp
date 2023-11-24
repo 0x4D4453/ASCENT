@@ -146,14 +146,17 @@ namespace Stages {
   }
 
   void Stage::savePlayerData() {
-    nlohmann::ordered_json playerData;
+    nlohmann::ordered_json playersData;
     List<Entities::Entity*>::Iterator playersIterator;
 
-    for (playersIterator = m_players.first(); playersIterator != m_players.last(); ++playersIterator)
+    for (playersIterator = m_players.first(); playersIterator != m_players.last(); ++playersIterator) {
+      nlohmann::ordered_json playerData;
       (*playersIterator)->save(playerData);
-
-    std::ofstream jsonOut("saves/player.json");
-    jsonOut << std::setw(2) << playerData;
+      playersData.push_back(playerData);
+    }
+      
+    std::ofstream jsonOut("saves/players.json");
+    jsonOut << std::setw(2) << playersData;
     jsonOut.close();
   }
 
@@ -161,11 +164,17 @@ namespace Stages {
     nlohmann::ordered_json entitiesData;
     List<Entities::Entity*>::Iterator entitiesIterator;
 
-    for (entitiesIterator = m_staticEntities.first(); entitiesIterator != m_staticEntities.last(); ++entitiesIterator)
-      (*entitiesIterator)->save(entitiesData);
-
-    for (entitiesIterator = m_dynamicEntities.first(); entitiesIterator != m_dynamicEntities.last(); ++entitiesIterator)
-      (*entitiesIterator)->save(entitiesData);
+    for (entitiesIterator = m_staticEntities.first(); entitiesIterator != m_staticEntities.last(); ++entitiesIterator) {
+      nlohmann::ordered_json entityData;
+      (*entitiesIterator)->save(entityData);
+      entitiesData.push_back(entityData);
+    }
+      
+    for (entitiesIterator = m_dynamicEntities.first(); entitiesIterator != m_dynamicEntities.last(); ++entitiesIterator) {
+      nlohmann::ordered_json entityData;
+      (*entitiesIterator)->save(entityData);
+      entitiesData.push_back(entityData);
+    }
 
     std::ofstream jsonOut("saves/entities.json");
     jsonOut << std::setw(2) << entitiesData;
@@ -218,8 +227,18 @@ namespace Stages {
     List<Entities::Entity*>::Iterator it;
     int i;
 
-    for (it = m_players.first(), i = 0; it != m_players.last(); ++it, ++i)
+    for (it = m_players.first(), i = 0; it != m_players.last() && i < m_views.size(); ++it, ++i)
       m_pGraphicsManager->updateView(m_views[i], (*it)->getPosition().x, (*it)->getPosition().y);
+  }
+
+  const int Stage::getScore() {
+    List<Entities::Entity*>::Iterator it;
+    int score = 0;
+
+    for (it = m_players.first(); it != m_players.last(); ++it)
+      score += static_cast<Entities::Characters::Player*>((*it))->getPoints();
+
+    return score;
   }
 
   void Stage::verifyGameOver() {
@@ -256,7 +275,7 @@ namespace Stages {
     int i;
     List<Entities::Entity*>::Iterator it = m_players.first();
 
-    for (i = 0; i < static_cast<int>(m_views.size()); ++i, ++it) {
+    for (i = 0; i < static_cast<int>(m_views.size()) && it != m_players.last(); ++i, ++it) {
       m_pGraphicsManager->setView(m_views[i]);
       drawEntities(m_staticEntities);
       drawEntities(m_dynamicEntities);

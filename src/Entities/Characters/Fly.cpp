@@ -13,7 +13,7 @@
 namespace Entities {
   namespace Characters {
     Fly::Fly(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition)
-      : Enemy(spawnPosition)
+      : Enemy(10, spawnPosition)
       , m_timeBetweenFlaps(0.2f)
       , m_buoyancy(Constants::GRAVITY * (0.9f + (rand() % 5) / 100.f))
       , m_range(16.f)
@@ -65,22 +65,11 @@ namespace Entities {
     }
 
     void Fly::save(nlohmann::ordered_json& jsonData) {
-      nlohmann::ordered_json flyData;
-
-      flyData["ID"] = getEntityId();
-      flyData["textureID"] = m_textureID;
-      flyData["hp"] = getHealthPoints();
-      flyData["spawnPosition"] = { {"x", m_spawnPosition.x}, {"y", m_spawnPosition.y} };
-      flyData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
-      flyData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-
-      jsonData.push_back(flyData);
+      Enemy::save(jsonData);
     }
 
     void Fly::loadSave(const nlohmann::ordered_json& jsonData) {
-      m_spawnPosition = sf::Vector2f(jsonData["spawnPosition"]["x"].template get<float>(), jsonData["spawnPosition"]["y"].template get<float>());
-      setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
-      m_healthPoints = jsonData["hp"].template get<int>();
+      Enemy::loadSave(jsonData);
     }
 
     void Fly::update() {

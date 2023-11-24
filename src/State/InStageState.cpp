@@ -31,8 +31,7 @@ namespace States {
     m_background.setPosition(m_pGraphicsManager->getViewCoordinates().x, m_pGraphicsManager->getViewCoordinates().y);
 
     m_title.setCharacterSize(80.f);
-    sf::FloatRect textRect = m_title.getLocalBounds();
-    m_title.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    centerTextOrigin(m_title);
     m_title.setPosition(static_cast<int>(viewCenterPosition.x), static_cast<int>(viewCenterPosition.y - 250.f));
   } 
 

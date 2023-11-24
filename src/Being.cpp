@@ -15,6 +15,7 @@ Being::Being(const float scale)
   : m_id(m_cont++)
   , m_scale(scale)
   , m_sprite()
+  , m_textureID(Textures::None)
 {
   m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
 }

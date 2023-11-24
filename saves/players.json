@@ -1,0 +1,22 @@
+[
+  {
+    "ID": 5,
+    "textureID": 0,
+    "position": {
+      "x": 540.7724609375,
+      "y": 704.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 6,
+    "isMidAir": false,
+    "points": 0,
+    "isAttacking": false,
+    "isCharging": false,
+    "isImmune": false
+  }
+]

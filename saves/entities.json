@@ -1,0 +1,8581 @@
+[
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 0.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 32.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 32.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 64.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 64.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 96.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 96.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 128.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 128.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 160.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 160.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 192.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 192.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 224.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 224.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 256.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 256.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 288.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 288.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 320.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 320.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 352.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 352.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 384.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 384.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 416.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 11,
+    "textureID": 39,
+    "position": {
+      "x": 1152.0,
+      "y": 416.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 11,
+    "textureID": 39,
+    "position": {
+      "x": 1184.0,
+      "y": 416.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 416.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 11,
+    "position": {
+      "x": 1088.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1120.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1152.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1184.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1216.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 13,
+    "position": {
+      "x": 1248.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 448.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 480.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 480.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 480.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 480.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 512.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 512.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 512.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 512.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 544.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 544.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 544.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 544.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 576.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 576.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 576.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 576.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 608.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 608.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 608.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 608.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 640.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 640.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 640.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 640.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 672.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 672.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 672.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 672.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 704.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 704.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 704.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 704.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 32.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 64.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 96.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 128.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 160.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 192.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 224.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 256.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 288.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 320.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 352.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 384.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 416.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 448.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 480.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 512.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 544.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 576.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 608.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 640.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 672.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 704.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 736.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 768.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 800.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 832.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 864.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 896.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 928.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 960.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 992.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1024.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1056.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 28,
+    "position": {
+      "x": 1344.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 768.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 768.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 800.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 800.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1248.0,
+      "y": 832.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 832.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 256.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 288.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 320.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 352.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 384.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 416.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 448.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 480.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 512.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 544.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 576.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 608.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 640.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 672.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 768.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 800.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 832.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 864.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 896.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 928.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 960.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 992.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1024.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1120.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1152.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1184.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1216.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1248.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 29,
+    "position": {
+      "x": 1280.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 864.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 224.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 704.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 736.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1056.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1088.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 896.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 224.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 704.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 736.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1056.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1088.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 928.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 224.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 704.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 736.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1056.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 1088.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 960.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 224.0,
+      "y": 992.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 992.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 224.0,
+      "y": 1024.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1024.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 192.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 224.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 352.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 384.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 416.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 448.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 480.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 512.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 544.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 576.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 608.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 640.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 672.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 704.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 736.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 768.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 800.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 832.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 864.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 896.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 928.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 960.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 992.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1024.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1056.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1088.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1120.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1152.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1184.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1216.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1248.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 1280.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1056.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 160.0,
+      "y": 1088.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 352.0,
+      "y": 1088.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1088.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1088.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 128.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 352.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 384.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 416.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 448.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 480.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 512.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 544.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 576.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 608.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 640.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 672.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 704.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 736.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 768.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 800.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 832.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 864.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 896.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 928.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 960.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 992.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 1024.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1120.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 128.0,
+      "y": 1152.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1056.0,
+      "y": 1152.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1152.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1152.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 128.0,
+      "y": 1184.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1184.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1184.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1184.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 96.0,
+      "y": 1216.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1216.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1216.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1216.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 96.0,
+      "y": 1248.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1248.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1248.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1248.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 32.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 64.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 352.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 384.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 416.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 448.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 480.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 512.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 544.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 576.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 608.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 640.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 672.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 768.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 800.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 832.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 864.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 896.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 928.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 960.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1280.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 320.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 1088.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1312.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 320.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1344.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 320.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 20,
+    "position": {
+      "x": 672.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 704.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 736.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 36,
+    "position": {
+      "x": 768.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 800.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 31,
+    "position": {
+      "x": 832.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1376.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 288.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 576.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 832.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 28,
+    "position": {
+      "x": 1056.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1408.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 256.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 768.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 832.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 1088.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1440.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 256.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 832.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1088.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1472.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 256.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 832.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 20,
+    "position": {
+      "x": 960.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1088.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1504.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 224.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 672.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 11,
+    "textureID": 39,
+    "position": {
+      "x": 704.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 11,
+    "textureID": 39,
+    "position": {
+      "x": 736.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 768.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 37,
+    "position": {
+      "x": 832.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1120.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 32.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 64.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 96.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 192.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 704.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 736.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 832.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 960.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1152.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1568.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 20,
+    "position": {
+      "x": 96.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 192.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 288.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 32,
+    "position": {
+      "x": 832.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 864.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 896.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 928.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 960.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 992.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1184.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1600.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 96.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 192.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 800.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 960.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1216.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1632.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 0.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 96.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 192.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 384.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 416.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 448.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 480.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 512.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 544.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 576.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 608.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 640.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 928.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1216.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 1280.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1664.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 20,
+    "position": {
+      "x": 96.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 224.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 256.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 288.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 320.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 352.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 672.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 832.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 864.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 896.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 1216.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 1280.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 96.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 704.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 800.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 1216.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 1248.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1728.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 13,
+    "position": {
+      "x": 128.0,
+      "y": 1760.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 704.0,
+      "y": 1760.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 768.0,
+      "y": 1760.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1760.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 160.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 192.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 224.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 256.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 288.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 320.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 352.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 384.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 416.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 448.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 480.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 512.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 544.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 576.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 608.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 640.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 672.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 768.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 11,
+    "textureID": 39,
+    "position": {
+      "x": 1120.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1792.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 416.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 448.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 480.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 512.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 544.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 576.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 608.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 640.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 672.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 21,
+    "position": {
+      "x": 704.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 736.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 25,
+    "position": {
+      "x": 1120.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1824.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 384.0,
+      "y": 1856.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1120.0,
+      "y": 1856.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1856.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 352.0,
+      "y": 1888.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1120.0,
+      "y": 1888.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 25,
+    "position": {
+      "x": 1216.0,
+      "y": 1888.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1888.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 320.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 30,
+    "position": {
+      "x": 1088.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1120.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1152.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1184.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1216.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1920.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 320.0,
+      "y": 1952.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 1952.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1120.0,
+      "y": 1952.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1216.0,
+      "y": 1952.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1952.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 320.0,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 37,
+    "position": {
+      "x": 1088.0,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1120.0,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 24,
+    "position": {
+      "x": 1216.0,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 1376.0,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 64.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 352.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 384.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 416.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 448.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 480.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 512.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 544.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 29,
+    "position": {
+      "x": 576.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 28,
+    "position": {
+      "x": 800.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 832.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 864.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 896.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 928.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 960.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 992.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1024.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1056.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1120.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1152.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1184.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1216.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1248.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1280.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1312.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1344.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 1376.0,
+      "y": 2016.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 544.0,
+      "y": 2048.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 832.0,
+      "y": 2048.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 2048.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 23,
+    "position": {
+      "x": 512.0,
+      "y": 2080.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 22,
+    "position": {
+      "x": 864.0,
+      "y": 2080.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 960.0,
+      "y": 2080.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 2080.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 480.0,
+      "y": 2112.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 896.0,
+      "y": 2112.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 2112.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 20,
+    "position": {
+      "x": 480.0,
+      "y": 2144.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 896.0,
+      "y": 2144.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 1088.0,
+      "y": 2144.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 30,
+    "position": {
+      "x": 384.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 416.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 448.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 480.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 512.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 544.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 36,
+    "position": {
+      "x": 576.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 36,
+    "position": {
+      "x": 896.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 928.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 960.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 992.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1024.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1056.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1088.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1120.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1152.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1184.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1216.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1248.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1280.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1312.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1344.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 34,
+    "position": {
+      "x": 1376.0,
+      "y": 2176.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 37,
+    "position": {
+      "x": 384.0,
+      "y": 2208.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 480.0,
+      "y": 2208.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 18,
+    "position": {
+      "x": 896.0,
+      "y": 2208.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 384.0,
+      "y": 2240.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 14,
+    "position": {
+      "x": 480.0,
+      "y": 2240.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 12,
+    "position": {
+      "x": 896.0,
+      "y": 2240.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 30,
+    "position": {
+      "x": 352.0,
+      "y": 2272.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 33,
+    "position": {
+      "x": 384.0,
+      "y": 2272.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 512.0,
+      "y": 2272.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 864.0,
+      "y": 2272.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 352.0,
+      "y": 2304.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 17,
+    "position": {
+      "x": 544.0,
+      "y": 2304.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 16,
+    "position": {
+      "x": 832.0,
+      "y": 2304.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 1120.0,
+      "y": 2304.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 352.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 576.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 608.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 640.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 672.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 704.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 736.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 768.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 15,
+    "position": {
+      "x": 800.0,
+      "y": 2336.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 352.0,
+      "y": 2368.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 19,
+    "position": {
+      "x": 416.0,
+      "y": 2368.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 352.0,
+      "y": 2400.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 37,
+    "position": {
+      "x": 352.0,
+      "y": 2432.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 0.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 32.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 64.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 96.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 128.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 160.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 192.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 224.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 256.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 288.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 320.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 35,
+    "position": {
+      "x": 352.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 384.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 416.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 448.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 480.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 512.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 544.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 576.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 608.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 640.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 672.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 704.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 736.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 768.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 800.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 832.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 864.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 896.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 928.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 960.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 992.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1024.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1056.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1088.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1120.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1152.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1184.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1216.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1248.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1280.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1312.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1344.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 7,
+    "textureID": 9,
+    "position": {
+      "x": 1376.0,
+      "y": 2464.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false
+  },
+  {
+    "ID": 10,
+    "textureID": 7,
+    "position": {
+      "x": 1104.0,
+      "y": 736.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": true,
+    "hp": 0,
+    "isMidAir": false,
+    "spawnPosition": {
+      "x": 576.0,
+      "y": 352.0
+    }
+  },
+  {
+    "ID": 9,
+    "textureID": 6,
+    "position": {
+      "x": 576.0,
+      "y": 926.0291748046875
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.7699716091156006
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": true,
+    "spawnPosition": {
+      "x": 576.0,
+      "y": 960.0
+    }
+  },
+  {
+    "ID": 9,
+    "textureID": 6,
+    "position": {
+      "x": 1216.0,
+      "y": 959.7974243164063
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 1.4499396085739136
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": true,
+    "spawnPosition": {
+      "x": 1216.0,
+      "y": 960.0
+    }
+  },
+  {
+    "ID": 8,
+    "textureID": 5,
+    "position": {
+      "x": 890.9124755859375,
+      "y": 1024.0
+    },
+    "velocity": {
+      "x": -0.22915001213550568,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": false,
+    "spawnPosition": {
+      "x": 896.0,
+      "y": 1024.0
+    },
+    "direction": true
+  },
+  {
+    "ID": 8,
+    "textureID": 5,
+    "position": {
+      "x": 378.9156188964844,
+      "y": 1760.0
+    },
+    "velocity": {
+      "x": -0.22915001213550568,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": false,
+    "spawnPosition": {
+      "x": 384.0,
+      "y": 1760.0
+    },
+    "direction": true
+  },
+  {
+    "ID": 8,
+    "textureID": 5,
+    "position": {
+      "x": 1008.5770263671875,
+      "y": 1984.0
+    },
+    "velocity": {
+      "x": -0.2274833470582962,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": false,
+    "spawnPosition": {
+      "x": 1002.0166015625,
+      "y": 1984.1666259765625
+    },
+    "direction": true
+  }
+]

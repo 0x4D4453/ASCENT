@@ -227,7 +227,7 @@ namespace Stages {
     List<Entities::Entity*>::Iterator it;
     int i;
 
-    for (it = m_players.first(), i = 0; it != m_players.last(); ++it, ++i)
+    for (it = m_players.first(), i = 0; it != m_players.last() && i < m_views.size(); ++it, ++i)
       m_pGraphicsManager->updateView(m_views[i], (*it)->getPosition().x, (*it)->getPosition().y);
   }
 
@@ -275,7 +275,7 @@ namespace Stages {
     int i;
     List<Entities::Entity*>::Iterator it = m_players.first();
 
-    for (i = 0; i < static_cast<int>(m_views.size()); ++i, ++it) {
+    for (i = 0; i < static_cast<int>(m_views.size()) && it != m_players.last(); ++i, ++it) {
       m_pGraphicsManager->setView(m_views[i]);
       drawEntities(m_staticEntities);
       drawEntities(m_dynamicEntities);

@@ -81,8 +81,6 @@ namespace Entities {
 
       sf::Vector2f velocity = pEntity->getVelocity();
       float angle = getLaunchAngle(pEntity->getPosition());
-
-      std::cout << angle << std::endl;
       
       velocity.y = m_strength * sin(angle);
       velocity.x = m_strength * cos(angle);

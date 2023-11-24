@@ -8,15 +8,13 @@
 namespace Entities {
   namespace Obstacles {
     MovingPlatform::MovingPlatform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position)
-      : Obstacle(position)
+      : Platform(textureID, texture, position)
       , m_spawnPosition(position)
       , m_range(64.f)
       , m_direction(true)
     {
       setEntityId(EntityID::MovingPlatformE);
       setEntityType(EntityType::Dynamic);
-      setTextureID(textureID);
-      setTexture(texture);
       setSpeed(50.f);
     }
 
@@ -39,25 +37,6 @@ namespace Entities {
 
       m_velocity = velocity;
       move();
-    }
-
-    void MovingPlatform::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
-      switch (pEntity->getEntityId()) {
-        case EntityID::FlyE:
-          return;
-        case EntityID::PlayerE:
-          playerCollide(dynamic_cast<Characters::Player*>(pEntity), type);
-          break;
-        default:
-          break;
-      }
-    }
-
-    void MovingPlatform::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
-      if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
-        pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * .5f, pPlayer->getVelocity().y));
-        pPlayer->setIsStaggered(true);
-      }
     }
 
     void MovingPlatform::exec() {

@@ -89,7 +89,8 @@ namespace Entities {
       }
     }
 
-    // Código altamente baseado no código do monitor Giovane
+    // Código baseado no código do monitor Giovane
+    // https://www.youtube.com/playlist?list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ
     void TyrantState::followPlayer(const float speedMultiplier, const float maxSpeedMultiplier) {
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
       if (m_pPlayer->getIsImmune() || m_pPlayer->getIsColliding(m_pTyrant->getId()))

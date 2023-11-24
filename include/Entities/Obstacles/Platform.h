@@ -15,7 +15,9 @@ namespace Entities {
   namespace Obstacles {
     class Platform : public Obstacle {
       private:
-        void setup(const char* file);
+        const float m_bounciness;
+
+      private:
         void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
       
       public:

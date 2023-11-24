@@ -11,6 +11,7 @@ namespace Entities {
   namespace Obstacles {
     Platform::Platform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position) 
       : Obstacle(position)
+      , m_bounciness(0.5f)
     {
       setEntityId(EntityID::PlatformE);
       setTextureID(textureID);
@@ -19,10 +20,6 @@ namespace Entities {
 
     Platform::~Platform() {
 
-    }
-
-    void Platform::setup(const char* file) {
-      
     }
 
     void Platform::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
@@ -39,7 +36,7 @@ namespace Entities {
 
     void Platform::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
       if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
-        pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * .5f, pPlayer->getVelocity().y));
+        pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * m_bounciness, pPlayer->getVelocity().y));
         pPlayer->setIsStaggered(true);
       }
     }

@@ -54,7 +54,8 @@ namespace Entities {
         void jump();
         void handleInput();
         void checkIsAttacking();
-        void attack(Enemy *pEnemy);
+        void enemyCollision(Entity* pEntity, Manager::Collision::CollisionType type);
+        void attack(Enemy* pEnemy);
         void updateImmunity();
       
       public:

@@ -126,10 +126,6 @@ namespace Entities {
       }
     }
 
-    void TyrantState::resetView() {
-      m_viewShake.reset();
-    }
-
     void TyrantState::movementPattern() {
       definePlayer();
     }

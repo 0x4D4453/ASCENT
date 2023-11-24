@@ -166,14 +166,21 @@ namespace Entities {
     void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
-          if (getIsAttacking())
-            attack(dynamic_cast<Enemy*>(pEntity));
+          enemyCollision(pEntity, type);
           break;
         default:
           if (checkGrounded(pEntity, type))
             m_isAttacking = false;
           break;
       }
+    }
+
+    void Player::enemyCollision(Entity* pEntity, Manager::Collision::CollisionType type) {
+      Enemy* pEnemy = dynamic_cast<Enemy*>(pEntity);
+      if (pEnemy->getEntityId() == EntityID::TyrantE && pEnemy->getHealthPoints() <= 0)
+        checkGrounded(pEntity, type);
+      else if (getIsAttacking())
+        attack(pEnemy);
     }
 
     void Player::attack(Enemy* pEnemy) {

@@ -16,7 +16,7 @@
 namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
-      : Enemy(spawnPosition, Constants::SCALE * 10.f, 8.f)
+      : Enemy(spawnPosition, Constants::SCALE * 10.f, 10)
       , m_pStage(pStage)
       , m_pState(new TyrantIdleState(this, pStage))
       , m_maxSpeed(0.5f)
@@ -35,7 +35,8 @@ namespace Entities {
     }
 
     Tyrant::~Tyrant() {
-      delete m_pState;
+      if (m_pState)
+        delete m_pState;
       m_pStage = NULL;
       m_pState = NULL;
     }
@@ -119,9 +120,19 @@ namespace Entities {
       }
     }
 
-    void Tyrant::handleDamage(const int damage) {
-      if (m_healthPoints - damage <= 0.f)
-        m_pState->resetView();
+    void Tyrant::neutralized() {
+      m_collisionStrategies.clear();
+      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
+
+      m_sprite.setColor(sf::Color::White);
+      m_sprite.setHitbox({ 4.f, 9.f, 8.f, 7.f });
+      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, Constants::SPRITE_SIZE);
+      m_sprite.move(0.f, Constants::SPRITE_SIZE * m_scale / 2);
+
+      m_animation->update(m_dt);
+
+      delete m_pState;
+      m_pState = NULL;
     }
 
     void Tyrant::save(nlohmann::ordered_json& jsonData) {

@@ -13,7 +13,6 @@ Game::Game()
   : m_pGraphicsManager(Manager::GraphicsManager::getInstance())
   , m_pEventManager(Manager::Event::EventManager::getInstance())
   , m_pStateStack(States::StateStack::getInstance())
-  , m_pContext(Context::getInstance())
 {
   m_pStateStack->pushState(States::StateType::Menu);
   run();
@@ -23,7 +22,6 @@ Game::~Game() {
   delete m_pGraphicsManager;
   delete m_pEventManager;
   delete m_pStateStack;
-  delete m_pContext;
 }
 
 void Game::run() {

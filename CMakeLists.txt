@@ -10,7 +10,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 add_executable(GOTY
-    src/main.cpp src/Context.cpp src/Game.cpp src/Being.cpp 
+    src/main.cpp src/Utility/Context.cpp src/Game.cpp src/Being.cpp 
     src/Entities/Entity.cpp src/Entities/EntityList.cpp src/Entities/EntityFactory.cpp
     src/Entities/Characters/Character.cpp src/Entities/Characters/Player.cpp src/Entities/Characters/Enemy.cpp src/Entities/Characters/Goomba.cpp src/Entities/Characters/Fly.cpp
     src/Entities/Characters/Tyrant.cpp src/Entities/Characters/TyrantStates/TyrantState.cpp src/Entities/Characters/TyrantStates/TyrantIdleState.cpp src/Entities/Characters/TyrantStates/TyrantJumpingState.cpp src/Entities/Characters/TyrantStates/TyrantShootingState.cpp 

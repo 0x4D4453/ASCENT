@@ -33,6 +33,7 @@ namespace States {
       static StateStack* m_instance;
       std::vector<State*> m_stack;
       std::queue<CommandDetails> m_commandQueue;
+      Context* m_pContext;
 
     private:
       StateStack();

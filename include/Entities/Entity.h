@@ -33,6 +33,7 @@ namespace Entities {
     TyrantE,
     SpikesE,
     DoorE,
+    SpringE,
   };
 
   enum EntityTag {

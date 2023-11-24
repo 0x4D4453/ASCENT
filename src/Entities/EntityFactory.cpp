@@ -9,6 +9,7 @@
 #include "Entities/Obstacles/Door.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
+#include "Entities/Obstacles/Spring.h"
 #include "Entities/Projectile.h"
 
 /* Standard Library */
@@ -67,6 +68,9 @@ namespace Entities {
         break;
       case (DoorE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position));
+        break;
+      case (SpringE): 
+        m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));
         break;
     }
     

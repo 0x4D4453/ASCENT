@@ -99,7 +99,7 @@ namespace Manager {
       List<Entities::Entity*>::Iterator dynamicIterator;
 
       for (dynamicIterator = m_pDynamicEntities->first(); dynamicIterator != m_pDynamicEntities->last(); ++dynamicIterator) {
-        verifyCollisionDynamic(*dynamicIterator, dynamicIterator + 1);
+        verifyCollisionDynamic(*dynamicIterator, dynamicIterator.next());
         verifyCollisionDynamic(*dynamicIterator, m_pPlayers->first());
         verifyCollisionStatic(*dynamicIterator);
       }

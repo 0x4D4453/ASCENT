@@ -21,7 +21,7 @@ namespace Entities {
       , m_pPlayer(NULL)
       , m_pPlayers(pStage->getPlayers())
       , m_viewShake(pStage->getViews())
-      , m_followDistance(750.f)
+      , m_followDistance(700.f)
       , m_moveTimeLimit(moveTimeLimit)
       , m_timeLimit(timeLimit)
       , m_moveTimeElapsed(0.f)
@@ -80,7 +80,7 @@ namespace Entities {
       while (it != m_pPlayers->last()) {
         sf::Vector2f playerPosition = (*it)->getPosition();
         float distance = fabs(playerPosition.x - tyrantPosition.x);
-        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance / 2) {
+        if (distance <= minDistance && fabs(playerPosition.y - tyrantPosition.y) <= m_followDistance / 2.5f) {
           m_pPlayer = dynamic_cast<Player*>(*it);
           minDistance = distance;
         }
@@ -93,8 +93,10 @@ namespace Entities {
     // https://www.youtube.com/playlist?list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ
     void TyrantState::followPlayer(const float speedMultiplier, const float maxSpeedMultiplier) {
       sf::Vector2f tyrantVelocity = m_pTyrant->getVelocity();
-      if (m_pPlayer->getIsImmune() || m_pPlayer->getIsColliding(m_pTyrant->getId()))
+      if (m_pPlayer->getIsColliding(m_pTyrant->getId())) {
         tyrantVelocity.x = 0.f;
+        return;
+      }
 
       sf::Vector2f playerPosition = m_pPlayer->getPosition();
       const float maxSpeed = m_pTyrant->getMaxSpeed() * maxSpeedMultiplier;

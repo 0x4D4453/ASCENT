@@ -4,6 +4,9 @@
 /* Program Defined */
 #include "Animation/Animation.h"
 
+/* Forward Declaration */
+namespace Entities { namespace Characters { class Tyrant; } }
+
 namespace Animations {
   class TyrantAnimation : public Animation {
     public:
@@ -22,6 +25,10 @@ namespace Animations {
         Shoot,
         Neutralized
       };
+
+    private:
+      void jumpingUpdate(const float deltaTime, Entities::Characters::Tyrant* pTyrant);
+      void shootingUpdate(const float deltaTime, Entities::Characters::Tyrant* pTyrant);
 
     public:
       TyrantAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);

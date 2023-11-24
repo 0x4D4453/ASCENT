@@ -22,7 +22,7 @@ namespace Entities {
       setEntityId(EntityID::FlyE);
       setTextureID(textureID);
       setTexture(texture);
-      setSpeed(25.f);
+      setSpeed(30.f);
 
       setAnimation(new Animations::EnemyAnimation(this, Animations::MDirection::Y, 0.2f));
     }

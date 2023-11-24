@@ -16,7 +16,7 @@
 namespace Entities {
   namespace Characters {
     Tyrant::Tyrant(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition, Stages::Stage* pStage)
-      : Enemy(20, spawnPosition, Constants::SCALE * 7.5f, 8)
+      : Enemy(20, spawnPosition, Constants::SCALE * 7.f, 8)
       , m_pStage(pStage)
       , m_pState(new TyrantIdleState(this, pStage))
       , m_maxSpeed(0.5f)
@@ -122,12 +122,7 @@ namespace Entities {
 
     void Tyrant::neutralized() {
       m_collisionStrategies.clear();
-      setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::Default);
-
       m_sprite.setColor(sf::Color::White);
-      m_sprite.setHitbox({ 4.f, 8.f, 8.f, 8.f });
-      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, Constants::SPRITE_SIZE);
-      m_sprite.move(0.f, Constants::SPRITE_SIZE * m_scale / 2);
 
       m_animation->update(m_dt);
 

@@ -7,9 +7,9 @@
 namespace Entities {
   namespace Characters {
     TyrantJumpingState::TyrantJumpingState(Tyrant* pTyrant, Stages::Stage* pStage)
-      : TyrantState(pTyrant, pStage, 25.f)
+      : TyrantState(pTyrant, pStage, 15.f)
       , m_jumpDistance(500.f)
-      , m_jumpHeight(300.f)
+      , m_jumpHeight(275.f)
       , m_chargeTimeLimit(1.5f)
       , m_chargeTimeElapsed(0.f)
       , m_isCharging(false)
@@ -59,7 +59,7 @@ namespace Entities {
       }
 
       m_isLanding = true;
-      if (!m_viewShake.finished(1.5f)) {
+      if (!m_viewShake.finished(1.25f)) {
         m_viewShake.shake(m_dt, 15.f, 0.15f);
       } else {
         m_viewShake.reset();

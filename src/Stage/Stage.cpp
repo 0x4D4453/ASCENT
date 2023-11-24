@@ -157,6 +157,16 @@ namespace Stages {
     jsonOut.close();
   }
 
+  const int Stage::getScore() {
+    List<Entities::Entity*>::Iterator it;
+    int score = 0;
+
+    for (it = m_players.first(); it != m_players.last(); ++it)
+      score += static_cast<Entities::Characters::Player*>((*it))->getPoints();
+
+    return score;
+  }
+
   void Stage::saveEntitiesData() {
     nlohmann::ordered_json entitiesData;
     List<Entities::Entity*>::Iterator entitiesIterator;

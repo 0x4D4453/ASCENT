@@ -18,6 +18,8 @@ namespace States {
   {
     setType(StateType::Game);
 
+    m_pContext->setScore(0);
+
     if (!newGame)
       loadStageData();
 
@@ -81,5 +83,6 @@ namespace States {
 
   void GameState::exec() {
     m_pStage->exec();
+    m_pContext->setScore(m_pStage->getScore());
   }
 }

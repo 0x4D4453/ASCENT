@@ -7,10 +7,11 @@
 
 namespace Entities {
   namespace Characters {
-    Enemy::Enemy(const sf::Vector2f spawnPosition, const float scale, const int maxHealth)
+    Enemy::Enemy(const int bounty, const sf::Vector2f spawnPosition, const float scale, const int maxHealth)
       : Character(scale, maxHealth)
       , m_attack(1)
       , m_spawnPosition(spawnPosition)
+      , m_bounty(bounty)
     {
       setEntityId(EntityID::EnemyE);
       setEntityTag(EntityTag::EnemyTag);
@@ -52,6 +53,10 @@ namespace Entities {
 
     void Enemy::damagePlayer(Player* pPlayer) {
       pPlayer->setHealthPoints(pPlayer->getHealthPoints() - m_attack);
+    }
+
+    const int Enemy::getBounty() const {
+      return m_bounty;
     }
   }
 }

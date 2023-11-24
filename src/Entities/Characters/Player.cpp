@@ -183,8 +183,18 @@ namespace Entities {
         attack(pEnemy);
     }
 
+    void Player::addPoints(Enemy* pEnemy) {
+      if (pEnemy->getHealthPoints() == 0)
+        m_points += pEnemy->getBounty();
+    }
+
+    const int Player::getPoints() const {
+      return m_points;
+    }
+
     void Player::attack(Enemy* pEnemy) {
       pEnemy->setHealthPoints(pEnemy->getHealthPoints() - 1);
+      addPoints(pEnemy);
       pEnemy->setIsStaggered(true);
     }
 

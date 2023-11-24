@@ -15,6 +15,7 @@ Context::Context()
   , m_soundHolder()
   , m_multiplayer(false)
   , m_stageID(Stages::CaveID)
+  , m_totalScore(0)
 {
   m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
   m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);
@@ -62,4 +63,12 @@ void Context::setStage(const Stages::ID stageID) {
 
 const Stages::ID Context::getStage() const {
   return m_stageID;
+}
+
+void Context::setScore(const int score) {
+  m_totalScore = score;
+}
+
+const int Context::getScore() const {
+  return m_totalScore;
 }

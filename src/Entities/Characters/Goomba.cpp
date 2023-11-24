@@ -11,7 +11,7 @@
 namespace Entities {
   namespace Characters {
     Goomba::Goomba(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition)
-      : Enemy(spawnPosition)
+      : Enemy(5, spawnPosition)
       , m_range(64.f)
       , m_direction(rand() % 2)
     {

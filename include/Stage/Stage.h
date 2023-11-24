@@ -95,6 +95,7 @@ namespace Stages {
 
       void spawnProjectile(Textures::ID textureID, sf::Vector2f& position, const float scale, const float speed, const float angle);
       void addToDeletionList(Entities::Entity* pEntity);
+      const int getScore();
       void setPaused(const bool paused);
       void saveGame();
       // virtual void exec();

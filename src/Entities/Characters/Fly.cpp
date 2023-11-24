@@ -13,7 +13,7 @@
 namespace Entities {
   namespace Characters {
     Fly::Fly(Textures::ID textureID, sf::Texture& texture, const sf::Vector2f spawnPosition)
-      : Enemy(spawnPosition)
+      : Enemy(10, spawnPosition)
       , m_timeBetweenFlaps(0.2f)
       , m_buoyancy(Constants::GRAVITY * (0.9f + (rand() % 5) / 100.f))
       , m_range(16.f)

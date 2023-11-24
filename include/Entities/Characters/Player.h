@@ -57,6 +57,7 @@ namespace Entities {
         void enemyCollision(Entity* pEntity, Manager::Collision::CollisionType type);
         void attack(Enemy* pEnemy);
         void updateImmunity();
+        void addPoints(Enemy* pEnemy);
       
       public:
         Player(
@@ -70,6 +71,7 @@ namespace Entities {
         void setIsCharging(const bool isCharging);
         const bool getIsAttacking() const;
         const bool getIsImmune() const;
+        const int getPoints() const;
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);

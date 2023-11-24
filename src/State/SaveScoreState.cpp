@@ -61,7 +61,7 @@ namespace States {
     for (it = scoresJson["scores"].begin(); it != scoresJson["scores"].end(); ++it)
       scoresMap.insert(make_pair((*it)["score"].template get<int>(), (*it)["name"].template get<string>()));
     
-    scoresMap.insert(make_pair(50, m_textInput.getString()));
+    scoresMap.insert(make_pair(m_pContext->getScore(), m_textInput.getString()));
     
     json scores;
     json playerScore;

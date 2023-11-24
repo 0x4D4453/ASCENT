@@ -14,7 +14,7 @@ namespace Entities {
       , m_timeBetweenShots(1.f)
       , m_shootingAngle(M_PI / 4)
       , m_angleRange(M_PI / 6)
-      , m_shootingSpeed(12.f)
+      , m_shootingSpeed(7.5f)
       , m_shootingTimeLimit(5.f)
       , m_shootingTimeElapsed(0.f)
       , m_timeSinceLastShot(0.f)
@@ -24,7 +24,7 @@ namespace Entities {
       m_id = TyrantStateID::Shooting;
       m_nextState = TyrantStateID::Idle;
       m_isReadyToChange = true;
-      changeTyrantSpeed(50.f, 1.75f, 0.25f);
+      changeTyrantSpeed(50.f, 1.75f, 0.2f);
 
       m_shootingSpots.push_back(sf::Vector2f(Constants::SPRITE_SIZE * 10, -Constants::SPRITE_SIZE * 2));
       m_shootingSpots.push_back(sf::Vector2f(-Constants::SPRITE_SIZE * 10, -Constants::SPRITE_SIZE * 2));

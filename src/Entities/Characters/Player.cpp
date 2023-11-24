@@ -101,8 +101,6 @@ namespace Entities {
     }
 
     void Player::handleInput() {
-      // m_velocity.x = 0.f;
-      
       using sf::Keyboard;
       std::map<Actions, Keyboard::Key>::iterator it = m_keyBinding.begin();
 

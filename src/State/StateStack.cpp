@@ -12,6 +12,7 @@
 #include "State/EndStageState.h"
 #include "State/SaveScoreState.h"
 #include "State/RankingState.h"
+#include "Utility/Context.h"
 
 /* Standard Library */
 #include <iostream>
@@ -22,6 +23,7 @@ namespace States {
   StateStack::StateStack()
     : m_stack()
     , m_commandQueue()
+    , m_pContext(Context::getInstance())
   {
     
   }
@@ -77,6 +79,7 @@ namespace States {
 
   StateStack::~StateStack() {
     clearStates();
+    delete m_pContext;
   }
 
   StateStack* StateStack::getInstance() {

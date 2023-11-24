@@ -31,10 +31,8 @@ namespace States {
 
   void SaveScoreState::setup() {
     m_pGraphicsManager->resetView();
-
     m_playerName.setCharacterSize(80.f);
-    sf::FloatRect textRect = m_playerName.getLocalBounds();
-    m_playerName.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top + textRect.height/2.0f));
+    centerTextOrigin(m_playerName);
     m_playerName.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2.f), 200.f);
   }
 

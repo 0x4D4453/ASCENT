@@ -19,7 +19,7 @@ add_executable(GOTY
     src/Manager/Collision/CollisionManager.cpp src/Manager/Collision/CollisionStrategy.cpp src/Manager/Collision/CollisionStrategyFactory.cpp
     src/Manager/Collision/DefaultCollision.cpp src/Manager/Collision/PhaseCollision.cpp src/Manager/Collision/KnockbackCollision.cpp src/Manager/Collision/BounceCollision.cpp
     src/Stage/Stage.cpp src/Stage/StageFactory.cpp src/Stage/Cave.cpp src/Stage/Factory.cpp 
-    src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp src/State/LoadingState.cpp src/State/OptionsState.cpp src/State/InStageState.cpp src/State/PauseState.cpp src/State/EndStageState.cpp src/State/SaveScoreState.cpp src/State/MenuState.cpp src/State/PlayerSelectState.cpp src/State/StageSelectState.cpp src/State/RankingState.cpp
+    src/State/State.cpp src/State/StateStack.cpp src/State/GameState.cpp src/State/TitleState.cpp src/State/LoadingState.cpp src/State/OptionsState.cpp src/State/InStageState.cpp src/State/PauseState.cpp src/State/EndStageState.cpp src/State/SaveScoreState.cpp src/State/MenuState.cpp src/State/PlayerSelectState.cpp src/State/StageSelectState.cpp src/State/RankingState.cpp
     src/State/Pause/PauseObserver.cpp src/State/Pause/PauseSubject.cpp
     src/Animation/Animation.cpp src/Animation/PlayerAnimation.cpp src/Animation/EnemyAnimation.cpp src/Animation/TyrantAnimation.cpp
     src/Manager/Event/EventManager.cpp src/Manager/Event/EventObserver.cpp src/Manager/Event/EventSubject.cpp

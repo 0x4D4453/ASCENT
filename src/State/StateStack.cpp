@@ -12,6 +12,7 @@
 #include "State/EndStageState.h"
 #include "State/SaveScoreState.h"
 #include "State/RankingState.h"
+#include "State/TitleState.h"
 #include "Utility/Context.h"
 
 /* Standard Library */
@@ -32,6 +33,9 @@ namespace States {
     State* state = NULL;
 
     switch (stateType) {
+      case (StateType::Title): 
+        state = new TitleState; 
+        break;
       case (StateType::Menu): 
         state = new MenuState; 
         break;

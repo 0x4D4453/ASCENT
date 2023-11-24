@@ -16,6 +16,7 @@ namespace States { class StateStack; }
 namespace States {
   enum class StateType {
     None = -1,
+    Title,
     Menu,
     PlayerSelect,
     StageSelect,
@@ -36,6 +37,9 @@ namespace States {
       Manager::GraphicsManager* m_pGraphicsManager;
       Manager::Event::EventManager* m_pEventManager;
       Context* m_pContext;
+
+    protected:
+      void centerTextOrigin(sf::Text& text);
     
     public:
       State();

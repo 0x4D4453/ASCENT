@@ -34,8 +34,7 @@ namespace States {
 
   void RankingState::configureText() {
     m_title.setCharacterSize(100.f);
-    sf::FloatRect textRect = m_title.getLocalBounds();
-    m_title.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top  + textRect.height/2.0f));
+    centerTextOrigin(m_title);
     m_title.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2), 70);
     m_title.setFillColor(sf::Color::White);
 
@@ -51,13 +50,10 @@ namespace States {
       name.setCharacterSize(characterSize);
       score.setCharacterSize(characterSize);
 
-      textRect = ranking.getLocalBounds();
-      ranking.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top  + textRect.height/2.0f));
-      textRect = name.getLocalBounds();
-      name.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top  + textRect.height/2.0f));
-      textRect = score.getLocalBounds();
-      score.setOrigin(static_cast<int>(textRect.left + textRect.width/2.0f), static_cast<int>(textRect.top  + textRect.height/2.0f));
-
+      centerTextOrigin(ranking);
+      centerTextOrigin(name);
+      centerTextOrigin(score);
+      
       ranking.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2 - 150.f), spaceBetween);
       name.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2), spaceBetween);
       score.setPosition(static_cast<int>(Constants::WINDOW_WIDTH/2 + 200.f), spaceBetween);

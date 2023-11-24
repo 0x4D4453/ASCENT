@@ -32,12 +32,12 @@ namespace Entities {
         m_pTyrant->setHealthPoints(health + m_healing);
         m_timeSinceHeal = 0.f;
       }
-
-      if (m_pPlayer)
-        m_isReadyToChange = true;
     }
 
     void TyrantIdleState::doAction() {
+      if (m_pPlayer)
+        m_isReadyToChange = true;
+
       heal();
     }
   }

@@ -68,23 +68,12 @@ namespace Entities {
     }
 
     void Goomba::save(nlohmann::ordered_json& jsonData) {
-      nlohmann::ordered_json goombaData;
-
-      goombaData["ID"] = getEntityId();
-      goombaData["textureID"] = m_textureID;
-      goombaData["hp"] = getHealthPoints();
-      goombaData["spawnPosition"] = { {"x", m_spawnPosition.x}, {"y", m_spawnPosition.y} };
-      goombaData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
-      goombaData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-      goombaData["direction"] = m_direction;
-
-      jsonData.push_back(goombaData);
+      Enemy::save(jsonData);
+      jsonData["direction"] = m_direction;
     }
 
     void Goomba::loadSave(const nlohmann::ordered_json& jsonData) {
-      m_spawnPosition = sf::Vector2f(jsonData["spawnPosition"]["x"].template get<float>(), jsonData["spawnPosition"]["y"].template get<float>());
-      setVelocity(sf::Vector2f(jsonData["velocity"]["x"], jsonData["velocity"]["y"]));
-      m_healthPoints = jsonData["hp"];
+      Enemy::loadSave(jsonData);
       m_direction = jsonData["direction"];
     }
 

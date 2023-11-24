@@ -100,8 +100,8 @@ namespace Entities {
       virtual void outOfBounds();
       virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
       virtual void move(const sf::Vector2f movement);
-      virtual void save(nlohmann::ordered_json& jsonData) = 0;
-      virtual void loadSave(const nlohmann::ordered_json& jsonData) = 0;
+      virtual void save(nlohmann::ordered_json& jsonData);
+      virtual void loadSave(const nlohmann::ordered_json& jsonData);
       virtual void exec() = 0;
   };
 };

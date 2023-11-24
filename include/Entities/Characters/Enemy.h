@@ -13,8 +13,8 @@ namespace Entities {
     class Enemy : public Character {
       protected:
         const int m_attack;
-        sf::Vector2f m_spawnPosition;
         const int m_bounty;
+        sf::Vector2f m_spawnPosition;
 
       protected:
         virtual void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
@@ -26,6 +26,8 @@ namespace Entities {
         const int getBounty() const;
         virtual void movementPattern() = 0;
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };
   }
 }

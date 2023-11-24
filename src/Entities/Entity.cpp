@@ -145,4 +145,20 @@ namespace Entities {
   void Entity::setCollisionManager(Manager::Collision::CollisionManager* pManager) {
     m_pCollisionManager = pManager;
   }
+
+  void Entity::save(nlohmann::ordered_json& jsonData) {
+    jsonData["ID"] = m_entityId;
+    jsonData["textureID"] = m_textureID;
+    jsonData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
+    jsonData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
+    jsonData["isStaggered"] = m_isStaggered;
+    jsonData["isKnockbackResistant"] = m_isKnockbackResistant;
+  }
+
+  void Entity::loadSave(const nlohmann::ordered_json& jsonData) {
+    setPosition(sf::Vector2f(jsonData["position"]["x"].template get<float>(), jsonData["position"]["y"].template get<float>()));
+    setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
+    m_isStaggered = jsonData["isStaggered"].template get<bool>();
+    m_isKnockbackResistant = jsonData["isKnockbackResistant"].template get<bool>();
+  }
 }

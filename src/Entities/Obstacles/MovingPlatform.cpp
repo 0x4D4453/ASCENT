@@ -39,6 +39,18 @@ namespace Entities {
       move();
     }
 
+    void MovingPlatform::save(nlohmann::ordered_json& jsonData) {
+      Obstacle::save(jsonData);
+      jsonData["spawnPosition"] = { {"x", m_spawnPosition.x}, {"y", m_spawnPosition.y} };
+      jsonData["direction"] = m_direction;
+    }
+
+    void MovingPlatform::loadSave(const nlohmann::ordered_json& jsonData) {
+      Obstacle::loadSave(jsonData);
+      m_spawnPosition = sf::Vector2f(jsonData["spawnPosition"]["x"].template get<float>(), jsonData["spawnPosition"]["y"].template get<float>());
+      m_direction = jsonData["direction"].template get<bool>();
+    }
+
     void MovingPlatform::exec() {
       movementPattern();
     }

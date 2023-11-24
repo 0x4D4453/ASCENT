@@ -18,8 +18,6 @@ namespace Entities {
         ~Door();
         void moveToNextStage();
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
-        virtual void save(nlohmann::ordered_json& jsonData);
-        virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec();
     };
   } 

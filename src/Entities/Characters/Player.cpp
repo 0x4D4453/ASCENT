@@ -218,23 +218,16 @@ namespace Entities {
     }
 
     void Player::save(nlohmann::ordered_json& jsonData) {
-      nlohmann::ordered_json playerData;
-
-      playerData["hp"] = getHealthPoints();
-      playerData["score"] = m_points;
-      playerData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
-      playerData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
-      playerData["isCharging"] = m_isCharging;
-      playerData["isStaggered"] = m_isStaggered;
-
-      jsonData.push_back(playerData);
+      Character::save(jsonData);
+      jsonData["points"] = m_points;
+      jsonData["isAttacking"] = m_isAttacking;
+      jsonData["isCharging"] = m_isCharging;
+      jsonData["isImmune"] = m_isImmune;
     }
 
     void Player::loadSave(const nlohmann::ordered_json& jsonData) {
-      setPosition(sf::Vector2f(jsonData["position"]["x"].template get<float>(), jsonData["position"]["y"].template get<float>()));
-      setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
+      Character::loadSave(jsonData);
       m_isCharging = jsonData["isCharging"].template get<bool>();
-      m_isStaggered = jsonData["isStaggered"].template get<bool>();
     }
   }
 }

@@ -115,7 +115,7 @@ namespace Stages {
     using namespace nlohmann;
     using namespace Entities;
 
-    std::ifstream playerStream("saves/player.json");
+    std::ifstream playerStream("saves/players.json");
     ordered_json playerData = ordered_json::parse(playerStream);
 
     ordered_json::iterator it = playerData.begin();

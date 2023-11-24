@@ -58,5 +58,15 @@ namespace Entities {
     const int Enemy::getBounty() const {
       return m_bounty;
     }
+
+    void Enemy::save(nlohmann::ordered_json& jsonData) {
+      Character::save(jsonData);
+      jsonData["spawnPosition"] = { {"x", m_spawnPosition.x}, {"y", m_spawnPosition.y} };
+    }
+
+    void Enemy::loadSave(const nlohmann::ordered_json& jsonData) {
+      Character::loadSave(jsonData);
+      m_spawnPosition = sf::Vector2f(jsonData["spawnPosition"]["x"].template get<float>(), jsonData["spawnPosition"]["y"].template get<float>());
+    }
   }
 }

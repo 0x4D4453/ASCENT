@@ -43,14 +43,6 @@ namespace Entities {
       }
     }
 
-    void Door::save(nlohmann::ordered_json& jsonData) {
-
-    }
-
-    void Door::loadSave(const nlohmann::ordered_json& jsonData) {
-
-    }
-
     void Door::exec() {
 
     }

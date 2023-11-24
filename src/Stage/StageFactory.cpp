@@ -70,7 +70,6 @@ namespace Stages {
     m_textureHolder.load(Textures::PipeVerticalBroken, Textures::PIPE_VERTICAL_BROKEN);
 
     m_textureHolder.load(Textures::Spring, Textures::SPRING);
-    m_textureHolder.load(Textures::MovingPlatform, Textures::MOVING_PLATFORM);
   }
 
   void StageFactory::loadSounds() {

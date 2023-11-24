@@ -49,6 +49,8 @@ namespace Stages {
     m_pTextureHolder->load(Textures::Spikes, Textures::STALACTITE);
     m_pTextureHolder->load(Textures::Door, Textures::DOOR);
     m_pTextureHolder->load(Textures::Fly, Textures::FLY);
+
+    m_pTextureHolder->load(Textures::MovingPlatform, Textures::MOVING_PLATFORM_DIRT);
   }
 
   void Cave::createFly(sf::Vector2f& position) {

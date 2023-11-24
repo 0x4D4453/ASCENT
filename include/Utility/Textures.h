@@ -139,6 +139,7 @@ namespace Textures {
   constexpr char STAGE_PLACEHOLDER2[] = "assets/stagePlaceholder2.png";
 
   constexpr char MOVING_PLATFORM[] = "assets/tiles/movingPlatform.png";
+  constexpr char MOVING_PLATFORM_DIRT[] = "assets/tiles/dirtMovingPlatform.png";
   constexpr char DOOR[] = "assets/tiles/tile_0059.png";
   
   // UI 

@@ -45,6 +45,8 @@ namespace Stages {
     m_pTextureHolder->load(Textures::Spikes, Textures::GROUND_SPIKES);
     m_pTextureHolder->load(Textures::Door, Textures::DOOR);
     m_pTextureHolder->load(Textures::Fly, Textures::FLY_FACTORY);
+
+    m_pTextureHolder->load(Textures::MovingPlatform, Textures::MOVING_PLATFORM);
   }
 
   void Factory::createRandomEnemy(sf::Vector2f& position) {

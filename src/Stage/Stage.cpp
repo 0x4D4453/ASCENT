@@ -57,7 +57,7 @@ namespace Stages {
     m_collisionManager.setStaticEntities(&m_staticEntities);
     m_collisionManager.setDynamicEntities(&m_dynamicEntities);
 
-    m_viewSeparation.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f, 0.f));
+    m_viewSeparation.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - 1.f, 0.f));
     m_viewSeparation.setFillColor(sf::Color::White);
   }
 
@@ -272,6 +272,10 @@ namespace Stages {
 
   void Stage::setPaused(const bool paused) {
     m_paused = paused;
+    if (paused)
+      m_bgMusic.pause();
+    else 
+      m_bgMusic.play();
   }
 
   void Stage::exec() {

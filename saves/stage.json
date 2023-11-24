@@ -1,7 +1,8 @@
 {
-  "stageID": 1,
+  "stageID": 0,
   "size": {
     "x": 1408.0,
-    "y": 2496.0
-  }
+    "y": 1920.0
+  },
+  "multiplayer": false
 }

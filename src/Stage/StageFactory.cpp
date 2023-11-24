@@ -76,8 +76,9 @@ namespace Stages {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
   }
 
-  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID) {
+  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer) {
     srand(time(NULL));
+    m_multiplayer = multiplayer;
 
     switch (stageID) {
       case CaveID:

@@ -29,7 +29,7 @@ namespace Stages {
       EntityList* m_pDynamicEntities;
       std::vector<sf::View>* m_pViews;
       const bool m_newGame;
-      const bool m_multiplayer;
+      bool m_multiplayer;
     
     private:
       void loadTextures();
@@ -46,7 +46,7 @@ namespace Stages {
       StageFactory(const bool newGame = true, const bool multiplayer = false);
       ~StageFactory();
 
-      Stage* createStage(States::GameState* pGameState, Stages::ID stageID);
+      Stage* createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer);
   };
 }
 

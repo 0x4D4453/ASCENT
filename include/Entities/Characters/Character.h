@@ -23,6 +23,7 @@ namespace Entities {
         virtual void update() = 0;
         virtual void setup();
         virtual void handleDamage(const int damage);
+        virtual void neutralized();
         void recoverColor();
         void setAnimation(Animations::Animation* animation);
         bool checkGrounded(Entity *pEntity, Manager::Collision::CollisionType type);

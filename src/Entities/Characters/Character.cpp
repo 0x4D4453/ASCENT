@@ -33,7 +33,16 @@ namespace Entities {
     }
 
     void Character::handleDamage(const int damage) {
-      
+      m_sprite.setColor(sf::Color::Red);
+    }
+
+    void Character::neutralized() {
+      m_sprite.setColor(sf::Color::White);
+      m_collisionStrategies.clear();
+      m_isKnockbackResistant = true;
+
+      if (m_animation)
+        m_animation->update(m_dt);
     }
 
     void Character::recoverColor() {
@@ -83,21 +92,13 @@ namespace Entities {
     }
 
     void Character::setHealthPoints(const int healthPoints) {
-      if (healthPoints < m_healthPoints) {
-        m_sprite.setColor(sf::Color::Red);
+      if (healthPoints < m_healthPoints)
         handleDamage(m_healthPoints - healthPoints);
-      }
       
       m_healthPoints = healthPoints;
 
-      if (m_healthPoints <= 0.f) {
-        m_sprite.setColor(sf::Color::White);
-        m_collisionStrategies.clear();
-        m_isKnockbackResistant = true;
-
-        if (m_animation)
-          m_animation->update(m_dt);
-      }
+      if (m_healthPoints <= 0.f)
+        neutralized();
     }
 
     const bool Character::getIsMidAir() const {

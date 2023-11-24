@@ -182,6 +182,7 @@ namespace Entities {
     }
 
     void Player::handleDamage(const int damage) {
+      m_sprite.setColor(sf::Color::Red);
       m_isImmune = true;
     }
 

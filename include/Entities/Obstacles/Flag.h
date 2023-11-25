@@ -5,6 +5,9 @@
 #include "Entities/Obstacles/Obstacle.h"
 #include "Utility/Threads/Thread.h"
 
+/* SFML Library */
+#include "SFML/Audio.hpp"
+
 /* Foward Declaration */
 namespace Stages { class Stage; }
 
@@ -14,9 +17,10 @@ namespace Entities {
       private:
         Stages::Stage* m_pStage;
         bool m_reached;
+        sf::Sound m_saveSound;
 
       public:
-        Flag(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, Stages::Stage* pStage);
+        Flag(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, sf::SoundBuffer& soundBuffer, Stages::Stage* pStage);
         ~Flag();
         virtual void run();
         void quickSave();

@@ -25,6 +25,7 @@ Context::Context()
   m_textureHolder.load(Textures::StagePlaceholder2, Textures::STAGE_PLACEHOLDER2);
   m_fontHolder.load(Fonts::Monogram, Fonts::MONOGRAM);
   m_soundHolder.load(Sounds::menuSound, Sounds::MENU);
+  m_soundHolder.load(Sounds::Pause, Sounds::PAUSE);;
 }
 
 Context::~Context() {

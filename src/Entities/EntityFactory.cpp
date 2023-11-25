@@ -72,7 +72,7 @@ namespace Entities {
         m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position));
         break;
       case (FlagE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::Flag(textureID, textureRef, position, pStage));
+        m_pEntity = static_cast<Entity*>(new Obstacles::Flag(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Save), pStage));
         break;
       case (SpringE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));

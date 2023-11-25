@@ -9,7 +9,7 @@ namespace Entities {
     Coin::Coin(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, sf::SoundBuffer& soundBuffer, Stages::Stage* pStage)
       : Obstacle(position, false)
       , m_value(1)
-      , m_coinSound()
+      , m_coinSound(soundBuffer)
       , m_pStage(pStage)
       , m_visible(true)
     {
@@ -19,8 +19,6 @@ namespace Entities {
 
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
       setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::PhaseCollision);
-
-      m_coinSound.setBuffer(soundBuffer);
     }
 
     Coin::~Coin() {

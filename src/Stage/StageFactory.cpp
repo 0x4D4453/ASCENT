@@ -78,6 +78,7 @@ namespace Stages {
   void StageFactory::loadSounds() {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
     m_soundHolder.load(Sounds::Coin, Sounds::COIN);
+    m_soundHolder.load(Sounds::Save, Sounds::SAVE);
   }
 
   Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer) {

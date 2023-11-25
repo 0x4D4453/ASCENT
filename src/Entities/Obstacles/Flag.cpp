@@ -6,10 +6,11 @@
 
 namespace Entities {
   namespace Obstacles {
-    Flag::Flag(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, Stages::Stage* pStage)
+    Flag::Flag(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, sf::SoundBuffer& soundBuffer, Stages::Stage* pStage)
       : Obstacle(position, false)
       , m_reached(false)
       , m_pStage(pStage)
+      , m_saveSound(soundBuffer)
     {
       setEntityId(EntityID::FlagE);
       setTextureID(textureID);
@@ -34,6 +35,7 @@ namespace Entities {
       if (m_reached)
         return;
 
+      m_saveSound.play();
       m_reached = true;
       m_sprite.setColor(sf::Color::Green);
       start();

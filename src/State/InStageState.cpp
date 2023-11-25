@@ -31,6 +31,8 @@ namespace States {
     m_background.setPosition(m_pGraphicsManager->getViewCoordinates().x, m_pGraphicsManager->getViewCoordinates().y);
 
     m_title.setCharacterSize(80.f);
+    m_title.setOutlineColor(sf::Color::Black);
+    m_title.setOutlineThickness(2.f);
     centerTextOrigin(m_title);
     m_title.setPosition(static_cast<int>(viewCenterPosition.x), static_cast<int>(viewCenterPosition.y - 250.f));
   } 

@@ -19,11 +19,14 @@ namespace States {
     private:
       enum Options {
         Continue,
-        Save,
         SaveAndQuit,
         Menu,
         TotalOptions
       };
+    
+    private:
+      sf::Text m_currentScore;
+      sf::Sound m_pauseSound;
 
     private:
       void setup();
@@ -33,6 +36,7 @@ namespace States {
       PauseState(States::GameState* pGameState);
       ~PauseState();
       virtual void keyPressed(const sf::Keyboard::Key key);
+      virtual void exec();
   };
 }
 

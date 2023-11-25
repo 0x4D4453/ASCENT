@@ -55,6 +55,7 @@ namespace Textures {
     Spikes,
     Door,
     Flag,
+    Coin,
 
     LeftArrow,
     RightArrow,
@@ -145,6 +146,7 @@ namespace Textures {
   constexpr char MOVING_PLATFORM_DIRT[] = "assets/tiles/dirtMovingPlatform.png";
   constexpr char DOOR[] = "assets/tiles/tile_0059.png";
   constexpr char FLAG[] = "assets/tiles/flag.png";
+  constexpr char COIN[] = "assets/tiles/tile_0102.png";
   
   // UI 
   constexpr char HEART[] = "assets/tiles/heartSpriteSheet.png";

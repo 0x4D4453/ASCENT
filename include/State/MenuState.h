@@ -18,7 +18,6 @@ namespace States {
         NewGame,
         Continue,
         Highscore,
-        Credits,
         Exit,
         TotalOptions
       };

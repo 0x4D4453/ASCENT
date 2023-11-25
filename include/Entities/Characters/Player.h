@@ -72,6 +72,7 @@ namespace Entities {
         const bool getIsAttacking() const;
         const bool getIsImmune() const;
         const int getPoints() const;
+        void operator+(const int value);
         virtual void reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap);
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);

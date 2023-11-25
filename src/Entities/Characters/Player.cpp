@@ -161,6 +161,19 @@ namespace Entities {
       }
     }
 
+    void Player::addPoints(Enemy* pEnemy) {
+      if (pEnemy->getHealthPoints() == 0)
+        m_points += pEnemy->getBounty();
+    }
+
+    const int Player::getPoints() const {
+      return m_points;
+    }
+
+    void Player::operator+(const int value) {
+      m_points += value;
+    }
+
     void Player::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
       switch (pEntity->getEntityTag()) {
         case EntityTag::EnemyTag:
@@ -179,15 +192,6 @@ namespace Entities {
         checkGrounded(pEntity, type);
       else if (getIsAttacking())
         attack(pEnemy);
-    }
-
-    void Player::addPoints(Enemy* pEnemy) {
-      if (pEnemy->getHealthPoints() == 0)
-        m_points += pEnemy->getBounty();
-    }
-
-    const int Player::getPoints() const {
-      return m_points;
     }
 
     void Player::attack(Enemy* pEnemy) {

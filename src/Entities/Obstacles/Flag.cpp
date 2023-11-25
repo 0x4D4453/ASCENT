@@ -16,6 +16,7 @@ namespace Entities {
       setTexture(texture);
 
       setCollisionStrategy(EntityTag::PlayerTag, Manager::Collision::StrategyId::PhaseCollision);
+      setCollisionStrategy(EntityTag::EnemyTag, Manager::Collision::StrategyId::PhaseCollision);
     }
 
     Flag::~Flag() {

@@ -17,7 +17,6 @@ namespace States {
     , m_stageFactory(newGame, m_pContext->getMultiplayer())
   {
     setType(StateType::Game);
-
     m_pContext->setScore(0);
 
     if (!newGame)

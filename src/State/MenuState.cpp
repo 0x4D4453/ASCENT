@@ -46,8 +46,7 @@ namespace States {
     createOption("New Game", sf::Vector2f(50.f, 10.f));
     createOption("Continue", sf::Vector2f(50.f, 100.f));
     createOption("Highscore", sf::Vector2f(50.f, 190.f));
-    createOption("Credits", sf::Vector2f(50.f, 280.f));
-    createOption("Exit", sf::Vector2f(50.f, 360.f));
+    createOption("Exit", sf::Vector2f(50.f, 280.f));
 
     m_options[m_currentOption]->setFillColor(Constants::SELECTION_COLOR);
   }

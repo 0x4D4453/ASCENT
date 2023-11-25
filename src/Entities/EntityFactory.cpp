@@ -6,6 +6,7 @@
 #include "Entities/Characters/Fly.h"
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
+#include "Entities/Obstacles/Coin.h"
 #include "Entities/Obstacles/Door.h"
 #include "Entities/Obstacles/Flag.h"
 #include "Entities/Obstacles/Platform.h"
@@ -75,6 +76,9 @@ namespace Entities {
         break;
       case (SpringE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));
+        break;
+      case (CoinE):
+        m_pEntity = static_cast<Entity*>(new Obstacles::Coin(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Coin), pStage));
         break;
       case (ProjectileE):
         m_pEntity = static_cast<Entity*>(new Projectile(textureID, textureRef, position));

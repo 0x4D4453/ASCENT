@@ -35,6 +35,7 @@ namespace Entities {
     DoorE,
     FlagE,
     SpringE,
+    CoinE,
   };
 
   enum EntityTag {

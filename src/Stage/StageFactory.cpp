@@ -72,10 +72,12 @@ namespace Stages {
     m_textureHolder.load(Textures::Door, Textures::DOOR);
     m_textureHolder.load(Textures::Spring, Textures::SPRING);
     m_textureHolder.load(Textures::Flag, Textures::FLAG);
+    m_textureHolder.load(Textures::Coin, Textures::COIN);
   }
 
   void StageFactory::loadSounds() {
     m_soundHolder.load(Sounds::playerJump, Sounds::PLAYER_JUMP);
+    m_soundHolder.load(Sounds::Coin, Sounds::COIN);
   }
 
   Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer) {
@@ -281,6 +283,7 @@ namespace Stages {
           case ('D'): defineType(m_entityFactory.createEntity(Entities::DoorE, Textures::Door, position)); break;
           case ('S'): defineType(m_entityFactory.createEntity(Entities::SpringE, Textures::Spring, position)); break;
           case ('Q'): defineType(m_entityFactory.createEntity(Entities::FlagE, Textures::Flag, position, m_pStage)); break;
+          case ('R'): defineType(m_entityFactory.createEntity(Entities::CoinE, Textures::Coin, position, m_pStage)); break;
           case ('E'): m_pStage->createRandomEnemy(position); break;
           case ('O'): m_pStage->createRandomObstacle(position); break;
           default: break;

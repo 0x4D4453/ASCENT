@@ -7,6 +7,7 @@
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
 #include "Entities/Obstacles/Door.h"
+#include "Entities/Obstacles/Flag.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
 #include "Entities/Obstacles/Spring.h"
@@ -68,6 +69,9 @@ namespace Entities {
         break;
       case (DoorE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position));
+        break;
+      case (FlagE): 
+        m_pEntity = static_cast<Entity*>(new Obstacles::Flag(textureID, textureRef, position, pStage));
         break;
       case (SpringE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));

@@ -33,6 +33,7 @@ namespace Entities {
     TyrantE,
     SpikesE,
     DoorE,
+    FlagE,
     SpringE,
   };
 

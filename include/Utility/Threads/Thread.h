@@ -1,6 +1,7 @@
 #ifndef THREAD_H
 #define THREAD_H
 
+/* Standard Library */
 #include <pthread.h>
 
 namespace Threads {
@@ -8,6 +9,7 @@ namespace Threads {
     protected:
       pthread_t m_threadID;
       pthread_attr_t m_tAttribute;
+      static pthread_mutex_t m_mutex;
       bool m_finished;
     
     private:
@@ -20,6 +22,9 @@ namespace Threads {
       void start();
       void join();
       void yield(); 
+      void lock();
+      void unlock();
+      void exitThread();
       const bool getFinished() const;
   };
 }

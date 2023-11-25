@@ -69,7 +69,9 @@ namespace Stages {
     m_textureHolder.load(Textures::PipeHorizontalBroken, Textures::PIPE_HORIZONTAL_BROKEN);
     m_textureHolder.load(Textures::PipeVerticalBroken, Textures::PIPE_VERTICAL_BROKEN);
 
+    m_textureHolder.load(Textures::Door, Textures::DOOR);
     m_textureHolder.load(Textures::Spring, Textures::SPRING);
+    m_textureHolder.load(Textures::Flag, Textures::FLAG);
   }
 
   void StageFactory::loadSounds() {
@@ -278,6 +280,7 @@ namespace Stages {
           case ('^'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
           case ('D'): defineType(m_entityFactory.createEntity(Entities::DoorE, Textures::Door, position)); break;
           case ('S'): defineType(m_entityFactory.createEntity(Entities::SpringE, Textures::Spring, position)); break;
+          case ('Q'): defineType(m_entityFactory.createEntity(Entities::FlagE, Textures::Flag, position, m_pStage)); break;
           case ('E'): m_pStage->createRandomEnemy(position); break;
           case ('O'): m_pStage->createRandomObstacle(position); break;
           default: break;

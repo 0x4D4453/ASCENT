@@ -6,6 +6,8 @@
 #include <pthread.h>
 
 namespace Threads {
+  pthread_mutex_t Thread::m_mutex;
+
   Thread::Thread() 
     : m_threadID()
     , m_finished(false)
@@ -51,7 +53,22 @@ namespace Threads {
     sched_yield();
   }
 
+  void Thread::lock() {
+    if (Thread::m_mutex == NULL)
+      pthread_mutex_init(&Thread::m_mutex, NULL);
+    pthread_mutex_lock(&Thread::m_mutex);
+  }
+
+  void Thread::unlock() {
+    if (Thread::m_mutex != NULL)
+      pthread_mutex_unlock(&Thread::m_mutex);
+  }
+
   const bool Thread::getFinished() const {
     return m_finished;
+  }
+
+  void Thread::exitThread() {
+    pthread_exit(NULL);
   }
 }

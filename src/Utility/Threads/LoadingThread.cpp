@@ -18,17 +18,11 @@ namespace Threads {
   }
 
   void LoadingThread::run() {
+    lock();
     m_pGameState = new States::GameState(m_newGame);
-
-    if (!m_pGameState) {
-      std::cerr << "Error creating Game State in thread!" << std::endl;
-      exit(1);
-    }
-
-    sf::sleep(sf::Time(sf::seconds(0.2f)));
-
     m_finished = true;
-    pthread_exit(NULL);
+    unlock();
+    exitThread();
   }
 
   States::GameState* LoadingThread::getGameState() const {

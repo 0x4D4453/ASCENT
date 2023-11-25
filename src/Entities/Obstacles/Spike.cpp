@@ -18,7 +18,6 @@ namespace Entities {
 
     }
 
-
     void Spike::damagePlayer(Characters::Player* pPlayer) {
       if (pPlayer->getIsImmune())
         return;

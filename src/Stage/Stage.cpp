@@ -300,7 +300,7 @@ namespace Stages {
   void Stage::exec() {
     if (!m_paused)
       update();
-    deleteEntitiesInQueue();
     draw();
+    deleteEntitiesInQueue();
   }
 }

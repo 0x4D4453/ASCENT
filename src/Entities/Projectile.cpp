@@ -97,10 +97,14 @@ namespace Entities {
   }
 
   void Projectile::save(nlohmann::ordered_json& jsonData) {
-
+    Entity::save(jsonData);
+    jsonData["timeElapsed"] = m_timeElapsed;
+    jsonData["waitingDeletion"] = m_waitingDeletion;
   }
 
   void Projectile::loadSave(const nlohmann::ordered_json& jsonData) {
-
+    Entity::loadSave(jsonData);
+    m_timeElapsed = jsonData["timeElapsed"].template get<float>();
+    m_waitingDeletion = jsonData["waitingDeletion"].template get<bool>();
   }
 }

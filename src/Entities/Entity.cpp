@@ -149,6 +149,7 @@ namespace Entities {
   void Entity::save(nlohmann::ordered_json& jsonData) {
     jsonData["ID"] = m_entityId;
     jsonData["textureID"] = m_textureID;
+    jsonData["scale"] = m_scale;
     jsonData["position"] = { {"x", getPosition().x}, {"y", getPosition().y} };
     jsonData["velocity"] = { {"x", getVelocity().x}, {"y", getVelocity().y} };
     jsonData["isStaggered"] = m_isStaggered;
@@ -160,5 +161,7 @@ namespace Entities {
     setVelocity(sf::Vector2f(jsonData["velocity"]["x"].template get<float>(), jsonData["velocity"]["y"].template get<float>()));
     m_isStaggered = jsonData["isStaggered"].template get<bool>();
     m_isKnockbackResistant = jsonData["isKnockbackResistant"].template get<bool>();
+    m_scale = jsonData["scale"].template get<float>();
+    m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
   }
 }

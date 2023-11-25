@@ -72,6 +72,9 @@ namespace Entities {
       case (SpringE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));
         break;
+      case (ProjectileE):
+        m_pEntity = static_cast<Entity*>(new Projectile(textureID, textureRef, position));
+        break;
     }
     
     if (m_pEntity == NULL) {

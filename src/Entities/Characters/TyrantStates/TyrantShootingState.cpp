@@ -86,5 +86,21 @@ namespace Entities {
     void TyrantShootingState::doAction() {
       shoot();
     }
+
+    void TyrantShootingState::save(nlohmann::ordered_json& jsonData) {
+      TyrantState::save(jsonData);
+      jsonData["state"]["shootingTimeElapsed"] = m_shootingTimeElapsed;
+      jsonData["state"]["timeSinceLastShot"] = m_timeSinceLastShot;
+      jsonData["state"]["currentSpot"] = m_currentSpot;
+      jsonData["state"]["isShooting"] = m_isShooting;
+    }
+
+    void TyrantShootingState::loadSave(const nlohmann::ordered_json& jsonData) {
+      TyrantState::loadSave(jsonData);
+      m_shootingTimeElapsed = jsonData["state"]["shootingTimeElapsed"].template get<float>();
+      m_timeSinceLastShot = jsonData["state"]["timeSinceLastShot"].template get<float>();
+      m_currentSpot = jsonData["state"]["currentSpot"].template get<int>();
+      m_isShooting = jsonData["state"]["isShooting"].template get<bool>();
+    }
   }
 }

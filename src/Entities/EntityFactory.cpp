@@ -74,6 +74,7 @@ namespace Entities {
         break;
       case (ProjectileE):
         m_pEntity = static_cast<Entity*>(new Projectile(textureID, textureRef, position));
+        static_cast<Projectile*>(m_pEntity)->setStage(pStage);
         break;
     }
     

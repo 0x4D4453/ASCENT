@@ -19,6 +19,9 @@ namespace Entities {
         TyrantIdleState(Tyrant* pTyrant = NULL, Stages::Stage* pStage = NULL);
         ~TyrantIdleState();
         virtual void doAction();
+
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };
   }
 }

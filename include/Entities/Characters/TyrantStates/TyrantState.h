@@ -8,6 +8,9 @@
 #include "Animation/TyrantAnimation.h"
 #include "Stage/Stage.h"
 
+/* JSON Library */
+#include "nlohmann/json.hpp"
+
 namespace Entities {
   namespace Characters {
     /* Forward Declaration */
@@ -57,6 +60,9 @@ namespace Entities {
         const bool getIsMoving() const;
 
         virtual void movementPattern();
+
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };
   }
 }

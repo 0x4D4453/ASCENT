@@ -17,7 +17,6 @@ namespace Entities {
     {
       setEntityId(EntityID::CharacterE);
       setEntityType(EntityType::Dynamic);
-      setup();
     }
 
     Character::~Character() {
@@ -25,11 +24,6 @@ namespace Entities {
         delete m_animation;
 
       m_animation = NULL;
-    }
-
-    void Character::setup() {  
-      m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, 0);
-      m_sprite.setPosition(sf::Vector2f(Constants::TILE_SIZE * 15,  0.f));
     }
 
     void Character::handleDamage(const int damage) {
@@ -128,6 +122,8 @@ namespace Entities {
       Entity::loadSave(jsonData);
       m_healthPoints = jsonData["hp"].template get<int>();
       m_isMidAir = jsonData["isMidAir"].template get<bool>();
+      if (m_healthPoints <= 0)
+        neutralized();
     }
 
     void Character::exec() {

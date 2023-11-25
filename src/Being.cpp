@@ -17,6 +17,7 @@ Being::Being(const float scale)
   , m_sprite()
   , m_textureID(Textures::None)
 {
+  m_sprite.setOrigin((Constants::SPRITE_SIZE)/2.f, 0);
   m_sprite.setScale(sf::Vector2f(m_scale, m_scale));
 }
 

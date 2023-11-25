@@ -156,10 +156,6 @@ namespace Stages {
       position.y = (*it)["position"]["y"].template get<float>();
       pEntity = m_entityFactory.createEntity((*it)["ID"].template get<EntityID>(), (*it)["textureID"].template get<Textures::ID>(), position, m_pStage);
       pEntity->loadSave(*it);
-
-      if (pEntity->getEntityId() == Entities::ProjectileE)
-        static_cast<Entities::Projectile*>(pEntity)->setStage(m_pStage);
-
       defineType(pEntity);
     }
 

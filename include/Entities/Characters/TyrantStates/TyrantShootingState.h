@@ -33,6 +33,9 @@ namespace Entities {
 
         virtual void doAction();
         virtual void movementPattern();
+
+        virtual void save(nlohmann::ordered_json& jsonData);
+        virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };
   }
 }

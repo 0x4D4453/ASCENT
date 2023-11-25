@@ -21,7 +21,6 @@ namespace Entities {
       
       protected:
         virtual void update() = 0;
-        virtual void setup();
         virtual void handleDamage(const int damage);
         virtual void neutralized();
         void recoverColor();

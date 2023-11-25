@@ -40,5 +40,15 @@ namespace Entities {
 
       heal();
     }
+
+    void TyrantIdleState::save(nlohmann::ordered_json& jsonData) {
+      TyrantState::save(jsonData);
+      jsonData["state"]["timeSinceHeal"] = m_timeSinceHeal;
+    }
+
+    void TyrantIdleState::loadSave(const nlohmann::ordered_json& jsonData) {
+      TyrantState::loadSave(jsonData);
+      m_timeSinceHeal = jsonData["state"]["timeSinceHeal"].template get<float>();
+    }
   }
 }

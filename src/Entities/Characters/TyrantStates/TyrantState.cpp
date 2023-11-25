@@ -132,5 +132,23 @@ namespace Entities {
     void TyrantState::movementPattern() {
       definePlayer();
     }
+
+    void TyrantState::save(nlohmann::ordered_json& jsonData) {
+      jsonData["state"]["ID"] = m_id;
+      jsonData["state"]["nextStateID"] = m_nextState;
+      jsonData["state"]["moveTimeElapsed"] = m_moveTimeElapsed;
+      jsonData["state"]["timeElapsed"] = m_timeElapsed;
+      jsonData["state"]["isReadyToChange"] = m_isReadyToChange;
+      jsonData["state"]["isMoving"] = m_isMoving;
+    }
+
+    void TyrantState::loadSave(const nlohmann::ordered_json& jsonData) {
+      m_id = jsonData["state"]["ID"].template get<TyrantStateID>();
+      m_nextState = jsonData["state"]["nextStateID"].template get<TyrantStateID>();
+      m_moveTimeElapsed = jsonData["state"]["moveTimeElapsed"].template get<float>();
+      m_timeElapsed = jsonData["state"]["timeElapsed"].template get<float>();
+      m_isReadyToChange = jsonData["state"]["isReadyToChange"].template get<bool>();
+      m_isMoving = jsonData["state"]["isMoving"].template get<bool>();
+    }
   }
 }

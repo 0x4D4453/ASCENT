@@ -221,11 +221,18 @@ namespace Entities {
       jsonData["isAttacking"] = m_isAttacking;
       jsonData["isCharging"] = m_isCharging;
       jsonData["isImmune"] = m_isImmune;
+      jsonData["blinkElapsedTime"] = m_blinkElapsedTime;
+      jsonData["immunityElapsedTime"] = m_immunityElapsedTime;
     }
 
     void Player::loadSave(const nlohmann::ordered_json& jsonData) {
       Character::loadSave(jsonData);
+      m_points = jsonData["points"].template get<int>();
+      m_isAttacking = jsonData["isAttacking"].template get<bool>();
       m_isCharging = jsonData["isCharging"].template get<bool>();
+      m_isImmune = jsonData["isImmune"].template get<bool>();
+      m_blinkElapsedTime = jsonData["blinkElapsedTime"].template get<float>();
+      m_immunityElapsedTime = jsonData["immunityElapsedTime"].template get<float>();
     }
   }
 }

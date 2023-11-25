@@ -132,10 +132,16 @@ namespace Entities {
 
     void Tyrant::save(nlohmann::ordered_json& jsonData) {
       Enemy::save(jsonData);
+      if (m_pState)
+        m_pState->save(jsonData);
     }
 
     void Tyrant::loadSave(const nlohmann::ordered_json& jsonData) {
       Enemy::loadSave(jsonData);
+      if (m_healthPoints > 0)
+        changeState(jsonData["state"]["ID"].template get<TyrantStateID>());
+      if (m_pState)
+        m_pState->loadSave(jsonData);
     }
 
     void Tyrant::update() {

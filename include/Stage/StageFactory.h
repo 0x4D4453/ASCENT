@@ -44,7 +44,7 @@ namespace Stages {
       void createViews();
     
     public:
-      StageFactory(const bool newGame = true);
+      StageFactory(const bool newGame = true, const bool quickSave = false);
       ~StageFactory();
 
       Stage* createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer, const bool quickSave);

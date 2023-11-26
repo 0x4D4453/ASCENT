@@ -28,14 +28,14 @@
 namespace Stages {
   Manager::GraphicsManager* StageFactory::m_graphicsManager(Manager::GraphicsManager::getInstance());
 
-  StageFactory::StageFactory(const bool newGame)
+  StageFactory::StageFactory(const bool newGame, const bool quickSave)
     : m_newGame(newGame)
     , m_entityFactory()
     , m_textureHolder()
     , m_soundHolder()
     , m_pStage(NULL)
     , m_multiplayer(false)
-    , m_quickSave(false)
+    , m_quickSave(quickSave)
   {
     loadTextures();
     loadSounds();
@@ -86,7 +86,6 @@ namespace Stages {
   Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer, const bool quickSave) {
     srand(time(NULL));
     m_multiplayer = multiplayer;
-    m_quickSave = quickSave;
 
     switch (stageID) {
       case CaveID:
@@ -117,6 +116,7 @@ namespace Stages {
       loadSaveGame();
     }
     
+    m_quickSave = quickSave;
     return m_pStage;
   }
 

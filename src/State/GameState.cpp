@@ -15,7 +15,7 @@
 namespace States {
   GameState::GameState(const bool newGame)
     : State()
-    , m_stageFactory(newGame)
+    , m_stageFactory(newGame, m_pContext->getQuickSave())
   {
     setType(StateType::Game);
     m_pContext->setScore(0);

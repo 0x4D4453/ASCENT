@@ -23,6 +23,7 @@ namespace Entities {
         bool m_isShooting;
 
       private:
+        virtual void doAction();
         void shoot();
 
       public:
@@ -31,9 +32,7 @@ namespace Entities {
 
         const bool getIsShooting() const;
 
-        virtual void doAction();
         virtual void movementPattern();
-
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };

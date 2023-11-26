@@ -17,6 +17,7 @@ namespace Entities {
         bool m_isLanding;
 
       private:
+        virtual void doAction();
         void checkJumpDistance();
         void chargeJump();
         void jump();
@@ -30,8 +31,6 @@ namespace Entities {
         const bool getIsLanding() const;
 
         virtual void movementPattern();
-        virtual void doAction();
-
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
     };

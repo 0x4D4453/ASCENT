@@ -2,13 +2,13 @@
 #include "Entities/EntityFactory.h"
 
 /* Program Defined */
+#include "Entities/Coin.h"
+#include "Entities/Flag.h"
 #include "Entities/Characters/Goomba.h"
 #include "Entities/Characters/Fly.h"
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Obstacles/MovingPlatform.h"
-#include "Entities/Obstacles/Coin.h"
 #include "Entities/Obstacles/Door.h"
-#include "Entities/Obstacles/Flag.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/Spike.h"
 #include "Entities/Obstacles/Spring.h"
@@ -72,13 +72,13 @@ namespace Entities {
         m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position, pStage));
         break;
       case (FlagE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::Flag(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Save), pStage));
+        m_pEntity = static_cast<Entity*>(new Flag(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Save), pStage));
         break;
       case (SpringE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Spring(textureID, textureRef, position));
         break;
       case (CoinE):
-        m_pEntity = static_cast<Entity*>(new Obstacles::Coin(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Coin), pStage));
+        m_pEntity = static_cast<Entity*>(new Coin(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Coin), pStage));
         break;
       case (ProjectileE):
         m_pEntity = static_cast<Entity*>(new Projectile(textureID, textureRef, position));

@@ -2,7 +2,7 @@
 #define COIN_H
 
 /* Program Defined */
-#include "Entities/Obstacles/Obstacle.h"
+#include "Entities/Entity.h"
 
 /* SFML Library */
 #include "SFML/Audio.hpp"
@@ -11,17 +11,13 @@
 namespace Stages { class Stage; }
 
 namespace Entities {
-  namespace Obstacles {
-    class Coin : public Obstacle {
+  class Coin : public Entity {
       private:
         const int m_value;
         sf::Sound m_coinSound;
         Stages::Stage* m_pStage;
         bool m_visible;
-      
-      private:
-        void autoRemove();
-      
+    
       public:
         Coin(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, sf::SoundBuffer& soundBuffer, Stages::Stage* pStage);
         ~Coin();
@@ -29,8 +25,7 @@ namespace Entities {
         virtual void save(nlohmann::ordered_json& jsonData);
         virtual void loadSave(const nlohmann::ordered_json& jsonData);
         virtual void exec();
-    };
-  }
+  };
 }
 
 #endif 

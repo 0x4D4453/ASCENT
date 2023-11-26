@@ -2,9 +2,10 @@
   {
     "ID": 5,
     "textureID": 0,
+    "scale": 2.0,
     "position": {
-      "x": 540.7724609375,
-      "y": 704.0
+      "x": 1088.9375,
+      "y": 1536.0
     },
     "velocity": {
       "x": 0.0,
@@ -12,11 +13,13 @@
     },
     "isStaggered": false,
     "isKnockbackResistant": false,
-    "hp": 6,
+    "hp": 10,
     "isMidAir": false,
-    "points": 0,
+    "points": 2,
     "isAttacking": false,
     "isCharging": false,
-    "isImmune": false
+    "isImmune": false,
+    "blinkElapsedTime": 0.0,
+    "immunityElapsedTime": 0.0
   }
 ]

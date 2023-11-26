@@ -1,0 +1,48 @@
+[
+  {
+    "ID": 5,
+    "textureID": 0,
+    "scale": 2.0,
+    "position": {
+      "x": 687.1948852539063,
+      "y": 1696.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 10,
+    "isMidAir": false,
+    "points": 0,
+    "isAttacking": false,
+    "isCharging": false,
+    "isImmune": false,
+    "blinkElapsedTime": 0.0,
+    "immunityElapsedTime": 0.0
+  },
+  {
+    "ID": 5,
+    "textureID": 0,
+    "scale": 2.0,
+    "position": {
+      "x": 1121.0361328125,
+      "y": 1536.0
+    },
+    "velocity": {
+      "x": 2.31166672706604,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 9,
+    "isMidAir": false,
+    "points": 1,
+    "isAttacking": false,
+    "isCharging": false,
+    "isImmune": false,
+    "blinkElapsedTime": 0.28332194685935974,
+    "immunityElapsedTime": 0.0
+  }
+]

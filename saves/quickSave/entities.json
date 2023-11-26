@@ -6599,7 +6599,7 @@
     },
     "isStaggered": false,
     "isKnockbackResistant": false,
-    "visible": false
+    "visible": true
   },
   {
     "ID": 7,
@@ -8545,11 +8545,11 @@
     "scale": 2.0,
     "position": {
       "x": 1312.0,
-      "y": 355.83148193359375
+      "y": 277.2791748046875
     },
     "velocity": {
       "x": 0.0,
-      "y": -2.251023530960083
+      "y": 0.7466384172439575
     },
     "isStaggered": false,
     "isKnockbackResistant": false,
@@ -8565,7 +8565,29 @@
     "textureID": 5,
     "scale": 2.0,
     "position": {
-      "x": 610.0029296875,
+      "x": 223.58334350585938,
+      "y": 416.0
+    },
+    "velocity": {
+      "x": -0.22915001213550568,
+      "y": 0.0
+    },
+    "isStaggered": false,
+    "isKnockbackResistant": false,
+    "hp": 3,
+    "isMidAir": false,
+    "spawnPosition": {
+      "x": 224.0,
+      "y": 384.0
+    },
+    "direction": true
+  },
+  {
+    "ID": 8,
+    "textureID": 5,
+    "scale": 2.0,
+    "position": {
+      "x": 575.5833740234375,
       "y": 384.0
     },
     "velocity": {
@@ -8587,33 +8609,12 @@
     "textureID": 6,
     "scale": 2.0,
     "position": {
-      "x": 576.0,
-      "y": 563.0435791015625
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 1.2299507856369019
-    },
-    "isStaggered": false,
-    "isKnockbackResistant": false,
-    "hp": 3,
-    "isMidAir": true,
-    "spawnPosition": {
-      "x": 576.0,
-      "y": 672.0
-    }
-  },
-  {
-    "ID": 9,
-    "textureID": 6,
-    "scale": 2.0,
-    "position": {
       "x": 960.0,
-      "y": 510.96893310546875
+      "y": 602.4727783203125
     },
     "velocity": {
       "x": 0.0,
-      "y": 0.1655457317829132
+      "y": -1.5760494470596313
     },
     "isStaggered": false,
     "isKnockbackResistant": false,
@@ -8629,7 +8630,7 @@
     "textureID": 5,
     "scale": 2.0,
     "position": {
-      "x": 701.9970703125,
+      "x": 736.5770263671875,
       "y": 736.0
     },
     "velocity": {
@@ -8651,7 +8652,7 @@
     "textureID": 5,
     "scale": 2.0,
     "position": {
-      "x": 578.0029296875,
+      "x": 543.5833740234375,
       "y": 1184.0
     },
     "velocity": {
@@ -8673,7 +8674,7 @@
     "textureID": 10,
     "scale": 2.0,
     "position": {
-      "x": 1149.4200439453125,
+      "x": 1184.0,
       "y": 1184.0
     },
     "velocity": {
@@ -8694,11 +8695,11 @@
     "scale": 2.0,
     "position": {
       "x": 1184.0,
-      "y": 1294.79443359375
+      "y": 1370.4722900390625
     },
     "velocity": {
       "x": 0.0,
-      "y": -1.0294020175933838
+      "y": -1.5760494470596313
     },
     "isStaggered": false,
     "isKnockbackResistant": false,

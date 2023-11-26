@@ -7,7 +7,7 @@
 namespace Constants {
   constexpr unsigned int WINDOW_WIDTH = 1280;
   constexpr unsigned int WINDOW_HEIGHT = 640;
-  constexpr char GAME_NAME[] = "GOTY";
+  constexpr char GAME_NAME[] = "ASCENT";
   constexpr int WINDOW_STYLE = sf::Style::Close | sf::Style::Titlebar;
   constexpr float FIXED_STEP = 1.f/120.f;
 

@@ -141,7 +141,7 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYZ  X
            J                       B  A    [
           ]    R                  7888B    [
           ]                       4B  B    [
-           )   c              G    6B B  c [
+           )   c              G   6B  B  c [
   @         ======================4========
                               @   4
             78888828888888882888883

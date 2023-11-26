@@ -91,8 +91,8 @@ namespace States {
     json::iterator it = scoresData["scores"].begin();
 
     for (int i = 0; i < 5 && it != scoresData["scores"].end(); ++i, ++it) {
-      std::string name = (*it)["name"];
-      int score = (*it)["score"];
+      std::string name = (*it)["name"].template get<std::string>();
+      int score = (*it)["score"].template get<int>();
 
       m_names[i].setString(name);
       m_scores[i].setString(std::to_string(score));

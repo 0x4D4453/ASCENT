@@ -10,12 +10,14 @@
 
 /* Foward Declaration */
 namespace Stages { class Stage; }
+class Context;
 
 namespace Entities {
   namespace Obstacles {
     class Flag : public Obstacle, public Threads::Thread {
       private:
         Stages::Stage* m_pStage;
+        Context* m_pContext;
         bool m_reached;
         sf::Sound m_saveSound;
 

@@ -15,20 +15,22 @@
 namespace States {
   GameState::GameState(const bool newGame)
     : State()
-    , m_stageFactory(newGame, m_pContext->getMultiplayer())
+    , m_stageFactory(newGame)
   {
     setType(StateType::Game);
     m_pContext->setScore(0);
 
-    if (!newGame) {
+    if (!newGame && !m_pContext->getQuickSave()) {
       try {
         loadStageData();
       } catch (const std::runtime_error& error) {
         std::cerr << error.what() << std::endl;
       }
+    } else if (newGame) {
+      m_pContext->setQuickSave(false);
     }
       
-    m_pStage = m_stageFactory.createStage(this, m_pContext->getStage(), m_pContext->getMultiplayer());
+    m_pStage = m_stageFactory.createStage(this, m_pContext->getStage(), m_pContext->getMultiplayer(), m_pContext->getQuickSave());
   }
 
   GameState::~GameState() {
@@ -62,6 +64,7 @@ namespace States {
     stageJSON["stageID"] = m_pContext->getStage();
     stageJSON["size"] = { {"x", m_pGraphicsManager->getStageSize().x}, {"y", m_pGraphicsManager->getStageSize().y} };
     stageJSON["multiplayer"] = m_pContext->getMultiplayer();
+    stageJSON["quickSave"] = m_pContext->getQuickSave();
     std::ofstream stageData("saves/stage.json");
 
     stageData << std::setw(2) << stageJSON;
@@ -81,13 +84,18 @@ namespace States {
     m_pContext->setStage(stageData["stageID"].template get<Stages::ID>());
     m_pGraphicsManager->setStageSize(stageData["size"]["y"].template get<float>(), stageData["size"]["x"].template get<float>());
     m_pContext->setMultiplayer(stageData["multiplayer"].template get<bool>());
+    m_pContext->setQuickSave(stageData["quickSave"].template get<bool>());
 
     stageStream.close();
   }
 
   void GameState::gameOver() {
-    m_pStateStack->pushState(StateType::EndStage, static_cast<State*>(this));
-    setPaused(true);
+    if (m_pContext->getQuickSave()) {
+      m_pStateStack->pushState(StateType::Continue, NULL, true);
+    } else {
+      m_pStateStack->pushState(StateType::EndStage, static_cast<State*>(this));
+      setPaused(true);
+    }
   }
 
   void GameState::exec() {

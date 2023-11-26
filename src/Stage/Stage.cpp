@@ -145,7 +145,7 @@ namespace Stages {
       pEntity->outOfBounds();
   }
 
-  void Stage::savePlayerData() {
+  void Stage::savePlayerData(std::string& baseFilePath) {
     nlohmann::ordered_json playersData;
     List<Entities::Entity*>::Iterator playersIterator;
 
@@ -155,12 +155,12 @@ namespace Stages {
       playersData.push_back(playerData);
     }
       
-    std::ofstream jsonOut("saves/players.json");
+    std::ofstream jsonOut((baseFilePath + "players.json").c_str());
     jsonOut << std::setw(2) << playersData;
     jsonOut.close();
   }
 
-  void Stage::saveEntitiesData() {
+  void Stage::saveEntitiesData(std::string& baseFilePath) {
     nlohmann::ordered_json entitiesData;
     List<Entities::Entity*>::Iterator entitiesIterator;
 
@@ -176,14 +176,17 @@ namespace Stages {
       entitiesData.push_back(entityData);
     }
 
-    std::ofstream jsonOut("saves/entities.json");
+    std::ofstream jsonOut((baseFilePath + "entities.json").c_str());
     jsonOut << std::setw(2) << entitiesData;
     jsonOut.close();
   }
 
-  void Stage::saveGame() {
-    savePlayerData();
-    saveEntitiesData();
+  void Stage::saveGame(const bool quickSave) {
+    std::string baseFilePath = "saves/";
+    if (quickSave)
+      baseFilePath += "quickSave/";
+    savePlayerData(baseFilePath);
+    saveEntitiesData(baseFilePath);
   }
 
   void Stage::applyPhysics(Entities::Entity* pEntity) {

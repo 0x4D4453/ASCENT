@@ -30,12 +30,13 @@ namespace Stages {
       std::vector<sf::View>* m_pViews;
       const bool m_newGame;
       bool m_multiplayer;
+      bool m_quickSave;
     
     private:
       void loadTextures();
       void loadSounds();
-      void loadPlayerData();
-      void loadEntitiesData();
+      void loadPlayerData(std::string& baseFilePath);
+      void loadEntitiesData(std::string& baseFilePath);
       void loadSaveGame();
       void createMap(const std::string& stageTxt);
       void defineType(Entities::Entity* pEntity);
@@ -43,10 +44,10 @@ namespace Stages {
       void createViews();
     
     public:
-      StageFactory(const bool newGame = true, const bool multiplayer = false);
+      StageFactory(const bool newGame = true);
       ~StageFactory();
 
-      Stage* createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer);
+      Stage* createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer, const bool quickSave);
   };
 }
 

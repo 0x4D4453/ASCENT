@@ -20,6 +20,7 @@ class Context {
     bool m_multiplayer;
     Stages::ID m_stageID;
     int m_totalScore;
+    bool m_quickSaveAvailable;
   
   private:
     Context();
@@ -37,6 +38,8 @@ class Context {
     const Stages::ID getStage() const;
     void setScore(const int score);
     const int getScore() const;
+    void setQuickSave(const bool quickSave);
+    const bool getQuickSave() const;
 };
 
 #endif

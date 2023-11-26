@@ -9,7 +9,7 @@ namespace UI {
     : m_textBox()
     , m_string("")
     , m_text(m_string, font)
-    , m_maxStringSize(5)
+    , m_maxStringSize(3)
     , m_totalTime(0)
     , m_showCursor(true)
   {

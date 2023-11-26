@@ -3,13 +3,15 @@
 
 /* Program Defined */
 #include "Stage/Stage.h"
+#include "Utility/Context.h"
 
 namespace Entities {
   namespace Obstacles {
     Flag::Flag(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position, sf::SoundBuffer& soundBuffer, Stages::Stage* pStage)
       : Obstacle(position, false)
-      , m_reached(false)
       , m_pStage(pStage)
+      , m_pContext(m_pContext->getInstance())
+      , m_reached(false)
       , m_saveSound(soundBuffer)
     {
       setEntityId(EntityID::FlagE);
@@ -26,7 +28,7 @@ namespace Entities {
 
     void Flag::run() {
       lock();
-      m_pStage->saveGame();
+      m_pStage->saveGame(true);
       unlock();
       exitThread();
     }
@@ -38,6 +40,7 @@ namespace Entities {
       m_saveSound.play();
       m_reached = true;
       m_sprite.setColor(sf::Color::Green);
+      m_pContext->setQuickSave(true);
       start();
     }
 

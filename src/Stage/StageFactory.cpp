@@ -28,13 +28,14 @@
 namespace Stages {
   Manager::GraphicsManager* StageFactory::m_graphicsManager(Manager::GraphicsManager::getInstance());
 
-  StageFactory::StageFactory(const bool newGame, const bool multiplayer)
+  StageFactory::StageFactory(const bool newGame)
     : m_newGame(newGame)
     , m_entityFactory()
     , m_textureHolder()
     , m_soundHolder()
     , m_pStage(NULL)
-    , m_multiplayer(multiplayer)
+    , m_multiplayer(false)
+    , m_quickSave(false)
   {
     loadTextures();
     loadSounds();
@@ -82,9 +83,10 @@ namespace Stages {
     m_soundHolder.load(Sounds::Save, Sounds::SAVE);
   }
 
-  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer) {
+  Stage* StageFactory::createStage(States::GameState* pGameState, Stages::ID stageID, const bool multiplayer, const bool quickSave) {
     srand(time(NULL));
     m_multiplayer = multiplayer;
+    m_quickSave = quickSave;
 
     switch (stageID) {
       case CaveID:
@@ -118,11 +120,11 @@ namespace Stages {
     return m_pStage;
   }
 
-  void StageFactory::loadPlayerData() {
+  void StageFactory::loadPlayerData(std::string& baseFilePath) {
     using namespace nlohmann;
     using namespace Entities;
 
-    std::ifstream playerStream("saves/players.json");
+    std::ifstream playerStream((baseFilePath + "players.json").c_str());
     if (!playerStream)
       throw std::runtime_error("Failed to load Players data.");
 
@@ -143,11 +145,11 @@ namespace Stages {
     playerStream.close();
   }
 
-  void StageFactory::loadEntitiesData() {
+  void StageFactory::loadEntitiesData(std::string& baseFilePath) {
     using namespace nlohmann;
     using namespace Entities;
 
-    std::ifstream entitiesStream("saves/entities.json");
+    std::ifstream entitiesStream((baseFilePath + "entities.json").c_str());
     if (!entitiesStream)
       throw std::runtime_error("Failed to load Entities data.");
 
@@ -169,9 +171,12 @@ namespace Stages {
   }
 
   void StageFactory::loadSaveGame() {
+    std::string baseFilePath = "saves/";
+    if (m_quickSave)
+      baseFilePath += "quickSave/";
     try {
-      loadPlayerData();
-      loadEntitiesData();
+      loadPlayerData(baseFilePath);
+      loadEntitiesData(baseFilePath);
     } catch (const std::runtime_error& error) {
       std::cerr << error.what() << std::endl;
     }

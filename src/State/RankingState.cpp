@@ -22,7 +22,6 @@ namespace States {
     , m_rankings()
     , m_names()
     , m_scores()
-    , m_sprites()
   {
     setType(StateType::Ranking);
     configureText();

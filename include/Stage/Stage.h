@@ -68,8 +68,8 @@ namespace Stages {
       void verifyGameOver();
       void update();
       void draw();
-      void savePlayerData();
-      void saveEntitiesData();
+      void savePlayerData(std::string& baseFilePath);
+      void saveEntitiesData(std::string& baseFilePath);
       void deleteEntitiesInQueue();
       void checkOutOfBounds(Entities::Entity* pEntity);
     
@@ -97,7 +97,7 @@ namespace Stages {
       void addToDeletionList(Entities::Entity* pEntity);
       const int getScore();
       void setPaused(const bool paused);
-      void saveGame();
+      void saveGame(const bool quickSave = false);
       // virtual void exec();
       void exec();
   };

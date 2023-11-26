@@ -12,6 +12,8 @@
 #include <vector>
 #include <queue>
 
+// Conceitos gerais advindos do livro SFML Game Development.
+// MOREIRA, A.; HANSSON, H. V.; HALLER, J. SFML Game Development. Packt Publishing. 2013. ISBN 978-1849696845 
 namespace States {
   class StateStack : public sf::NonCopyable {
     private:

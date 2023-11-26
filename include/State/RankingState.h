@@ -14,12 +14,10 @@ namespace States {
       std::vector<sf::Text> m_rankings;
       std::vector<sf::Text> m_names;
       std::vector<sf::Text> m_scores;
-      std::vector<sf::Sprite> m_sprites;
     
     private:
       void configureText();
       void loadScoresFromJSON();
-      void configureSprite();
     
     public:
       RankingState();

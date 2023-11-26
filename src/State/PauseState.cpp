@@ -71,6 +71,7 @@ namespace States {
       case SaveAndQuit:
         m_pGameState->saveGame();
         m_pStateStack->pushState(StateType::Menu, NULL, true);
+        m_pContext->setQuickSave(false);
       break;
       case Menu:
         m_pStateStack->pushState(StateType::Menu, NULL, true);

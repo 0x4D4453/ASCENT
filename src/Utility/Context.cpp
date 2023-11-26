@@ -16,6 +16,7 @@ Context::Context()
   , m_multiplayer(false)
   , m_stageID(Stages::CaveID)
   , m_totalScore(0)
+  , m_quickSaveAvailable(false)
 {
   m_textureHolder.load(Textures::OnePlayer, Textures::ONE_PLAYER);
   m_textureHolder.load(Textures::TwoPlayers, Textures::TWO_PLAYERS);
@@ -72,4 +73,12 @@ void Context::setScore(const int score) {
 
 const int Context::getScore() const {
   return m_totalScore;
+}
+
+void Context::setQuickSave(const bool quickSave) {
+  m_quickSaveAvailable = quickSave;
+}
+
+const bool Context::getQuickSave() const {
+  return m_quickSaveAvailable;
 }

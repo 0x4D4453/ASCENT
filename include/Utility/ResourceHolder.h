@@ -9,6 +9,8 @@
 #include <map>
 #include <string>
 
+// Código adaptado do livro SFML Game Development.
+// MOREIRA, A.; HANSSON, H. V.; HALLER, J. SFML Game Development. Packt Publishing. 2013. ISBN 978-1849696845 
 template <typename Identifier, typename Resource>
 class ResourceHolder {
   private:

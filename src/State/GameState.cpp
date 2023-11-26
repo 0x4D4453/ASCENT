@@ -7,6 +7,7 @@
 
 /* Standard Library */
 #include <fstream>
+#include <stdexcept>
 
 /* JSON Library */
 #include "nlohmann/json.hpp"
@@ -19,9 +20,14 @@ namespace States {
     setType(StateType::Game);
     m_pContext->setScore(0);
 
-    if (!newGame)
-      loadStageData();
-
+    if (!newGame) {
+      try {
+        loadStageData();
+      } catch (const std::runtime_error& error) {
+        std::cerr << error.what() << std::endl;
+      }
+    }
+      
     m_pStage = m_stageFactory.createStage(this, m_pContext->getStage(), m_pContext->getMultiplayer());
   }
 
@@ -68,8 +74,10 @@ namespace States {
     using namespace nlohmann;
 
     std::ifstream stageStream("saves/stage.json");
+    if (!stageStream)
+      throw std::runtime_error("Error loading stage data!");
+      
     ordered_json stageData = ordered_json::parse(stageStream);
-
     m_pContext->setStage(stageData["stageID"].template get<Stages::ID>());
     m_pGraphicsManager->setStageSize(stageData["size"]["y"].template get<float>(), stageData["size"]["x"].template get<float>());
     m_pContext->setMultiplayer(stageData["multiplayer"].template get<bool>());

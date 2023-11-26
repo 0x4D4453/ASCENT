@@ -20,6 +20,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 /* JSON Library */
 #include "nlohmann/json.hpp"
@@ -123,7 +124,7 @@ namespace Stages {
 
     std::ifstream playerStream("saves/players.json");
     if (!playerStream)
-      throw -1;
+      throw std::runtime_error("Failed to load Players data.");
 
     ordered_json playerData = ordered_json::parse(playerStream);
     ordered_json::iterator it = playerData.begin();
@@ -148,7 +149,7 @@ namespace Stages {
 
     std::ifstream entitiesStream("saves/entities.json");
     if (!entitiesStream)
-      throw -2;
+      throw std::runtime_error("Failed to load Entities data.");
 
     ordered_json entitiesData = ordered_json::parse(entitiesStream);
 
@@ -171,16 +172,8 @@ namespace Stages {
     try {
       loadPlayerData();
       loadEntitiesData();
-    } catch (int err) {
-      switch (err) {
-        case -1: 
-          std::cerr << "Error loading players data!" << std::endl;
-          break;
-        case -2:
-          std::cerr << "Error loading entities data!" << std::endl;
-          break;
-        default: break;
-      }
+    } catch (const std::runtime_error& error) {
+      std::cerr << error.what() << std::endl;
     }
   }
 
@@ -284,7 +277,7 @@ namespace Stages {
           case ('D'): defineType(m_entityFactory.createEntity(Entities::DoorE, Textures::Door, position)); break;
           case ('S'): defineType(m_entityFactory.createEntity(Entities::SpringE, Textures::Spring, position)); break;
           case ('Q'): defineType(m_entityFactory.createEntity(Entities::FlagE, Textures::Flag, position, m_pStage)); break;
-          case ('R'): defineType(m_entityFactory.createEntity(Entities::CoinE, Textures::Coin, position, m_pStage)); break;
+          case ('c'): defineType(m_entityFactory.createEntity(Entities::CoinE, Textures::Coin, position, m_pStage)); break;
           case ('E'): m_pStage->createRandomEnemy(position); break;
           case ('O'): m_pStage->createRandomObstacle(position); break;
           default: break;

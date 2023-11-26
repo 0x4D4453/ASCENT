@@ -11,6 +11,7 @@
 /* Standard Library */
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 
 /* JSON Library */
 #include "nlohmann/json.hpp"
@@ -25,7 +26,11 @@ namespace States {
   {
     setType(StateType::Ranking);
     configureText();
-    loadScoresFromJSON();
+    try {
+      loadScoresFromJSON();
+    } catch (const std::runtime_error& error) {
+      std::cerr << error.what() << std::endl;
+    }
   }
 
   RankingState::~RankingState() {
@@ -80,9 +85,10 @@ namespace States {
     using namespace nlohmann;
 
     std::ifstream scores("saves/highscore.json");
-    json scoresData = json::parse(scores);
+    if (!scores)
+      throw std::runtime_error("Error loading scores!");
     
-    int i = 0;
+    json scoresData = json::parse(scores);
     json::iterator it = scoresData["scores"].begin();
 
     for (int i = 0; i < 5 && it != scoresData["scores"].end(); ++i, ++it) {

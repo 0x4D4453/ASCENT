@@ -69,7 +69,7 @@ namespace Entities {
         m_pEntity = static_cast<Entity*>(new Obstacles::Spike(textureID, textureRef, position));
         break;
       case (DoorE): 
-        m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position));
+        m_pEntity = static_cast<Entity*>(new Obstacles::Door(textureID, textureRef, position, pStage));
         break;
       case (FlagE): 
         m_pEntity = static_cast<Entity*>(new Obstacles::Flag(textureID, textureRef, position, m_pSoundHolder->getResource(Sounds::Save), pStage));

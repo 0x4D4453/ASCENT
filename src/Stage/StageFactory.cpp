@@ -279,7 +279,7 @@ namespace Stages {
           case ('T'): defineType(m_entityFactory.createEntity(Entities::TyrantE, Textures::Tyrant, position, m_pStage)); break;
           case ('M'): defineType(m_entityFactory.createEntity(Entities::MovingPlatformE, Textures::MovingPlatform, position)); break;
           case ('^'): defineType(m_entityFactory.createEntity(Entities::SpikesE, Textures::Spikes, position)); break;
-          case ('D'): defineType(m_entityFactory.createEntity(Entities::DoorE, Textures::Door, position)); break;
+          case ('D'): defineType(m_entityFactory.createEntity(Entities::DoorE, Textures::Door, position, m_pStage)); break;
           case ('S'): defineType(m_entityFactory.createEntity(Entities::SpringE, Textures::Spring, position)); break;
           case ('Q'): defineType(m_entityFactory.createEntity(Entities::FlagE, Textures::Flag, position, m_pStage)); break;
           case ('c'): defineType(m_entityFactory.createEntity(Entities::CoinE, Textures::Coin, position, m_pStage)); break;

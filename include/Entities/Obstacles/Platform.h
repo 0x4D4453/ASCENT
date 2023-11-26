@@ -14,7 +14,7 @@ namespace Entities { namespace Characters { class Player; } }
 namespace Entities {
   namespace Obstacles {
     class Platform : public Obstacle {
-      private:
+      protected:
         const float m_bounciness;
 
       public:

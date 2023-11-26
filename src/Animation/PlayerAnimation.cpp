@@ -9,12 +9,20 @@
 namespace Animations {
   PlayerAnimation::PlayerAnimation(Entities::Entity* pEntity, float timePerFrame)
     : Animation(pEntity, timePerFrame)
+    , m_isStraight(true)
   {
     m_currentFrame = static_cast<int>(PlayerFrames::Walk1);
   }
 
   PlayerAnimation::~PlayerAnimation() {
 
+  }
+
+  void PlayerAnimation::updateJump(const float deltaTime) {
+    if (m_isStraight)
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::JumpStraight);
+    else
+      m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Jump);
   }
 
   void PlayerAnimation::update(const float deltaTime) {
@@ -27,10 +35,8 @@ namespace Animations {
     else if (pPlayer->getIsCharging())
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Charge);
     else if (pPlayer->getIsMidAir()) {
-      if (pPlayer->getVelocity().x == 0.f)
-        m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::JumpStraight);
-      else
-        m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Jump);
+      m_isStraight = pPlayer->getVelocity().x == 0.f;
+      updateJump(deltaTime);
     } else if (pPlayer->getVelocity().x == 0.f)
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(PlayerFrames::Idle);
     else

@@ -19,6 +19,12 @@ namespace Animations {
         Neutralized,
       };
 
+    private:
+      bool m_isStraight;
+
+    private:
+      void updateJump(const float deltaTime);
+
     public:
       PlayerAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);
       ~PlayerAnimation();

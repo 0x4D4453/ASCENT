@@ -23,18 +23,10 @@ namespace Entities {
     }
 
     void Platform::reactToCollision(Entity *pEntity, Manager::Collision::CollisionType type, float overlap) {
-      switch (pEntity->getEntityId()) {
-        case EntityID::FlyE:
-          return;
-        case EntityID::PlayerE:
-          playerCollide(dynamic_cast<Characters::Player*>(pEntity), type);
-          break;
-        default:
-          break;
-      }
-    }
+      if (pEntity->getEntityId() != EntityID::PlayerE)
+        return;
 
-    void Platform::playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type) {
+      Characters::Player* pPlayer = dynamic_cast<Characters::Player*>(pEntity);
       if (type == Manager::Collision::CollisionType::Horizontal && pPlayer->getIsMidAir()) {
         pPlayer->setVelocity(sf::Vector2f(-pPlayer->getVelocity().x * m_bounciness, pPlayer->getVelocity().y));
         pPlayer->setIsStaggered(true);

@@ -17,9 +17,6 @@ namespace Entities {
       private:
         const float m_bounciness;
 
-      private:
-        void playerCollide(Characters::Player* pPlayer, Manager::Collision::CollisionType type);
-      
       public:
         Platform(Textures::ID textureID, sf::Texture& texture, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~Platform();

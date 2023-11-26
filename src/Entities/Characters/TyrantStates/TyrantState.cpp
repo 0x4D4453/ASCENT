@@ -4,6 +4,7 @@
 /* Program Defined */
 #include "Entities/Characters/Tyrant.h"
 #include "Entities/Characters/Player.h"
+#include "Animation/TyrantAnimation.h"
 
 /* Standard Library */
 #include <stdlib.h>

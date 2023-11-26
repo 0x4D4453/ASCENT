@@ -8,19 +8,18 @@
 namespace Animations {
   EnemyAnimation::EnemyAnimation(Entities::Entity* pEntity, MDirection direction, float timePerFrame) 
     : Animation(pEntity, timePerFrame)
+    , m_pEnemy(dynamic_cast<Entities::Characters::Enemy*>(m_pEntity))
     , m_mDirection(direction)
   {
     m_currentFrame = static_cast<int>(Walk1);
   }
 
   EnemyAnimation::~EnemyAnimation() {
-
+    m_pEnemy = NULL;
   }
 
   void EnemyAnimation::update(const float deltaTime) {
-    Entities::Characters::Enemy* pEnemy = dynamic_cast<Entities::Characters::Enemy*>(m_pEntity);
-
-    if (pEnemy->getHealthPoints() <= 0)
+    if (m_pEnemy->getHealthPoints() <= 0)
       m_textureRect.left = Constants::SPRITE_SIZE * static_cast<int>(DefaultFrames::Neutralized);
     else if ((m_mDirection == MDirection::X && m_pEntity->getVelocity().x == 0.f) ||
               (m_mDirection == MDirection::Y && m_pEntity->getVelocity().y == 0.f))

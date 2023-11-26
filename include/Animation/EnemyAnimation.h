@@ -4,9 +4,13 @@
 /* Program Defined */
 #include "Animation/Animation.h"
 
+/* Forward Declaration */
+namespace Entities { namespace Characters { class Enemy; } }
+
 namespace Animations {
   class EnemyAnimation : public Animation {
     private:
+      Entities::Characters::Enemy* m_pEnemy;
       const MDirection m_mDirection;
 
     public:

@@ -4,6 +4,9 @@
 /* Program Defined */
 #include "Animation/Animation.h"
 
+/* Forward Declaration */
+namespace Entities { namespace Characters { class Player; } }
+
 namespace Animations {
   class PlayerAnimation : public Animation {
     public:
@@ -20,6 +23,7 @@ namespace Animations {
       };
 
     private:
+      Entities::Characters::Player* m_pPlayer;
       bool m_isStraight;
 
     private:

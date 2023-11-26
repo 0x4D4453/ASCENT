@@ -3,6 +3,7 @@
 
 /* Program Defined */
 #include "Animation/Animation.h"
+#include "Entities/Characters/TyrantStates/TyrantState.h"
 
 /* Forward Declaration */
 namespace Entities { namespace Characters { class Tyrant; } }
@@ -26,9 +27,14 @@ namespace Animations {
         Neutralized
       };
 
+    private: 
+      Entities::Characters::Tyrant* m_pTyrant;
+      Entities::Characters::TyrantStateID m_state;
+
     private:
-      void jumpingUpdate(const float deltaTime, Entities::Characters::Tyrant* pTyrant);
-      void shootingUpdate(const float deltaTime, Entities::Characters::Tyrant* pTyrant);
+      void chooseUpdate(const float deltaTime);
+      void jumpingUpdate(const float deltaTime);
+      void shootingUpdate(const float deltaTime);
 
     public:
       TyrantAnimation(Entities::Entity* pEntity = NULL, float timePerFrame = 0.1f);

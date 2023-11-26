@@ -5,7 +5,6 @@
 #include "Manager/GraphicsManager.h"
 #include "Entities/EntityList.h"
 #include "Utility/ViewShake.h"
-#include "Animation/TyrantAnimation.h"
 #include "Stage/Stage.h"
 
 /* JSON Library */

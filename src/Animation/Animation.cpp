@@ -17,7 +17,7 @@ namespace Animations {
   }
 
   Animation::~Animation() {
-
+    m_pEntity = NULL;
   }
 
   void Animation::changeFrame(const float deltaTime, const int firstFrame, const int lastFrame) {

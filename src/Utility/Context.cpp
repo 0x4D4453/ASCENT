@@ -24,9 +24,10 @@ Context::Context()
   m_textureHolder.load(Textures::RightArrow, Textures::RIGHT_ARROW);
   m_textureHolder.load(Textures::StagePlaceholder, Textures::STAGE_PLACEHOLDER);
   m_textureHolder.load(Textures::StagePlaceholder2, Textures::STAGE_PLACEHOLDER2);
+  m_textureHolder.load(Textures::MenuArt, Textures::MENU_ART);
   m_fontHolder.load(Fonts::Monogram, Fonts::MONOGRAM);
   m_soundHolder.load(Sounds::menuSound, Sounds::MENU);
-  m_soundHolder.load(Sounds::Pause, Sounds::PAUSE);;
+  m_soundHolder.load(Sounds::Pause, Sounds::PAUSE);
 }
 
 Context::~Context() {

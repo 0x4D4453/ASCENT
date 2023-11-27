@@ -63,6 +63,7 @@ namespace Textures {
     StagePlaceholder2,
 
     Heart,
+    MenuArt,
   };
 
   constexpr char PLAYER1[] = "assets/tiles/player1SpriteSheet.png";
@@ -150,6 +151,8 @@ namespace Textures {
   
   // UI 
   constexpr char HEART[] = "assets/tiles/heartSpriteSheet.png";
+
+  constexpr char MENU_ART[] = "assets/tiles/menuArt.png";
 }
 
 #endif

@@ -15,6 +15,7 @@
 namespace States {
   MenuState::MenuState()
     : OptionsState(static_cast<int>(TotalOptions))
+    , m_menuArt(m_pContext->getTexture(Textures::MenuArt))
   { 
     setType(StateType::Menu);
     m_pGraphicsManager->resetView();
@@ -43,6 +44,9 @@ namespace States {
   }
 
   void MenuState::setup() {
+    m_menuArt.setScale(Constants::SCALE * 5, Constants::SCALE * 5);
+    m_menuArt.setPosition(Constants::WINDOW_WIDTH - (64.f * Constants::SCALE * 5), Constants::WINDOW_HEIGHT - (54.f * Constants::SCALE * 5));
+
     createOption("New Game", sf::Vector2f(50.f, 10.f));
     createOption("Continue", sf::Vector2f(50.f, 100.f));
     createOption("Highscore", sf::Vector2f(50.f, 190.f));
@@ -84,6 +88,7 @@ namespace States {
   }
 
   void MenuState::exec() {
+    m_pGraphicsManager->draw(m_menuArt);
     std::vector<sf::Text*>::iterator it = m_options.begin();
     
     while (it != m_options.end()) {

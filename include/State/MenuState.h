@@ -23,6 +23,9 @@ namespace States {
       };
 
     private:
+      sf::Sprite m_menuArt;
+
+    private:
       virtual void createOption(const char* optionName, const sf::Vector2f& position);
       void setup();
       void changeState();

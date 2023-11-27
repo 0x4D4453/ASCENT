@@ -22,7 +22,7 @@ namespace Manager {
 
         const float getDelay() const;
         
-        virtual void reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) = 0;
+        virtual void applyCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) = 0;
     };
   }
 }

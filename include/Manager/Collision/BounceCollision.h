@@ -14,7 +14,7 @@ namespace Manager {
         BounceCollision();
         ~BounceCollision();
         
-        virtual void reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
+        virtual void applyCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
     };
   }
 }

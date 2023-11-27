@@ -17,7 +17,7 @@ namespace Manager {
 
     }
 
-    void BounceCollision::reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+    void BounceCollision::applyCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
       if (pOtherEntity->getEntityType() == Entities::EntityType::Static)
         return;
       

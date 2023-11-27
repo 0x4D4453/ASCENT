@@ -68,9 +68,9 @@ namespace Manager {
         }
 
         if (entities.first->getCurrentCollisions()->count(entities.second->getId()) == 0)
-          applyCollision(entities, &info);
+          applyCollisionReaction(entities, &info);
 
-        applyCollisionReaction(entities, &info);
+        applyCollision(entities, &info);
       } else {
         entities.first->getCurrentCollisions()->erase(entities.second->getId());
         entities.second->getCurrentCollisions()->erase(entities.first->getId());
@@ -78,20 +78,20 @@ namespace Manager {
     }
 
     void CollisionManager::applyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
+      CollisionStrategy* strategy;
+      strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
+      strategy->applyCollision(entities.first, entities.second, info->type, info->overlap);
+
+      strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
+      strategy->applyCollision(entities.second, entities.first, info->type, info->overlap * -1);
+    }
+
+    void CollisionManager::applyCollisionReaction(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
       entities.first->reactToCollision(entities.second, info->type, info->overlap);
       entities.second->reactToCollision(entities.first, info->type, info->overlap * -1);
 
       entities.first->getCurrentCollisions()->insert(entities.second->getId());
       entities.second->getCurrentCollisions()->insert(entities.first->getId());
-    }
-
-    void CollisionManager::applyCollisionReaction(std::pair<Entities::Entity*, Entities::Entity*> entities, CollisionInfo* info) {
-      CollisionStrategy* strategy;
-      strategy = entities.first->getCollisionStrategy(entities.second->getEntityTag());
-      strategy->reactToCollision(entities.first, entities.second, info->type, info->overlap);
-
-      strategy = entities.second->getCollisionStrategy(entities.first->getEntityTag());
-      strategy->reactToCollision(entities.second, entities.first, info->type, info->overlap * -1);
     }
 
     void CollisionManager::verifyCollisions() {

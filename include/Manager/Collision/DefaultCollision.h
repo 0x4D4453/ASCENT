@@ -18,7 +18,7 @@ namespace Manager {
         DefaultCollision(const float friction = Constants::DRAG * 15.0f);
         ~DefaultCollision();
         
-        virtual void reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
+        virtual void applyCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap);
     };
   }
 }

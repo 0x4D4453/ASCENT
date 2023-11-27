@@ -32,7 +32,7 @@ namespace Manager {
       return component;
     }
 
-    void PhaseCollision::reactToCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
+    void PhaseCollision::applyCollision(Entities::Entity *pOwnEntity, Entities::Entity *pOtherEntity, CollisionType type, float overlap) {
       sf::Vector2f velocity = pOtherEntity->getVelocity();
       velocity.x = applyDrag(pOtherEntity, velocity.x);
       velocity.y = applyDrag(pOtherEntity, velocity.y);

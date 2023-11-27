@@ -1,0 +1,4 @@
+Compilador: GCC 8.1.0 x86_64-w64-mingw32 com utilização do CMake
+Padrão Usado: C++17
+Biblioteca Gráfica Utilizada: SFML 2.6
+SO: Windows 64 bit

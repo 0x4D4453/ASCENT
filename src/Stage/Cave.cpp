@@ -8,8 +8,12 @@ namespace Stages {
   Cave::Cave(ResourceHolder<Textures::ID, sf::Texture>* pTextureHolder, Entities::EntityFactory* pEntityFactory, States::GameState* pGameState) 
     : Stage(pTextureHolder, pEntityFactory, pGameState, Constants::CAVE)
     , m_pFly(NULL)
+    , m_pMPlatform(NULL)
     , m_maxFlyInstances(4)
+    , m_maxMPlatformInstances(1)
+    , m_mPlatformChance(15)
     , m_flyChance(50)
+    , m_mPlatformNumber(0)
     , m_flyNumber(0)
   {
     m_bgMusic.openFromFile(Sounds::CAVE_BG);
@@ -20,6 +24,7 @@ namespace Stages {
 
   Cave::~Cave() {
     m_pFly = NULL;
+    m_pMPlatform = NULL;
     m_bgMusic.stop();
   }
 
@@ -64,6 +69,18 @@ namespace Stages {
     }
   }
 
+  void Cave::createMovingPlatform(sf::Vector2f& position) {
+    if (m_mPlatformNumber >= m_maxMPlatformInstances)
+      return;
+
+    const int random = 1 + rand() % 100;
+    if (random < m_mPlatformChance) {
+      sf::Texture& textureRef = m_pEntityFactory->getTexture(Textures::MovingPlatform);
+      m_pMPlatform = new Entities::Obstacles::MovingPlatform(Textures::MovingPlatform, textureRef, position);
+      m_dynamicEntities.include(static_cast<Entities::Entity*>(m_pMPlatform));
+    }
+  }
+
   void Cave::createRandomEnemy(sf::Vector2f& position) {
     if (rand() % 2)
       createFly(position);
@@ -72,6 +89,11 @@ namespace Stages {
   }
 
   void Cave::createRandomObstacle(sf::Vector2f& position) {
-    createSpike(position);
+    sf::Vector2f size = m_pGraphicsManager->getStageSize();
+
+    if (position.y > size.y / 2)
+      createSpike(position);
+    else
+      createMovingPlatform(position);
   }
 }

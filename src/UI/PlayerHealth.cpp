@@ -35,7 +35,7 @@ namespace UI {
 
   }
 
-  void PlayerHealth::update(float dt) {
+  void PlayerHealth::update(const float dt) {
     m_totalTime += dt;
     if (m_totalTime >= m_timePerFrame) {
       m_totalTime = 0.f;

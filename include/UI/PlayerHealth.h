@@ -25,7 +25,7 @@ namespace UI {
     public:
       PlayerHealth();
       ~PlayerHealth();
-      void update(float dt);
+      void update(const float dt);
       void draw(Entities::Characters::Player* pPlayer, Manager::GraphicsManager* pGraphicsManager);
   };
 }

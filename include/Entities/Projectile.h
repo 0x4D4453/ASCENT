@@ -23,7 +23,7 @@ namespace Entities {
       Stages::Stage* m_pStage;
       float m_distance;
       float m_timeElapsed;
-      bool m_waitingDeletion;
+      bool m_awaitingDeletion;
 
     private:
       void autoRemove();

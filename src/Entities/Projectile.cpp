@@ -19,7 +19,7 @@ namespace Entities {
     , m_pStage(NULL)
     , m_distance(0.f)
     , m_timeElapsed(0.f)
-    , m_waitingDeletion(false)
+    , m_awaitingDeletion(false)
   {
     setEntityId(EntityID::ProjectileE);
     setEntityTag(EntityTag::ProjectileTag);
@@ -37,10 +37,10 @@ namespace Entities {
   }
 
   void Projectile::autoRemove() {
-    if (!m_waitingDeletion)
+    if (!m_awaitingDeletion)
       m_pStage->addToDeletionList(static_cast<Entity*>(this));
 
-    m_waitingDeletion = true;
+    m_awaitingDeletion = true;
   }
 
   void Projectile::checkOutOfBounds() {
@@ -99,12 +99,12 @@ namespace Entities {
   void Projectile::save(nlohmann::ordered_json& jsonData) {
     Entity::save(jsonData);
     jsonData["timeElapsed"] = m_timeElapsed;
-    jsonData["waitingDeletion"] = m_waitingDeletion;
+    jsonData["waitingDeletion"] = m_awaitingDeletion;
   }
 
   void Projectile::loadSave(const nlohmann::ordered_json& jsonData) {
     Entity::loadSave(jsonData);
     m_timeElapsed = jsonData["timeElapsed"].template get<float>();
-    m_waitingDeletion = jsonData["waitingDeletion"].template get<bool>();
+    m_awaitingDeletion = jsonData["waitingDeletion"].template get<bool>();
   }
 }

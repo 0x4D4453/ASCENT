@@ -111,18 +111,12 @@ namespace Entities {
 
     void TyrantJumpingState::save(nlohmann::ordered_json& jsonData) {
       TyrantState::save(jsonData);
-      //jsonData["state"]["chargeTimeElapsed"] = m_chargeTimeElapsed;
-      //jsonData["state"]["isCharging"] = m_isCharging;
       jsonData["state"]["isJumping"] = m_isJumping;
       jsonData["state"]["isLanding"] = m_isLanding;
     }
 
     void TyrantJumpingState::loadSave(const nlohmann::ordered_json& jsonData) {
       TyrantState::loadSave(jsonData);
-      //m_chargeTimeElapsed = jsonData["state"]["chargeTimeElapsed"].template get<float>();
-      //m_isCharging = jsonData["state"]["isCharging"].template get<bool>();
-      //m_isJumping = jsonData["state"]["isJumping"].template get<bool>();
-      //m_isLanding = jsonData["state"]["isLanding"].template get<bool>(); 
     }
   }
 }

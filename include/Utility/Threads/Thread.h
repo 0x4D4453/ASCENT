@@ -5,6 +5,8 @@
 #include <pthread.h>
 
 namespace Threads {
+  // Código adapatado do Prof. Simão.
+  // https://pessoal.dainf.ct.utfpr.edu.br/jeansimao/Fundamentos2/ThreadsPosix/Fundamentos2-ThreadsPThreadsPosix.htm
   class Thread {
     protected:
       pthread_t m_threadID;

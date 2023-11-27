@@ -49,7 +49,7 @@
 ]c  B     ]            C      L__          
  Z  B      >                     L       
 ]   B      ] O                    L        
-]   B       --->  c     A          L       
+]   B       --->  c    A           L       
 ]   B           -------]   Q        L___   
 ]   B                   ----->          L  
 ]   B                         >          L_
